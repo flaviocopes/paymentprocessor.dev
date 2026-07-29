@@ -126,7 +126,7 @@ const companyIntelligenceSchema = z.object({
   ownershipLabel: z.string().min(8),
   parentCompany: z.string().nullable(),
   ticker: z.string().nullable(),
-  founded: z.number().int().min(1900).max(2100),
+  founded: z.number().int().min(1900).max(2100).nullable(),
   foundedNote: z.string().min(20),
   headquarters: z.string().min(3),
   leaders: z.array(z.object({

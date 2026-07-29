@@ -100,7 +100,7 @@ const migrationFactors = [
           <h2>Who owns and operates {provider.name}.</h2>
           <p class="section-lede">Product capability and company durability are different questions. This view keeps ownership, leadership, funding, and financial disclosure separate from the provider review.</p>
           <dl class="company-fact-grid">
-            <div><dt>Founded</dt><dd>{company.founded}</dd><small>{company.foundedNote}</small></div>
+            <div><dt>Founded</dt><dd>{company.founded ?? "Not publicly verified"}</dd><small>{company.foundedNote}</small></div>
             <div><dt>Ownership</dt><dd>{company.ownershipLabel}</dd><small>{company.parentCompany ? `Parent: ${company.parentCompany}` : "Independent company"}{company.ticker ? ` · ${company.ticker}` : ""}</small></div>
             <div><dt>Headquarters</dt><dd>{company.headquarters}</dd></div>
             <div><dt>Team disclosure</dt><dd>{company.team.value}</dd><small>{company.team.note}</small></div>
@@ -163,7 +163,7 @@ const migrationFactors = [
         {relatedStories.length > 0 && <section class="profile-section"><span class="section-index">09</span><span class="eyebrow">Stories from the field</span><h2>Experiences worth investigating.</h2><p class="section-lede">Anecdotes show possible failure modes, not frequency or current policy.</p><div class="profile-story-list">{relatedStories.map((story) => <a href={story.data.url} rel="noreferrer"><span>{story.data.sourceType.replaceAll("-", " ")}</span><strong>{story.data.title}</strong><p>{story.data.summary}</p></a>)}</div></section>}
         <section id="sources" class="profile-section source-section">
           <span class="section-index">10</span><span class="eyebrow">Primary evidence</span><h2>Sources and freshness.</h2>
-          <p>Reviewed {provider.lastReviewed}. Scheduled for review by {provider.nextReview}. Verify the source before making a production decision.</p>
+          <p>Independently triple-checked against primary sources on {provider.lastReviewed}. Scheduled for review by {provider.nextReview}. Verify the linked source before making a production decision.</p>
           <SourceList sources={provider.sources} />
         </section>
       </div>

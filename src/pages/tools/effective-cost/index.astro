@@ -93,7 +93,7 @@ const regionalNames = namesFor(["country-method-based", "country-channel-based"]
         <div class="results-toolbar">
           <div>
             <span class="eyebrow">Lowest modeled total first</span>
-            <p>USD per month. A lower row is not automatically the better business decision.</p>
+            <p>USD per month. “Partial” means at least one documented or conditional fee cannot be calculated from these inputs.</p>
           </div>
           <div class="segmented-control" aria-label="Filter results">
             <button type="button" :class="{ active: view === 'all' }" @click="view = 'all'">All</button>
@@ -120,10 +120,10 @@ const regionalNames = namesFor(["country-method-based", "country-channel-based"]
                 <strong x-text="money(result.total)"></strong>
                 <small><span x-text="percent(result.effectiveRate)"></span> effective / month</small>
                 <dl>
-                  <div><dt>Vendor fees</dt><dd x-text="money(result.paymentFees)"></dd></div>
+                  <div><dt>Vendor fees</dt><dd><span x-text="money(result.paymentFees)"></span><small x-show="result.isPartialEstimate"> · partial</small></dd></div>
                   <div><dt>Your added costs</dt><dd x-text="money(result.breakdown.externalPlan + result.breakdown.operations)"></dd></div>
-                  <div><dt>International</dt><dd x-text="money(result.breakdown.international)"></dd></div>
-                  <div><dt>Subscriptions</dt><dd x-text="money(result.breakdown.subscriptions)"></dd></div>
+                  <div><dt>International</dt><dd x-text="result.internationalPercentage === null ? 'Not modeled' : money(result.breakdown.international)"></dd></div>
+                  <div><dt>Subscriptions</dt><dd x-text="result.subscriptionPercentage === null ? 'Not modeled' : money(result.breakdown.subscriptions)"></dd></div>
                 </dl>
                 <a :href="`/providers/${result.slug}/`">Review assumptions →</a>
               </article>
@@ -144,6 +144,7 @@ const regionalNames = namesFor(["country-method-based", "country-channel-based"]
                   <div class="cost-total"><button class="cost-compare-toggle" type="button" :class="{ active: isSelected(result.slug) }" :disabled="!canToggle(result.slug)" @click="toggleComparison(result.slug)" x-text="isSelected(result.slug) ? 'In comparison' : 'Compare'"></button>
                     <strong x-text="money(result.total)"></strong>
                     <span x-text="`${percent(result.effectiveRate)} effective`"></span>
+                    <small class="partial-estimate" x-show="result.isPartialEstimate">Partial estimate</small>
                   </div>
                 </div>
 
@@ -159,10 +160,12 @@ const regionalNames = namesFor(["country-method-based", "country-channel-based"]
                   <div x-show="result.breakdown.operations > 0"><dt>Your operations</dt><dd x-text="money(result.breakdown.operations)"></dd></div>
                 </dl>
 
+                <p class="unmodeled-fees" x-show="result.isPartialEstimate"><strong>Not included:</strong> <span x-text="result.unmodeledFees.join(', ')"></span>.</p>
+
                 <details class="formula-details">
                   <summary>Formula, confidence, and exclusions</summary>
                   <div>
-                    <code x-text="result.capPerTransaction ? `${result.percentage}% × revenue + ${money(result.fixed)} × transactions, with ${money(result.capPerTransaction)} domestic cap + documented mix surcharges + your operating estimate` : `${result.percentage}% × revenue + ${money(result.fixed)} × transactions + documented mix surcharges + disputes + plan fees + your operating estimate`"></code>
+                    <code x-text="result.capPerTransaction ? `${result.percentage}% × revenue + ${money(result.fixed)} × transactions, with ${money(result.capPerTransaction)} domestic cap + modeled mix surcharges + your operating estimate` : `${result.percentage}% × revenue + ${money(result.fixed)} × transactions + modeled mix surcharges + modeled disputes + plan fees + your operating estimate`"></code>
                     <p><strong x-text="result.confidence"></strong> · <span x-text="result.note"></span></p>
                     <p class="refund-note">Estimated base fees attached to refunded volume: <strong x-text="money(result.breakdown.refundExposure)"></strong>. This amount is already inside the base fee total and is not added twice. Actual refund treatment varies.</p>
                     <div class="result-links">
@@ -184,7 +187,7 @@ const regionalNames = namesFor(["country-method-based", "country-channel-based"]
         <h2 id="not-calculated">Unavailable is more honest than exact.</h2>
         <p><strong>Quote required:</strong> {quoteNames}. Their complete commercial terms depend on volume, methods, markets, risk, and product scope.</p>
         <p><strong>Variable or regional inputs:</strong> {variableNames} publishes method and interchange-based economics. {regionalNames} publishes country- or method-specific rates that this single USD scenario cannot represent safely.</p>
-        <p>These outputs exclude sales tax or VAT collected from buyers, payout and banking costs, revenue-recognition effects, reserves, provider-specific exemptions, negotiated pricing, and approval or product-eligibility differences.</p>
+        <p>Every partial estimate names its excluded fees. Outputs can also exclude sales tax or VAT collected from buyers, revenue-recognition effects, reserves, provider-specific exemptions, negotiated pricing, and approval or product-eligibility differences.</p>
       </div>
     </section>
   </main>

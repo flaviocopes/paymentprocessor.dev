@@ -8,13 +8,13 @@
   "summary": "A developer-oriented Merchant of Record focused on SaaS and digital products, with particular attention to sellers in India and other emerging markets.",
   "pricing": {
     "kind": "country-channel-based",
-    "headline": "Domestic US cards and wallets start at 4% + $0.40; international and alternative-method fees vary.",
+    "headline": "Public marketing pricing starts at 4% + $0.40; international cards add 1.5%, subscriptions 0.5%, and disputes $30.",
     "percentage": 4,
     "fixed": 0.4,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Public domestic-US card and wallet rate. International cards, PayPal, BNPL, currency conversion, and other payment methods can add fees.",
-    "sourceIds": ["pricing"]
+    "assumptions": "Public marketing rate. Dodo's contractual pricing document still describes a different base rate, so sellers must confirm their signed terms. Refund, payout, PayPal, BNPL, and FX fees can also apply.",
+    "sourceIds": ["pricing", "terms"]
   },
   "sellerCoverage": "Eligible digital-product businesses can apply from supported payout countries, subject to underwriting, product, and sanctions policies.",
   "buyerCoverage": "Dodo documents selling into more than 220 regions with taxes and local availability handled by market.",
@@ -23,7 +23,7 @@
     "checkout": "Hosted checkout, payment links, embedded components, and developer APIs.",
     "subscriptions": "Recurring billing, trials, plan changes, usage-based billing, and customer self-service.",
     "invoicing": "Tax-aware receipts and billing records are included; confirm B2B invoice workflows for your markets.",
-    "paymentMethods": "Cards, wallets, PayPal, BNPL, and supported local methods, with availability and fees varying by market.",
+    "paymentMethods": "Cards, wallets, BNPL, and supported local methods vary by market. Dodo currently says PayPal is paused for new transactions.",
     "payouts": "Net proceeds are paid to approved seller payout accounts after taxes, fees, refunds, and risk adjustments."
   },
   "responsibilities": [
@@ -33,14 +33,15 @@
     { "area": "Bookkeeping and business income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own company-level taxes." }
   ],
   "strengths": ["Public entry pricing below many 5% MoR offers", "Developer-focused APIs and billing tools", "Explicit emerging-market seller focus"],
-  "limitations": ["Younger operating history than established MoRs", "Payment-method add-ons complicate the headline rate", "Eligibility and payout coverage still require underwriting confirmation"],
+  "limitations": ["Younger operating history than established MoRs", "Official marketing and contractual pricing are not fully aligned", "Eligibility, PayPal availability, and payout coverage require confirmation"],
   "bestFor": ["Developer-led SaaS", "AI products and digital tools", "Sellers evaluating emerging-market support"],
   "avoidIf": ["You require a decades-long operating history", "You need physical-goods support or guaranteed country coverage"],
-  "lastReviewed": "2026-07-28",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-28",
   "sources": [
-    { "id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-07-28" },
-    { "id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-07-28" },
-    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-28" }
+    { "id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "terms", "label": "Dodo Payments legal terms", "url": "https://dodopayments.com/legal/terms-of-use", "reviewedOn": "2026-07-29" },
+    { "id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-07-29" },
+    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-29" }
   ]
 }

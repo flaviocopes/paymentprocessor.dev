@@ -13,8 +13,8 @@
     "fixed": 0.5,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Public pay-as-you-go checkout rate. Low-price products, invoicing, and larger businesses may use custom terms.",
-    "sourceIds": ["pricing"]
+    "assumptions": "Public pay-as-you-go checkout rate. Terms permit chargeback or pre-chargeback fees up to $20 in USD and optional Checkout Recovery costs 10% of recovered value. Other products can use custom terms.",
+    "sourceIds": ["pricing", "terms"]
   },
   "sellerCoverage": "Software businesses are supported in most countries, subject to Paddle's unsupported-country and risk policies.",
   "buyerCoverage": "Paddle documents sales in more than 200 countries and territories, with sanctioned and unsupported locations blocked.",
@@ -33,14 +33,14 @@
     { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for Paddle payouts and its own business taxes." }
   ],
   "strengths": ["Mature SaaS subscription tooling", "Public pay-as-you-go rate with custom enterprise terms", "Broad documented buyer coverage"],
-  "limitations": ["Restricted to approved software and digital-product models", "Paddle is buyer-facing as the legal seller", "Migration and invoicing can require provider involvement"],
+  "limitations": ["Restricted to approved software and digital-product models", "Conditional dispute and optional recovery fees sit outside the headline rate", "Migration and invoicing can require provider involvement"],
   "bestFor": ["Subscription SaaS", "Established software companies", "Teams wanting tax and billing operations bundled"],
   "avoidIf": ["You sell physical goods or unsupported services", "You need to remain the seller on every buyer record"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Paddle pricing", "url": "https://www.paddle.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "coverage", "label": "Paddle supported countries", "url": "https://developer.paddle.com/concepts/sell/supported-countries-locales/", "reviewedOn": "2026-07-27" },
-    { "id": "terms", "label": "Paddle Master Services Agreement", "url": "https://www.paddle.com/legal/terms", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Paddle pricing", "url": "https://www.paddle.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "coverage", "label": "Paddle supported countries", "url": "https://developer.paddle.com/concepts/sell/supported-countries-locales/", "reviewedOn": "2026-07-29" },
+    { "id": "terms", "label": "Paddle Master Services Agreement", "url": "https://www.paddle.com/legal/terms", "reviewedOn": "2026-07-29" }
   ]
 }

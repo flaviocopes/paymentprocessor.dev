@@ -20,8 +20,8 @@ const providers = (await getCollection("providers")).map((entry) => entry.data).
 }));
 ---
 
-<BaseLayout title="Payment provider matcher — Payment Stack Guide" description="Build a transparent payment-provider shortlist from your legal-seller preference, product, company stage, priorities, and pricing needs.">
-  <PageHeader eyebrow="Interactive shortlist" title="Find providers that fit your shape" description="Answer five practical questions. The matcher explains why each provider surfaced and what you still need to verify." meta={`${providers.length} provider profiles · no sponsored rankings`} />
+<BaseLayout title="Payment provider matcher — Payment Stack Guide" description="Build a transparent payment-provider shortlist from your legal-seller preference, product, country workload, company stage, priorities, and pricing needs.">
+  <PageHeader eyebrow="Interactive shortlist" title="Find providers that fit your shape" description="Answer six practical questions. The matcher explains why each provider surfaced and what you still need to verify." meta={`${providers.length} provider profiles · no sponsored rankings`} />
 
   <section class="section matcher-section" x-data="providerMatcher()" x-cloak>
     <div class="shell matcher-workspace">
@@ -53,6 +53,15 @@ const providers = (await getCollection("providers")).map((entry) => entry.data).
             <option value="growing">Growing company</option>
             <option value="enterprise">Enterprise or complex operations</option>
           </select>
+        </label>
+        <label>
+          <span>How heavy is direct-payment administration in your country?</span>
+          <select x-model="inputs.administration">
+            <option value="unknown">Not assessed yet</option>
+            <option value="high">Heavy — outsourcing may justify the fee</option>
+            <option value="manageable">Manageable — we can retain the work</option>
+          </select>
+          <small class="matcher-field-note">Consider VAT, invoicing, filing, accounting, and transaction support for your legal entity—not country stereotypes.</small>
         </label>
         <label>
           <span>What matters most right now?</span>
@@ -106,7 +115,7 @@ const providers = (await getCollection("providers")).map((entry) => entry.data).
   <section class="section section-blue">
     <div class="shell note-grid">
       <div><span class="eyebrow eyebrow-inverse">How to use it</span><h2>Shortlist first. Verify second.</h2></div>
-      <div class="prose"><p>The matcher uses documented product focus, responsibility model, stage, strengths, limitations, and pricing visibility. It intentionally does not predict underwriting approval, conversion, support quality, or negotiated commercial terms.</p><a class="button button-light" href="/methodology/">Read the methodology →</a></div>
+      <div class="prose"><p>The matcher uses documented product focus, responsibility model, stage, strengths, limitations, pricing visibility, and your own assessment of retained local administration. It intentionally does not infer complexity from a country name or predict underwriting approval, conversion, support quality, or negotiated commercial terms.</p><a class="button button-light" href="/methodology/">Read the methodology →</a></div>
     </div>
   </section>
 

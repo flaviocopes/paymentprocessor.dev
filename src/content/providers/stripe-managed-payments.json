@@ -13,7 +13,7 @@
     "fixed": 0.3,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Illustrative US domestic-card total: 3.5% MoR fee plus 2.9% + $0.30 Payments fee. Other methods, international cards, FX, Billing, and custom terms change the total.",
+    "assumptions": "Illustrative US domestic-card total: 3.5% MoR fee plus 2.9% + $0.30 Payments fee. Stripe Billing adds 0.7% on pay-as-you-go subscriptions; disputes, other methods, international cards, and FX can add costs.",
     "sourceIds": ["pricing"]
   },
   "sellerCoverage": "Public-preview eligibility is limited to Stripe's documented supported business locations.",
@@ -27,7 +27,7 @@
     "payouts": "Funds settle through the connected Stripe account subject to Stripe payout timing."
   },
   "responsibilities": [
-    { "area": "Indirect-tax compliance and remittance", "owner": "provider", "note": "Stripe assumes responsibility for Managed Payments transactions." },
+    { "area": "Indirect-tax compliance and remittance", "owner": "provider", "note": "Stripe assumes the documented responsibilities for eligible Managed Payments transactions and supported markets, not every tax obligation everywhere." },
     { "area": "Fraud, disputes, and transaction support", "owner": "provider", "note": "Stripe and Link manage these transaction-level responsibilities." },
     { "area": "Product support", "owner": "merchant", "note": "The business retains product-level customer support." },
     { "area": "Data deletion response", "owner": "shared", "note": "Stripe can cancel subscriptions and delete related Stripe objects after a qualifying buyer request." }
@@ -36,11 +36,11 @@
   "limitations": ["Public preview", "Narrower product and seller eligibility", "MoR fee is additional to Payments and other applicable Stripe fees"],
   "bestFor": ["Existing eligible Stripe Checkout businesses", "Digital-product companies testing specific markets", "Teams wanting mixed MoR and direct transactions"],
   "avoidIf": ["You sell services, physical goods, or marketplace products", "You require a generally available, long-established MoR product"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-08-27",
   "sources": [
-    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-27" },
-    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-27" }
+    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-29" },
+    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-29" }
   ]
 }

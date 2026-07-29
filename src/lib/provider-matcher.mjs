@@ -58,6 +58,22 @@ export function scoreProvider(provider, inputs) {
     if (containsAny(blob, ["enterprise", "global acquirer", "implementation", "omnichannel"])) score += 8;
   }
 
+  if (inputs.administration === "high") {
+    if (provider.model === "merchant-of-record") {
+      score += 18;
+      reasons.push("Outsourcing seller-side administration matches the high local workload you entered.");
+    } else {
+      score -= 8;
+    }
+  } else if (inputs.administration === "manageable") {
+    if (provider.model === "direct-payments") {
+      score += 14;
+      reasons.push("Direct payments fit your ability to retain the local tax, invoicing, and accounting work.");
+    } else {
+      score -= 6;
+    }
+  }
+
   if (inputs.priority === "simplicity") {
     if (provider.model === "merchant-of-record") {
       score += 18;
@@ -87,11 +103,17 @@ export function scoreProvider(provider, inputs) {
   }
 
   const fitSignal = Math.max(18, Math.min(96, score));
+  let watchout = provider.limitations[0];
+  if (inputs.administration === "high" && provider.model === "direct-payments") {
+    watchout = "You marked local seller administration as heavy. Verify whether the retained work offsets the lower direct-payment fee.";
+  } else if (inputs.administration === "manageable" && provider.model === "merchant-of-record") {
+    watchout = "You marked local seller administration as manageable. Verify that the broader bundled role still justifies the MoR fee.";
+  }
   return {
     ...provider,
     fitSignal,
     reasons: [...new Set(reasons)].slice(0, 3),
-    watchout: provider.limitations[0]
+    watchout
   };
 }
 
@@ -101,6 +123,7 @@ export function createProviderMatcher(providers) {
       model: "open",
       product: "saas",
       scale: "growing",
+      administration: "unknown",
       priority: "simplicity",
       pricing: "any"
     },
@@ -111,7 +134,7 @@ export function createProviderMatcher(providers) {
         .slice(0, 5);
     },
     reset() {
-      this.inputs = { model: "open", product: "saas", scale: "growing", priority: "simplicity", pricing: "any" };
+      this.inputs = { model: "open", product: "saas", scale: "growing", administration: "unknown", priority: "simplicity", pricing: "any" };
     }
   };
 }

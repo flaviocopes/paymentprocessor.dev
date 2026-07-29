@@ -13,7 +13,7 @@
     "fixed": 0.3,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "US domestic online card. International cards add 1.5% and currency conversion adds 1% on current standard pricing.",
+    "assumptions": "US domestic online card. International cards add 1.5%, currency conversion adds 1%, a received dispute costs $15, and manually countering it can add another $15 that is returned on a win.",
     "sourceIds": ["pricing"]
   },
   "sellerCoverage": "Businesses must be based in a Stripe-supported country or region.",
@@ -36,11 +36,11 @@
   "limitations": ["The merchant retains tax and compliance responsibility", "Add-on and cross-border fees can materially change the headline rate", "Billing and advanced revenue tools are separate products"],
   "bestFor": ["Developer-led SaaS", "Businesses wanting checkout control", "Companies prepared to own tax and payment operations"],
   "avoidIf": ["You want another company to be the legal seller", "Your business country is not supported"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "countries", "label": "Stripe global availability", "url": "https://stripe.com/global", "reviewedOn": "2026-07-27" },
-    { "id": "methods", "label": "Stripe payment-method pricing", "url": "https://stripe.com/pricing/local-payment-methods", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "countries", "label": "Stripe global availability", "url": "https://stripe.com/global", "reviewedOn": "2026-07-29" },
+    { "id": "methods", "label": "Stripe payment-method pricing", "url": "https://stripe.com/pricing/local-payment-methods", "reviewedOn": "2026-07-29" }
   ]
 }

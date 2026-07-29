@@ -36,13 +36,14 @@
     "funding": {
       "status": "venture-backed",
       "headline": "More than $300M in financing disclosed",
-      "details": "Paddle announced a further $25M investment in December 2025 after a $200M Series D in 2022; the company says total financing now exceeds $300M.",
+      "details": "Paddle announced $25M in financing from CIBC Innovation Banking on July 17, 2025, after a $200M Series D in 2022; the company says total financing now exceeds $300M.",
       "investors": [
         "KKR",
         "FTV Capital",
         "83North",
         "Notion Capital",
-        "Kindred Capital"
+        "Kindred Capital",
+        "CIBC Innovation Banking"
       ]
     },
     "financials": {
@@ -75,30 +76,30 @@
         "label": "Raised a $200M Series D and acquired ProfitWell in a deal valued above $200M."
       },
       {
-        "date": "2025-12",
-        "label": "Raised $25M and reported more than $300M in total financing."
+        "date": "2025-07-17",
+        "label": "Announced $25M in financing from CIBC Innovation Banking and more than $300M in total financing."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-10-27",
     "sources": [
       {
         "id": "paddle-about",
         "label": "Paddle company and leadership page",
         "url": "https://www.paddle.com/about",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paddle-funding-2025",
         "label": "Paddle $25M financing announcement",
         "url": "https://www.paddle.com/blog/paddle-raises-25m",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paddle-ten-years",
         "label": "Paddle ten-year founder retrospective",
         "url": "https://www.paddle.com/blog/paddle-turns-10-learnings-from-the-last-decade",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -127,7 +128,7 @@
     ],
     "team": {
       "value": "Small remote team",
-      "asOf": "2026-07-27",
+      "asOf": "2026-07-29",
       "note": "Polar describes itself as a small team but does not publish a precise employee count."
     },
     "funding": {
@@ -174,26 +175,26 @@
         "label": "Polar announced a $10M seed round led by Accel."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-27",
     "sources": [
       {
         "id": "polar-seed",
         "label": "Polar $10M seed announcement",
         "url": "https://polar.sh/blog/polar-seed-announcement",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "polar-company",
         "label": "Polar company and investors page",
         "url": "https://polar.sh/company",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "polar-hello",
         "label": "Polar founder's first public project announcement",
         "url": "https://github.com/orgs/polarsource/discussions/391",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -205,7 +206,7 @@
     ],
     "entityType": "private-equity-backed",
     "ownershipLabel": "Privately held and private-equity-backed",
-    "parentCompany": "FS Intermediate Holdings, Inc.",
+    "parentCompany": null,
     "ticker": null,
     "founded": 2005,
     "foundedNote": "Dan Engel, Jason Foodman, Ken White, and Ryan Dewell founded FastSpring in 2005.",
@@ -271,26 +272,26 @@
         "label": "LLR Partners joined Accel-KKR as a financial backer."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-10-27",
     "sources": [
       {
         "id": "fastspring-history",
         "label": "FastSpring twentieth-anniversary company history",
         "url": "https://fastspring.com/blog/what-it-takes-to-build-an-enduring-business-celebrating-20-years-of-fastspring/",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "fastspring-llr",
         "label": "LLR Partners strategic investment announcement",
         "url": "https://www.llrpartners.com/fastspring-secures-strategic-investment-from-llr-partners/",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "fastspring-akk",
         "label": "Accel-KKR majority investment announcement",
         "url": "https://www.accel-kkr.com/fastspring-receives-majority-equity-investment-from-accel-kkr/",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -378,26 +379,26 @@
         "label": "Ershad Kunnakkadan became CEO; Sahil Lavingia moved to chairman."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-27",
     "sources": [
       {
         "id": "gumroad-2026",
         "label": "Gumroad 2026 CEO and company update",
         "url": "https://gumroad.com/blog/p/what-we-shipped-what-s-next-and-our-2026-annual-meeting",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "gumroad-history",
         "label": "Gumroad company origin story",
         "url": "https://gumroad.com/blog/p/a-walk-down-gumroad-how-it-started",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "gumroad-republic",
         "label": "Gumroad Republic crowdfunding record",
         "url": "https://republic.com/gumroad-march-2021",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -475,26 +476,26 @@
         "label": "Stripe acquired Lemon Squeezy for an undisclosed amount."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-27",
     "sources": [
       {
         "id": "lemon-acquisition",
         "label": "Lemon Squeezy Stripe acquisition announcement",
         "url": "https://www.lemonsqueezy.com/blog/stripe-acquires-lemon-squeezy",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "lemon-launch",
         "label": "Lemon Squeezy launch announcement",
         "url": "https://www.lemonsqueezy.com/blog/easy-peasy-lemon-squeezy",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "stripe-company",
         "label": "Stripe company and leadership information",
         "url": "https://stripe.com/newsroom/information",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -582,20 +583,20 @@
         "label": "Stripe announced a $159B employee tender valuation and 2025 operating metrics."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-27",
     "sources": [
       {
         "id": "stripe-2025",
         "label": "Stripe 2025 annual update and tender announcement",
         "url": "https://stripe.com/newsroom/news/stripe-2025-update",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "stripe-info",
         "label": "Stripe company and leadership information",
         "url": "https://stripe.com/newsroom/information",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -681,26 +682,26 @@
         "label": "Enrique Lores became president and CEO."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-08-27",
     "sources": [
       {
         "id": "paypal-ceo",
         "label": "PayPal Enrique Lores CEO appointment",
         "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paypal-2025",
         "label": "PayPal 2025 earnings release filed with the SEC",
         "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paypal-10k",
         "label": "PayPal 2025 Form 10-K",
         "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000024/pypl-20251231.htm",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -772,26 +773,26 @@
         "label": "eBay completed the Braintree acquisition for PayPal for approximately $800M."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-08-27",
     "sources": [
       {
         "id": "braintree-acquisition",
         "label": "eBay Braintree acquisition completion",
         "url": "https://investors.ebayinc.com/investor-news/press-release-details/2013/EBay-Inc-Completes-Acquisition-of-Global-Payments-Innovator-Braintree/default.aspx",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paypal-ceo",
         "label": "PayPal 2026 CEO appointment",
         "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "paypal-2025",
         "label": "PayPal 2025 earnings release filed with the SEC",
         "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -826,7 +827,7 @@
     ],
     "team": {
       "value": "Global organization across 28 cities",
-      "asOf": "2026-07-27",
+      "asOf": "2026-07-29",
       "note": "Adyen publishes office locations; this profile avoids turning a historical employee count into a current one."
     },
     "funding": {
@@ -873,26 +874,26 @@
         "label": "Adyen published its 2025 annual report."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-08-27",
     "sources": [
       {
         "id": "adyen-2025",
         "label": "Adyen H2 and full-year 2025 results",
         "url": "https://www.adyen.com/press-and-media/adyen-publishes-h2-2025-financial-results-3pgu2",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "adyen-report",
         "label": "Adyen 2025 annual report announcement",
         "url": "https://www.adyen.com/press-and-media/adyen-publishes-2025-annual-report",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "adyen-listing",
         "label": "Adyen listing and company history announcement",
         "url": "https://www.adyen.com/press-and-media/adyen-announces-intention-to-launch-an-offering-and-listing-of-its-shares-on-euronext-amsterdam/",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -926,7 +927,7 @@
     ],
     "team": {
       "value": "About 1,000 people",
-      "asOf": "2026-07-27",
+      "asOf": "2026-07-29",
       "note": "Mollie reports a 1,000-strong team from more than 50 nationalities."
     },
     "funding": {
@@ -980,26 +981,26 @@
         "label": "Published selected 2025 financial results and announced an agreement to acquire GoCardless."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-27",
     "sources": [
       {
         "id": "mollie-about",
         "label": "Mollie company and team page",
         "url": "https://www.mollie.com/about",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "mollie-2025",
         "label": "Mollie 2025 financial results",
         "url": "https://www.mollie.com/news/2025-net-revenue-growth",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "mollie-series-c",
         "label": "Mollie Series C announcement",
         "url": "https://www.mollie.com/news/mollie-series-c",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -1085,26 +1086,26 @@
         "label": "Block changed its NYSE ticker from SQ to XYZ."
       }
     ],
-    "lastReviewed": "2026-07-27",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-08-27",
     "sources": [
       {
         "id": "block-10k",
         "label": "Block 2025 Form 10-K",
         "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828026012254/xyz-20251231.htm",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "block-leadership",
         "label": "Block executive leadership",
         "url": "https://investors.block.xyz/governance/leadership/default.aspx",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "block-name",
         "label": "Square corporate name change to Block",
         "url": "https://block.xyz/inside/press-release-block",
-        "reviewedOn": "2026-07-27"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -1118,8 +1119,8 @@
     "ownershipLabel": "Privately held, early-stage venture-backed company",
     "parentCompany": null,
     "ticker": null,
-    "founded": 2023,
-    "foundedNote": "Rishabh Goel and Ayush Agarwal began building Dodo Payments before announcing its pre-seed financing in 2025.",
+    "founded": null,
+    "foundedNote": "Dodo identifies Rishabh Goel and Ayush Agarwal as cofounders, but the reviewed primary sources do not establish an exact founding year.",
     "headquarters": "United States and India; distributed team",
     "leaders": [
       {
@@ -1174,34 +1175,34 @@
     },
     "events": [
       {
-        "date": "2023",
-        "label": "Founders began developing the cross-border Merchant of Record platform."
+        "date": "Before 2025-02",
+        "label": "The founders began developing the cross-border Merchant of Record platform before its funding announcement."
       },
       {
         "date": "2025-02",
         "label": "Announced a $1.1M pre-seed financing round."
       }
     ],
-    "lastReviewed": "2026-07-28",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-28",
     "sources": [
       {
         "id": "dodo-funding",
         "label": "Dodo Payments pre-seed announcement",
         "url": "https://dodopayments.com/blogs/dodo-payments-raises-1-1m-to-simplify-global-payments",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "dodo-company",
         "label": "Dodo Payments company website",
         "url": "https://dodopayments.com/",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "dodo-docs",
         "label": "Dodo Payments product documentation",
         "url": "https://docs.dodopayments.com/introduction",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -1215,8 +1216,8 @@
     "ownershipLabel": "Privately held, early-stage and Antler-backed company",
     "parentCompany": null,
     "ticker": null,
-    "founded": 2023,
-    "foundedNote": "Gabriel Ferraz and Alec Erasmus founded Creem as a payment and commerce platform for digital builders.",
+    "founded": null,
+    "foundedNote": "Creem identifies Gabriel Ferraz and Alec Erasmus as cofounders, but the reviewed primary sources do not establish an exact founding year.",
     "headquarters": "Estonia",
     "leaders": [
       {
@@ -1236,7 +1237,7 @@
     ],
     "team": {
       "value": "Small startup team",
-      "asOf": "2026-07-28",
+      "asOf": "2026-07-29",
       "note": "Creem publishes team biographies but not a complete verified headcount."
     },
     "funding": {
@@ -1269,34 +1270,34 @@
     },
     "events": [
       {
-        "date": "2023",
-        "label": "Creem was founded in Estonia for digital-product and SaaS sellers."
+        "date": "Founding year not disclosed",
+        "label": "Creem was established in Estonia for digital-product and SaaS sellers."
       },
       {
         "date": "2025",
         "label": "The company expanded its Merchant of Record billing and growth feature set."
       }
     ],
-    "lastReviewed": "2026-07-28",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-28",
     "sources": [
       {
         "id": "creem-about",
         "label": "Creem company and team",
         "url": "https://www.creem.io/about",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "creem-docs",
         "label": "Creem Merchant of Record documentation",
         "url": "https://docs.creem.io/merchant-of-record/what-is",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "creem-pricing",
         "label": "Creem fees and payouts",
         "url": "https://docs.creem.io/merchant-of-record/finance/payouts",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -1312,7 +1313,7 @@
     "ticker": null,
     "founded": 2015,
     "foundedNote": "Jack Zhang, Lucy Liu, Xijing Dai, and Max Li founded Airwallex in Melbourne in 2015 after encountering cross-border payment friction.",
-    "headquarters": "Singapore; founded in Melbourne, Australia",
+    "headquarters": "Dual headquarters in Singapore and San Francisco; founded in Melbourne, Australia",
     "leaders": [
       {
         "name": "Jack Zhang",
@@ -1333,7 +1334,7 @@
     ],
     "team": {
       "value": "2,300 people",
-      "asOf": "2026-07-28",
+      "asOf": "2026-07-29",
       "note": "Airwallex publishes a current rounded workforce count on its company page."
     },
     "funding": {
@@ -1361,16 +1362,16 @@
           "label": "Funding",
           "value": "$1.8B"
         },
-        {
-          "label": "Valuation",
-          "value": "$11B"
-        },
-        {
-          "label": "Public revenue",
-          "value": "Not disclosed"
-        }
-      ],
-      "note": "Company-published volume, funding, and valuation do not disclose current revenue, profit, cash burn, or product-level economics."
+      {
+        "label": "Valuation",
+        "value": "$11B"
+      },
+      {
+        "label": "Annualized revenue",
+        "value": "$1B+ company-reported"
+      }
+    ],
+    "note": "The annualized-revenue, volume, funding, and valuation figures are company-reported and unaudited; they do not disclose current profit, cash burn, or product-level economics."
     },
     "events": [
       {
@@ -1386,26 +1387,26 @@
         "label": "Reported $1.8B total funding, an $11B valuation, and 2,300 employees."
       }
     ],
-    "lastReviewed": "2026-07-28",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-28",
     "sources": [
       {
         "id": "airwallex-company",
         "label": "Airwallex company, scale, and funding",
         "url": "https://www.airwallex.com/en-us/who-we-are",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "airwallex-pricing",
         "label": "Airwallex US pricing",
         "url": "https://www.airwallex.com/en-us/pricing",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "airwallex-series-b",
         "label": "Airwallex Series B announcement",
         "url": "https://www.airwallex.com/global/newsroom/series-b-closing-80m",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       }
     ]
   },
@@ -1416,7 +1417,7 @@
       "gocardless"
     ],
     "entityType": "private",
-    "ownershipLabel": "Privately held, late-stage venture-backed company",
+    "ownershipLabel": "Privately held; acquisition by Mollie announced and pending regulatory approval",
     "parentCompany": null,
     "ticker": null,
     "founded": 2011,
@@ -1458,12 +1459,8 @@
       "headline": "Private-company revenue amount is not fully disclosed",
       "metrics": [
         {
-          "label": "Businesses",
-          "value": "100,000+"
-        },
-        {
-          "label": "Annual payments",
-          "value": "$35B+"
+        "label": "Annual payments",
+        "value": "$130B+"
         },
         {
           "label": "Series G",
@@ -1488,28 +1485,38 @@
       {
         "date": "2022-07",
         "label": "Acquired Nordigen to add open-banking account data."
+      },
+      {
+        "date": "2026-05",
+        "label": "Mollie announced an agreement to acquire GoCardless, subject to regulatory approval."
       }
     ],
-    "lastReviewed": "2026-07-28",
+    "lastReviewed": "2026-07-29",
     "nextReview": "2026-09-28",
     "sources": [
       {
         "id": "gocardless-about",
         "label": "GoCardless company and network",
         "url": "https://gocardless.com/about",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "gocardless-funding",
         "label": "GoCardless $312M Series G announcement",
         "url": "https://gocardless.com/blog/gocardless-raises-312m-series-g",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
       },
       {
         "id": "gocardless-press",
         "label": "GoCardless press and operating figures",
         "url": "https://gocardless.com/en-us/about/press/",
-        "reviewedOn": "2026-07-28"
+        "reviewedOn": "2026-07-29"
+      },
+      {
+        "id": "mollie-gocardless",
+        "label": "Mollie financial results and pending GoCardless acquisition",
+        "url": "https://www.mollie.com/news/2025-net-revenue-growth",
+        "reviewedOn": "2026-07-29"
       }
     ]
   }

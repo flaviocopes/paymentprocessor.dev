@@ -36,10 +36,10 @@
   "limitations": ["Seller onboarding is region-limited", "Pricing requires method and country context", "Tax filing and full SaaS billing remain merchant responsibilities"],
   "bestFor": ["European SaaS and ecommerce", "Businesses prioritizing European bank methods", "Teams wanting a regional Stripe alternative"],
   "avoidIf": ["Your business is outside supported seller regions", "You want an MoR"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Mollie pricing", "url": "https://www.mollie.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "countries", "label": "Mollie seller-country availability", "url": "https://help.mollie.com/hc/en-gb/articles/115002116105-Can-I-use-Mollies-services-in-my-country", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Mollie pricing", "url": "https://www.mollie.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "countries", "label": "Mollie seller-country availability", "url": "https://help.mollie.com/hc/en-gb/articles/115002116105-Can-I-use-Mollies-services-in-my-country", "reviewedOn": "2026-07-29" }
   ]
 }

@@ -15,7 +15,8 @@ export function createCountryChecker(providers, coverage) {
           if (!provider) return null;
           let status = "review";
           if (record.unavailable.includes(this.country)) status = "unavailable";
-          if (record.documented.includes(this.country)) status = record.limited.includes(this.country) ? "limited" : "documented";
+          else if (record.limited.includes(this.country)) status = "limited";
+          else if (record.documented.includes(this.country)) status = "documented";
           return {
             ...record,
             name: provider.name,

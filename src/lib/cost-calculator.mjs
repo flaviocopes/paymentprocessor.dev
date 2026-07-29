@@ -1,4 +1,12 @@
 const number = (value) => Math.max(0, Number(value) || 0);
+const modeledRate = (value) => value === null || value === undefined ? 0 : number(value);
+
+const feeLabels = {
+  internationalPercentage: "International-card fee",
+  fxPercentage: "Currency-conversion fee",
+  subscriptionPercentage: "Subscription fee",
+  disputeFee: "Dispute fee"
+};
 
 export function calculateProviderCost(rule, inputs) {
   const revenue = number(inputs.revenue);
@@ -23,10 +31,13 @@ export function calculateProviderCost(rule, inputs) {
     fixed = cappedBase * fixedShare;
     basePercentage = cappedBase - fixed;
   }
-  const international = revenue * (internationalShare / 100) * (rule.internationalPercentage / 100);
-  const fx = revenue * (fxShare / 100) * (rule.fxPercentage / 100);
-  const subscriptions = revenue * (subscriptionShare / 100) * (rule.subscriptionPercentage / 100);
-  const dispute = disputes * rule.disputeFee;
+  const international = revenue * (internationalShare / 100) * (modeledRate(rule.internationalPercentage) / 100);
+  const fx = revenue * (fxShare / 100) * (modeledRate(rule.fxPercentage) / 100);
+  const subscriptions = revenue * (subscriptionShare / 100) * (modeledRate(rule.subscriptionPercentage) / 100);
+  const disputeRate = rule.disputeThreshold !== undefined && disputes <= rule.disputeThreshold
+    ? 0
+    : modeledRate(rule.disputeFee);
+  const dispute = disputes * disputeRate;
   const providerPlan = rule.monthly;
   const externalPlan = rule.model === "direct-payments" ? number(inputs.directPlanCost) : 0;
   const operations = rule.model === "direct-payments"
@@ -38,8 +49,17 @@ export function calculateProviderCost(rule, inputs) {
   const refundExposure = (basePercentage + fixed) * (refundShare / 100);
   const effectiveRate = revenue > 0 ? (total / revenue) * 100 : 0;
 
+  const unmodeledFees = [
+    ...Object.entries(feeLabels)
+      .filter(([field]) => rule[field] === null || rule[field] === undefined)
+      .map(([, label]) => label),
+    ...(rule.unmodeledFees || [])
+  ];
+
   return {
     ...rule,
+    unmodeledFees,
+    isPartialEstimate: unmodeledFees.length > 0,
     breakdown: {
       basePercentage,
       fixed,

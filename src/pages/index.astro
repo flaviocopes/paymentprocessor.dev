@@ -82,8 +82,8 @@ const unmodeledProviders = providers
   <section class="section section-tint home-fee-section" x-data="homepageFeeChart()" x-cloak>
     <div class="shell">
       <div class="section-heading-inline home-fee-heading">
-        <div><span class="eyebrow">Interactive fee landscape</span><h2>What would each provider collect?</h2></div>
-        <p>Set an annual turnover and transaction shape. The chart applies each reviewed public formula and separates every modeled fee component.</p>
+        <div><span class="eyebrow">Interactive fee landscape · verified 29 July 2026</span><h2>What would each provider collect?</h2></div>
+        <p>Set an annual turnover and transaction shape. The chart applies each reviewed public formula and flags estimates that exclude conditional or non-universal fees.</p>
       </div>
 
       <div class="home-fee-workspace">
@@ -124,7 +124,7 @@ const unmodeledProviders = providers
 
         <div class="home-fee-chart-panel">
           <div class="home-fee-toolbar">
-            <div><span class="eyebrow">Estimated vendor fees / year</span><small>Lowest modeled total first · click a row for the full breakdown</small></div>
+            <div><span class="eyebrow">Estimated vendor fees / year</span><small>Lowest modeled total first · partial estimates are labeled</small></div>
             <div class="segmented-control" aria-label="Filter annual fee results">
               <button type="button" :class="{ active: view === 'all' }" @click="setView('all')">All</button>
               <button type="button" :class="{ active: view === 'merchant-of-record' }" @click="setView('merchant-of-record')">MoR</button>
@@ -144,7 +144,7 @@ const unmodeledProviders = providers
           <div class="home-fee-chart" aria-live="polite">
             <template x-for="result in results" :key="result.slug">
               <button type="button" class="home-fee-row" :class="{ active: selectedResult.slug === result.slug }" @click="select(result.slug)">
-                <span class="home-fee-vendor"><strong x-text="result.name"></strong><small x-text="result.model === 'merchant-of-record' ? 'MoR' : 'Direct'"></small></span>
+                <span class="home-fee-vendor"><strong x-text="result.name"></strong><small><span x-text="result.model === 'merchant-of-record' ? 'MoR' : 'Direct'"></span><span x-show="result.isPartialEstimate"> · partial</span></small></span>
                 <span class="home-fee-bar-track">
                   <span class="home-fee-bar" :style="`width: ${barWidth(result)}`">
                     <i class="fee-color-percentage" :style="`width: ${segmentWidth(result.breakdown.basePercentage, result.total)}`"></i>
@@ -170,23 +170,24 @@ const unmodeledProviders = providers
           <div class="home-fee-detail" aria-live="polite">
             <div class="home-fee-detail-title">
               <div><span class="model-badge" :class="selectedResult.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="selectedResult.modelLabel"></span><h3 x-text="selectedResult.name"></h3></div>
-              <div><strong x-text="money(selectedResult.total)"></strong><small>estimated annually · <span x-text="percent(selectedResult.effectiveRate)"></span></small></div>
+              <div><strong x-text="money(selectedResult.total)"></strong><small><span x-text="selectedResult.isPartialEstimate ? 'partial estimate' : 'estimated annually'"></span> · <span x-text="percent(selectedResult.effectiveRate)"></span></small></div>
             </div>
             <dl class="home-fee-breakdown">
               <div><dt>Percentage fee</dt><dd x-text="money(selectedResult.breakdown.basePercentage)"></dd></div>
               <div><dt>Per transaction</dt><dd x-text="money(selectedResult.breakdown.fixed)"></dd></div>
-              <div><dt>International</dt><dd x-text="money(selectedResult.breakdown.international)"></dd></div>
-              <div><dt>FX</dt><dd x-text="money(selectedResult.breakdown.fx)"></dd></div>
-              <div><dt>Subscriptions</dt><dd x-text="money(selectedResult.breakdown.subscriptions)"></dd></div>
-              <div><dt>Disputes + plan</dt><dd x-text="money(selectedResult.breakdown.dispute + selectedResult.breakdown.providerPlan)"></dd></div>
+              <div><dt>International</dt><dd x-text="selectedResult.internationalPercentage === null ? 'Not modeled' : money(selectedResult.breakdown.international)"></dd></div>
+              <div><dt>FX</dt><dd x-text="selectedResult.fxPercentage === null ? 'Not modeled' : money(selectedResult.breakdown.fx)"></dd></div>
+              <div><dt>Subscriptions</dt><dd x-text="selectedResult.subscriptionPercentage === null ? 'Not modeled' : money(selectedResult.breakdown.subscriptions)"></dd></div>
+              <div><dt>Disputes + plan</dt><dd x-text="selectedResult.disputeFee === null ? 'Not modeled' : money(selectedResult.breakdown.dispute + selectedResult.breakdown.providerPlan)"></dd></div>
             </dl>
+            <p class="unmodeled-fees" x-show="selectedResult.isPartialEstimate"><strong>Not included:</strong> <span x-text="selectedResult.unmodeledFees.join(', ')"></span>.</p>
             <div class="home-fee-detail-foot"><p><strong x-text="selectedResult.confidence"></strong> · <span x-text="selectedResult.note"></span></p><a :href="`/providers/${selectedResult.slug}/`">Read the evidence →</a></div>
           </div>
         </div>
       </div>
 
       <div class="home-fee-boundary">
-        <div><p><strong>Comparable fees, different jobs.</strong> MoR fees cover a broader documented responsibility set. Direct-payment rows exclude your tax, billing, support, accounting, and compliance operations.</p><small>Uses the documented public and usually US pricing assumptions shown in each profile. Excludes taxes collected, payouts, reserves, negotiated rates, and fees without a reliable universal formula.</small></div>
+        <div><p><strong>Comparable fees, different jobs.</strong> MoR fees cover a broader documented responsibility set. Direct-payment rows exclude your tax, billing, support, accounting, and compliance operations.</p><small>Uses documented public, usually US assumptions. A “partial” label means the displayed total excludes named conditional or non-universal fees; it never means those fees are zero.</small></div>
         <a class="button" href="/tools/effective-cost/">Open the full cost model →</a>
       </div>
     </div>

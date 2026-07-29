@@ -10,11 +10,12 @@
     "internationalPercentage": 0,
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "disputeFee": null,
+    "unmodeledFees": ["Optional Checkout Recovery fee", "Payout and banking fees"],
     "confidence": "Public base rate",
-    "note": "Uses Paddle's public pay-as-you-go rate. Custom, invoicing, and low-price-product terms are not modeled.",
+    "note": "Uses Paddle's public pay-as-you-go rate. Chargeback and pre-chargeback fees can be up to $20 in this USD scenario; optional Checkout Recovery is 10% of recovered checkout value. Those conditional costs, custom terms, invoicing, payouts, and low-price-product terms are not modeled.",
     "source": "https://www.paddle.com/pricing",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "polar",
@@ -25,13 +26,14 @@
     "fixed": 0.5,
     "monthly": 0,
     "internationalPercentage": 1.5,
-    "fxPercentage": 1,
+    "fxPercentage": null,
     "subscriptionPercentage": 0,
     "disputeFee": 15,
     "confidence": "Public Starter rate",
-    "note": "Uses Polar Starter. Paid tiers, payout fees, and the lower intra-European currency-conversion rate are not modeled.",
+    "unmodeledFees": ["Payout and cross-border conversion fees"],
+    "note": "Uses the current Polar Starter rate for organizations created on or after May 27, 2026. Legacy Early Member pricing is grandfathered. Payout and cross-border conversion costs are not transaction FX fees and are excluded.",
     "source": "https://polar.sh/resources/pricing",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "stripe-managed-payments",
@@ -43,12 +45,13 @@
     "monthly": 0,
     "internationalPercentage": 1.5,
     "fxPercentage": 1,
-    "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "subscriptionPercentage": 0.7,
+    "disputeFee": null,
+    "unmodeledFees": ["Additional dispute-response fee where applicable"],
     "confidence": "Public-preview estimate",
-    "note": "Combines the 3.5% Managed Payments fee with US Stripe Payments card pricing. Billing and other add-ons are excluded.",
+    "note": "Combines the 3.5% Managed Payments fee with US Stripe Payments card pricing and Stripe Billing's 0.7% pay-as-you-go subscription fee. Dispute-response and other conditional add-ons are excluded.",
     "source": "https://stripe.com/pricing",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "lemon-squeezy",
@@ -61,11 +64,12 @@
     "internationalPercentage": 1.5,
     "fxPercentage": 0,
     "subscriptionPercentage": 0.5,
-    "disputeFee": 0,
+    "disputeFee": 15,
+    "unmodeledFees": ["PayPal payment surcharge", "Payout and banking fees"],
     "confidence": "Public rate with add-ons",
-    "note": "Includes documented international-card and subscription add-ons. PayPal and other edge-case fees are excluded.",
+    "note": "Includes documented international-card, subscription, and standard dispute fees. PayPal and payout fees are excluded; the platform percentage is charged on the tax-inclusive order total, which this pre-tax revenue input cannot reproduce.",
     "source": "https://docs.lemonsqueezy.com/help/getting-started/fees",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "gumroad",
@@ -78,11 +82,12 @@
     "internationalPercentage": 0,
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "disputeFee": null,
+    "unmodeledFees": ["Refund treatment", "Marketplace, PayPal, affiliate, and connected-account differences"],
     "confidence": "Public standard-card formula",
-    "note": "Combines Gumroad's 10% + $0.50 direct-sale fee with the help center's 2.9% + $0.30 card-processing fee. Discover, PayPal, connected accounts, affiliates, taxes, and refund treatment are excluded.",
+    "note": "Combines Gumroad's 10% + $0.50 direct-sale fee with the help center's additional 2.9% + $0.30 card-processing fee. Discover, PayPal, connected accounts, affiliates, taxes, disputes, and refund treatment are excluded.",
     "source": "https://gumroad.com/help/article/66-gumroads-fees",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "stripe-payments",
@@ -97,9 +102,10 @@
     "subscriptionPercentage": 0,
     "disputeFee": 15,
     "confidence": "Public US card rate",
-    "note": "Models US online cards. Stripe Billing, Tax, Invoicing, Radar, and payment-method-specific prices are excluded.",
+    "unmodeledFees": ["Additional manual dispute-response fee", "Stripe Billing, Tax, Invoicing, and Radar"],
+    "note": "Models US online cards and the fee when a dispute is received. Countering a dispute manually can add another $15; Billing, Tax, Invoicing, Radar, and payment-method-specific prices are excluded.",
     "source": "https://stripe.com/pricing",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "paypal-checkout",
@@ -109,14 +115,15 @@
     "percentage": 3.49,
     "fixed": 0.49,
     "monthly": 0,
-    "internationalPercentage": 0,
-    "fxPercentage": 0,
+    "internationalPercentage": 1.5,
+    "fxPercentage": null,
     "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "disputeFee": null,
+    "unmodeledFees": ["Variable dispute and chargeback fees"],
     "confidence": "Public US Checkout rate",
-    "note": "Models domestic US PayPal Checkout only. Cross-border, currency-conversion, dispute, and alternate-method fees are excluded.",
+    "note": "Models US PayPal Checkout and the 1.5% US cross-border commercial-transaction uplift. Currency-conversion, variable dispute or chargeback, and alternate-method fees are excluded.",
     "source": "https://www.paypal.com/us/business/paypal-business-fees",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "braintree",
@@ -133,7 +140,7 @@
     "confidence": "Public US card rate",
     "note": "Models Braintree's US standard rate. Regional, method-specific, and negotiated terms are excluded.",
     "source": "https://www.paypal.com/us/enterprise/paypal-braintree-fees",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "square",
@@ -143,14 +150,14 @@
     "percentage": 2.9,
     "fixed": 0.3,
     "monthly": 0,
-    "internationalPercentage": 0,
+    "internationalPercentage": 1.5,
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
     "disputeFee": 0,
     "confidence": "Public US online rate",
-    "note": "Models US online card payments. Country, channel, subscription, and international differences are excluded.",
+    "note": "Models US online card payments and Square's surcharge for internationally issued cards. Country, channel, and subscription differences remain excluded.",
     "source": "https://developer.squareup.com/docs/payments-pricing",
-    "reviewedOn": "2026-07-27"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "dodo-payments",
@@ -160,14 +167,15 @@
     "percentage": 4,
     "fixed": 0.4,
     "monthly": 0,
-    "internationalPercentage": 0,
-    "fxPercentage": 0,
-    "subscriptionPercentage": 0,
-    "disputeFee": 0,
-    "confidence": "Public domestic-US rate",
-    "note": "Models domestic US cards and wallets. International payments, PayPal, BNPL, FX, and method-specific add-ons are excluded.",
+    "internationalPercentage": 1.5,
+    "fxPercentage": null,
+    "subscriptionPercentage": 0.5,
+    "disputeFee": 30,
+    "unmodeledFees": ["$1 refund fee", "Payout and banking fees", "PayPal and BNPL method fees"],
+    "confidence": "Public marketing rate; contract confirmation required",
+    "note": "Models Dodo's public 4% + $0.40 marketing rate plus documented international, subscription, and dispute fees. An official contractual document still describes different base pricing, so confirm the signed rate. Refund, payout, PayPal, BNPL, and FX costs are excluded.",
     "source": "https://dodopayments.com/pricing",
-    "reviewedOn": "2026-07-28"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "creem",
@@ -180,11 +188,12 @@
     "internationalPercentage": 0,
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "disputeFee": 25,
+    "unmodeledFees": ["Bank or USDC payout fees", "Tax-inclusive fee basis"],
     "confidence": "Public standard rate",
-    "note": "Models Creem's standard platform fee. Custom pricing, additional products, payout timing, and edge-case fees are excluded.",
+    "note": "Models Creem's standard platform fee and $25 chargeback fee. Bank and USDC payout fees are excluded, and the percentage is actually charged on tax-inclusive order value rather than the pre-tax revenue entered here.",
     "source": "https://docs.creem.io/merchant-of-record/finance/payouts",
-    "reviewedOn": "2026-07-28"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "airwallex",
@@ -195,13 +204,14 @@
     "fixed": 0.3,
     "monthly": 0,
     "internationalPercentage": 1.5,
-    "fxPercentage": 0,
+    "fxPercentage": 0.5,
     "subscriptionPercentage": 0.5,
-    "disputeFee": 0,
+    "disputeFee": null,
+    "unmodeledFees": ["Dispute and other regional service fees"],
     "confidence": "Public US card rate",
-    "note": "Models US card pricing and the published subscription fee. Local methods, FX, fraud services, disputes, and other regions are excluded.",
+    "note": "Models US card pricing, subscription billing, and the published 0.5% major-currency FX markup. Other currencies can use 1%; local methods, fraud services, disputes, and other regions are excluded.",
     "source": "https://www.airwallex.com/en-us/pricing",
-    "reviewedOn": "2026-07-28"
+    "reviewedOn": "2026-07-29"
   },
   {
     "slug": "gocardless",
@@ -214,11 +224,13 @@
     "internationalPercentage": 1,
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
-    "disputeFee": 0,
+    "disputeFee": 5,
+    "disputeThreshold": 15,
+    "unmodeledFees": ["$5 payment-failure fee", "$0.50 refund fee", "Optional add-ons"],
     "capPerTransaction": 5,
     "confidence": "Public US Standard rate",
-    "note": "Models US Standard ACH, including the $5 domestic cap and 1% international uplift. Failures, refunds, add-ons, and other plans are excluded.",
+    "note": "Models US Standard ACH, including the $5 domestic cap, 1% international uplift, and the $5 chargeback fee only above 15 chargebacks per month. Failures, refunds, add-ons, and other plans are excluded.",
     "source": "https://gocardless.com/en-us/pricing",
-    "reviewedOn": "2026-07-28"
+    "reviewedOn": "2026-07-29"
   }
 ]

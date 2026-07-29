@@ -1,5 +1,5 @@
 {
-  "reviewedOn": "2026-07-28",
+  "reviewedOn": "2026-07-29",
   "countries": [
     {
       "code": "US",
@@ -127,23 +127,47 @@
     },
     {
       "slug": "polar",
-      "documented": [],
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "IN",
+        "SG",
+        "JP"
+      ],
       "limited": [],
-      "unavailable": [],
-      "note": "Polar documents worldwide selling and Stripe-connected payouts, but does not expose one definitive seller-country table on its overview page.",
-      "source": "https://polar.sh/docs/merchant-of-record/introduction"
+      "unavailable": [
+        "BR"
+      ],
+      "note": "Polar's seller-country table includes the documented markets. Brazil is not on the current list; identity, product, and Stripe Connect review still apply.",
+      "source": "https://polar.sh/docs/merchant-of-record/supported-countries"
     },
     {
       "slug": "stripe-managed-payments",
       "documented": [
-        "US"
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR"
       ],
-      "limited": [
-        "US"
+      "limited": [],
+      "unavailable": [
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
       ],
-      "unavailable": [],
-      "note": "Managed Payments remains an eligibility-controlled product; support can differ from ordinary Stripe Payments availability.",
-      "source": "https://docs.stripe.com/payments/managed-payments"
+      "note": "These are the documented public-preview seller locations among the countries modeled here. Eligibility remains controlled and differs from ordinary Stripe Payments availability.",
+      "source": "https://docs.stripe.com/payments/managed-payments/how-it-works"
     },
     {
       "slug": "adyen",
@@ -164,16 +188,15 @@
         "NL",
         "FR",
         "AU",
+        "IN",
         "SG",
         "BR",
         "JP"
       ],
       "limited": [],
-      "unavailable": [
-        "IN"
-      ],
-      "note": "Airwallex's eligible-business-country list includes the documented markets; India is not on the current onboarding list.",
-      "source": "https://help.airwallex.com/hc/en-gb/articles/4408591334937-What-country-does-my-business-have-to-be-registered-in-for-opening-an-Airwallex-account"
+      "unavailable": [],
+      "note": "Airwallex's current eligible-business-country list includes these markets, including India; product availability and local entity requirements can still differ.",
+      "source": "https://help.airwallex.com/hc/en-gb/articles/4408591334937-Eligible-Countries-and-Territories"
     },
     {
       "slug": "braintree",
@@ -243,23 +266,10 @@
     },
     {
       "slug": "paypal-checkout",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
+      "documented": [],
       "limited": [],
       "unavailable": [],
-      "note": "PayPal supports business account payment APIs in these markets, but features, withdrawal, currency, and merchant terms remain country-specific.",
+      "note": "PayPal's country-code reference does not by itself prove business onboarding, receiving, withdrawal, or Checkout availability. Confirm the exact merchant capability for the account country; India has domestic-receiving restrictions.",
       "source": "https://developer.paypal.com/reference/country-codes/"
     },
     {
@@ -295,7 +305,6 @@
         "NL",
         "FR",
         "AU",
-        "IN",
         "SG",
         "BR",
         "JP"

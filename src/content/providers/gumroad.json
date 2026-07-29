@@ -36,10 +36,10 @@
   "limitations": ["High effective fee for standard direct card sales", "Less flexible for complex SaaS billing", "Marketplace discovery sales use a substantially higher fee"],
   "bestFor": ["Solo digital creators", "Ebooks, courses, and downloads", "Simple memberships"],
   "avoidIf": ["You need advanced subscription lifecycle APIs", "Precise low-cost processing is the primary constraint"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-08-27",
   "sources": [
-    { "id": "pricing", "label": "Gumroad pricing", "url": "https://gumroad.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "fees", "label": "Gumroad fees help article", "url": "https://gumroad.com/help/article/66-gumroads-fees", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Gumroad pricing", "url": "https://gumroad.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "fees", "label": "Gumroad fees help article", "url": "https://gumroad.com/help/article/66-gumroads-fees", "reviewedOn": "2026-07-29" }
   ]
 }

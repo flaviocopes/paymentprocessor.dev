@@ -36,10 +36,10 @@
   "limitations": ["Sales-led rather than indie self-serve", "No simple universal public rate", "Often requires separate SaaS billing and tax operations"],
   "bestFor": ["Large international businesses", "Omnichannel commerce", "Platforms needing acquiring control"],
   "avoidIf": ["You are an early creator seeking instant setup", "You want bundled MoR responsibility"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-07-29" }
   ]
 }

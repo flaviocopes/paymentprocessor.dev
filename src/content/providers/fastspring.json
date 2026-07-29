@@ -36,11 +36,11 @@
   "limitations": ["No universal public rate", "Requires underwriting and often sales contact", "Can be heavier than creator-first products"],
   "bestFor": ["Established software vendors", "Games and downloadable software", "Teams valuing implementation support"],
   "avoidIf": ["You need instant self-serve onboarding", "You require a public price before speaking to sales"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "FastSpring pricing", "url": "https://fastspring.com/pricing/", "reviewedOn": "2026-07-27" },
-    { "id": "mor", "label": "FastSpring terms and MoR relationship", "url": "https://developer.fastspring.com/docs/about-terms-conditions-and-eulas", "reviewedOn": "2026-07-27" },
-    { "id": "products", "label": "FastSpring product management and prohibited sales", "url": "https://developer.fastspring.com/docs/manage-your-products", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "FastSpring pricing", "url": "https://fastspring.com/pricing/", "reviewedOn": "2026-07-29" },
+    { "id": "mor", "label": "FastSpring terms and MoR relationship", "url": "https://developer.fastspring.com/docs/about-terms-conditions-and-eulas", "reviewedOn": "2026-07-29" },
+    { "id": "products", "label": "FastSpring product management and prohibited sales", "url": "https://developer.fastspring.com/docs/manage-your-products", "reviewedOn": "2026-07-29" }
   ]
 }

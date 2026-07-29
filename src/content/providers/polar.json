@@ -8,12 +8,12 @@
   "summary": "A developer-focused Merchant of Record for software, digital products, subscriptions, usage billing, and built-in benefits.",
   "pricing": {
     "kind": "public",
-    "headline": "Starter is 5% + $0.50; paid monthly plans lower the variable rate.",
+    "headline": "Current Starter pricing is 5% + $0.50; eligible Early Member organizations retain grandfathered pricing.",
     "percentage": 5,
     "fixed": 0.5,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Starter plan. International-card, dispute, payout, and some currency-conversion costs can apply.",
+    "assumptions": "Current Starter plan for organizations created on or after May 27, 2026. Payout and cross-border conversion costs are separate from transaction FX; legacy Early Member rates are grandfathered.",
     "sourceIds": ["pricing"]
   },
   "sellerCoverage": "Polar supports individual and business payouts in its published country list through Stripe Connect Express.",
@@ -33,14 +33,14 @@
     { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "Net payouts still require business accounting and income-tax reporting." }
   ],
   "strengths": ["Developer-first APIs and open-source product", "Transparent tiered pricing", "Built-in usage, seat, and entitlement features"],
-  "limitations": ["Younger operating history than long-established providers", "Coverage and registrations evolve with thresholds", "Additional international, payout, and dispute costs matter"],
+  "limitations": ["Younger operating history than long-established providers", "Brazil is not on the current supported seller-country list", "Additional international, payout, and dispute costs matter"],
   "bestFor": ["Developer tools", "Open-source businesses", "SaaS needing usage or benefit-based billing"],
   "avoidIf": ["You require a long enterprise operating history", "Your seller country or product is outside Polar policy"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Polar pricing", "url": "https://polar.sh/resources/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "mor", "label": "Polar Merchant of Record documentation", "url": "https://polar.sh/docs/merchant-of-record/introduction", "reviewedOn": "2026-07-27" },
-    { "id": "coverage", "label": "Polar supported countries", "url": "https://polar.sh/docs/merchant-of-record/supported-countries", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Polar pricing", "url": "https://polar.sh/resources/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "mor", "label": "Polar Merchant of Record documentation", "url": "https://polar.sh/docs/merchant-of-record/introduction", "reviewedOn": "2026-07-29" },
+    { "id": "coverage", "label": "Polar supported countries", "url": "https://polar.sh/docs/merchant-of-record/supported-countries", "reviewedOn": "2026-07-29" }
   ]
 }

@@ -182,7 +182,9 @@ for (const record of countryCoverage.providers) {
   coverageSlugs.add(record.slug);
   assert(record.source.startsWith("https://"), `${record.slug}: country evidence must use HTTPS.`);
   assert(record.note.length >= 30, `${record.slug}: country eligibility note is too thin.`);
-  for (const code of [...record.documented, ...record.limited, ...record.unavailable]) {
+  const classifiedCodes = [...record.documented, ...record.limited, ...record.unavailable];
+  assert(new Set(classifiedCodes).size === classifiedCodes.length, `${record.slug}: a country cannot have more than one eligibility status.`);
+  for (const code of classifiedCodes) {
     assert(countryCodes.has(code), `${record.slug}: country checker uses unknown country code ${code}.`);
   }
 }

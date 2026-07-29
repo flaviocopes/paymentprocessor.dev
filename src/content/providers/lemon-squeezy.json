@@ -13,8 +13,8 @@
     "fixed": 0.5,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Base ecommerce fee only. International, subscription, PayPal, and other documented additional fees may apply.",
-    "sourceIds": ["pricing", "fees"]
+    "assumptions": "Base ecommerce fee applies to the tax-inclusive order total. International cards, subscriptions, PayPal, payouts, and the usual $15 dispute fee can add costs.",
+    "sourceIds": ["pricing", "fees", "chargebacks"]
   },
   "sellerCoverage": "Payouts are available in more than 200 countries according to Lemon Squeezy, subject to onboarding and payout-method rules.",
   "buyerCoverage": "Global digital sales with multi-currency checkout and country-dependent payment methods.",
@@ -33,14 +33,15 @@
     { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own taxes." }
   ],
   "strengths": ["Creator-friendly setup and storefront", "Digital delivery and license keys included", "Subscriptions and email tools in one product"],
-  "limitations": ["Base fee does not cover every edge case", "Less suitable for complex enterprise billing", "Provider ownership and product direction are a dependency"],
+  "limitations": ["Base fee is charged on the tax-inclusive total and does not cover every add-on", "Less suitable for complex enterprise billing", "Provider ownership and product direction are a dependency"],
   "bestFor": ["Indie SaaS", "Digital downloads", "Software licenses and creator products"],
   "avoidIf": ["You need advanced B2B quoting", "You require full control of the merchant relationship"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "Lemon Squeezy pricing", "url": "https://www.lemonsqueezy.com/pricing", "reviewedOn": "2026-07-27" },
-    { "id": "fees", "label": "Lemon Squeezy fee documentation", "url": "https://docs.lemonsqueezy.com/help/getting-started/fees", "reviewedOn": "2026-07-27" },
-    { "id": "countries", "label": "Lemon Squeezy supported countries", "url": "https://docs.lemonsqueezy.com/help/getting-started/getting-paid", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "Lemon Squeezy pricing", "url": "https://www.lemonsqueezy.com/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "fees", "label": "Lemon Squeezy fee documentation", "url": "https://docs.lemonsqueezy.com/help/getting-started/fees", "reviewedOn": "2026-07-29" },
+    { "id": "chargebacks", "label": "Lemon Squeezy refunds and chargebacks", "url": "https://docs.lemonsqueezy.com/help/payments/refunds-chargebacks", "reviewedOn": "2026-07-29" },
+    { "id": "countries", "label": "Lemon Squeezy supported countries", "url": "https://docs.lemonsqueezy.com/help/getting-started/getting-paid", "reviewedOn": "2026-07-29" }
   ]
 }

@@ -36,10 +36,10 @@
   "limitations": ["Application and approval required", "Regional availability and pricing differ", "The merchant still owns tax and support operations"],
   "bestFor": ["Businesses needing PayPal plus cards", "Established recurring-payment products", "Teams wanting lower-level payment control"],
   "avoidIf": ["You want instant universal self-service", "You want the provider to become legal seller"],
-  "lastReviewed": "2026-07-27",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-10-27",
   "sources": [
-    { "id": "pricing", "label": "PayPal Braintree fees", "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees", "reviewedOn": "2026-07-27" },
-    { "id": "docs", "label": "Braintree developer documentation", "url": "https://developer.paypal.com/braintree/docs/start/overview", "reviewedOn": "2026-07-27" }
+    { "id": "pricing", "label": "PayPal Braintree fees", "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees", "reviewedOn": "2026-07-29" },
+    { "id": "docs", "label": "Braintree developer documentation", "url": "https://developer.paypal.com/braintree/docs/start/overview", "reviewedOn": "2026-07-29" }
   ]
 }

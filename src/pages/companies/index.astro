@@ -8,28 +8,31 @@ const companies = (await getCollection("companyIntelligence"))
 const providerNames = new Map((await getCollection("providers")).map((entry) => [entry.data.slug, entry.data.name]));
 const category = (entityType: string) => entityType === "public" ? "public" : entityType === "subsidiary" ? "subsidiary" : entityType === "private-equity-backed" ? "pe-backed" : "private";
 const currentYear = 2026;
-const oldestFounded = Math.min(...companies.map((company) => company.founded));
-const newestFounded = Math.max(...companies.map((company) => company.founded));
+const knownFoundingYears = companies.map((company) => company.founded).filter((year): year is number => year !== null);
+const oldestFounded = Math.min(...knownFoundingYears);
+const newestFounded = Math.max(...knownFoundingYears);
 const explorerData = companies.map((company, id) => ({
   id,
   name: company.name,
   kind: category(company.entityType),
   entityLabel: company.entityType.replaceAll("-", " "),
   founded: company.founded,
-  age: currentYear - company.founded,
+  foundedLabel: company.founded ?? "Not publicly verified",
+  age: company.founded === null ? null : currentYear - company.founded,
   ownership: company.ownershipLabel,
   parentCompany: company.parentCompany,
   disclosure: company.financials.scope,
   financialHeadline: company.financials.headline,
   providerSlug: company.providerSlugs[0]
 }));
+const chartCompanies = explorerData.filter((company) => company.founded !== null);
 const landscapeGroups = [
   { value: "public", label: "Public" },
   { value: "private", label: "Private" },
   { value: "pe-backed", label: "PE-backed" },
   { value: "subsidiary", label: "Subsidiary" }
 ];
-const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestFounded - oldestFounded)) * 100;
+const chartPosition = (founded: number | null) => founded === null ? 0 : ((founded - oldestFounded) / (newestFounded - oldestFounded)) * 100;
 ---
 
 <BaseLayout
@@ -49,7 +52,7 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
         <span class="eyebrow eyebrow-inverse">Company intelligence</span>
         <h1>Know the company behind the checkout</h1>
         <p>Ownership, leadership, capital, and disclosure quality can affect product continuity, support, pricing power, and your migration risk.</p>
-        <span class="review-chip">{companies.length} company records · reviewed 27 July 2026</span>
+        <span class="review-chip">{companies.length} company records · triple-checked 29 July 2026</span>
       </div>
       <div class="company-hero-illustration" aria-label="Illustration showing the relationship between an owner, a company, and its payment product">
         <span class="company-hero-caption">Trace the commercial stack</span>
@@ -82,7 +85,7 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
           <div class="company-landscape" aria-label={`Company founding years from ${oldestFounded} to ${newestFounded}`}>
             <div class="company-chart-axis" aria-hidden="true"><span>{oldestFounded}</span><span>2005</span><span>2014</span><span>{newestFounded}</span></div>
             {landscapeGroups.map((group) => {
-              const members = explorerData.filter((company) => company.kind === group.value);
+              const members = chartCompanies.filter((company) => company.kind === group.value);
               return <div class="company-chart-lane">
                 <span class="company-chart-label">{group.label}</span>
                 <div class="company-chart-track">
@@ -107,8 +110,8 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
           <h3 x-text="selected.name">{explorerData[0].name}</h3>
           <p x-text="selected.ownership">{explorerData[0].ownership}</p>
           <dl>
-            <div><dt>Founded</dt><dd x-text="selected.founded">{explorerData[0].founded}</dd></div>
-            <div><dt>Operating history</dt><dd><span x-text="selected.age">{explorerData[0].age}</span> years</dd></div>
+            <div><dt>Founded</dt><dd x-text="selected.foundedLabel">{explorerData[0].foundedLabel}</dd></div>
+            <div><dt>Operating history</dt><dd x-text="selected.age === null ? 'Not calculable' : `${selected.age} years`">{explorerData[0].age === null ? "Not calculable" : `${explorerData[0].age} years`}</dd></div>
             <div><dt>Financial scope</dt><dd x-text="selected.disclosure.replaceAll('-', ' ')">{explorerData[0].disclosure.replaceAll("-", " ")}</dd></div>
           </dl>
           <strong x-text="selected.financialHeadline">{explorerData[0].financialHeadline}</strong>
@@ -151,7 +154,7 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
             <div class="company-lens-count"><strong x-text="matches.length">{companies.length}</strong><span>of {companies.length} companies remain</span></div>
             <div class="company-lens-list">
               <template x-for="company in matches" :key="company.id">
-                <a :href="`/providers/${company.providerSlug}/`"><span x-text="company.name"></span><small><span x-text="company.age"></span> yrs · <span x-text="company.disclosure.replaceAll('-', ' ')"></span></small></a>
+                <a :href="`/providers/${company.providerSlug}/`"><span x-text="company.name"></span><small><span x-text="company.age === null ? 'History not verified' : `${company.age} yrs`"></span> · <span x-text="company.disclosure.replaceAll('-', ' ')"></span></small></a>
               </template>
               <p x-show="matches.length === 0" x-cloak>No companies match all three signals. Relax one filter and keep the tradeoff visible.</p>
             </div>
@@ -190,7 +193,7 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
           <h2>{company.name}</h2>
           <p class="company-ownership">{company.ownershipLabel}{company.ticker ? ` · ${company.ticker}` : ""}</p>
           <dl class="company-card-facts">
-            <div><dt>Founded</dt><dd>{company.founded}</dd></div>
+            <div><dt>Founded</dt><dd>{company.founded ?? "Not publicly verified"}</dd></div>
             <div><dt>Leadership</dt><dd>{company.leaders[0].name}</dd><small>{company.leaders[0].title}</small></div>
             <div><dt>Team</dt><dd>{company.team.value}</dd></div>
             <div><dt>Capital</dt><dd>{company.funding.headline}</dd></div>
@@ -221,7 +224,7 @@ const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestF
       structure: "any",
       get matches() {
         return this.companies.filter((company) => {
-          const ageMatches = company.age >= Number(this.minimumAge);
+          const ageMatches = Number(this.minimumAge) === 0 || (company.age !== null && company.age >= Number(this.minimumAge));
           const disclosureMatches = this.disclosure === "any"
             || (this.disclosure === "direct" && ["company", "product"].includes(company.disclosure))
             || (this.disclosure === "available" && company.disclosure !== "not-disclosed");

@@ -13,7 +13,7 @@
     "fixed": 0.3,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Public US Explore-plan card pricing. Local methods, subscription billing, FX, international cards, and other regions use additional or different fees.",
+    "assumptions": "Public US Explore-plan card pricing. International cards add 1.5%; subscription billing adds 0.5%; FX is 0.5% for major currencies and 1% for others. Local methods and regions vary.",
     "sourceIds": ["pricing", "payments"]
   },
   "sellerCoverage": "Eligible businesses can open accounts in supported operating markets subject to entity, industry, and compliance checks.",
@@ -36,11 +36,11 @@
   "limitations": ["Rates vary significantly by country and method", "Billing adds per-transaction fees", "The merchant retains tax and compliance operations"],
   "bestFor": ["Cross-border online businesses", "SaaS with global treasury needs", "Companies settling multiple currencies"],
   "avoidIf": ["You need a Merchant of Record", "Your entity or primary market is unsupported"],
-  "lastReviewed": "2026-07-28",
+  "lastReviewed": "2026-07-29",
   "nextReview": "2026-09-28",
   "sources": [
-    { "id": "pricing", "label": "Airwallex US pricing", "url": "https://www.airwallex.com/en-us/pricing", "reviewedOn": "2026-07-28" },
-    { "id": "payments", "label": "Airwallex online payments", "url": "https://www.airwallex.com/en-us/payments", "reviewedOn": "2026-07-28" },
-    { "id": "fees", "label": "Airwallex payment fee models", "url": "https://www.airwallex.com/docs/payments/about-airwallex-payments/fees-and-pricing-models", "reviewedOn": "2026-07-28" }
+    { "id": "pricing", "label": "Airwallex US pricing", "url": "https://www.airwallex.com/en-us/pricing", "reviewedOn": "2026-07-29" },
+    { "id": "payments", "label": "Airwallex online payments", "url": "https://www.airwallex.com/en-us/payments", "reviewedOn": "2026-07-29" },
+    { "id": "fees", "label": "Airwallex payment fee models", "url": "https://www.airwallex.com/docs/payments/about-airwallex-payments/fees-and-pricing-models", "reviewedOn": "2026-07-29" }
   ]
 }
