@@ -1,0 +1,39 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#1717D1"/>
+  <rect x="54" y="54" width="1092" height="522" stroke="#4C4CE4"/>
+
+  <g aria-label="Payment Stack Guide">
+    <rect x="92" y="88" width="62" height="38" stroke="white"/>
+    <text x="104" y="113" fill="white" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700">/pay</text>
+    <text x="172" y="113" fill="white" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="-0.4">Payment Stack Guide</text>
+  </g>
+
+  <text x="92" y="205" fill="#B7B7FF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" font-weight="700" letter-spacing="1.8">INDEPENDENT PAYMENTS RESEARCH</text>
+  <text x="92" y="285" fill="white" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="-4.2">Choose your</text>
+  <text x="92" y="357" fill="white" font-family="Inter, Arial, sans-serif" font-size="68" font-weight="800" letter-spacing="-4.2">payment processor</text>
+  <text x="92" y="420" fill="#D9D9FF" font-family="Inter, Arial, sans-serif" font-size="22">Know who sells. Know who handles what.</text>
+
+  <g transform="translate(718 158)">
+    <rect width="380" height="330" fill="#0D0DA8" fill-opacity="0.45" stroke="#7474ED"/>
+    <text x="24" y="34" fill="#B7B7FF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="700" letter-spacing="1.2">YOUR FIRST DECISION</text>
+
+    <rect x="113" y="59" width="154" height="46" fill="#1717D1" stroke="white"/>
+    <text x="153" y="87" fill="white" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" font-weight="700">Your product</text>
+
+    <path d="M190 105V135M78 135H302M78 135V157M302 135V157" stroke="#A7A7F4"/>
+
+    <rect x="24" y="157" width="158" height="145" fill="white"/>
+    <text x="42" y="184" fill="#1717D1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">01</text>
+    <text x="42" y="231" fill="#1717D1" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.6">Merchant of</text>
+    <text x="42" y="256" fill="#1717D1" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.6">Record</text>
+    <text x="42" y="281" fill="#686886" font-family="Inter, Arial, sans-serif" font-size="11">Provider is the legal seller</text>
+
+    <rect x="198" y="157" width="158" height="145" fill="white"/>
+    <text x="216" y="184" fill="#1717D1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="11" font-weight="700">02</text>
+    <text x="216" y="231" fill="#1717D1" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.6">Direct</text>
+    <text x="216" y="256" fill="#1717D1" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="700" letter-spacing="-0.6">payments</text>
+    <text x="216" y="281" fill="#686886" font-family="Inter, Arial, sans-serif" font-size="11">You are the legal seller</text>
+  </g>
+
+  <text x="92" y="535" fill="#AFAFFF" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" font-weight="700" letter-spacing="1.1">PAYMENTPROCESSOR.DEV</text>
+</svg>
