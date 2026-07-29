@@ -1,4 +1,5 @@
 :root {
+  color-scheme: only light;
   --blue: #1717d1;
   --blue-dark: #0d0da8;
   --blue-soft: #ededff;
@@ -15,8 +16,13 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  min-height: 100%;
+  background: var(--canvas);
+  scroll-behavior: smooth;
+}
 body {
+  min-height: 100%;
   margin: 0;
   background: var(--canvas);
   color: var(--ink);
@@ -25,6 +31,7 @@ body {
   line-height: 1.55;
   text-rendering: optimizeLegibility;
 }
+main { background: var(--canvas); }
 a { color: inherit; text-decoration: none; }
 button, input, select { color: inherit; font: inherit; }
 [x-cloak] { display: none !important; }
