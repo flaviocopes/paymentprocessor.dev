@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const guides = (await getCollection("guides")).map((entry) => entry.data).sort((a, b) => a.title.localeCompare(b.title));
+const categories = [
+  { id: "foundations", title: "Foundations", description: "Understand the entities, money movement, responsibility boundary, and vocabulary." },
+  { id: "operations", title: "Operations", description: "Run refunds, disputes, payouts, subscriptions, tax workflows, and reconciliation." },
+  { id: "growth", title: "Growth", description: "Improve checkout, add payment methods, and sell across currencies and markets." },
+  { id: "risk", title: "Risk and resilience", description: "Plan for compliance, reserves, provider dependence, and a future exit." },
+  { id: "migration", title: "Migration", description: "Preserve customer and subscription state when the stack changes." }
+];
+---
+
+<BaseLayout title="Payment learning library — Payment Stack Guide" description="Practical guides to payment models, fees, tax, disputes, payouts, checkout, subscriptions, international sales, security, and portability.">
+  <PageHeader eyebrow="Payments, explained as a system" title="Learning library" description="Go beyond provider features. Learn how the legal, financial, technical, and operational pieces fit together." meta={`${guides.length} practical guides · primary sources`} />
+
+  <section class="section">
+    <div class="shell library-intro">
+      <span class="section-number">01 / MAP</span>
+      <div><span class="eyebrow">A better reading order</span><h2>Start with responsibility. Then follow the money.</h2><p>Begin with Merchant of Record versus direct payments, learn the payment lifecycle and fee stack, then move into the operational topics that matter for your business model.</p><a class="card-link" href="/glossary/">Open the payments glossary →</a></div>
+    </div>
+  </section>
+
+  <section class="section section-tint library-sections">
+    <div class="shell">
+      {categories.map((category, categoryIndex) => {
+        const categoryGuides = guides.filter((guide) => (guide.category ?? "foundations") === category.id);
+        if (!categoryGuides.length) return null;
+        return <section class="library-category" id={category.id}>
+          <div class="library-category-heading"><span>{String(categoryIndex + 1).padStart(2, "0")}</span><div><h2>{category.title}</h2><p>{category.description}</p></div></div>
+          <div class="library-grid">
+            {categoryGuides.map((guide) => <a class="library-card" href={`/guides/${guide.slug}/`}>
+              <span>{guide.readingTime ?? "Practical guide"}</span>
+              <h3>{guide.title}</h3>
+              <p>{guide.description}</p>
+              <strong>Read guide →</strong>
+            </a>)}
+          </div>
+        </section>;
+      })}
+    </div>
+  </section>
+  <section class="section section-blue"><div class="shell note-grid"><div><span class="eyebrow eyebrow-inverse">Human layer</span><h2>Read what went wrong—and what worked.</h2></div><div class="prose"><p style="color:#d4d4ff">Curated founder accounts, Reddit discussions, and engineering posts expose onboarding, reserve, migration, support, and chargeback questions that official feature pages rarely show.</p><a class="button button-light" href="/stories/">Browse stories from the field</a></div></div></section>
+</BaseLayout>

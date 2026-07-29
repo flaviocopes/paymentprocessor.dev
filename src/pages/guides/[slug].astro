@@ -1,0 +1,39 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("guides");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props as { entry: CollectionEntry<"guides"> };
+const guide = entry.data;
+const fieldStories = (await getCollection("fieldStories")).filter((story) => story.data.relatedGuides.includes(guide.slug));
+---
+
+<BaseLayout
+  title={`${guide.title} — Payment Stack Guide`}
+  description={guide.description}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.description,
+    dateModified: guide.lastReviewed,
+    mainEntityOfPage: new URL(`/guides/${guide.slug}/`, Astro.site).toString()
+  }}
+>
+  <article class="editorial-guide">
+    <header class="guide-hero"><div class="shell reading-width"><a class="back-link" href="/learn/">← Learning library</a><span class="eyebrow eyebrow-inverse">{guide.category ?? "Guide"} · reviewed {guide.lastReviewed}</span><h1>{guide.title}</h1><p>{guide.dek}</p>{guide.readingTime && <div class="guide-meta"><span>{guide.readingTime}</span>{guide.audience?.map((item) => <span>{item}</span>)}</div>}</div></header>
+    <div class="shell guide-layout">
+      <aside class="guide-toc"><span class="eyebrow">In this guide</span>{guide.takeaways && <a href="#takeaways">Key takeaways</a>}{guide.sections.map((section, index) => <a href={`#section-${index + 1}`}>{String(index + 1).padStart(2, "0")} {section.heading}</a>)}{guide.decisionChecklist && <a href="#checklist">Decision checklist</a>}</aside>
+      <div class="guide-body">
+        {guide.takeaways && <section id="takeaways" class="guide-takeaways"><span class="section-index">00</span><span class="eyebrow">Key takeaways</span><h2>The short version.</h2><ul>{guide.takeaways.map((item) => <li>{item}</li>)}</ul></section>}
+        {guide.sections.map((section, index) => <section id={`section-${index + 1}`}><span class="section-index">{String(index + 1).padStart(2, "0")}</span><h2>{section.heading}</h2>{section.body.map((paragraph) => <p>{paragraph}</p>)}</section>)}
+        {guide.decisionChecklist && <section id="checklist" class="guide-checklist"><span class="eyebrow">Use this before choosing</span><h2>Decision checklist.</h2><ol>{guide.decisionChecklist.map((item) => <li>{item}</li>)}</ol></section>}
+        {fieldStories.length > 0 && <section class="guide-field-notes"><span class="eyebrow">Stories from the field</span><h2>How this shows up in real businesses.</h2><p>These are anecdotes and first-party accounts, not policy evidence. Use them to discover questions worth verifying.</p><div class="field-note-list">{fieldStories.map((story) => <a href={story.data.url} rel="noreferrer"><span>{story.data.sourceType.replaceAll("-", " ")} · {story.data.perspective.replaceAll("-", " ")}</span><strong>{story.data.title}</strong><p>{story.data.summary}</p><small>{story.data.caveat}</small></a>)}</div></section>}
+        <section class="guide-sources"><span class="eyebrow">Primary sources</span><h2>Review the evidence.</h2><ol class="source-list">{guide.sources.map((source) => <li><a href={source.url}>{source.label}</a><span>Reviewed {source.reviewedOn}</span></li>)}</ol></section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

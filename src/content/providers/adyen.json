@@ -1,0 +1,45 @@
+{
+  "slug": "adyen",
+  "name": "Adyen",
+  "model": "direct-payments",
+  "serviceModel": "global-acquirer",
+  "legalSeller": "merchant",
+  "stage": "established",
+  "summary": "A global payment platform and acquirer for larger businesses needing online, in-person, marketplace, and multi-region payment infrastructure.",
+  "pricing": {
+    "kind": "method-based",
+    "headline": "A fixed processing fee plus a payment-method fee; card economics can use interchange-plus-plus pricing.",
+    "percentage": null,
+    "fixed": null,
+    "monthly": null,
+    "currency": "USD",
+    "assumptions": "No single universal checkout rate. Obtain country, method, volume, and acquiring terms.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Adyen onboards eligible businesses in supported regions through a sales and underwriting process.",
+  "buyerCoverage": "Global acquiring and payment-method coverage varies by merchant entity, market, and integration.",
+  "products": "Eligible enterprise commerce, platforms, marketplaces, online and in-person businesses.",
+  "features": {
+    "checkout": "Web, mobile, hosted components, API, and point-of-sale integrations.",
+    "subscriptions": "Tokenization and recurring-payment support rather than an opinionated SaaS billing catalog.",
+    "invoicing": "Payment infrastructure can support invoice collection; billing and quoting may require another layer.",
+    "paymentMethods": "A broad global directory of cards, wallets, bank methods, BNPL, and local methods.",
+    "payouts": "Settlement schedules and currencies are defined in merchant terms."
+  },
+  "responsibilities": [
+    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains merchant and seller." },
+    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Payment acquiring does not transfer product-sale tax responsibility." },
+    { "area": "Fraud and disputes", "owner": "shared", "note": "Adyen provides risk and dispute tools while the merchant owns policies and exposure." },
+    { "area": "Billing and product support", "owner": "merchant", "note": "The merchant builds or integrates these operating layers." }
+  ],
+  "strengths": ["Unified online and in-person acquiring", "Strong international and local-payment coverage", "Enterprise control and reporting"],
+  "limitations": ["Sales-led rather than indie self-serve", "No simple universal public rate", "Often requires separate SaaS billing and tax operations"],
+  "bestFor": ["Large international businesses", "Omnichannel commerce", "Platforms needing acquiring control"],
+  "avoidIf": ["You are an early creator seeking instant setup", "You want bundled MoR responsibility"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-07-27" }
+  ]
+}

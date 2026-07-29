@@ -1,0 +1,22 @@
+{
+  "slug": "what-you-handle-with-direct-payments",
+  "title": "What you still handle with direct payments",
+  "description": "A responsibility checklist for businesses that remain the merchant while using a processor, wallet, gateway, or acquirer.",
+  "dek": "Direct payments give you control. They also leave a larger operating surface attached to your company.",
+  "category": "operations",
+  "readingTime": "9 minute read",
+  "audience": ["Founders", "Operations", "Finance"],
+  "takeaways": ["Direct payment acceptance leaves the merchant responsible for the customer sale.", "Tax, disputes, billing, support, security, and reconciliation need named owners even when software automates parts of them.", "The direct model is strongest when control and modularity are intentional rather than accidental."],
+  "decisionChecklist": ["Assign an owner for tax registrations, filings, and remittance.", "Write the refund, dispute, and failed-payment workflows.", "Confirm PCI DSS and checkout-security responsibilities.", "Reconcile orders through provider balances and bank payouts.", "Maintain an exit path for customer, payment, and subscription data."],
+  "sections": [
+    { "heading": "The sale and customer contract", "body": ["Your company is normally named as the seller, sets the sale terms, issues the commercial promise, fulfills the product, defines the refund policy, and supports the customer. The payment provider's own terms govern its payment service, not your product obligations."] },
+    { "heading": "Indirect tax", "body": ["Your business determines where it has registration obligations, registers where required, validates customer location and status, calculates tax, keeps evidence, files returns, remits funds, and handles notices or audits. Tax software can automate pieces of this workflow, but ordinary calculation does not transfer the liability."] },
+    { "heading": "Payment operations", "body": ["You configure fraud controls, monitor authorization and failure rates, respond to disputes, manage refunds, reconcile payouts, and support billing questions. Providers supply important tools, but eligibility rules and protection limits decide what they actually absorb."] },
+    { "heading": "Billing and records", "body": ["Subscriptions require catalog, proration, retry, cancellation, invoice, credit, and entitlement logic. You must preserve financial and tax records even if the provider dashboard later changes or the account closes. Export and migration planning should begin before you need to switch."] }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-tax", "label": "Stripe Tax product and responsibility context", "url": "https://stripe.com/tax", "reviewedOn": "2026-07-27" },
+    { "id": "paypal", "label": "PayPal Checkout options and risk responsibilities", "url": "https://www.paypal.com/us/business/accept-payments/checkout", "reviewedOn": "2026-07-27" }
+  ]
+}

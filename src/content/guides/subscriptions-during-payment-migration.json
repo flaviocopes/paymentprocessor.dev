@@ -1,0 +1,22 @@
+{
+  "slug": "subscriptions-during-payment-migration",
+  "title": "What happens to subscriptions during a payment migration",
+  "description": "Understand payment credentials, renewal dates, customer mapping, invoices, webhooks, and entitlements before switching providers.",
+  "dek": "A subscription is not one portable object. It is a chain of payment credentials, billing state, customer identity, dates, prices, events, records, and access decisions.",
+  "category": "migration",
+  "readingTime": "11 minute read",
+  "audience": ["Developers", "Operations", "Support"],
+  "takeaways": ["A customer export is not a subscription migration.", "Payment credentials require controlled provider-to-provider handling when transfer is possible.", "Delta sync, parallel reconciliation, customer communication, and rollback protect recurring revenue during cutover."],
+  "decisionChecklist": ["Inventory customers, prices, subscriptions, credentials, invoices, and entitlements separately.", "Confirm token-transfer eligibility and lead time.", "Map legacy prices, billing anchors, discounts, trials, and cancellation states.", "Plan freeze points, delta sync, verification, and rollback.", "Keep the source system available until renewals and reporting reconcile."],
+  "sections": [
+    { "heading": "Payment credentials move separately", "body": ["Card and bank credentials are controlled data. A transfer normally requires a provider-to-provider PCI process, written approval, compatible vault formats, and a supported destination. Wallets and local methods may not transfer at all, creating a reauthorization cohort."] },
+    { "heading": "Rebuild billing state deliberately", "body": ["Map every product, price, currency, interval, trial, coupon, quantity, cancellation flag, next renewal date, and past-due state. Preserve source identifiers as metadata and reject unmapped records rather than silently placing customers on today's default plan."] },
+    { "heading": "History usually stays history", "body": ["Invoices, charges, disputes, refunds, tax evidence, and payout reports often remain read-only in the source. Export them with a signed manifest and define how support and finance will retrieve them after cutover."] },
+    { "heading": "Events and entitlements must reconcile", "body": ["Destination webhook names, ordering, retry behavior, signatures, and identifiers change. Run both handlers idempotently during transition, prevent double renewal, compare billing state to application access, and keep a rollback deadline with explicit triggers."] }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-import", "label": "Stripe subscription migration documentation", "url": "https://docs.stripe.com/billing/subscriptions/import-subscriptions", "reviewedOn": "2026-07-27" },
+    { "id": "paddle-migrate", "label": "Paddle migration overview", "url": "https://developer.paddle.com/migrate/overview", "reviewedOn": "2026-07-27" }
+  ]
+}

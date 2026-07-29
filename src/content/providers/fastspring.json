@@ -1,0 +1,46 @@
+{
+  "slug": "fastspring",
+  "name": "FastSpring",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "established",
+  "summary": "A sales-assisted Merchant of Record platform for SaaS, downloadable software, apps, games, and digital goods.",
+  "pricing": {
+    "kind": "negotiated",
+    "headline": "Revenue-share pricing is quoted based on transaction type and volume.",
+    "percentage": null,
+    "fixed": null,
+    "monthly": null,
+    "currency": "USD",
+    "assumptions": "No universal public transaction formula is documented. Use a merchant quote.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "FastSpring describes its MoR service as available to eligible software and digital-goods sellers worldwide, subject to underwriting.",
+  "buyerCoverage": "Global ecommerce coverage with localized currencies, payment methods, and country controls.",
+  "products": "SaaS, software, digital goods, games, and eligible services; prohibited-product rules apply.",
+  "features": {
+    "checkout": "Hosted and embedded storefront experiences with localized payment options.",
+    "subscriptions": "Recurring billing, lifecycle management, dunning, and commerce tools.",
+    "invoicing": "Global invoicing and tax documents within the full-service platform.",
+    "paymentMethods": "Cards, wallets, and localized methods by buyer market.",
+    "payouts": "Revenue-share fees are withheld before seller distributions."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "FastSpring purchases from the seller and resells to the buyer as MoR." },
+    { "area": "Fraud, payments, and subscriptions", "owner": "provider", "note": "Included in FastSpring's bundled platform." },
+    { "area": "Product terms and delivery", "owner": "merchant", "note": "The seller remains responsible for product rights, EULA, and fulfillment." },
+    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller accounts for distributions and its business obligations." }
+  ],
+  "strengths": ["Long-standing software commerce focus", "Sales-assisted implementation", "Bundled global payment and subscription operations"],
+  "limitations": ["No universal public rate", "Requires underwriting and often sales contact", "Can be heavier than creator-first products"],
+  "bestFor": ["Established software vendors", "Games and downloadable software", "Teams valuing implementation support"],
+  "avoidIf": ["You need instant self-serve onboarding", "You require a public price before speaking to sales"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "FastSpring pricing", "url": "https://fastspring.com/pricing/", "reviewedOn": "2026-07-27" },
+    { "id": "mor", "label": "FastSpring terms and MoR relationship", "url": "https://developer.fastspring.com/docs/about-terms-conditions-and-eulas", "reviewedOn": "2026-07-27" },
+    { "id": "products", "label": "FastSpring product management and prohibited sales", "url": "https://developer.fastspring.com/docs/manage-your-products", "reviewedOn": "2026-07-27" }
+  ]
+}

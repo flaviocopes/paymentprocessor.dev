@@ -1,0 +1,37 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+---
+
+<BaseLayout title="Choose your payment path — Payment Stack Guide" description="Decide whether a Merchant of Record or direct payment provider fits your responsibilities and business model.">
+  <PageHeader eyebrow="Start here" title="Who should be the legal seller?" description="This choice determines far more than the transaction fee. Pick the responsibility model first; compare providers second." />
+  <section class="section">
+    <div class="shell decision-grid">
+      <article class="decision-card decision-card-blue">
+        <span class="decision-index">PATH 01</span>
+        <h2>Another company sells to the buyer.</h2>
+        <p>A Merchant of Record becomes the seller for approved transactions and takes on the documented tax, payment, dispute, and transaction-support duties.</p>
+        <strong>Usually a fit when</strong>
+        <ul><li>You sell eligible software or digital products globally.</li><li>You do not want to build indirect-tax filing operations.</li><li>You accept higher bundled fees and less merchant control.</li></ul>
+        <a class="button button-light" href="/merchant-of-record/">Explore MoR providers <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="decision-card">
+        <span class="decision-index">PATH 02</span>
+        <h2>Your company remains the seller.</h2>
+        <p>A processor, wallet, gateway, or acquirer moves the payment. You retain the customer contract and the operating responsibilities around it.</p>
+        <strong>Usually a fit when</strong>
+        <ul><li>You need checkout, product, or merchant flexibility.</li><li>Your team can run tax, disputes, billing, and support.</li><li>Direct customer ownership and unit economics matter most.</li></ul>
+        <a class="button" href="/payment-processors/">Explore direct payments <span aria-hidden="true">→</span></a>
+      </article>
+    </div>
+    <div class="shell starter-tool-callout"><div><span class="eyebrow">Want a concrete shortlist?</span><h2>Turn these tradeoffs into five provider candidates.</h2></div><a class="button" href="/tools/provider-matcher/">Open the provider matcher →</a></div>
+  </section>
+  <section class="section section-tint">
+    <div class="shell reading-block">
+      <span class="eyebrow">Not a binary forever</span>
+      <h2>You can use both.</h2>
+      <p>Some businesses use an MoR for global consumer sales and remain the merchant for domestic B2B, invoiced contracts, or unsupported products. Stripe Managed Payments can even be enabled at the transaction level for eligible products. A mixed model adds reconciliation and customer-experience complexity, so document which entity sells each transaction.</p>
+      <a class="card-link" href="/guides/merchant-of-record-vs-payment-processor/">Read the full responsibility guide <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,46 @@
+{
+  "slug": "creem",
+  "name": "Creem",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "growth",
+  "summary": "A newer Merchant of Record built for indie SaaS, AI tools, and digital products, combining global tax handling with product and growth tooling.",
+  "pricing": {
+    "kind": "hybrid",
+    "headline": "3.9% + $0.40 per transaction on the public standard plan; custom pricing is available.",
+    "percentage": 3.9,
+    "fixed": 0.4,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Public standard platform fee. Low-price products, high volume, and some additional products or services can use different terms.",
+    "sourceIds": ["payouts"]
+  },
+  "sellerCoverage": "Digital businesses can apply subject to supported-country, product, identity, and risk checks.",
+  "buyerCoverage": "Creem markets global payment and tax coverage, with methods and availability dependent on buyer and seller location.",
+  "products": "SaaS, AI tools, software, licenses, digital downloads, memberships, and other approved digital products.",
+  "features": {
+    "checkout": "Hosted checkout and developer integrations designed for fast self-serve launches.",
+    "subscriptions": "Recurring plans, trials, upgrades, cancellations, customer portal, and webhooks.",
+    "invoicing": "Tax-compliant transaction documents are provided; confirm complex B2B invoicing requirements.",
+    "paymentMethods": "Cards and supported wallets or local methods through Creem's payment infrastructure.",
+    "payouts": "Net proceeds are paid after a documented risk-hold period and any applicable limits."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Creem acts as Merchant of Record and handles supported transaction taxes." },
+    { "area": "Refunds, disputes, and payment fraud", "owner": "shared", "note": "Creem runs the transaction layer while sellers remain bound by policies and evidence requests." },
+    { "area": "Product delivery and support", "owner": "merchant", "note": "The seller must deliver the digital product and handle product-specific support." },
+    { "area": "Business accounting and income tax", "owner": "merchant", "note": "Creem payouts still need to be reconciled in the seller's books." }
+  ],
+  "strengths": ["Low public base rate for an MoR", "Built for indie SaaS and AI products", "License keys, affiliates, and revenue splits in one product"],
+  "limitations": ["Shorter operating and compliance history", "Payout holds affect cash timing", "Complex enterprise billing may need confirmation"],
+  "bestFor": ["Indie SaaS", "AI builders", "Small digital-product teams"],
+  "avoidIf": ["You require a mature enterprise service organization", "You cannot tolerate platform payout holds"],
+  "lastReviewed": "2026-07-28",
+  "nextReview": "2026-09-28",
+  "sources": [
+    { "id": "payouts", "label": "Creem fees and payouts", "url": "https://docs.creem.io/merchant-of-record/finance/payouts", "reviewedOn": "2026-07-28" },
+    { "id": "mor", "label": "Creem Merchant of Record documentation", "url": "https://docs.creem.io/merchant-of-record/what-is", "reviewedOn": "2026-07-28" },
+    { "id": "about", "label": "Creem company and team", "url": "https://www.creem.io/about", "reviewedOn": "2026-07-28" }
+  ]
+}

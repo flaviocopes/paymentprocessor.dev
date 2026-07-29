@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import coverage from "../../../data/country-coverage.json";
+
+const providers = (await getCollection("providers")).map((entry) => ({ slug: entry.data.slug, name: entry.data.name, model: entry.data.model }));
+---
+
+<BaseLayout title="Payment provider country eligibility checker — Payment Stack Guide" description="Check documented seller-country availability separately from buyer coverage, with evidence links and explicit uncertainty.">
+  <PageHeader eyebrow="Seller-country checker" title="Can your business apply?" description="Choose where your business is registered. See which providers document that market, which require verification, and which explicitly target other countries." meta={`${coverage.countries.length} common business countries · reviewed ${coverage.reviewedOn}`} />
+
+  <section class="section coverage-section" x-data="countryChecker()" x-cloak>
+    <div class="shell coverage-workspace">
+      <aside class="coverage-controls">
+        <span class="eyebrow">Your business</span>
+        <label><span>Registered country</span><select x-model="country">{coverage.countries.map((country) => <option value={country.code}>{country.name}</option>)}</select></label>
+        <label><span>Responsibility model</span><select x-model="model"><option value="all">Show both models</option><option value="merchant-of-record">Merchant of Record</option><option value="direct-payments">Direct payments</option></select></label>
+        <div class="coverage-summary" aria-live="polite">
+          <strong x-text="countryName">United States</strong>
+          <dl>
+            <div><dt>Documented</dt><dd x-text="counts.documented">0</dd></div>
+            <div><dt>Limited</dt><dd x-text="counts.limited">0</dd></div>
+            <div><dt>Verify</dt><dd x-text="counts.review">0</dd></div>
+            <div><dt>Unavailable</dt><dd x-text="counts.unavailable">0</dd></div>
+          </dl>
+        </div>
+        <p class="coverage-caveat">This checks the seller’s registered country—not where buyers live. Documented availability still does not guarantee product or risk approval.</p>
+      </aside>
+
+      <div class="coverage-results" aria-live="polite">
+        <div class="coverage-results-heading"><div><span class="eyebrow">Eligibility evidence</span><h2>Country is only the first gate.</h2></div><p>Provider pages often advertise buyer reach while leaving seller onboarding less explicit. We keep those claims separate.</p></div>
+        <div class="coverage-legend"><span><i class="coverage-dot documented"></i>Documented market</span><span><i class="coverage-dot limited"></i>Limited / preview</span><span><i class="coverage-dot review"></i>Verify with provider</span><span><i class="coverage-dot unavailable"></i>Not supported</span></div>
+        <div class="coverage-list">
+          <template x-for="provider in results" :key="provider.slug">
+            <article class="coverage-row">
+              <div><i class="coverage-dot" :class="provider.status"></i><span><strong x-text="provider.name"></strong><small x-text="provider.model === 'merchant-of-record' ? 'Merchant of Record' : 'Direct payments'"></small></span></div>
+              <strong class="coverage-status" :class="provider.status" x-text="provider.statusLabel"></strong>
+              <p x-text="provider.note"></p>
+              <div class="coverage-row-links"><a :href="`/providers/${provider.slug}/`">Profile →</a><a :href="provider.source" rel="noreferrer">Evidence ↗</a></div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint"><div class="shell reading-block"><span class="eyebrow">Three different maps</span><h2>Seller, buyer, and payout coverage are not interchangeable.</h2><p>A provider may sell to buyers in 200 countries while onboarding sellers from far fewer places. It may also support your company but only pay out through particular bank accounts or currencies. Confirm all three before integration.</p><a class="card-link" href="/guides/international-payments-currencies/">Understand international payment coverage →</a></div></section>
+
+  <script is:inline type="application/json" id="country-provider-data" set:html={JSON.stringify(providers)}></script>
+  <script is:inline type="application/json" id="country-coverage-data" set:html={JSON.stringify(coverage)}></script>
+  <script>
+    import { createCountryChecker } from "../../../lib/country-checker.mjs";
+    const providersElement = document.querySelector("#country-provider-data");
+    const coverageElement = document.querySelector("#country-coverage-data");
+    const providerData = providersElement ? JSON.parse(providersElement.textContent || "[]") : [];
+    const coverageData = coverageElement ? JSON.parse(coverageElement.textContent || "{}") : { countries: [], providers: [] };
+    (window as any).countryChecker = () => createCountryChecker(providerData, coverageData);
+  </script>
+</BaseLayout>

@@ -1,0 +1,21 @@
+{
+  "slug": "stripe-payments-vs-stripe-managed-payments",
+  "title": "Stripe Payments vs Stripe Managed Payments",
+  "providers": ["stripe-payments", "stripe-managed-payments"],
+  "summary": "Two modes in the Stripe ecosystem with different legal sellers, responsibilities, eligibility, checkout rules, and total fees.",
+  "recommendation": "Use ordinary Stripe Payments when you want to remain the merchant and own the operating stack. Consider Managed Payments for eligible digital transactions where transferring indirect-tax, fraud, dispute, and transaction-support responsibility justifies the added fee and preview constraints.",
+  "differences": [
+    { "area": "Legal seller", "first": "Your business is the merchant.", "second": "Link is presented as Merchant of Record for the managed transaction.", "whyItMatters": "This is a responsibility change, not a Stripe settings shortcut." },
+    { "area": "Pricing", "first": "Payment-method pricing, such as 2.9% + $0.30 for US domestic cards.", "second": "Adds 3.5% per successful Managed Payments transaction to Payments fees.", "whyItMatters": "Compare the combined amount, not 3.5% against 2.9%." },
+    { "area": "Availability", "first": "Generally available in Stripe-supported business locations.", "second": "Public preview with a narrower supported-business country list.", "whyItMatters": "Preview status and eligibility must be procurement gates." },
+    { "area": "Product scope", "first": "Broad eligible online goods and services.", "second": "Eligible digital products; services, physical goods, platforms, and multiple categories are prohibited.", "whyItMatters": "Many ordinary Stripe businesses are not eligible for Managed Payments." },
+    { "area": "Buyer experience", "first": "Your merchant identity and configured Stripe checkout experience.", "second": "Sold through Link, standardized transaction emails, and Link order support.", "whyItMatters": "Brand, support, receipts, statements, and customer expectations change." }
+  ],
+  "scenarios": [
+    { "when": "You already use Checkout for eligible digital products and want MoR only in selected markets.", "choose": "stripe-managed-payments", "reason": "Transaction-level enablement is its distinctive advantage." },
+    { "when": "You need Elements, platforms, physical goods, services, or maximum billing flexibility.", "choose": "stripe-payments", "reason": "Managed Payments eligibility and integration limits are material." },
+    { "when": "You are not comfortable depending on preview behavior.", "choose": "stripe-payments", "reason": "Managed Payments remains explicitly documented as public preview." }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": ["https://stripe.com/pricing", "https://docs.stripe.com/payments/managed-payments", "https://docs.stripe.com/payments/managed-payments/how-it-works"]
+}

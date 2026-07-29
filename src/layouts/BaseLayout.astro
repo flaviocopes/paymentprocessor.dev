@@ -1,0 +1,124 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  eyebrow?: string;
+  structuredData?: Record<string, unknown>;
+}
+
+const {
+  title = "Payment Stack Guide — Choose how you get paid",
+  description = "Independent, evidence-led comparisons of Merchant of Record platforms and direct payment providers.",
+  eyebrow,
+  structuredData
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const schema = structuredData ?? {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Payment Stack Guide",
+  url: Astro.site?.toString(),
+  description
+};
+const serializedSchema = JSON.stringify(schema).replaceAll("</", "<\\/");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1717d1" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Payment Stack Guide" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script is:inline type="application/ld+json" set:html={serializedSchema}></script>
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script is:inline async src="https://b.flaviocopes.com/js/pa-X3CCMl32wuiqI1nGmoYZm.js"></script>
+    <script is:inline>
+      window.plausible = window.plausible || function () {
+        (plausible.q = plausible.q || []).push(arguments);
+      };
+      plausible.init = plausible.init || function (options) {
+        plausible.o = options || {};
+      };
+      plausible.init();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="wordmark" href="/" aria-label="Payment Stack Guide home">
+          <span class="wordmark-mark" aria-hidden="true">/pay</span>
+          <span>Payment Stack Guide</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href="/merchant-of-record/">Merchant of Record</a>
+          <a href="/payment-processors/">Direct payments</a>
+          <a href="/compare/">Compare</a>
+          <a href="/tools/provider-matcher/">Tools</a>
+          <a href="/companies/">Companies</a>
+          <a href="/learn/">Learn</a>
+        </nav>
+        <a class="header-cta" href="/tools/provider-matcher/">Find providers <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+    <main id="main" data-page-eyebrow={eyebrow}>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="shell footer-grid">
+        <div>
+          <a class="wordmark footer-wordmark" href="/">
+            <span class="wordmark-mark" aria-hidden="true">/pay</span>
+            <span>Payment Stack Guide</span>
+          </a>
+          <p>Know who sells. Know who handles what.</p>
+        </div>
+        <div>
+          <strong>Choose</strong>
+          <a href="/merchant-of-record/">Merchant of Record</a>
+          <a href="/payment-processors/">Direct payments</a>
+          <a href="/compare/">Comparisons</a>
+          <a href="/tools/provider-matcher/">Provider matcher</a>
+          <a href="/tools/country-checker/">Country checker</a>
+          <a href="/tools/effective-cost/">Cost comparison</a>
+          <a href="/tools/migration-decision/">Stay-or-switch report</a>
+        </div>
+        <div>
+          <strong>Learn</strong>
+          <a href="/guides/merchant-of-record-vs-payment-processor/">MoR vs processor</a>
+          <a href="/learn/">Learning library</a>
+          <a href="/glossary/">Payments glossary</a>
+          <a href="/companies/">Company intelligence</a>
+          <a href="/migrations/">Migrations</a>
+          <a href="/methodology/">Methodology</a>
+        </div>
+        <div>
+          <strong>Principle</strong>
+          <p>No ratings. No hidden assumptions. Primary sources first.</p>
+        </div>
+      </div>
+      <div class="shell footer-bottom">
+        <span>© {new Date().getFullYear()} Payment Stack Guide</span>
+        <span>Information, not legal, tax, or accounting advice.</span>
+      </div>
+    </footer>
+    <script>
+      import Alpine from "alpinejs";
+      Alpine.start();
+    </script>
+  </body>
+</html>

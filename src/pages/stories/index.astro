@@ -1,0 +1,37 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const stories = (await getCollection("fieldStories")).sort((a, b) => a.data.title.localeCompare(b.data.title));
+const sourceTypes = [...new Set(stories.map((story) => story.data.sourceType))].sort();
+---
+
+<BaseLayout title="Payment stories from the field — Payment Stack Guide" description="Curated founder accounts, community discussions, engineering posts, and migration stories about payment operations.">
+  <PageHeader eyebrow="Anecdotes, clearly labelled" title="Stories from the field" description="Founder accounts and engineering stories reveal failure modes that pricing pages do not. They generate questions—not universal conclusions." meta={`${stories.length} curated accounts · reviewed 2026-07-27`} />
+
+  <section class="section">
+    <div class="shell story-principles">
+      <span class="section-number">01 / HOW TO READ</span>
+      <div><h2>Experience is evidence of possibility, not frequency.</h2><p>A Reddit post can reveal a hidden question. It cannot establish how often an outcome occurs, whether every fact is complete, or what the provider's current policy says. Current contractual claims still come from primary sources.</p></div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="shell" x-data="{ type: 'all' }">
+      <div class="story-filter" aria-label="Filter field stories">
+        <button type="button" :class="{ active: type === 'all' }" @click="type = 'all'">All</button>
+        {sourceTypes.map((sourceType) => <button type="button" :class={`{ active: type === '${sourceType}' }`} @click={`type = '${sourceType}'`}>{sourceType.replaceAll("-", " ")}</button>)}
+      </div>
+      <div class="story-grid">
+        {stories.map((story, index) => <article class="story-card" x-show={`type === 'all' || type === '${story.data.sourceType}'`}>
+          <div class="story-card-top"><span>{String(index + 1).padStart(2, "0")}</span><b>{story.data.sourceType.replaceAll("-", " ")} · {story.data.perspective.replaceAll("-", " ")}</b></div>
+          <h2>{story.data.title}</h2>
+          <p>{story.data.summary}</p>
+          <div class="story-caveat"><strong>Read with caution</strong><span>{story.data.caveat}</span></div>
+          <a href={story.data.url} rel="noreferrer">Read the original ↗</a>
+        </article>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,46 @@
+{
+  "slug": "paddle",
+  "name": "Paddle",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "established",
+  "summary": "A full Merchant of Record platform built primarily for software, SaaS, subscriptions, and digital products.",
+  "pricing": {
+    "kind": "hybrid",
+    "headline": "5% + $0.50 per checkout transaction; custom pricing is available.",
+    "percentage": 5,
+    "fixed": 0.5,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Public pay-as-you-go checkout rate. Low-price products, invoicing, and larger businesses may use custom terms.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Software businesses are supported in most countries, subject to Paddle's unsupported-country and risk policies.",
+  "buyerCoverage": "Paddle documents sales in more than 200 countries and territories, with sanctioned and unsupported locations blocked.",
+  "products": "SaaS, software, subscriptions, apps, and eligible digital products; product review and prohibited-business rules apply.",
+  "features": {
+    "checkout": "Hosted and overlay checkout through Paddle.js.",
+    "subscriptions": "Recurring billing, trials, upgrades, discounts, dunning, and customer portal.",
+    "invoicing": "B2B invoicing is available, with separate public contract terms for bank-transfer invoices.",
+    "paymentMethods": "Cards, wallets, PayPal, and supported local payment methods by market.",
+    "payouts": "Net seller payouts on Paddle's schedule after taxes, refunds, and fees."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, registration, filing, and remittance", "owner": "provider", "note": "Paddle is the seller to the buyer for supported transactions." },
+    { "area": "Fraud and chargebacks", "owner": "provider", "note": "Included in the MoR service, subject to seller cooperation and policies." },
+    { "area": "Transaction and billing support", "owner": "shared", "note": "Paddle supports billing issues; the seller remains responsible for the product and customer relationship." },
+    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for Paddle payouts and its own business taxes." }
+  ],
+  "strengths": ["Mature SaaS subscription tooling", "Public pay-as-you-go rate with custom enterprise terms", "Broad documented buyer coverage"],
+  "limitations": ["Restricted to approved software and digital-product models", "Paddle is buyer-facing as the legal seller", "Migration and invoicing can require provider involvement"],
+  "bestFor": ["Subscription SaaS", "Established software companies", "Teams wanting tax and billing operations bundled"],
+  "avoidIf": ["You sell physical goods or unsupported services", "You need to remain the seller on every buyer record"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Paddle pricing", "url": "https://www.paddle.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "coverage", "label": "Paddle supported countries", "url": "https://developer.paddle.com/concepts/sell/supported-countries-locales/", "reviewedOn": "2026-07-27" },
+    { "id": "terms", "label": "Paddle Master Services Agreement", "url": "https://www.paddle.com/legal/terms", "reviewedOn": "2026-07-27" }
+  ]
+}

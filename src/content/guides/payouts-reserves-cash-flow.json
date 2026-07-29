@@ -1,0 +1,34 @@
+{
+  "slug": "payouts-reserves-cash-flow",
+  "title": "Payouts, reserves, and payment cash flow",
+  "description": "Understand why recorded sales, available provider balance, and money in the bank are three different numbers.",
+  "dek": "Payment economics include timing. Settlement delays, payout schedules, reserves, refunds, disputes, and FX can matter more than a small rate difference.",
+  "category": "operations",
+  "readingTime": "9 minute read",
+  "audience": ["Finance", "Founders", "Operators"],
+  "takeaways": [
+    "Gross sales, provider balance, available balance, next payout, and bank cash should be tracked separately.",
+    "A payout frequency does not promise that every new transaction is immediately available.",
+    "Reserves, negative balances, refunds, disputes, and currency conversion create working-capital needs."
+  ],
+  "sections": [
+    { "heading": "Draw the cash timeline", "body": ["For each payment method, document authorization, capture, settlement, provider availability, payout initiation, and bank arrival. Then add the effect of weekends, holidays, new-account delays, risk reviews, and manual payout schedules.", "Do this for normal sales, not only the provider's fastest eligible case. An instant-payout feature is not the same as the default cost and timing of all funds."] },
+    { "heading": "Read the balance as a ledger", "body": ["Provider dashboards may separate pending funds, available funds, next payout, reserves, fees, refunds, disputes, and adjustments. A payout is usually a bundle of balance transactions rather than a direct copy of one customer order.", "Reconciliation should explain gross collected amount, tax, provider fees, refunds, disputes, currency conversions, reserve movements, and the resulting net payout."] },
+    { "heading": "Understand reserves and holds", "body": ["A reserve keeps funds unavailable to cover future refunds, chargebacks, or other exposure. It can be fixed, rolling, transaction-based, or risk-adjusted depending on the agreement. Holds and account limitations can also delay specific payments or broader balances.", "Ask what triggers a reserve, how the amount is calculated, when it is reviewed, how release works, and whether the provider can debit a linked bank account to cover a negative balance."] },
+    { "heading": "Currencies create separate balances", "body": ["Presentment currency is what the buyer sees and pays. Settlement currency is the currency in which the provider records or converts funds for you. Payout currency is what reaches a bank account. When those differ, conversion timing and fees matter.", "Multiple settlement accounts can reduce unnecessary conversions for some providers and countries. They also add reconciliation and treasury complexity."] },
+    { "heading": "Model the working-capital buffer", "body": ["Estimate normal payout lag plus a stressed period containing refunds, disputes, provider review, and a reserve. Subscription annual plans and preorders can produce large cash receipts alongside long future service obligations.", "Compare providers on predictable net cash and operational resilience, not only headline payment cost. Keep a bank buffer outside the provider balance for payroll, tax, refunds, and continuity."] }
+  ],
+  "decisionChecklist": [
+    "Map settlement and payout timing for every important payment method and currency.",
+    "Reconcile provider balance transactions to each bank payout.",
+    "Read reserve, hold, negative-balance, and bank-debit clauses.",
+    "Model a stressed month with high refunds or delayed payouts.",
+    "Keep operating cash outside the payment provider."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-payouts", "label": "Stripe payouts and settlement currencies", "url": "https://docs.stripe.com/payouts", "reviewedOn": "2026-07-27" },
+    { "id": "adyen-balances", "label": "Adyen merchant balances", "url": "https://docs.adyen.com/account/balances", "reviewedOn": "2026-07-27" },
+    { "id": "paypal-reserves", "label": "PayPal holds and reserves", "url": "https://www.paypal.com/us/legalhub/paypal/useragreement-full", "reviewedOn": "2026-07-27" }
+  ]
+}

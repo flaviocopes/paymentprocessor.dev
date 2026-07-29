@@ -1,0 +1,34 @@
+{
+  "slug": "payment-provider-portability-exit-plan",
+  "title": "Plan your payment-provider exit before entry",
+  "description": "Evaluate data exports, payment credentials, subscriptions, event history, tax evidence, entitlements, webhooks, contracts, and cutover options.",
+  "dek": "The cheapest time to understand provider dependence is before customers, tokens, subscription schedules, and reporting history accumulate inside it.",
+  "category": "risk",
+  "readingTime": "12 minute read",
+  "audience": ["Founders", "Architects", "Operations"],
+  "takeaways": [
+    "Customer export does not imply that payment credentials, active mandates, subscriptions, or tax evidence are portable.",
+    "Keep your own stable customer, product, entitlement, and order identifiers alongside provider IDs.",
+    "A credible exit includes dual-running, reconciliation, rollback, customer communication, and a plan for records that cannot move."
+  ],
+  "sections": [
+    { "heading": "Inventory the provider-owned state", "body": ["List customers, legal entities, products, prices, coupons, subscriptions, invoices, payment methods, mandates, balances, payouts, disputes, tax evidence, receipts, webhooks, and reports. Mark which records are authoritative for product access and accounting.", "Export access can differ from migration access. A dashboard CSV may help reporting without being sufficient to recreate active billing elsewhere."] },
+    { "heading": "Payment credentials need a controlled transfer", "body": ["Raw card data should not pass through your ordinary systems. Processor-to-processor transfers can require provider cooperation, destination approval, secure channels, and matching customer records. Wallets and local payment mandates may not transfer in the same way.", "Ask about token portability, export eligibility, fees, lead time, supported destinations, and what happens if the account is restricted or the relationship has ended."] },
+    { "heading": "Subscriptions are schedules plus promises", "body": ["An active subscription includes price, currency, interval, quantity, billing anchor, trial, discount, tax behavior, collection method, payment credential, cancellation state, and sometimes usage or future phases. Recreating only the customer and plan name is not enough.", "Preserve legacy pricing and promised terms. Decide whether the migration transfers credentials and schedules, keeps existing subscribers on the old provider, or asks customers to re-enter payment details."] },
+    { "heading": "Own the product state", "body": ["Use internal IDs that remain stable when providers change. Keep a provider mapping layer and derive entitlements from a durable internal policy rather than scattering provider-specific plan IDs throughout application code.", "Store webhook events or normalized business events with idempotency and processing status. During migration, compare old and new systems without granting duplicate access or charging twice."] },
+    { "heading": "Design the cutover and rollback", "body": ["A migration plan needs freeze points, delta exports, mapping validation, test customers, canary traffic, monitoring, reconciliation, customer communication, support scripts, rollback criteria, and cleanup timing. Do not cancel the source system before the destination state is verified.", "Some records will remain in the source for statutory, accounting, dispute, or support reasons. Define read-only retention and access before closing the account."] }
+  ],
+  "decisionChecklist": [
+    "Obtain sample exports for every critical record type before signing.",
+    "Confirm payment-token and mandate transfer rules in writing.",
+    "Keep stable internal customer, product, order, and entitlement IDs.",
+    "Test a representative subscription mapping including legacy edge cases.",
+    "Write cutover, reconciliation, rollback, and record-retention procedures."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-migrate", "label": "Stripe subscription migration stages", "url": "https://docs.stripe.com/billing/subscriptions/migrate-subscriptions", "reviewedOn": "2026-07-27" },
+    { "id": "stripe-import", "label": "Stripe API subscription migration", "url": "https://docs.stripe.com/billing/subscriptions/import-subscriptions", "reviewedOn": "2026-07-27" },
+    { "id": "paddle-migrate", "label": "Paddle migration overview", "url": "https://developer.paddle.com/migrate/overview", "reviewedOn": "2026-07-27" }
+  ]
+}

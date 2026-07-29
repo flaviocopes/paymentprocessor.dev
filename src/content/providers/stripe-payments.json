@@ -1,0 +1,46 @@
+{
+  "slug": "stripe-payments",
+  "name": "Stripe Payments",
+  "model": "direct-payments",
+  "serviceModel": "payment-service-provider",
+  "legalSeller": "merchant",
+  "stage": "established",
+  "summary": "A developer-focused global payments platform for cards, wallets, bank methods, hosted checkout, payment links, and custom payment flows.",
+  "pricing": {
+    "kind": "hybrid",
+    "headline": "US standard pricing starts at 2.9% + $0.30 for domestic online cards; country, method, international, and FX fees vary.",
+    "percentage": 2.9,
+    "fixed": 0.3,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "US domestic online card. International cards add 1.5% and currency conversion adds 1% on current standard pricing.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Businesses must be based in a Stripe-supported country or region.",
+  "buyerCoverage": "Supported Stripe businesses can sell to buyers globally, subject to sanctions, product, currency, and payment-method rules.",
+  "products": "Broad online business coverage subject to Stripe's prohibited and restricted-business policies.",
+  "features": {
+    "checkout": "Stripe Checkout, Elements, Payment Links, mobile SDKs, and direct APIs.",
+    "subscriptions": "Available through the separately priced Stripe Billing product.",
+    "invoicing": "Available through Stripe Invoicing, with separate pricing for paid invoices and optional features.",
+    "paymentMethods": "Cards, wallets, bank debits and transfers, BNPL, vouchers, and local methods by market.",
+    "payouts": "Rolling, weekly, monthly, and eligible instant payout options vary by country."
+  },
+  "responsibilities": [
+    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "Stripe processes the payment; the business sells to the buyer." },
+    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Stripe Tax can assist, but ordinary Payments does not transfer seller liability." },
+    { "area": "Fraud and disputes", "owner": "shared", "note": "Stripe supplies tools and workflows; the merchant bears transaction and dispute responsibility." },
+    { "area": "Transaction and product support", "owner": "merchant", "note": "The business supports its buyers unless it uses a separate service." }
+  ],
+  "strengths": ["Broad APIs and documentation", "Many payment methods and integration surfaces", "Modular billing, tax, and reporting products"],
+  "limitations": ["The merchant retains tax and compliance responsibility", "Add-on and cross-border fees can materially change the headline rate", "Billing and advanced revenue tools are separate products"],
+  "bestFor": ["Developer-led SaaS", "Businesses wanting checkout control", "Companies prepared to own tax and payment operations"],
+  "avoidIf": ["You want another company to be the legal seller", "Your business country is not supported"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "countries", "label": "Stripe global availability", "url": "https://stripe.com/global", "reviewedOn": "2026-07-27" },
+    { "id": "methods", "label": "Stripe payment-method pricing", "url": "https://stripe.com/pricing/local-payment-methods", "reviewedOn": "2026-07-27" }
+  ]
+}

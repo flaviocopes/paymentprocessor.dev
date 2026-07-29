@@ -1,0 +1,45 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("comparisons");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props as { entry: CollectionEntry<"comparisons"> };
+const comparison = entry.data;
+const providers = (await getCollection("providers")).map((item) => item.data);
+const first = providers.find((provider) => provider.slug === comparison.providers[0])!;
+const second = providers.find((provider) => provider.slug === comparison.providers[1])!;
+const chooseName = (slug: string) => providers.find((provider) => provider.slug === slug)?.name ?? slug;
+---
+
+<BaseLayout
+  title={`${comparison.title} — Payment Stack Guide`}
+  description={comparison.summary}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: comparison.title,
+    description: comparison.summary,
+    dateModified: comparison.lastReviewed,
+    mainEntityOfPage: new URL(`/compare/${comparison.slug}/`, Astro.site).toString()
+  }}
+>
+  <article class="comparison-page">
+    <header class="comparison-hero">
+      <div class="shell">
+        <a class="back-link" href="/compare/">← All comparisons</a>
+        <span class="eyebrow eyebrow-inverse">Direct comparison · reviewed {comparison.lastReviewed}</span>
+        <h1 class="versus-title"><span>{first.name}</span><b>VS</b><span>{second.name}</span></h1>
+        <p>{comparison.summary}</p>
+      </div>
+    </header>
+    <section class="section"><div class="shell">
+      <div class="verdict-box"><span class="eyebrow">Short answer</span><p>{comparison.recommendation}</p></div>
+      <div class="table-wrap comparison-table-wrap"><table class="data-table comparison-table"><thead><tr><th>Decision area</th><th>{first.name}</th><th>{second.name}</th><th>Why it matters</th></tr></thead><tbody>{comparison.differences.map((row) => <tr><th scope="row">{row.area}</th><td>{row.first}</td><td>{row.second}</td><td>{row.whyItMatters}</td></tr>)}</tbody></table></div>
+    </div></section>
+    <section class="section section-tint"><div class="shell"><span class="eyebrow">Choose by scenario</span><h2 class="scenario-heading">The right answer changes with the business.</h2><div class="scenario-grid">{comparison.scenarios.map((scenario) => <article><span>WHEN</span><h3>{scenario.when}</h3><strong>Choose {chooseName(scenario.choose)}</strong><p>{scenario.reason}</p></article>)}</div></div></section>
+    <section class="section"><div class="shell source-section"><span class="eyebrow">Primary sources</span><h2>Check the current terms.</h2><ol class="source-list">{comparison.sources.map((source) => <li><a href={source}>{new URL(source).hostname.replace("www.", "")}</a><span>Reviewed {comparison.lastReviewed}</span></li>)}</ol></div></section>
+  </article>
+</BaseLayout>

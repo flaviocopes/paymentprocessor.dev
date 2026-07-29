@@ -1,0 +1,33 @@
+{
+  "slug": "subscription-billing-operations",
+  "title": "Operating subscription billing",
+  "description": "Plan subscription states, invoices, prorations, payment retries, entitlements, customer changes, cancellation, and reporting.",
+  "dek": "Recurring billing is a state machine connected to money, access, tax, support, and accounting. The recurring charge is only one transition.",
+  "category": "operations",
+  "readingTime": "12 minute read",
+  "audience": ["SaaS teams", "Developers", "Support"],
+  "takeaways": [
+    "Subscription state, invoice state, payment state, and product entitlement should be related but not treated as one field.",
+    "Upgrades, downgrades, pauses, trials, credits, and cancellations require explicit timing and proration rules.",
+    "A billing provider can automate workflows, but the business still needs a product-access and customer-communication policy."
+  ],
+  "sections": [
+    { "heading": "Separate the four state machines", "body": ["A subscription describes the commercial schedule. An invoice describes an amount due. A payment describes collection. An entitlement describes product access. One can change without all the others changing at the same instant.", "Store provider IDs, internal customer and account IDs, plan and price version, billing period, collection method, cancellation intent, and entitlement decision. Avoid driving the entire product from one provider status string."] },
+    { "heading": "Version prices instead of overwriting history", "body": ["Existing customers may remain on legacy prices while new customers receive a new offer. Preserve the original price, currency, interval, tax behavior, quantity logic, discounts, and promised terms.", "A migration or catalog cleanup should not silently reprice active customers. Map legacy plans explicitly and decide whether each cohort is grandfathered, migrated with consent, or renewed on new terms."] },
+    { "heading": "Define change timing", "body": ["An upgrade can apply immediately, on the next invoice, or at renewal. A downgrade can remove access immediately or at period end. Proration can create a charge, credit, or no adjustment. Annual-to-monthly changes can affect revenue recognition and refund expectations.", "Preview changes before applying them and show the customer the date, amount, credit, tax, and access effect. Pending changes can protect against granting an upgrade when its invoice fails."] },
+    { "heading": "Design failed-payment recovery", "body": ["A failed renewal can trigger retries, payment-method updates, emails, grace access, restricted access, cancellation, or collections. The right sequence depends on product value, fraud risk, support load, and local requirements.", "Track recovery by reason and cohort. Too many retries can add cost and customer frustration; too few can create involuntary churn."] },
+    { "heading": "Make cancellation and reactivation coherent", "body": ["Support immediate cancellation, end-of-period cancellation, refunds, pauses, and reactivation as explicit policies. Preserve the audit trail even when the subscription becomes inactive.", "The customer portal, support tooling, provider API, webhook handlers, and product UI must agree. Test each path with tax, discounts, seats, usage, and pending invoices rather than only a simple monthly plan."] }
+  ],
+  "decisionChecklist": [
+    "Document subscription, invoice, payment, and entitlement states separately.",
+    "Preserve legacy prices and customer promises.",
+    "Define proration and timing for every plan change.",
+    "Write the retry, grace, suspension, and cancellation sequence.",
+    "Test changes through the customer portal, support tools, API, and webhooks."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-change", "label": "Stripe subscription changes and prorations", "url": "https://docs.stripe.com/billing/subscriptions/change", "reviewedOn": "2026-07-27" },
+    { "id": "stripe-migrate", "label": "Stripe subscription migration stages", "url": "https://docs.stripe.com/billing/subscriptions/migrate-subscriptions", "reviewedOn": "2026-07-27" }
+  ]
+}

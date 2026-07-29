@@ -1,0 +1,45 @@
+{
+  "slug": "square",
+  "name": "Square",
+  "model": "direct-payments",
+  "serviceModel": "omnichannel-payment-platform",
+  "legalSeller": "merchant",
+  "stage": "established",
+  "summary": "An omnichannel payments and commerce platform spanning online checkout, invoices, subscriptions, APIs, point of sale, and hardware.",
+  "pricing": {
+    "kind": "country-channel-based",
+    "headline": "US online payments are 2.9% + $0.30; country, channel, subscription, and international rates vary.",
+    "percentage": 2.9,
+    "fixed": 0.3,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "US online card. Square processing is available only in selected seller countries.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Payment processing is supported in selected countries including the US, Canada, Australia, Japan, the UK, Ireland, France, and Spain.",
+  "buyerCoverage": "Buyers can use supported cards and methods, but Square processes in the seller's supported market and currency rules.",
+  "products": "Eligible online, service, retail, restaurant, creator, appointment, and subscription businesses.",
+  "features": {
+    "checkout": "Online Checkout, Web Payments SDK, hosted links, APIs, and in-person point of sale.",
+    "subscriptions": "Subscriptions API and seller-facing recurring payment tools.",
+    "invoicing": "Square Invoices with market-specific processing rates.",
+    "paymentMethods": "Cards, wallets, Cash App Pay in the US, ACH in the US, and selected BNPL methods.",
+    "payouts": "Standard and eligible instant transfers to the seller's bank account."
+  },
+  "responsibilities": [
+    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The Square seller remains the merchant." },
+    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Square tools do not generally make Square the legal seller." },
+    { "area": "Fraud and disputes", "owner": "shared", "note": "Square provides controls and dispute workflows; the seller owns product and transaction risk." },
+    { "area": "Product and customer support", "owner": "merchant", "note": "The seller supports fulfillment and buyers." }
+  ],
+  "strengths": ["Online and in-person payments together", "Straightforward regional public pricing", "Invoices, links, subscriptions, and POS in one ecosystem"],
+  "limitations": ["Far fewer seller countries than global-first processors", "International-card costs vary", "Less specialized for complex SaaS billing"],
+  "bestFor": ["Omnichannel small businesses", "Creators selling online and in person", "Businesses already using Square POS"],
+  "avoidIf": ["Your seller country is unsupported", "You need sophisticated global SaaS billing or an MoR"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Square payments pricing", "url": "https://developer.squareup.com/docs/payments-pricing", "reviewedOn": "2026-07-27" },
+    { "id": "countries", "label": "Square international development", "url": "https://developer.squareup.com/docs/international-development", "reviewedOn": "2026-07-27" }
+  ]
+}

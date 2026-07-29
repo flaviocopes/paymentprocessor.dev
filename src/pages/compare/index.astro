@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+const comparisons = (await getCollection("comparisons")).map((entry) => entry.data).sort((a,b) => a.title.localeCompare(b.title));
+---
+
+<BaseLayout title="Payment provider comparisons — Payment Stack Guide" description="Scenario-specific comparisons of Merchants of Record and direct payment providers.">
+  <PageHeader eyebrow="Material differences only" title="Provider comparisons" description="No pages made by swapping provider names. Each comparison starts with the legal seller, then explains the differences that change a real decision." meta={`${comparisons.length} launch comparisons · reviewed 2026-07-27`} />
+  <section class="section"><div class="shell comparison-list">
+    {comparisons.map((comparison, index) => (
+      <article class="comparison-card">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <div><h2><a href={`/compare/${comparison.slug}/`}>{comparison.title}</a></h2><p>{comparison.summary}</p></div>
+        <a class="card-link" href={`/compare/${comparison.slug}/`}>Compare <span aria-hidden="true">→</span></a>
+      </article>
+    ))}
+  </div></section>
+</BaseLayout>

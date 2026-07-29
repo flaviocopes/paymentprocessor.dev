@@ -1,0 +1,34 @@
+{
+  "slug": "payment-fee-anatomy",
+  "title": "The anatomy of a payment fee",
+  "description": "Understand percentage, fixed, cross-border, FX, billing, dispute, refund, payout, and platform costs without trusting one headline rate.",
+  "dek": "The advertised rate is usually a starting formula for one country, method, and transaction shape. Your effective cost depends on the mix.",
+  "category": "foundations",
+  "readingTime": "10 minute read",
+  "audience": ["Founders", "Finance", "Operators"],
+  "takeaways": [
+    "A fixed per-transaction fee makes average order value matter as much as the percentage rate.",
+    "International cards, currency conversion, subscriptions, disputes, refunds, payouts, and add-on products can move the effective rate materially.",
+    "Compare like-for-like responsibilities: an MoR fee and a processing-only fee purchase different operating scopes."
+  ],
+  "sections": [
+    { "heading": "Start with the base formula", "body": ["Public card pricing is often written as a percentage of payment volume plus a fixed amount per successful transaction. At the same revenue, many small transactions usually cost more than a few large transactions because the fixed component repeats.", "Model monthly revenue and transaction count together. Also calculate average order value and the effective percentage of revenue after all modeled fees."] },
+    { "heading": "Transaction mix changes the answer", "body": ["International cards, local payment methods, premium cards, manually entered cards, installment products, and currency conversion can have different prices. The buyer's card country, presentment currency, settlement currency, merchant country, and chosen method can each matter.", "A useful model separates international-card share from FX share. A foreign card does not always require currency conversion, and a domestic card can still buy in another currency."] },
+    { "heading": "Recurring revenue has another layer", "body": ["Subscription businesses may pay for a billing product in addition to payment processing. Invoicing, usage metering, revenue recognition, tax calculation, dunning, and customer portals can be separate products or bundled into a larger platform fee.", "Check whether the quoted subscription price applies to recurring volume, collected invoices, total billing volume, or specific features. The denominator matters."] },
+    { "heading": "Failure and reversal have costs", "body": ["Disputes can carry a fee in addition to the reversed transaction. Refund treatment differs: some providers return part of the original fee, some retain it, and some add a separate refund or payout cost. Failed-payment retries can also increase billing or network activity.", "Do not add refund exposure twice. If your base calculation already includes the original transactions, retained fees on refunded volume are a subset of that amount unless the provider charges an additional refund fee."] },
+    { "heading": "Build a comparable monthly total", "body": ["Calculate documented payment fees first, then add provider plan fees, billing and tax tools, payout or FX costs, and your own operating-cost estimate. Keep negotiated and unknown items visible rather than substituting a fake industry average.", "Finally, label what the fee buys. An MoR can include indirect-tax filing and transaction support. A direct processor can offer lower payment cost and more control while the merchant retains the work."] }
+  ],
+  "decisionChecklist": [
+    "Model revenue and transaction count, not revenue alone.",
+    "Separate international-card share from converted-currency share.",
+    "Add recurring billing, tax, invoicing, fraud, and reporting products you actually need.",
+    "Verify refund, dispute, payout, and reserve treatment in the current contract.",
+    "Keep negotiated and unknown fees outside exact rankings."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-pricing", "label": "Stripe Payments pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "braintree-pricing", "label": "Braintree fees", "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees", "reviewedOn": "2026-07-27" },
+    { "id": "paddle-pricing", "label": "Paddle pricing", "url": "https://www.paddle.com/pricing", "reviewedOn": "2026-07-27" }
+  ]
+}

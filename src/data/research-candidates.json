@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "xsolla",
+    "name": "Xsolla",
+    "model": "merchant-of-record",
+    "status": "research-candidate",
+    "reason": "A major games-focused Merchant of Record whose commercial model, platform modules, regional payout terms, and game-specific responsibilities need a dedicated review.",
+    "sources": [
+      "https://xsolla.com/merchant-of-record",
+      "https://xsolla.com/products/pay-station",
+      "https://developers.xsolla.com/doc/pay-station/"
+    ]
+  },
+  {
+    "slug": "razorpay",
+    "name": "Razorpay",
+    "model": "direct-payments",
+    "status": "research-candidate",
+    "reason": "A high-priority regional payment provider for India whose domestic methods, international acceptance, entity requirements, taxes, and pricing need a market-specific profile.",
+    "sources": [
+      "https://razorpay.com/payment-gateway/",
+      "https://razorpay.com/pricing/",
+      "https://razorpay.com/docs/payments/"
+    ]
+  }
+]

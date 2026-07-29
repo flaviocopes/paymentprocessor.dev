@@ -1,0 +1,45 @@
+{
+  "slug": "paypal-checkout",
+  "name": "PayPal Checkout",
+  "model": "direct-payments",
+  "serviceModel": "wallet-checkout",
+  "legalSeller": "merchant",
+  "stage": "established",
+  "summary": "A buyer-wallet and checkout product for PayPal, cards, Venmo, Pay Later, and eligible alternative methods.",
+  "pricing": {
+    "kind": "public",
+    "headline": "US PayPal Checkout is 3.49% + $0.49; standard card payments are listed separately.",
+    "percentage": 3.49,
+    "fixed": 0.49,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "US domestic PayPal Checkout transaction. Rates and fixed fees vary by market and payment type.",
+    "sourceIds": ["fees"]
+  },
+  "sellerCoverage": "Business-account availability, features, and fee schedules vary by market.",
+  "buyerCoverage": "PayPal reaches international buyers, subject to buyer country, funding source, and product availability.",
+  "products": "Broad eligible goods and services subject to PayPal acceptable-use and seller-protection rules.",
+  "features": {
+    "checkout": "PayPal-branded checkout and Expanded Checkout options.",
+    "subscriptions": "Recurring payments and subscription APIs.",
+    "invoicing": "PayPal Invoicing is available as a related business product.",
+    "paymentMethods": "PayPal balance, cards, Venmo in the US, Pay Later, and eligible alternatives.",
+    "payouts": "Funds settle to the merchant's PayPal balance and can be withdrawn under account terms."
+  },
+  "responsibilities": [
+    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller even when PayPal appears in the payment experience." },
+    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Checkout does not generally make PayPal the seller of the merchant's product." },
+    { "area": "Fraud and chargebacks", "owner": "shared", "note": "PayPal supplies risk tools and eligible seller protection; coverage conditions apply." },
+    { "area": "Product support", "owner": "merchant", "note": "The merchant supports and fulfills the purchased product." }
+  ],
+  "strengths": ["Large familiar buyer wallet", "Fast standard integration", "PayPal, Venmo, Pay Later, and card options"],
+  "limitations": ["Market-specific fees and features", "Account holds and protection eligibility affect risk", "Less control in the standard PayPal-hosted experience"],
+  "bestFor": ["Businesses whose buyers expect PayPal", "Creators adding a familiar wallet", "Merchants wanting a quick checkout option"],
+  "avoidIf": ["You want a Merchant of Record", "You need one uniform global fee and integration surface"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "fees", "label": "PayPal business fees", "url": "https://www.paypal.com/us/business/paypal-business-fees", "reviewedOn": "2026-07-27" },
+    { "id": "checkout", "label": "PayPal Checkout options", "url": "https://www.paypal.com/us/business/accept-payments/checkout", "reviewedOn": "2026-07-27" }
+  ]
+}

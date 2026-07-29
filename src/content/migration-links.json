@@ -1,0 +1,272 @@
+[
+  {
+    "id": "fastspring-to-gumroad",
+    "source": "FastSpring",
+    "destination": "Gumroad",
+    "path": "https://migratingto.dev/guides/fastspring-to-gumroad",
+    "summary": "Move from a managed software-commerce MoR to a creator storefront, with special attention to subscription continuity, product access, and customer records.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "fastspring-to-paddle",
+    "source": "FastSpring",
+    "destination": "Paddle",
+    "path": "https://migratingto.dev/guides/fastspring-to-paddle",
+    "summary": "Change Merchant of Record while preserving software entitlements, recurring billing state, tax evidence, and a controlled customer cutover.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "fastspring-to-polar",
+    "source": "FastSpring",
+    "destination": "Polar",
+    "path": "https://migratingto.dev/guides/fastspring-to-polar",
+    "summary": "Shift from established software commerce to a developer-focused MoR, mapping subscriptions, benefits, webhooks, and payout operations.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "fastspring-to-stripe-billing",
+    "source": "FastSpring",
+    "destination": "Stripe Billing",
+    "path": "https://migratingto.dev/guides/fastspring-to-stripe-billing",
+    "summary": "Leave the MoR model for direct billing, including the transfer of seller, indirect-tax, dispute, support, and compliance responsibilities.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "fastspring-to-stripe-managed-payments",
+    "source": "FastSpring",
+    "destination": "Stripe Managed Payments",
+    "path": "https://migratingto.dev/guides/fastspring-to-stripe-managed-payments",
+    "summary": "Move between MoR systems while accounting for Managed Payments preview eligibility, product restrictions, billing objects, and transaction support.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "gumroad-to-fastspring",
+    "source": "Gumroad",
+    "destination": "FastSpring",
+    "path": "https://migratingto.dev/guides/gumroad-to-fastspring",
+    "summary": "Move from creator commerce to software-focused MoR infrastructure, rebuilding catalog, access, customer, and recurring-revenue workflows.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "gumroad-to-paddle",
+    "source": "Gumroad",
+    "destination": "Paddle",
+    "path": "https://migratingto.dev/guides/gumroad-to-paddle",
+    "summary": "Replace a creator storefront with SaaS commerce, preserving buyer access while remapping products, subscriptions, receipts, and customer communication.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "gumroad-to-polar",
+    "source": "Gumroad",
+    "destination": "Polar",
+    "path": "https://migratingto.dev/guides/gumroad-to-polar",
+    "summary": "Move a digital-product catalog to a developer-oriented MoR with explicit plans for customer creation, benefits, subscriptions, and cutover notices.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "gumroad-to-stripe-billing",
+    "source": "Gumroad",
+    "destination": "Stripe Billing",
+    "path": "https://migratingto.dev/guides/gumroad-to-stripe-billing",
+    "summary": "Move from Gumroad's commerce model to direct Stripe billing and deliberately take on merchant, tax, dispute, and billing operations.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "gumroad-to-stripe-managed-payments",
+    "source": "Gumroad",
+    "destination": "Stripe Managed Payments",
+    "path": "https://migratingto.dev/guides/gumroad-to-stripe-managed-payments",
+    "summary": "Rebuild Gumroad products and customers on Stripe's preview MoR mode while checking eligibility, subscription support, and buyer-facing changes.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "paddle-to-fastspring",
+    "source": "Paddle",
+    "destination": "FastSpring",
+    "path": "https://migratingto.dev/guides/paddle-to-fastspring",
+    "summary": "Switch software Merchants of Record with a controlled transfer of recurring customers, product identifiers, tax records, and webhooks.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "paddle-to-gumroad",
+    "source": "Paddle",
+    "destination": "Gumroad",
+    "path": "https://migratingto.dev/guides/paddle-to-gumroad",
+    "summary": "Simplify from SaaS-oriented billing to creator commerce while assessing subscription portability, licensing, catalog limits, and customer access.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "paddle-to-polar",
+    "source": "Paddle",
+    "destination": "Polar",
+    "path": "https://migratingto.dev/guides/paddle-to-polar",
+    "summary": "Move SaaS billing to a developer-first MoR by mapping prices, subscriptions, customer IDs, benefits, webhooks, and payout timing.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "paddle-to-stripe-billing",
+    "source": "Paddle",
+    "destination": "Stripe Billing",
+    "path": "https://migratingto.dev/guides/paddle-to-stripe-billing",
+    "summary": "Move from MoR to direct Stripe billing, with explicit plans for subscription import and the business's new tax and support obligations.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "paddle-to-stripe-managed-payments",
+    "source": "Paddle",
+    "destination": "Stripe Managed Payments",
+    "path": "https://migratingto.dev/guides/paddle-to-stripe-managed-payments",
+    "summary": "Change MoR provider while checking Stripe preview eligibility, supported products, subscription objects, checkout identity, and cutover constraints.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "polar-to-fastspring",
+    "source": "Polar",
+    "destination": "FastSpring",
+    "path": "https://migratingto.dev/guides/polar-to-fastspring",
+    "summary": "Move from developer-focused MoR tooling to established software commerce, translating benefits, subscriptions, customer data, and API events.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "polar-to-gumroad",
+    "source": "Polar",
+    "destination": "Gumroad",
+    "path": "https://migratingto.dev/guides/polar-to-gumroad",
+    "summary": "Move developer products to a creator storefront while replacing entitlement automation, recurring billing, webhooks, and customer self-service.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "polar-to-paddle",
+    "source": "Polar",
+    "destination": "Paddle",
+    "path": "https://migratingto.dev/guides/polar-to-paddle",
+    "summary": "Shift to a mature SaaS MoR with careful price, customer, subscription, entitlement, tax evidence, and webhook mapping.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "polar-to-stripe-billing",
+    "source": "Polar",
+    "destination": "Stripe Billing",
+    "path": "https://migratingto.dev/guides/polar-to-stripe-billing",
+    "summary": "Leave Polar's MoR structure for direct billing and replace its tax liability, benefit automation, dispute handling, and transaction support.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "polar-to-stripe-managed-payments",
+    "source": "Polar",
+    "destination": "Stripe Managed Payments",
+    "path": "https://migratingto.dev/guides/polar-to-stripe-managed-payments",
+    "summary": "Move between developer-oriented MoR systems while validating public-preview access, supported billing patterns, products, and customer-state transfer.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-billing-to-fastspring",
+    "source": "Stripe Billing",
+    "destination": "FastSpring",
+    "path": "https://migratingto.dev/guides/stripe-billing-to-fastspring",
+    "summary": "Transfer direct subscriptions into an MoR model, changing the legal seller while mapping customers, prices, tax evidence, and renewal timing.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-billing-to-gumroad",
+    "source": "Stripe Billing",
+    "destination": "Gumroad",
+    "path": "https://migratingto.dev/guides/stripe-billing-to-gumroad",
+    "summary": "Move direct billing to a creator-commerce MoR, simplifying operations while rebuilding products, buyer access, subscriptions, and reporting.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-billing-to-paddle",
+    "source": "Stripe Billing",
+    "destination": "Paddle",
+    "path": "https://migratingto.dev/guides/stripe-billing-to-paddle",
+    "summary": "Move direct SaaS subscriptions to Paddle's MoR structure with a documented import, tax-responsibility handoff, and customer communication plan.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-billing-to-polar",
+    "source": "Stripe Billing",
+    "destination": "Polar",
+    "path": "https://migratingto.dev/guides/stripe-billing-to-polar",
+    "summary": "Convert direct Stripe subscriptions to Polar's MoR model, mapping products, benefits, customers, recurring state, and indirect-tax ownership.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-billing-to-stripe-managed-payments",
+    "source": "Stripe Billing",
+    "destination": "Stripe Managed Payments",
+    "path": "https://migratingto.dev/guides/stripe-billing-to-stripe-managed-payments",
+    "summary": "Change selected Stripe transactions from direct merchant mode to preview MoR mode while preserving supported Billing objects and customer state.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-managed-payments-to-fastspring",
+    "source": "Stripe Managed Payments",
+    "destination": "FastSpring",
+    "path": "https://migratingto.dev/guides/stripe-managed-payments-to-fastspring",
+    "summary": "Leave Stripe's preview MoR mode for established software commerce, translating checkout, subscription, customer, tax, and payout records.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-managed-payments-to-gumroad",
+    "source": "Stripe Managed Payments",
+    "destination": "Gumroad",
+    "path": "https://migratingto.dev/guides/stripe-managed-payments-to-gumroad",
+    "summary": "Move from a Stripe-integrated preview MoR to creator commerce while rebuilding products, checkout, subscriptions, access, and reporting.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-managed-payments-to-paddle",
+    "source": "Stripe Managed Payments",
+    "destination": "Paddle",
+    "path": "https://migratingto.dev/guides/stripe-managed-payments-to-paddle",
+    "summary": "Move from Stripe's preview MoR to Paddle, with explicit plans for products, subscription state, customer identity, tax evidence, and events.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-managed-payments-to-polar",
+    "source": "Stripe Managed Payments",
+    "destination": "Polar",
+    "path": "https://migratingto.dev/guides/stripe-managed-payments-to-polar",
+    "summary": "Change developer-focused MoR platforms while assessing preview-only constraints, customer transfer, subscriptions, benefits, and webhook parity.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  },
+  {
+    "id": "stripe-managed-payments-to-stripe-billing",
+    "source": "Stripe Managed Payments",
+    "destination": "Stripe Billing",
+    "path": "https://migratingto.dev/guides/stripe-managed-payments-to-stripe-billing",
+    "summary": "Return Stripe transactions to direct merchant mode and explicitly take back indirect-tax, dispute, support, and transaction-compliance work.",
+    "status": "available",
+    "lastReviewed": "2026-07-27"
+  }
+]

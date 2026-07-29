@@ -1,0 +1,33 @@
+{
+  "slug": "checkout-payment-methods",
+  "title": "Choosing checkout and payment methods",
+  "description": "Balance conversion, recurring support, geography, operational cost, fraud, refunds, and implementation complexity.",
+  "dek": "More payment methods are not automatically better. The useful set is eligible, familiar, measurable, supportable, and compatible with how you bill.",
+  "category": "growth",
+  "readingTime": "9 minute read",
+  "audience": ["Product", "Growth", "Developers"],
+  "takeaways": [
+    "Choose methods by buyer location, device, transaction type, amount, currency, and recurring requirements.",
+    "Wallets can reduce typing and card-data exposure, but availability and recurring behavior vary.",
+    "Measure authorization, conversion, refund, dispute, support, and reconciliation outcomes by method."
+  ],
+  "sections": [
+    { "heading": "Start with the purchase context", "body": ["List the buyer countries, devices, currencies, average order values, recurring or one-time flows, fulfillment timing, and B2B invoice needs. A method can be popular in one market and irrelevant or unavailable in another.", "Check minimum and maximum amounts, delayed confirmation, manual capture, refunds, disputes, saved-payment support, and recurring mandates before enabling a method."] },
+    { "heading": "Hosted, embedded, or custom", "body": ["Hosted checkout usually reduces implementation and security scope while giving the provider more control over layout and domain transitions. Embedded components can preserve more visual continuity. A fully custom payment form offers control but creates a larger integration and testing surface.", "Evaluate accessibility, localization, address collection, tax fields, coupons, authentication, error recovery, analytics, and upgrade path—not only the happy-path screenshot."] },
+    { "heading": "Wallets remove work from the buyer", "body": ["Wallets can supply a tokenized payment credential and contact details without requiring the buyer to type card data. Express checkout can move payment earlier in the flow and reduce form steps.", "Use the official button, availability, and presentation rules. Avoid collecting the same address or contact information again when the wallet has already supplied what fulfillment requires."] },
+    { "heading": "Local methods have local behavior", "body": ["Bank redirects, bank debits, vouchers, real-time payments, and buy-now-pay-later products do not all confirm, refund, dispute, or recur like cards. Some support only certain currencies, countries, amounts, or future-use patterns.", "Your order system should handle pending and asynchronous outcomes. Customer communication must explain when an order is awaiting payment rather than failed."] },
+    { "heading": "Measure the whole method", "body": ["Track checkout start, method display, method selection, authentication, authorization, completed payment, later failure, refund, dispute, and support contact. Compare results by country, device, currency, amount, and customer type.", "A method that raises checkout conversion but adds high failure, refund, support, or reconciliation cost may still be valuable—but the tradeoff should be visible."] }
+  ],
+  "decisionChecklist": [
+    "List the payment methods buyers actually expect in each priority market.",
+    "Verify recurring, refund, dispute, capture, and asynchronous behavior.",
+    "Choose hosted, embedded, or custom checkout based on the operating surface you can maintain.",
+    "Test keyboard, mobile, localization, authentication, and error recovery.",
+    "Measure outcomes by method instead of enabling everything indefinitely."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "apple", "label": "Apple Pay planning guidance", "url": "https://developer.apple.com/apple-pay/planning/", "reviewedOn": "2026-07-27" },
+    { "id": "stripe-methods", "label": "Stripe dynamic payment methods", "url": "https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods", "reviewedOn": "2026-07-27" }
+  ]
+}

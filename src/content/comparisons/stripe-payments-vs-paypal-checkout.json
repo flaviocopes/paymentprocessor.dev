@@ -1,0 +1,21 @@
+{
+  "slug": "stripe-payments-vs-paypal-checkout",
+  "title": "Stripe Payments vs PayPal Checkout",
+  "providers": ["stripe-payments", "paypal-checkout"],
+  "summary": "A developer-first payment platform versus a wallet-led checkout with broad buyer familiarity; in both cases your business generally remains the seller.",
+  "recommendation": "Choose Stripe as the primary stack when APIs, payment-method breadth, and modular billing matter. Add or choose PayPal when buyer wallet preference and PayPal conversion are central. Many businesses support both rather than treating the decision as exclusive.",
+  "differences": [
+    { "area": "Primary strength", "first": "Composable payments infrastructure and developer tooling.", "second": "A familiar buyer wallet and PayPal-branded checkout.", "whyItMatters": "The right primary option depends on your buyers and required integration depth." },
+    { "area": "US public pricing", "first": "Domestic online cards start at 2.9% + $0.30.", "second": "PayPal Checkout is listed at 3.49% + $0.49, with separate card rates.", "whyItMatters": "Compare the exact payment method, not the company-level headline." },
+    { "area": "Checkout surfaces", "first": "Checkout, Elements, Payment Links, mobile SDKs, and APIs.", "second": "PayPal Checkout and Expanded Checkout with different customization and risk options.", "whyItMatters": "Implementation effort and merchant control differ." },
+    { "area": "Recurring billing", "first": "Stripe Billing is a separate priced product with extensive lifecycle APIs.", "second": "PayPal provides subscriptions and recurring-payment APIs.", "whyItMatters": "Model lifecycle requirements before selecting a subscription stack." },
+    { "area": "Merchant responsibility", "first": "Your business owns tax, disputes, and product support.", "second": "Your business remains seller; eligible PayPal protections have conditions.", "whyItMatters": "Neither standard product is a general Merchant of Record." }
+  ],
+  "scenarios": [
+    { "when": "You are building an API-driven SaaS billing stack.", "choose": "stripe-payments", "reason": "Its modular payments and Billing APIs are the stronger center of gravity." },
+    { "when": "Your audience explicitly asks for PayPal or prefers wallet balances.", "choose": "paypal-checkout", "reason": "Buyer familiarity can matter more than a small fee difference." },
+    { "when": "You serve a mixed consumer audience.", "choose": "stripe-payments", "reason": "Use Stripe as the primary card stack and evaluate PayPal as an additional method rather than forcing a false either-or choice." }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": ["https://stripe.com/pricing", "https://stripe.com/pricing/local-payment-methods", "https://www.paypal.com/us/business/paypal-business-fees", "https://www.paypal.com/us/business/accept-payments/checkout"]
+}

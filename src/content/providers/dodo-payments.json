@@ -1,0 +1,46 @@
+{
+  "slug": "dodo-payments",
+  "name": "Dodo Payments",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "growth",
+  "summary": "A developer-oriented Merchant of Record focused on SaaS and digital products, with particular attention to sellers in India and other emerging markets.",
+  "pricing": {
+    "kind": "country-channel-based",
+    "headline": "Domestic US cards and wallets start at 4% + $0.40; international and alternative-method fees vary.",
+    "percentage": 4,
+    "fixed": 0.4,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Public domestic-US card and wallet rate. International cards, PayPal, BNPL, currency conversion, and other payment methods can add fees.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Eligible digital-product businesses can apply from supported payout countries, subject to underwriting, product, and sanctions policies.",
+  "buyerCoverage": "Dodo documents selling into more than 220 regions with taxes and local availability handled by market.",
+  "products": "SaaS, software, AI products, digital downloads, courses, memberships, and other approved digital products.",
+  "features": {
+    "checkout": "Hosted checkout, payment links, embedded components, and developer APIs.",
+    "subscriptions": "Recurring billing, trials, plan changes, usage-based billing, and customer self-service.",
+    "invoicing": "Tax-aware receipts and billing records are included; confirm B2B invoice workflows for your markets.",
+    "paymentMethods": "Cards, wallets, PayPal, BNPL, and supported local methods, with availability and fees varying by market.",
+    "payouts": "Net proceeds are paid to approved seller payout accounts after taxes, fees, refunds, and risk adjustments."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Dodo acts as legal seller for supported transactions and handles applicable sales taxes." },
+    { "area": "Fraud, refunds, and chargebacks", "owner": "shared", "note": "Dodo operates the payment and dispute layer while sellers must cooperate and follow product policies." },
+    { "area": "Product delivery and customer success", "owner": "merchant", "note": "The seller remains responsible for delivering and supporting the underlying product." },
+    { "area": "Bookkeeping and business income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own company-level taxes." }
+  ],
+  "strengths": ["Public entry pricing below many 5% MoR offers", "Developer-focused APIs and billing tools", "Explicit emerging-market seller focus"],
+  "limitations": ["Younger operating history than established MoRs", "Payment-method add-ons complicate the headline rate", "Eligibility and payout coverage still require underwriting confirmation"],
+  "bestFor": ["Developer-led SaaS", "AI products and digital tools", "Sellers evaluating emerging-market support"],
+  "avoidIf": ["You require a decades-long operating history", "You need physical-goods support or guaranteed country coverage"],
+  "lastReviewed": "2026-07-28",
+  "nextReview": "2026-10-28",
+  "sources": [
+    { "id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-07-28" },
+    { "id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-07-28" },
+    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-28" }
+  ]
+}

@@ -1,0 +1,200 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import rules from "../../../data/calculator-rules.json";
+const modeledSlugs = new Set(rules.map((rule) => rule.slug));
+const unmodeled = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => !modeledSlugs.has(provider.slug));
+const namesFor = (kinds: string[]) => unmodeled.filter((provider) => kinds.includes(provider.pricing.kind)).map((provider) => provider.name).sort().join(", ");
+const quoteNames = namesFor(["negotiated"]);
+const variableNames = namesFor(["method-based"]);
+const regionalNames = namesFor(["country-method-based", "country-channel-based"]);
+---
+
+<BaseLayout title="Effective payment cost calculator — Payment Stack Guide" description="Estimate documented payment fees with visible formulas and your own operating-cost assumptions.">
+  <PageHeader
+    eyebrow="Transparent estimator"
+    title="Effective payment cost"
+    description="Compare public payment formulas, then add the operating costs only you can know. This is a model, not a quote."
+    meta={`${rules.length} public formulas · reviewed ${rules[0].reviewedOn}`}
+  />
+
+  <main
+    class="calculator-shell shell"
+    x-data="paymentCalculator()"
+    x-cloak
+  >
+    <section class="calculator-intro" aria-labelledby="calculator-principle">
+      <span class="section-number">01 / INPUTS</span>
+      <div>
+        <h2 id="calculator-principle">Price the payment. Then price the work.</h2>
+        <p>MoR and direct-payment fees do not buy the same responsibilities. Enter direct and MoR operating costs separately rather than accepting an invented estimate for tax, support, accounting, or compliance.</p>
+      </div>
+    </section>
+
+    <section class="calculator-workspace" aria-label="Payment cost calculator">
+      <form class="calculator-controls" @submit.prevent>
+        <div class="control-group">
+          <span class="control-group-label">Volume</span>
+          <label>
+            <span>Monthly charged revenue <small>USD, before refunds</small></span>
+            <input type="number" min="0" step="100" x-model.number="inputs.revenue" />
+          </label>
+          <label>
+            <span>Successful transactions</span>
+            <input type="number" min="0" step="1" x-model.number="inputs.transactions" />
+          </label>
+        </div>
+
+        <div class="control-group">
+          <span class="control-group-label">Transaction mix</span>
+          <label>
+            <span>Subscription volume <small>% of revenue</small></span>
+            <input type="number" min="0" max="100" step="1" x-model.number="inputs.subscriptionShare" />
+          </label>
+          <label>
+            <span>International-card volume <small>% of revenue</small></span>
+            <input type="number" min="0" max="100" step="1" x-model.number="inputs.internationalShare" />
+          </label>
+          <label>
+            <span>Currency-converted volume <small>% of revenue</small></span>
+            <input type="number" min="0" max="100" step="1" x-model.number="inputs.fxShare" />
+          </label>
+          <label>
+            <span>Refunded volume <small>% of charged revenue</small></span>
+            <input type="number" min="0" max="100" step="1" x-model.number="inputs.refundShare" />
+          </label>
+          <label>
+            <span>Monthly disputes</span>
+            <input type="number" min="0" step="1" x-model.number="inputs.disputes" />
+          </label>
+        </div>
+
+        <div class="control-group control-group-judgment">
+          <span class="control-group-label">Your operating assumptions</span>
+          <label>
+            <span>Direct billing / tax tool plans <small>monthly USD</small></span>
+            <input type="number" min="0" step="10" x-model.number="inputs.directPlanCost" />
+          </label>
+          <label>
+            <span>Direct-payment operations <small>tax, support, accounting, staff</small></span>
+            <input type="number" min="0" step="50" x-model.number="inputs.directOperatingCost" />
+          </label>
+          <label>
+            <span>MoR operations <small>remaining product, support, accounting work</small></span>
+            <input type="number" min="0" step="50" x-model.number="inputs.morOperatingCost" />
+          </label>
+        </div>
+
+        <button class="reset-button" type="button" @click="reset()">Reset example</button>
+      </form>
+
+      <div class="calculator-results" aria-live="polite">
+        <div class="results-toolbar">
+          <div>
+            <span class="eyebrow">Lowest modeled total first</span>
+            <p>USD per month. A lower row is not automatically the better business decision.</p>
+          </div>
+          <div class="segmented-control" aria-label="Filter results">
+            <button type="button" :class="{ active: view === 'all' }" @click="view = 'all'">All</button>
+            <button type="button" :class="{ active: view === 'merchant-of-record' }" @click="view = 'merchant-of-record'">MoR</button>
+            <button type="button" :class="{ active: view === 'direct-payments' }" @click="view = 'direct-payments'">Direct</button>
+          </div>
+        </div>
+
+        <section class="cost-compare" aria-labelledby="cost-compare-heading">
+          <div class="cost-compare-heading">
+            <div><span class="eyebrow">Side-by-side scenario</span><h2 id="cost-compare-heading">Compare two to four.</h2></div>
+            <p><strong><span x-text="selectedSlugs.length"></span> selected</strong> · remove one before adding another when you reach four.</p>
+          </div>
+          <div class="cost-compare-picker" aria-label="Choose providers for side-by-side comparison">
+            <template x-for="provider in allResults" :key="provider.slug">
+              <button type="button" :class="{ active: isSelected(provider.slug) }" :disabled="!canToggle(provider.slug)" @click="toggleComparison(provider.slug)"><span x-text="isSelected(provider.slug) ? '✓' : '+'"></span><b x-text="provider.name"></b></button>
+            </template>
+          </div>
+          <div class="cost-compare-grid" :style="`--compare-columns: ${comparisonResults.length}`">
+            <template x-for="result in comparisonResults" :key="result.slug">
+              <article class="cost-compare-card">
+                <div class="cost-compare-card-top"><span class="model-badge" :class="result.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="result.model === 'merchant-of-record' ? 'MoR' : 'Direct'"></span><button type="button" @click="toggleComparison(result.slug)" :disabled="selectedSlugs.length <= 2" aria-label="Remove provider from comparison">×</button></div>
+                <h3 x-text="result.name"></h3>
+                <strong x-text="money(result.total)"></strong>
+                <small><span x-text="percent(result.effectiveRate)"></span> effective / month</small>
+                <dl>
+                  <div><dt>Vendor fees</dt><dd x-text="money(result.paymentFees)"></dd></div>
+                  <div><dt>Your added costs</dt><dd x-text="money(result.breakdown.externalPlan + result.breakdown.operations)"></dd></div>
+                  <div><dt>International</dt><dd x-text="money(result.breakdown.international)"></dd></div>
+                  <div><dt>Subscriptions</dt><dd x-text="money(result.breakdown.subscriptions)"></dd></div>
+                </dl>
+                <a :href="`/providers/${result.slug}/`">Review assumptions →</a>
+              </article>
+            </template>
+          </div>
+        </section>
+
+        <div class="result-list">
+          <template x-for="(result, index) in results" :key="result.slug">
+            <article class="cost-result">
+              <div class="cost-result-rank" x-text="String(index + 1).padStart(2, '0')"></div>
+              <div class="cost-result-main">
+                <div class="cost-result-title">
+                  <div>
+                    <span class="model-badge" :class="result.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="result.modelLabel"></span>
+                    <h3 x-text="result.name"></h3>
+                  </div>
+                  <div class="cost-total"><button class="cost-compare-toggle" type="button" :class="{ active: isSelected(result.slug) }" :disabled="!canToggle(result.slug)" @click="toggleComparison(result.slug)" x-text="isSelected(result.slug) ? 'In comparison' : 'Compare'"></button>
+                    <strong x-text="money(result.total)"></strong>
+                    <span x-text="`${percent(result.effectiveRate)} effective`"></span>
+                  </div>
+                </div>
+
+                <dl class="cost-breakdown">
+                  <div><dt>Percentage fee</dt><dd x-text="money(result.breakdown.basePercentage)"></dd></div>
+                  <div><dt>Per transaction</dt><dd x-text="money(result.breakdown.fixed)"></dd></div>
+                  <div x-show="result.breakdown.international > 0"><dt>International</dt><dd x-text="money(result.breakdown.international)"></dd></div>
+                  <div x-show="result.breakdown.fx > 0"><dt>FX</dt><dd x-text="money(result.breakdown.fx)"></dd></div>
+                  <div x-show="result.breakdown.subscriptions > 0"><dt>Subscriptions</dt><dd x-text="money(result.breakdown.subscriptions)"></dd></div>
+                  <div x-show="result.breakdown.dispute > 0"><dt>Disputes</dt><dd x-text="money(result.breakdown.dispute)"></dd></div>
+                  <div x-show="result.breakdown.providerPlan > 0"><dt>Provider plan</dt><dd x-text="money(result.breakdown.providerPlan)"></dd></div>
+                  <div x-show="result.breakdown.externalPlan > 0"><dt>Your tool plans</dt><dd x-text="money(result.breakdown.externalPlan)"></dd></div>
+                  <div x-show="result.breakdown.operations > 0"><dt>Your operations</dt><dd x-text="money(result.breakdown.operations)"></dd></div>
+                </dl>
+
+                <details class="formula-details">
+                  <summary>Formula, confidence, and exclusions</summary>
+                  <div>
+                    <code x-text="result.capPerTransaction ? `${result.percentage}% × revenue + ${money(result.fixed)} × transactions, with ${money(result.capPerTransaction)} domestic cap + documented mix surcharges + your operating estimate` : `${result.percentage}% × revenue + ${money(result.fixed)} × transactions + documented mix surcharges + disputes + plan fees + your operating estimate`"></code>
+                    <p><strong x-text="result.confidence"></strong> · <span x-text="result.note"></span></p>
+                    <p class="refund-note">Estimated base fees attached to refunded volume: <strong x-text="money(result.breakdown.refundExposure)"></strong>. This amount is already inside the base fee total and is not added twice. Actual refund treatment varies.</p>
+                    <div class="result-links">
+                      <a :href="`/providers/${result.slug}/`">Read profile →</a>
+                      <a :href="result.source" rel="noreferrer">Pricing source ↗</a>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculator-notes" aria-labelledby="not-calculated">
+      <span class="section-number">02 / BOUNDARY</span>
+      <div>
+        <h2 id="not-calculated">Unavailable is more honest than exact.</h2>
+        <p><strong>Quote required:</strong> {quoteNames}. Their complete commercial terms depend on volume, methods, markets, risk, and product scope.</p>
+        <p><strong>Variable or regional inputs:</strong> {variableNames} publishes method and interchange-based economics. {regionalNames} publishes country- or method-specific rates that this single USD scenario cannot represent safely.</p>
+        <p>These outputs exclude sales tax or VAT collected from buyers, payout and banking costs, revenue-recognition effects, reserves, provider-specific exemptions, negotiated pricing, and approval or product-eligibility differences.</p>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline type="application/json" id="calculator-rules" set:html={JSON.stringify(rules)}></script>
+  <script>
+    import { createCalculatorState } from "../../../lib/cost-calculator.mjs";
+
+    const ruleElement = document.querySelector("#calculator-rules");
+    const calculatorRules = ruleElement ? JSON.parse(ruleElement.textContent || "[]") : [];
+    (window as any).paymentCalculator = () => createCalculatorState(calculatorRules);
+  </script>
+</BaseLayout>

@@ -1,0 +1,45 @@
+{
+  "slug": "braintree",
+  "name": "Braintree",
+  "model": "direct-payments",
+  "serviceModel": "payment-platform",
+  "legalSeller": "merchant",
+  "stage": "established",
+  "summary": "PayPal's API-oriented payment platform for cards, PayPal, wallets, vaulting, recurring billing, and enterprise checkout.",
+  "pricing": {
+    "kind": "hybrid",
+    "headline": "US standard card and wallet pricing is 2.89% + $0.29, with additional international and non-USD fees.",
+    "percentage": 2.89,
+    "fixed": 0.29,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "US standard domestic card or third-party wallet. Approval is required and regional rates differ.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Availability and onboarding are market-specific and subject to PayPal application and approval.",
+  "buyerCoverage": "Global card and PayPal acceptance depends on merchant location, currency, and enabled methods.",
+  "products": "Broad eligible ecommerce and subscription businesses subject to PayPal policies and underwriting.",
+  "features": {
+    "checkout": "Drop-in UI, hosted fields, GraphQL and SDK integrations.",
+    "subscriptions": "Vaulting and recurring billing capabilities.",
+    "invoicing": "Not primarily positioned as an invoicing suite; pair with merchant billing workflows as needed.",
+    "paymentMethods": "Cards, PayPal, Venmo where eligible, Apple Pay, Google Pay, and regional methods.",
+    "payouts": "Merchant settlement under the applicable Braintree and PayPal account terms."
+  },
+  "responsibilities": [
+    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "Braintree provides payment services; the business sells the product." },
+    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "The merchant retains tax responsibility." },
+    { "area": "Fraud and chargebacks", "owner": "shared", "note": "Optional protection tools and dispute workflows exist, with eligibility and fees." },
+    { "area": "Customer and product support", "owner": "merchant", "note": "The merchant supports fulfillment, billing questions, and products." }
+  ],
+  "strengths": ["PayPal and card acceptance in one developer platform", "Vaulting and recurring payments", "Enterprise integration options"],
+  "limitations": ["Application and approval required", "Regional availability and pricing differ", "The merchant still owns tax and support operations"],
+  "bestFor": ["Businesses needing PayPal plus cards", "Established recurring-payment products", "Teams wanting lower-level payment control"],
+  "avoidIf": ["You want instant universal self-service", "You want the provider to become legal seller"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "PayPal Braintree fees", "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees", "reviewedOn": "2026-07-27" },
+    { "id": "docs", "label": "Braintree developer documentation", "url": "https://developer.paypal.com/braintree/docs/start/overview", "reviewedOn": "2026-07-27" }
+  ]
+}

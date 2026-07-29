@@ -1,0 +1,33 @@
+{
+  "slug": "refunds-disputes-chargebacks",
+  "title": "Refunds, disputes, and chargebacks",
+  "description": "Design the policy, evidence, support, accounting, and product controls around payment reversals.",
+  "dek": "A refund is initiated by the seller. A dispute is initiated through the buyer's payment channel. Both affect cash, access, support, and reporting.",
+  "category": "operations",
+  "readingTime": "10 minute read",
+  "audience": ["Support", "Finance", "Founders"],
+  "takeaways": [
+    "Clear descriptors, receipts, cancellation flows, and responsive support prevent some disputes before evidence is needed.",
+    "Dispute deadlines are operational deadlines; evidence must be available and tied to the transaction.",
+    "An MoR can operate transaction disputes while the product company still owns product quality and customer communication."
+  ],
+  "sections": [
+    { "heading": "Refund and dispute are different paths", "body": ["A refund is a merchant- or provider-initiated return of funds under a policy or support decision. A dispute begins when the buyer challenges a transaction through an issuer, wallet, bank, or payment method. A chargeback can reverse the transaction through the card system.", "The route affects deadlines, fees, evidence, account balances, and customer access. Your internal model should not collapse every reversal into a generic refunded state."] },
+    { "heading": "Prevention starts before payment", "body": ["Use a recognizable statement descriptor, clear product and renewal terms, accurate delivery promises, visible contact details, receipts, and straightforward cancellation. Product access and fulfillment logs should connect to the same customer and transaction identifiers used by support.", "Fraud controls and authentication reduce some unauthorized transactions, but overly aggressive rules can block legitimate buyers. Review approval, decline, fraud, refund, and dispute rates together."] },
+    { "heading": "Build an evidence trail by default", "body": ["Useful evidence can include checkout acceptance, product description, terms, invoice, customer communication, login and delivery records, IP and device information where lawfully collected, cancellation state, and refund history. The relevant evidence depends on the dispute reason and payment method.", "Do not assemble the audit trail for the first time after a dispute arrives. Store durable references and generate a concise case packet from the underlying records."] },
+    { "heading": "Treat deadlines as a queue", "body": ["Route every dispute into an owned queue with received time, response deadline, reason, amount, evidence status, decision, and final outcome. Define which cases are accepted, challenged, or refunded, and who can make that decision.", "Reconcile the disputed amount and fee to the provider balance and accounting records. If a dispute is won or reversed later, record the subsequent balance movement rather than overwriting the history."] },
+    { "heading": "Know what the provider actually handles", "body": ["Direct processors provide tools, network access, and workflows, while the merchant commonly supplies evidence and bears the commercial exposure. Seller protection programs have eligibility conditions and exclusions.", "An MoR may own buyer-facing transaction support and dispute operations for covered sales. The product company still needs to answer product questions, deliver what was sold, retain relevant records, and cooperate under the contract."] }
+  ],
+  "decisionChecklist": [
+    "Publish clear refund, renewal, cancellation, and delivery terms.",
+    "Make the statement descriptor and receipt recognizable.",
+    "Store evidence references before a dispute occurs.",
+    "Assign an owner and deadline workflow for every dispute.",
+    "Reconcile reversals and fees without deleting the original transaction history."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "visa", "label": "Visa chargebacks guide", "url": "https://corporate.visa.com/en/solutions/acceptance/chargebacks.html", "reviewedOn": "2026-07-27" },
+    { "id": "paypal-terms", "label": "PayPal user agreement and reserve terms", "url": "https://www.paypal.com/us/legalhub/paypal/useragreement-full", "reviewedOn": "2026-07-27" }
+  ]
+}

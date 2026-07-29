@@ -1,0 +1,1516 @@
+[
+  {
+    "id": "paddle",
+    "name": "Paddle",
+    "providerSlugs": [
+      "paddle"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2012,
+    "foundedNote": "Christian Owens and Harrison Rose founded Paddle in 2012.",
+    "headquarters": "London, United Kingdom",
+    "leaders": [
+      {
+        "name": "Jimmy Fitzgerald",
+        "title": "Chief Executive Officer",
+        "context": "Listed by Paddle as CEO at the July 2026 review."
+      },
+      {
+        "name": "Rob Fletcher",
+        "title": "President",
+        "context": "Listed on Paddle's current leadership page."
+      }
+    ],
+    "founders": [
+      "Christian Owens",
+      "Harrison Rose"
+    ],
+    "team": {
+      "value": "Not publicly disclosed",
+      "asOf": null,
+      "note": "Paddle does not publish a current employee count on its company page."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "More than $300M in financing disclosed",
+      "details": "Paddle announced a further $25M investment in December 2025 after a $200M Series D in 2022; the company says total financing now exceeds $300M.",
+      "investors": [
+        "KKR",
+        "FTV Capital",
+        "83North",
+        "Notion Capital",
+        "Kindred Capital"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "2025–2026 company disclosures",
+      "headline": "Private-company operating metrics, not audited public accounts",
+      "metrics": [
+        {
+          "label": "Transactions processed",
+          "value": "$6B+ cumulative"
+        },
+        {
+          "label": "Customers",
+          "value": "10,000+ digital businesses"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "These are Paddle-published scale indicators. They are not a substitute for consolidated revenue, profit, cash, or balance-sheet reporting."
+    },
+    "events": [
+      {
+        "date": "2012",
+        "label": "Paddle founded in the United Kingdom."
+      },
+      {
+        "date": "2022-05",
+        "label": "Raised a $200M Series D and acquired ProfitWell in a deal valued above $200M."
+      },
+      {
+        "date": "2025-12",
+        "label": "Raised $25M and reported more than $300M in total financing."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-10-27",
+    "sources": [
+      {
+        "id": "paddle-about",
+        "label": "Paddle company and leadership page",
+        "url": "https://www.paddle.com/about",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paddle-funding-2025",
+        "label": "Paddle $25M financing announcement",
+        "url": "https://www.paddle.com/blog/paddle-raises-25m",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paddle-ten-years",
+        "label": "Paddle ten-year founder retrospective",
+        "url": "https://www.paddle.com/blog/paddle-turns-10-learnings-from-the-last-decade",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "polar",
+    "name": "Polar",
+    "providerSlugs": [
+      "polar"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, early-stage venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2023,
+    "foundedNote": "Polar began building in public in 2023 and launched its payments-focused v1 in September 2024.",
+    "headquarters": "Remote-first team across Europe",
+    "leaders": [
+      {
+        "name": "Birk Jernström",
+        "title": "Founder",
+        "context": "Founder and principal public company voice at the July 2026 review."
+      }
+    ],
+    "founders": [
+      "Birk Jernström"
+    ],
+    "team": {
+      "value": "Small remote team",
+      "asOf": "2026-07-27",
+      "note": "Polar describes itself as a small team but does not publish a precise employee count."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$10M seed round announced in 2025",
+      "details": "Accel led the seed round, with continued support from Abstract and Mischief plus operators from Vercel, Supabase, Shopify, Lovable, WorkOS, Raycast, Framer, Resend, Dub, and Nuxt.",
+      "investors": [
+        "Accel",
+        "Abstract",
+        "Mischief"
+      ]
+    },
+    "financials": {
+      "scope": "not-disclosed",
+      "period": "Latest public disclosure",
+      "headline": "Revenue and profitability are not publicly disclosed",
+      "metrics": [
+        {
+          "label": "Seed financing",
+          "value": "$10M"
+        },
+        {
+          "label": "Signups at round",
+          "value": "17,000+"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Signup, community, and growth statements from a funding announcement are traction indicators, not audited financial results."
+    },
+    "events": [
+      {
+        "date": "2023-05",
+        "label": "The founder publicly introduced the project and its open-source funding mission."
+      },
+      {
+        "date": "2024-09",
+        "label": "Polar launched v1.0 as a developer monetization platform."
+      },
+      {
+        "date": "2025-06",
+        "label": "Polar announced a $10M seed round led by Accel."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-09-27",
+    "sources": [
+      {
+        "id": "polar-seed",
+        "label": "Polar $10M seed announcement",
+        "url": "https://polar.sh/blog/polar-seed-announcement",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "polar-company",
+        "label": "Polar company and investors page",
+        "url": "https://polar.sh/company",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "polar-hello",
+        "label": "Polar founder's first public project announcement",
+        "url": "https://github.com/orgs/polarsource/discussions/391",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "fastspring",
+    "name": "FastSpring",
+    "providerSlugs": [
+      "fastspring"
+    ],
+    "entityType": "private-equity-backed",
+    "ownershipLabel": "Privately held and private-equity-backed",
+    "parentCompany": "FS Intermediate Holdings, Inc.",
+    "ticker": null,
+    "founded": 2005,
+    "foundedNote": "Dan Engel, Jason Foodman, Ken White, and Ryan Dewell founded FastSpring in 2005.",
+    "headquarters": "Santa Barbara, California, United States",
+    "leaders": [
+      {
+        "name": "David Nachman",
+        "title": "Chief Executive Officer",
+        "context": "FastSpring CEO since 2018 and current at the July 2026 review."
+      }
+    ],
+    "founders": [
+      "Dan Engel",
+      "Jason Foodman",
+      "Ken White",
+      "Ryan Dewell"
+    ],
+    "team": {
+      "value": "130+ employees",
+      "asOf": "2025-06-28",
+      "note": "FastSpring's twentieth-anniversary history reports a distributed team of more than 130."
+    },
+    "funding": {
+      "status": "private-equity-backed",
+      "headline": "Backed by Accel-KKR and LLR Partners",
+      "details": "Accel-KKR made a majority equity investment in 2018. LLR Partners joined as a strategic investor in May 2026; transaction values were not disclosed.",
+      "investors": [
+        "Accel-KKR",
+        "LLR Partners"
+      ]
+    },
+    "financials": {
+      "scope": "not-disclosed",
+      "period": "Latest public disclosure",
+      "headline": "Private-company revenue and profitability are not disclosed",
+      "metrics": [
+        {
+          "label": "Customers",
+          "value": "3,200+ companies"
+        },
+        {
+          "label": "Markets",
+          "value": "200+ regions"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Customer, market, and team figures come from FastSpring's company history; no public consolidated financial statements were identified."
+    },
+    "events": [
+      {
+        "date": "2005-06",
+        "label": "FastSpring founded with four distributed cofounders and $30,000."
+      },
+      {
+        "date": "2018-02",
+        "label": "Accel-KKR made a majority equity investment."
+      },
+      {
+        "date": "2026-05",
+        "label": "LLR Partners joined Accel-KKR as a financial backer."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-10-27",
+    "sources": [
+      {
+        "id": "fastspring-history",
+        "label": "FastSpring twentieth-anniversary company history",
+        "url": "https://fastspring.com/blog/what-it-takes-to-build-an-enduring-business-celebrating-20-years-of-fastspring/",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "fastspring-llr",
+        "label": "LLR Partners strategic investment announcement",
+        "url": "https://www.llrpartners.com/fastspring-secures-strategic-investment-from-llr-partners/",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "fastspring-akk",
+        "label": "Accel-KKR majority investment announcement",
+        "url": "https://www.accel-kkr.com/fastspring-receives-majority-equity-investment-from-accel-kkr/",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "gumroad",
+    "name": "Gumroad",
+    "providerSlugs": [
+      "gumroad"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, founder- and community-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2011,
+    "foundedNote": "Sahil Lavingia built and launched the first Gumroad version in 2011.",
+    "headquarters": "United States; distributed team",
+    "leaders": [
+      {
+        "name": "Ershad Kunnakkadan",
+        "title": "Chief Executive Officer",
+        "context": "Took over as CEO in 2026 after eight years at Gumroad."
+      },
+      {
+        "name": "Sahil Lavingia",
+        "title": "Founder and Chairman",
+        "context": "Stepped down as CEO in 2026 and remains chairman."
+      }
+    ],
+    "founders": [
+      "Sahil Lavingia"
+    ],
+    "team": {
+      "value": "14 people",
+      "asOf": "2026-03-02",
+      "note": "Gumroad's new CEO reported a 14-person team, down from 32."
+    },
+    "funding": {
+      "status": "community-backed",
+      "headline": "$5M raised from 7,331 Republic investors in 2021",
+      "details": "Before that community round, Gumroad reported $8.1M raised since 2011 from venture and angel investors. The 2021 campaign used a Crowd SAFE with a $100M valuation cap.",
+      "investors": [
+        "7,331 community investors",
+        "Kleiner Perkins",
+        "First Round Capital",
+        "SV Angel",
+        "Max Levchin",
+        "Naval Ravikant"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "2026 company update",
+      "headline": "Current detailed financial statements remain in public meeting video",
+      "metrics": [
+        {
+          "label": "Creator earnings",
+          "value": "$1B+ cumulative"
+        },
+        {
+          "label": "Team",
+          "value": "14 people"
+        },
+        {
+          "label": "Latest written revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Gumroad references financials in its annual meeting, but the written update does not publish a current revenue or profit figure."
+    },
+    "events": [
+      {
+        "date": "2011",
+        "label": "Sahil Lavingia launched Gumroad as a weekend project."
+      },
+      {
+        "date": "2021-04",
+        "label": "Raised $5M from 7,331 investors through Republic."
+      },
+      {
+        "date": "2025-01",
+        "label": "Gumroad became Merchant of Record for creator sales."
+      },
+      {
+        "date": "2026-02",
+        "label": "Ershad Kunnakkadan became CEO; Sahil Lavingia moved to chairman."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-09-27",
+    "sources": [
+      {
+        "id": "gumroad-2026",
+        "label": "Gumroad 2026 CEO and company update",
+        "url": "https://gumroad.com/blog/p/what-we-shipped-what-s-next-and-our-2026-annual-meeting",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "gumroad-history",
+        "label": "Gumroad company origin story",
+        "url": "https://gumroad.com/blog/p/a-walk-down-gumroad-how-it-started",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "gumroad-republic",
+        "label": "Gumroad Republic crowdfunding record",
+        "url": "https://republic.com/gumroad-march-2021",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "lemon-squeezy",
+    "name": "Lemon Squeezy",
+    "providerSlugs": [
+      "lemon-squeezy"
+    ],
+    "entityType": "subsidiary",
+    "ownershipLabel": "Acquired product company inside privately held Stripe",
+    "parentCompany": "Stripe, Inc.",
+    "ticker": null,
+    "founded": 2020,
+    "foundedNote": "The founders started Lemon Squeezy in 2020 and launched publicly in 2021.",
+    "headquarters": "United States; part of Stripe's global organization",
+    "leaders": [
+      {
+        "name": "JR Farr",
+        "title": "Cofounder and CEO at acquisition",
+        "context": "Led Lemon Squeezy when Stripe acquired it in July 2024; current standalone leadership is not separately published."
+      },
+      {
+        "name": "Patrick Collison",
+        "title": "Stripe Cofounder and CEO",
+        "context": "Leads parent company Stripe."
+      }
+    ],
+    "founders": [
+      "JR Farr",
+      "Orman Clark"
+    ],
+    "team": {
+      "value": "Not separately disclosed",
+      "asOf": null,
+      "note": "The Lemon Squeezy team joined Stripe in 2024; Stripe does not publish product-level headcount."
+    },
+    "funding": {
+      "status": "acquired",
+      "headline": "Acquired by Stripe in July 2024",
+      "details": "Lemon Squeezy said it received acquisition offers and Series A term sheets but chose Stripe. Acquisition terms were not disclosed.",
+      "investors": []
+    },
+    "financials": {
+      "scope": "product",
+      "period": "Latest standalone disclosures",
+      "headline": "No product-level financial reporting after the Stripe acquisition",
+      "metrics": [
+        {
+          "label": "Early milestone",
+          "value": "$1M ARR nine months after launch"
+        },
+        {
+          "label": "Acquisition price",
+          "value": "Not disclosed"
+        },
+        {
+          "label": "Current product revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Stripe's company metrics do not reveal Lemon Squeezy revenue, profitability, reserves, or product-team investment."
+    },
+    "events": [
+      {
+        "date": "2020",
+        "label": "The founders began building Lemon Squeezy."
+      },
+      {
+        "date": "2021",
+        "label": "Lemon Squeezy launched publicly."
+      },
+      {
+        "date": "2024-07",
+        "label": "Stripe acquired Lemon Squeezy for an undisclosed amount."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-09-27",
+    "sources": [
+      {
+        "id": "lemon-acquisition",
+        "label": "Lemon Squeezy Stripe acquisition announcement",
+        "url": "https://www.lemonsqueezy.com/blog/stripe-acquires-lemon-squeezy",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "lemon-launch",
+        "label": "Lemon Squeezy launch announcement",
+        "url": "https://www.lemonsqueezy.com/blog/easy-peasy-lemon-squeezy",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "stripe-company",
+        "label": "Stripe company and leadership information",
+        "url": "https://stripe.com/newsroom/information",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "providerSlugs": [
+      "stripe-payments",
+      "stripe-managed-payments"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2010,
+    "foundedNote": "Brothers Patrick and John Collison cofounded Stripe in 2010.",
+    "headquarters": "Dual headquarters in San Francisco and Dublin",
+    "leaders": [
+      {
+        "name": "Patrick Collison",
+        "title": "Cofounder and Chief Executive Officer",
+        "context": "Current CEO at the July 2026 review."
+      },
+      {
+        "name": "John Collison",
+        "title": "Cofounder and President",
+        "context": "Current president at the July 2026 review."
+      }
+    ],
+    "founders": [
+      "Patrick Collison",
+      "John Collison"
+    ],
+    "team": {
+      "value": "Not publicly disclosed",
+      "asOf": null,
+      "note": "Stripe's newsroom does not publish a current employee count."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$159B valuation in a 2026 employee tender offer",
+      "details": "The February 2026 tender provided employee liquidity and included Thrive Capital, Coatue, Andreessen Horowitz, and others. It was not described as a conventional primary funding round.",
+      "investors": [
+        "Thrive Capital",
+        "Coatue",
+        "Andreessen Horowitz",
+        "Sequoia Capital"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "Calendar 2025",
+      "headline": "Stripe says it remained robustly profitable in 2025",
+      "metrics": [
+        {
+          "label": "Business volume",
+          "value": "$1.9T"
+        },
+        {
+          "label": "Year-over-year volume growth",
+          "value": "34%"
+        },
+        {
+          "label": "Revenue Suite run rate",
+          "value": "$1B expected in 2026"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Business volume is the value processed by businesses using Stripe, not Stripe revenue. Stripe does not publish audited consolidated revenue."
+    },
+    "events": [
+      {
+        "date": "2010",
+        "label": "Patrick and John Collison cofounded Stripe."
+      },
+      {
+        "date": "2024-07",
+        "label": "Stripe acquired Merchant of Record provider Lemon Squeezy."
+      },
+      {
+        "date": "2026-02",
+        "label": "Stripe announced a $159B employee tender valuation and 2025 operating metrics."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-09-27",
+    "sources": [
+      {
+        "id": "stripe-2025",
+        "label": "Stripe 2025 annual update and tender announcement",
+        "url": "https://stripe.com/newsroom/news/stripe-2025-update",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "stripe-info",
+        "label": "Stripe company and leadership information",
+        "url": "https://stripe.com/newsroom/information",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "paypal",
+    "name": "PayPal",
+    "providerSlugs": [
+      "paypal-checkout"
+    ],
+    "entityType": "public",
+    "ownershipLabel": "Public company",
+    "parentCompany": null,
+    "ticker": "NASDAQ: PYPL",
+    "founded": 1998,
+    "foundedNote": "The company that became PayPal was founded in 1998 and adopted the PayPal name in 2001.",
+    "headquarters": "San Jose, California, United States",
+    "leaders": [
+      {
+        "name": "Enrique Lores",
+        "title": "President and Chief Executive Officer",
+        "context": "Appointed effective March 1, 2026."
+      },
+      {
+        "name": "David W. Dorman",
+        "title": "Independent Board Chair",
+        "context": "Appointed board chair in February 2026."
+      }
+    ],
+    "founders": [
+      "Max Levchin",
+      "Peter Thiel",
+      "Luke Nosek",
+      "Ken Howery",
+      "Yu Pan",
+      "Elon Musk"
+    ],
+    "team": {
+      "value": "Parent-company workforce",
+      "asOf": "2025-12-31",
+      "note": "PayPal reports employees at group level; it does not disclose a PayPal Checkout product-team count."
+    },
+    "funding": {
+      "status": "public-company",
+      "headline": "Publicly traded on Nasdaq",
+      "details": "PayPal became an independent public company again after its 2015 separation from eBay. Current capital comes from public markets and operating cash flow rather than VC rounds.",
+      "investors": []
+    },
+    "financials": {
+      "scope": "company",
+      "period": "Fiscal year 2025",
+      "headline": "$33.2B net revenue and $1.79T total payment volume",
+      "metrics": [
+        {
+          "label": "Net revenue",
+          "value": "$33.2B"
+        },
+        {
+          "label": "Total payment volume",
+          "value": "$1.79T"
+        },
+        {
+          "label": "GAAP operating income",
+          "value": "$6.1B"
+        },
+        {
+          "label": "Active accounts",
+          "value": "439M"
+        }
+      ],
+      "note": "These are PayPal Holdings consolidated results. They are not revenue, profit, or volume figures for PayPal Checkout alone."
+    },
+    "events": [
+      {
+        "date": "1998",
+        "label": "The company that became PayPal was founded."
+      },
+      {
+        "date": "2015-07",
+        "label": "PayPal separated from eBay and began trading independently."
+      },
+      {
+        "date": "2026-03",
+        "label": "Enrique Lores became president and CEO."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-08-27",
+    "sources": [
+      {
+        "id": "paypal-ceo",
+        "label": "PayPal Enrique Lores CEO appointment",
+        "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paypal-2025",
+        "label": "PayPal 2025 earnings release filed with the SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paypal-10k",
+        "label": "PayPal 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000024/pypl-20251231.htm",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "braintree",
+    "name": "Braintree",
+    "providerSlugs": [
+      "braintree"
+    ],
+    "entityType": "subsidiary",
+    "ownershipLabel": "PayPal-owned payment platform",
+    "parentCompany": "PayPal Holdings, Inc.",
+    "ticker": "NASDAQ: PYPL",
+    "founded": 2007,
+    "foundedNote": "Bryan Johnson founded Braintree in Chicago in 2007.",
+    "headquarters": "Part of PayPal, headquartered in San Jose, California",
+    "leaders": [
+      {
+        "name": "Enrique Lores",
+        "title": "PayPal President and Chief Executive Officer",
+        "context": "Leads Braintree's parent company; Braintree does not publish a standalone CEO."
+      }
+    ],
+    "founders": [
+      "Bryan Johnson"
+    ],
+    "team": {
+      "value": "Not separately disclosed",
+      "asOf": null,
+      "note": "PayPal does not publish Braintree product-level headcount."
+    },
+    "funding": {
+      "status": "acquired",
+      "headline": "Acquired for approximately $800M in 2013",
+      "details": "eBay acquired Braintree for PayPal in December 2013. Braintree now operates as part of PayPal Holdings.",
+      "investors": []
+    },
+    "financials": {
+      "scope": "parent-company",
+      "period": "PayPal fiscal year 2025",
+      "headline": "Braintree financials are included in PayPal's consolidated reporting",
+      "metrics": [
+        {
+          "label": "PayPal net revenue",
+          "value": "$33.2B"
+        },
+        {
+          "label": "PayPal total payment volume",
+          "value": "$1.79T"
+        },
+        {
+          "label": "Braintree revenue",
+          "value": "Not separately disclosed"
+        }
+      ],
+      "note": "PayPal's consolidated totals cover its full portfolio. They cannot be used as Braintree product-level performance."
+    },
+    "events": [
+      {
+        "date": "2007",
+        "label": "Braintree founded in Chicago."
+      },
+      {
+        "date": "2012",
+        "label": "Braintree acquired consumer payments company Venmo."
+      },
+      {
+        "date": "2013-12",
+        "label": "eBay completed the Braintree acquisition for PayPal for approximately $800M."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-08-27",
+    "sources": [
+      {
+        "id": "braintree-acquisition",
+        "label": "eBay Braintree acquisition completion",
+        "url": "https://investors.ebayinc.com/investor-news/press-release-details/2013/EBay-Inc-Completes-Acquisition-of-Global-Payments-Innovator-Braintree/default.aspx",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paypal-ceo",
+        "label": "PayPal 2026 CEO appointment",
+        "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "paypal-2025",
+        "label": "PayPal 2025 earnings release filed with the SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "adyen",
+    "name": "Adyen",
+    "providerSlugs": [
+      "adyen"
+    ],
+    "entityType": "public",
+    "ownershipLabel": "Public company",
+    "parentCompany": null,
+    "ticker": "AMS: ADYEN",
+    "founded": 2006,
+    "foundedNote": "Pieter van der Does and Arnout Schuijff cofounded Adyen in 2006.",
+    "headquarters": "Amsterdam, Netherlands",
+    "leaders": [
+      {
+        "name": "Pieter van der Does",
+        "title": "Cofounder and Co-Chief Executive Officer",
+        "context": "Current co-CEO at the July 2026 review."
+      },
+      {
+        "name": "Ingo Uytdehaage",
+        "title": "Co-Chief Executive Officer",
+        "context": "Current co-CEO at the July 2026 review."
+      }
+    ],
+    "founders": [
+      "Pieter van der Does",
+      "Arnout Schuijff"
+    ],
+    "team": {
+      "value": "Global organization across 28 cities",
+      "asOf": "2026-07-27",
+      "note": "Adyen publishes office locations; this profile avoids turning a historical employee count into a current one."
+    },
+    "funding": {
+      "status": "public-company",
+      "headline": "Listed on Euronext Amsterdam since 2018",
+      "details": "Adyen completed its public listing in 2018 and finances growth through operations and public capital markets rather than new VC rounds.",
+      "investors": []
+    },
+    "financials": {
+      "scope": "company",
+      "period": "Fiscal year 2025",
+      "headline": "€2.36B net revenue and €1.25B EBITDA",
+      "metrics": [
+        {
+          "label": "Net revenue",
+          "value": "€2.36B"
+        },
+        {
+          "label": "Processed volume",
+          "value": "€1.39T"
+        },
+        {
+          "label": "EBITDA",
+          "value": "€1.25B"
+        },
+        {
+          "label": "EBITDA margin",
+          "value": "53%"
+        }
+      ],
+      "note": "Adyen labels net revenue, EBITDA, and free-cash-flow conversion as non-IFRS measures and explains them in its financial statements."
+    },
+    "events": [
+      {
+        "date": "2006",
+        "label": "Adyen founded in Amsterdam."
+      },
+      {
+        "date": "2018-06",
+        "label": "Adyen listed shares on Euronext Amsterdam."
+      },
+      {
+        "date": "2026-03",
+        "label": "Adyen published its 2025 annual report."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-08-27",
+    "sources": [
+      {
+        "id": "adyen-2025",
+        "label": "Adyen H2 and full-year 2025 results",
+        "url": "https://www.adyen.com/press-and-media/adyen-publishes-h2-2025-financial-results-3pgu2",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "adyen-report",
+        "label": "Adyen 2025 annual report announcement",
+        "url": "https://www.adyen.com/press-and-media/adyen-publishes-2025-annual-report",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "adyen-listing",
+        "label": "Adyen listing and company history announcement",
+        "url": "https://www.adyen.com/press-and-media/adyen-announces-intention-to-launch-an-offering-and-listing-of-its-shares-on-euronext-amsterdam/",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "mollie",
+    "name": "Mollie",
+    "providerSlugs": [
+      "mollie"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, venture- and growth-equity-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2004,
+    "foundedNote": "Adriaan Mol founded Mollie in Amsterdam in 2004.",
+    "headquarters": "Amsterdam, Netherlands",
+    "leaders": [
+      {
+        "name": "Koen Köppen",
+        "title": "Chief Executive Officer",
+        "context": "Current CEO at the July 2026 review."
+      },
+      {
+        "name": "Vincent Toolan",
+        "title": "Chief Financial Officer",
+        "context": "Spoke for Mollie's 2025 financial results."
+      }
+    ],
+    "founders": [
+      "Adriaan Mol"
+    ],
+    "team": {
+      "value": "About 1,000 people",
+      "asOf": "2026-07-27",
+      "note": "Mollie reports a 1,000-strong team from more than 50 nationalities."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$940M+ total funding disclosed after the 2021 Series C",
+      "details": "A Blackstone Growth-led $800M Series C took total capital raised above $940M and valued Mollie at $6.5B at the time.",
+      "investors": [
+        "Blackstone Growth",
+        "EQT Growth",
+        "General Atlantic",
+        "HMI Capital",
+        "Alkeon Capital",
+        "TCV"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "Fiscal year 2025",
+      "headline": "€147M net revenue before interest, up 29%",
+      "metrics": [
+        {
+          "label": "Net revenue before interest",
+          "value": "€147M"
+        },
+        {
+          "label": "Year-over-year growth",
+          "value": "29%"
+        },
+        {
+          "label": "Operating cash flow",
+          "value": "Positive"
+        },
+        {
+          "label": "Debt",
+          "value": "None reported"
+        }
+      ],
+      "note": "Mollie's company announcement gives selected results, not a complete public-company-style income statement, balance sheet, and cash-flow statement."
+    },
+    "events": [
+      {
+        "date": "2004",
+        "label": "Mollie founded in Amsterdam."
+      },
+      {
+        "date": "2021-06",
+        "label": "Raised an $800M Series C led by Blackstone Growth."
+      },
+      {
+        "date": "2026-05",
+        "label": "Published selected 2025 financial results and announced an agreement to acquire GoCardless."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-09-27",
+    "sources": [
+      {
+        "id": "mollie-about",
+        "label": "Mollie company and team page",
+        "url": "https://www.mollie.com/about",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "mollie-2025",
+        "label": "Mollie 2025 financial results",
+        "url": "https://www.mollie.com/news/2025-net-revenue-growth",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "mollie-series-c",
+        "label": "Mollie Series C announcement",
+        "url": "https://www.mollie.com/news/mollie-series-c",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "block",
+    "name": "Block / Square",
+    "providerSlugs": [
+      "square"
+    ],
+    "entityType": "public",
+    "ownershipLabel": "Square is a business inside public company Block, Inc.",
+    "parentCompany": "Block, Inc.",
+    "ticker": "NYSE: XYZ",
+    "founded": 2009,
+    "foundedNote": "Jack Dorsey and Jim McKelvey cofounded Square in 2009; the corporate parent became Block in 2021.",
+    "headquarters": "Oakland, California, United States; distributed-work model",
+    "leaders": [
+      {
+        "name": "Jack Dorsey",
+        "title": "Block Head, Chair, and Cofounder",
+        "context": "Leads Block at the July 2026 review."
+      },
+      {
+        "name": "Amrita Ahuja",
+        "title": "Foundational Lead",
+        "context": "Oversees finance, legal, and people functions at Block."
+      }
+    ],
+    "founders": [
+      "Jack Dorsey",
+      "Jim McKelvey"
+    ],
+    "team": {
+      "value": "Parent-company workforce",
+      "asOf": "2025-12-31",
+      "note": "Block reports at group level and does not publish a current Square product-team count."
+    },
+    "funding": {
+      "status": "public-company",
+      "headline": "Publicly traded as Block, Inc. under NYSE: XYZ",
+      "details": "Square went public in 2015. The parent changed its name to Block in 2021 and its ticker to XYZ in 2025.",
+      "investors": []
+    },
+    "financials": {
+      "scope": "product",
+      "period": "Fiscal year 2025",
+      "headline": "Square segment generated $3.94B gross profit",
+      "metrics": [
+        {
+          "label": "Square segment revenue",
+          "value": "$8.45B"
+        },
+        {
+          "label": "Square segment gross profit",
+          "value": "$3.94B"
+        },
+        {
+          "label": "Square gross-profit growth",
+          "value": "9%"
+        },
+        {
+          "label": "Block total gross profit",
+          "value": "$10.36B"
+        }
+      ],
+      "note": "Block reports a Square segment, making these figures more relevant than parent totals, but the segment contains more than online payment processing."
+    },
+    "events": [
+      {
+        "date": "2009",
+        "label": "Square founded by Jack Dorsey and Jim McKelvey."
+      },
+      {
+        "date": "2015-11",
+        "label": "Square completed its initial public offering."
+      },
+      {
+        "date": "2021-12",
+        "label": "The corporate parent changed its name from Square to Block."
+      },
+      {
+        "date": "2025-01",
+        "label": "Block changed its NYSE ticker from SQ to XYZ."
+      }
+    ],
+    "lastReviewed": "2026-07-27",
+    "nextReview": "2026-08-27",
+    "sources": [
+      {
+        "id": "block-10k",
+        "label": "Block 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828026012254/xyz-20251231.htm",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "block-leadership",
+        "label": "Block executive leadership",
+        "url": "https://investors.block.xyz/governance/leadership/default.aspx",
+        "reviewedOn": "2026-07-27"
+      },
+      {
+        "id": "block-name",
+        "label": "Square corporate name change to Block",
+        "url": "https://block.xyz/inside/press-release-block",
+        "reviewedOn": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": "dodo-payments",
+    "name": "Dodo Payments",
+    "providerSlugs": [
+      "dodo-payments"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, early-stage venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2023,
+    "foundedNote": "Rishabh Goel and Ayush Agarwal began building Dodo Payments before announcing its pre-seed financing in 2025.",
+    "headquarters": "United States and India; distributed team",
+    "leaders": [
+      {
+        "name": "Rishabh Goel",
+        "title": "Cofounder and Chief Executive Officer",
+        "context": "Author of the company's funding announcement and current public company voice."
+      },
+      {
+        "name": "Ayush Agarwal",
+        "title": "Cofounder",
+        "context": "Named by the company as cofounder in its origin and funding announcement."
+      }
+    ],
+    "founders": [
+      "Rishabh Goel",
+      "Ayush Agarwal"
+    ],
+    "team": {
+      "value": "Not publicly disclosed",
+      "asOf": null,
+      "note": "Dodo Payments does not publish a current verified employee count."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$1.1M pre-seed round announced in February 2025",
+      "details": "The company said Antler, 9Unicorns, and Venture Catalysts led or participated alongside fintech and technology angel investors.",
+      "investors": [
+        "Antler",
+        "9Unicorns",
+        "Venture Catalysts"
+      ]
+    },
+    "financials": {
+      "scope": "not-disclosed",
+      "period": "Latest public disclosure",
+      "headline": "Revenue and profitability are not publicly disclosed",
+      "metrics": [
+        {
+          "label": "Pre-seed financing",
+          "value": "$1.1M"
+        },
+        {
+          "label": "Buyer regions claimed",
+          "value": "220+"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Funding and product-coverage claims are not substitutes for audited revenue, profit, cash, or reserve disclosures."
+    },
+    "events": [
+      {
+        "date": "2023",
+        "label": "Founders began developing the cross-border Merchant of Record platform."
+      },
+      {
+        "date": "2025-02",
+        "label": "Announced a $1.1M pre-seed financing round."
+      }
+    ],
+    "lastReviewed": "2026-07-28",
+    "nextReview": "2026-09-28",
+    "sources": [
+      {
+        "id": "dodo-funding",
+        "label": "Dodo Payments pre-seed announcement",
+        "url": "https://dodopayments.com/blogs/dodo-payments-raises-1-1m-to-simplify-global-payments",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "dodo-company",
+        "label": "Dodo Payments company website",
+        "url": "https://dodopayments.com/",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "dodo-docs",
+        "label": "Dodo Payments product documentation",
+        "url": "https://docs.dodopayments.com/introduction",
+        "reviewedOn": "2026-07-28"
+      }
+    ]
+  },
+  {
+    "id": "creem",
+    "name": "Creem",
+    "providerSlugs": [
+      "creem"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, early-stage and Antler-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2023,
+    "foundedNote": "Gabriel Ferraz and Alec Erasmus founded Creem as a payment and commerce platform for digital builders.",
+    "headquarters": "Estonia",
+    "leaders": [
+      {
+        "name": "Gabriel Ferraz",
+        "title": "Cofounder and Chief Executive Officer",
+        "context": "Listed on Creem's current company page."
+      },
+      {
+        "name": "Alec Erasmus",
+        "title": "Cofounder and Chief Technology Officer",
+        "context": "Listed on Creem's current company page."
+      }
+    ],
+    "founders": [
+      "Gabriel Ferraz",
+      "Alec Erasmus"
+    ],
+    "team": {
+      "value": "Small startup team",
+      "asOf": "2026-07-28",
+      "note": "Creem publishes team biographies but not a complete verified headcount."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "Antler-backed; financing amount not publicly disclosed",
+      "details": "Creem identifies itself as Antler-backed but does not publish a complete financing history, round size, or valuation on its company page.",
+      "investors": [
+        "Antler"
+      ]
+    },
+    "financials": {
+      "scope": "not-disclosed",
+      "period": "Latest public disclosure",
+      "headline": "Revenue, profitability, and payment volume are not disclosed",
+      "metrics": [
+        {
+          "label": "Public standard fee",
+          "value": "3.9% + $0.40"
+        },
+        {
+          "label": "Published valuation",
+          "value": "Not disclosed"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "The public fee is a product term, not a company financial metric or evidence of reserve strength."
+    },
+    "events": [
+      {
+        "date": "2023",
+        "label": "Creem was founded in Estonia for digital-product and SaaS sellers."
+      },
+      {
+        "date": "2025",
+        "label": "The company expanded its Merchant of Record billing and growth feature set."
+      }
+    ],
+    "lastReviewed": "2026-07-28",
+    "nextReview": "2026-09-28",
+    "sources": [
+      {
+        "id": "creem-about",
+        "label": "Creem company and team",
+        "url": "https://www.creem.io/about",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "creem-docs",
+        "label": "Creem Merchant of Record documentation",
+        "url": "https://docs.creem.io/merchant-of-record/what-is",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "creem-pricing",
+        "label": "Creem fees and payouts",
+        "url": "https://docs.creem.io/merchant-of-record/finance/payouts",
+        "reviewedOn": "2026-07-28"
+      }
+    ]
+  },
+  {
+    "id": "airwallex",
+    "name": "Airwallex",
+    "providerSlugs": [
+      "airwallex"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, late-stage venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2015,
+    "foundedNote": "Jack Zhang, Lucy Liu, Xijing Dai, and Max Li founded Airwallex in Melbourne in 2015 after encountering cross-border payment friction.",
+    "headquarters": "Singapore; founded in Melbourne, Australia",
+    "leaders": [
+      {
+        "name": "Jack Zhang",
+        "title": "Cofounder and Chief Executive Officer",
+        "context": "Leads Airwallex at the July 2026 review."
+      },
+      {
+        "name": "Lucy Liu",
+        "title": "Cofounder and President",
+        "context": "Cofounder and senior operating leader of the global company."
+      }
+    ],
+    "founders": [
+      "Jack Zhang",
+      "Lucy Liu",
+      "Xijing Dai",
+      "Max Li"
+    ],
+    "team": {
+      "value": "2,300 people",
+      "asOf": "2026-07-28",
+      "note": "Airwallex publishes a current rounded workforce count on its company page."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$1.8B total funding and $11B valuation claimed",
+      "details": "The company publishes total funding and valuation figures alongside investors including Tencent, Sequoia, Hillhouse, DST Global, and Square Peg.",
+      "investors": [
+        "Tencent",
+        "Sequoia",
+        "Hillhouse",
+        "DST Global",
+        "Square Peg"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "2026 company disclosure",
+      "headline": "Private-company scale metrics without audited public accounts",
+      "metrics": [
+        {
+          "label": "Global payments processed",
+          "value": "$287B+ cumulative"
+        },
+        {
+          "label": "Funding",
+          "value": "$1.8B"
+        },
+        {
+          "label": "Valuation",
+          "value": "$11B"
+        },
+        {
+          "label": "Public revenue",
+          "value": "Not disclosed"
+        }
+      ],
+      "note": "Company-published volume, funding, and valuation do not disclose current revenue, profit, cash burn, or product-level economics."
+    },
+    "events": [
+      {
+        "date": "2015",
+        "label": "Airwallex was founded in Melbourne to improve cross-border business payments."
+      },
+      {
+        "date": "2018",
+        "label": "Raised an $80M Series B and reported a $450M valuation."
+      },
+      {
+        "date": "2026",
+        "label": "Reported $1.8B total funding, an $11B valuation, and 2,300 employees."
+      }
+    ],
+    "lastReviewed": "2026-07-28",
+    "nextReview": "2026-09-28",
+    "sources": [
+      {
+        "id": "airwallex-company",
+        "label": "Airwallex company, scale, and funding",
+        "url": "https://www.airwallex.com/en-us/who-we-are",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "airwallex-pricing",
+        "label": "Airwallex US pricing",
+        "url": "https://www.airwallex.com/en-us/pricing",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "airwallex-series-b",
+        "label": "Airwallex Series B announcement",
+        "url": "https://www.airwallex.com/global/newsroom/series-b-closing-80m",
+        "reviewedOn": "2026-07-28"
+      }
+    ]
+  },
+  {
+    "id": "gocardless",
+    "name": "GoCardless",
+    "providerSlugs": [
+      "gocardless"
+    ],
+    "entityType": "private",
+    "ownershipLabel": "Privately held, late-stage venture-backed company",
+    "parentCompany": null,
+    "ticker": null,
+    "founded": 2011,
+    "foundedNote": "Hiroki Takeuchi, Tom Blomfield, and Matt Robinson founded GoCardless in London in 2011.",
+    "headquarters": "London, United Kingdom",
+    "leaders": [
+      {
+        "name": "Hiroki Takeuchi",
+        "title": "Cofounder and Chief Executive Officer",
+        "context": "Founder and current CEO at the July 2026 review."
+      }
+    ],
+    "founders": [
+      "Hiroki Takeuchi",
+      "Tom Blomfield",
+      "Matt Robinson"
+    ],
+    "team": {
+      "value": "Not currently disclosed",
+      "asOf": null,
+      "note": "GoCardless publishes locations and leadership but not a current verified global headcount."
+    },
+    "funding": {
+      "status": "venture-backed",
+      "headline": "$312M Series G announced at a $2.1B valuation",
+      "details": "Permira's growth fund led the 2022 round, with BlackRock Private Equity Partners; prior backers include Accel, Balderton, Passion Capital, GV, Adams Street, and Salesforce Ventures.",
+      "investors": [
+        "Permira",
+        "BlackRock Private Equity Partners",
+        "Accel",
+        "Balderton Capital",
+        "GV",
+        "Salesforce Ventures"
+      ]
+    },
+    "financials": {
+      "scope": "company",
+      "period": "Latest company operating disclosure",
+      "headline": "Private-company revenue amount is not fully disclosed",
+      "metrics": [
+        {
+          "label": "Businesses",
+          "value": "100,000+"
+        },
+        {
+          "label": "Annual payments",
+          "value": "$35B+"
+        },
+        {
+          "label": "Series G",
+          "value": "$312M"
+        },
+        {
+          "label": "Valuation at round",
+          "value": "$2.1B"
+        }
+      ],
+      "note": "Customer, payment-volume, and fundraising figures do not disclose current profitability, cash flow, or product-level reserves."
+    },
+    "events": [
+      {
+        "date": "2011",
+        "label": "GoCardless was founded in London for accessible Direct Debit collection."
+      },
+      {
+        "date": "2022-02",
+        "label": "Raised a $312M Series G at a reported $2.1B valuation."
+      },
+      {
+        "date": "2022-07",
+        "label": "Acquired Nordigen to add open-banking account data."
+      }
+    ],
+    "lastReviewed": "2026-07-28",
+    "nextReview": "2026-09-28",
+    "sources": [
+      {
+        "id": "gocardless-about",
+        "label": "GoCardless company and network",
+        "url": "https://gocardless.com/about",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "gocardless-funding",
+        "label": "GoCardless $312M Series G announcement",
+        "url": "https://gocardless.com/blog/gocardless-raises-312m-series-g",
+        "reviewedOn": "2026-07-28"
+      },
+      {
+        "id": "gocardless-press",
+        "label": "GoCardless press and operating figures",
+        "url": "https://gocardless.com/en-us/about/press/",
+        "reviewedOn": "2026-07-28"
+      }
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "slug": "paddle-vs-polar",
+  "title": "Paddle vs Polar",
+  "providers": ["paddle", "polar"],
+  "summary": "Two true Merchants of Record for software, with different operating histories, pricing structures, and developer-product emphasis.",
+  "recommendation": "Start with Paddle when mature SaaS operations and enterprise support matter most. Start with Polar when transparent tier choices, developer tooling, usage billing, and built-in benefits better match the product.",
+  "differences": [
+    { "area": "Public pricing", "first": "5% + $0.50 pay-as-you-go, with custom pricing for larger businesses.", "second": "5% + $0.50 Starter plus paid monthly plans that reduce the variable rate.", "whyItMatters": "Polar exposes self-serve breakpoints; Paddle moves larger sellers toward negotiated terms." },
+    { "area": "Operating profile", "first": "Long-established software and SaaS commerce provider.", "second": "Newer developer-focused platform with an open-source product.", "whyItMatters": "Risk tolerance and procurement expectations can outweigh individual features." },
+    { "area": "Product model", "first": "Strong subscription SaaS lifecycle and revenue-recovery tooling.", "second": "Strong developer products, usage and seat billing, and benefit delivery.", "whyItMatters": "Choose the platform whose native model resembles your catalog and entitlements." },
+    { "area": "Coverage wording", "first": "Documents sales across more than 200 countries and territories.", "second": "Documents global payments with a separate seller-payout country list.", "whyItMatters": "Buyer reach and seller eligibility are separate questions." },
+    { "area": "Migration posture", "first": "Offers sales-assisted and custom migration services.", "second": "Publishes developer migration documentation and APIs.", "whyItMatters": "Large subscriber migrations usually require written provider commitments, regardless of tooling." }
+  ],
+  "scenarios": [
+    { "when": "You run established subscription SaaS and need a mature operating partner.", "choose": "paddle", "reason": "Paddle's product and support model is oriented around scaled SaaS billing operations." },
+    { "when": "You sell developer tooling with usage, seats, or entitlement benefits.", "choose": "polar", "reason": "Polar makes these models unusually central to the product." },
+    { "when": "Your decision is mainly cost at a known monthly volume.", "choose": "polar", "reason": "Its published plan ladder makes self-serve breakpoints easier to model; still include additional fees." }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": ["https://www.paddle.com/pricing", "https://developer.paddle.com/concepts/sell/supported-countries-locales/", "https://polar.sh/resources/pricing", "https://polar.sh/docs/merchant-of-record/supported-countries"]
+}

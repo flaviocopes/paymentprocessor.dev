@@ -1,0 +1,34 @@
+{
+  "slug": "pci-sca-payment-security",
+  "title": "Payment security, PCI DSS, and authentication",
+  "description": "Understand outsourced checkout scope, card-data exposure, script security, strong customer authentication, fraud controls, and operational ownership.",
+  "dek": "Using a provider can reduce the systems that handle card data. It does not make the merchant website, accounts, integrations, and vendor oversight irrelevant.",
+  "category": "risk",
+  "readingTime": "11 minute read",
+  "audience": ["Developers", "Security", "Founders"],
+  "takeaways": [
+    "Outsourcing payment processing can reduce PCI DSS scope, but merchants still need to confirm their validation obligations.",
+    "Embedded payment forms can leave the merchant page exposed to malicious scripts that affect checkout.",
+    "Authentication, fraud prevention, account security, webhook verification, and access control are related but separate controls."
+  ],
+  "sections": [
+    { "heading": "Minimize card-data exposure", "body": ["Hosted checkout, redirects, tokenized wallets, and provider-hosted fields can keep raw card data away from merchant systems. The exact integration determines which systems are in scope and which self-assessment or validation path may apply.", "Do not copy payment credentials into logs, analytics, support tools, error monitoring, or internal databases. Inventory every place payment and personal data can flow."] },
+    { "heading": "The merchant page still matters", "body": ["A third-party payment form can be embedded inside a merchant-controlled page. Malicious changes to the surrounding page or scripts can redirect buyers, alter the form, or capture data before it reaches the provider.", "Control script sources, deployment access, dependencies, monitoring, and change detection. Confirm the current PCI DSS and SAQ eligibility criteria for the exact checkout architecture."] },
+    { "heading": "Authentication is not the same as fraud prevention", "body": ["Strong customer authentication and 3D Secure help authenticate eligible transactions and can affect liability and approval outcomes. They do not prove that a product will be delivered or eliminate account takeover, friendly fraud, or merchant-side abuse.", "Fraud models, velocity limits, allow and block rules, manual review, device signals, and customer history address different risks. Measure false positives as well as prevented loss."] },
+    { "heading": "Secure the integration surface", "body": ["Verify webhook signatures, use idempotency for state-changing requests, restrict API keys, rotate credentials, separate test and production, and grant dashboard roles by least privilege. Treat provider support and account-recovery channels as security-sensitive.", "Store authoritative server-side payment state rather than trusting a browser redirect. A success URL can improve user experience but should not be the only evidence that payment completed."] },
+    { "heading": "Keep ownership documented", "body": ["List the merchant, provider, hosting platform, shopping cart, billing system, fraud tools, and any service provider that touches checkout or payment data. Record which party operates each control and how you obtain compliance evidence.", "Compliance requirements change and depend on architecture, volumes, geography, contracts, and acquiring relationships. Confirm the current requirements with the provider, acquirer, relevant standards, and qualified specialists."] }
+  ],
+  "decisionChecklist": [
+    "Diagram payment and personal-data flow through every system and vendor.",
+    "Use the least exposed checkout architecture that meets product needs.",
+    "Confirm current PCI validation requirements with the acquirer or provider.",
+    "Verify webhooks and protect production credentials and dashboard access.",
+    "Monitor checkout scripts and deployment changes."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "pci-outsourcing", "label": "PCI SSC outsourcing FAQ", "url": "https://www.pcisecuritystandards.org/faqs/does-pci-dss-apply-to-merchants-who-outsource-all-payment-processing-operations-and-never-store-process-or-transmit-cardholder-data/", "reviewedOn": "2026-07-27" },
+    { "id": "pci-scripts", "label": "PCI SSC SAQ A script eligibility FAQ", "url": "https://www.pcisecuritystandards.org/faqs/1588/", "reviewedOn": "2026-07-27" },
+    { "id": "eba", "label": "European Banking Authority payment authentication standards", "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money", "reviewedOn": "2026-07-27" }
+  ]
+}

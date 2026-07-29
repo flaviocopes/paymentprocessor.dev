@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Responsibility = CollectionEntry<"providers">["data"]["responsibilities"][number];
+interface Props { items: Responsibility[]; }
+const { items } = Astro.props;
+const labels = { provider: "Provider", merchant: "You", shared: "Shared" } as const;
+---
+
+<div class="table-wrap">
+  <table class="data-table responsibility-table">
+    <thead><tr><th>Responsibility</th><th>Primary owner</th><th>What that means</th></tr></thead>
+    <tbody>
+      {items.map((item) => (
+        <tr>
+          <th scope="row">{item.area}</th>
+          <td><span class:list={["owner-badge", `owner-${item.owner}`]}>{labels[item.owner]}</span></td>
+          <td>{item.note}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

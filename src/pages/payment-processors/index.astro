@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import ProviderCard from "../../components/ProviderCard.astro";
+const providers = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => provider.model === "direct-payments").sort((a,b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout title="Direct payment providers — Payment Stack Guide" description="Compare processors, wallets, gateways, acquirers, and omnichannel payment platforms while your business remains the merchant.">
+  <PageHeader eyebrow="Path 02 · You are the seller" title="Direct payment providers" description="These products are not one category. Each moves money differently, but your business normally remains responsible for the sale, tax, disputes, billing, and support." meta={`${providers.length} representative profiles · not a popularity ranking`} />
+  <section class="section">
+    <div class="shell provider-grid">
+      {providers.map((provider) => <ProviderCard provider={provider} />)}
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="shell service-models">
+      <span class="eyebrow">Service models</span>
+      <h2>Do not compare unlike products.</h2>
+      <div class="model-grid">
+        <div><strong>Processor / PSP</strong><p>Accepts and processes multiple payment methods for your merchant business.</p></div>
+        <div><strong>Wallet checkout</strong><p>Uses an existing buyer account and trusted wallet inside your checkout.</p></div>
+        <div><strong>Gateway / acquirer</strong><p>Connects payment data, networks, acquiring, routing, and settlement at different layers.</p></div>
+        <div><strong>Billing layer</strong><p>Manages catalog and subscription logic, but may still need a processor and tax operations.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-blue">
+    <div class="shell flow-section">
+      <div><span class="eyebrow eyebrow-inverse">The direct stack</span><h2>You choose which layers to assemble.</h2></div>
+      <ol class="flow-list">
+        <li><span>01</span><div><strong>Checkout and payment methods</strong><p>Hosted, embedded, or custom acceptance for cards, wallets, bank methods, and local options.</p></div></li>
+        <li><span>02</span><div><strong>Billing and invoicing</strong><p>Catalog, subscriptions, usage, credits, dunning, customer portal, and invoice state.</p></div></li>
+        <li><span>03</span><div><strong>Tax and compliance</strong><p>Registration, calculation, evidence, filing, remittance, invoices, PCI scope, and authentication.</p></div></li>
+        <li><span>04</span><div><strong>Operations and accounting</strong><p>Fraud rules, disputes, refunds, support, reconciliation, reserves, payouts, and ledger exports.</p></div></li>
+      </ol>
+    </div>
+  </section>
+  <section class="section"><div class="shell note-grid"><div><span class="eyebrow">The control dividend</span><h2>More ownership can be the right answer.</h2></div><div class="prose"><p>Remaining the merchant can provide broader product eligibility, direct customer identity, flexible checkout, modular vendors, and better economics at scale. Those advantages are real only when the retained tax, security, support, dispute, billing, and finance work has an owner.</p><a class="card-link" href="/guides/what-you-handle-with-direct-payments/">Map the retained work →</a></div></div></section>
+</BaseLayout>

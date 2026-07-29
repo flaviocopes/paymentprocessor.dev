@@ -1,0 +1,21 @@
+{
+  "slug": "paddle-vs-stripe-payments",
+  "title": "Paddle vs Stripe Payments",
+  "providers": ["paddle", "stripe-payments"],
+  "summary": "The central payments decision: outsource the legal sale and indirect-tax operations to an MoR, or keep control and remain the merchant with a processor.",
+  "recommendation": "Choose Paddle when transferring indirect-tax filing, transaction support, and seller-of-record responsibility is worth the higher bundled fee. Choose Stripe Payments when control, modularity, and direct merchant ownership matter and your team can operate tax, disputes, billing, and support.",
+  "differences": [
+    { "area": "Legal seller", "first": "Paddle sells the product to the buyer as Merchant of Record.", "second": "Your business remains the seller; Stripe processes the payment.", "whyItMatters": "This changes invoices, card statements, terms, tax responsibility, support, and migration planning." },
+    { "area": "Headline price", "first": "5% + $0.50 public checkout rate.", "second": "US domestic cards start at 2.9% + $0.30.", "whyItMatters": "The direct-processing price excludes work and optional products that Paddle bundles." },
+    { "area": "Indirect tax", "first": "Paddle calculates, registers, files, and remits for covered transactions.", "second": "The merchant remains responsible; Stripe Tax products can assist without changing the seller.", "whyItMatters": "Tax calculation is not the same as legal responsibility or filing." },
+    { "area": "Checkout control", "first": "Paddle-hosted or overlay checkout within its MoR requirements.", "second": "Hosted Checkout, Elements, Payment Links, mobile SDKs, and lower-level APIs.", "whyItMatters": "Stripe offers more composability; Paddle offers a more complete operating boundary." },
+    { "area": "Product eligibility", "first": "Focused on approved software and digital products.", "second": "Broader eligible online business coverage.", "whyItMatters": "Some businesses simply cannot use a digital-product MoR." }
+  ],
+  "scenarios": [
+    { "when": "You are launching global B2C SaaS without a tax operations team.", "choose": "paddle", "reason": "The MoR responsibility transfer is the core value, not just payment processing." },
+    { "when": "You sell mainly domestic B2B, need custom payment flows, and already run finance operations.", "choose": "stripe-payments", "reason": "Direct merchant control and modular tools may be the better fit." },
+    { "when": "You need physical goods, services, or a marketplace model.", "choose": "stripe-payments", "reason": "Paddle's approved-product scope is narrower; verify Stripe eligibility and any Connect requirements." }
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": ["https://www.paddle.com/pricing", "https://www.paddle.com/legal/terms", "https://stripe.com/pricing", "https://stripe.com/global"]
+}

@@ -1,0 +1,34 @@
+{
+  "slug": "international-payments-currencies",
+  "title": "International payments and currencies",
+  "description": "Separate seller coverage, buyer reach, presentment currency, settlement currency, payment methods, tax, authentication, and FX.",
+  "dek": "Saying a provider is global can hide six different questions. International acceptance is a chain of eligibility, method, currency, compliance, and cash movement.",
+  "category": "growth",
+  "readingTime": "11 minute read",
+  "audience": ["Founders", "Growth", "Finance"],
+  "takeaways": [
+    "Seller-country support and buyer-country reach are different constraints.",
+    "Presentment, payment-method, settlement, and bank-account currencies can differ and create FX cost.",
+    "Local methods and local prices should be added market by market with measured operational outcomes."
+  ],
+  "sections": [
+    { "heading": "Global has multiple meanings", "body": ["First ask whether the provider can onboard your legal entity. Then ask whether it can accept buyers in the target country, present the desired currency, offer locally relevant methods, settle in a useful currency, and pay out to your bank.", "Sanctions, restricted businesses, product eligibility, underwriting, and method-specific rules can narrow a broad marketing claim."] },
+    { "heading": "Name the three currencies", "body": ["Presentment currency is the price shown and charged to the buyer. The buyer's funding currency belongs to the card, bank, or wallet. Settlement currency is what the provider records or converts for the merchant balance and payout.", "If these currencies differ, the provider, network, wallet, or buyer's institution may perform conversion. Model who converts, at what rate, with which fee, and who bears the cost."] },
+    { "heading": "Local pricing is more than conversion", "body": ["A direct currency conversion can produce awkward prices. Local pricing can instead use deliberate price points by market, but it creates catalog, tax, discount, reporting, and customer-communication decisions.", "Preserve the currency promised to an existing subscriber. Repricing or converting an active subscription can create consent, proration, and support issues."] },
+    { "heading": "Authentication and acceptance vary", "body": ["Strong customer authentication and 3D Secure can affect European card flows. Local methods can use bank authentication, mandates, redirects, or delayed confirmation. Exemptions and provider optimization do not remove the need to handle authentication outcomes.", "Track authorization and conversion by issuing country, payment method, currency, and authentication result. A global average hides the market that is failing."] },
+    { "heading": "Expand one market at a time", "body": ["For each market, document buyer demand, price and currency, method mix, checkout language, tax treatment, refund behavior, support hours, settlement, FX, and legal restrictions. Launch with a measurable hypothesis.", "An MoR can reduce indirect-tax and transaction-operation work for eligible sales, but product, seller, and buyer restrictions still need to be checked market by market."] }
+  ],
+  "decisionChecklist": [
+    "Confirm seller onboarding and buyer acceptance separately.",
+    "Map presentment, funding, settlement, and payout currencies.",
+    "Price international-card and FX costs as separate variables.",
+    "Verify recurring and refund support for each local method.",
+    "Launch and measure markets individually."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "stripe-currencies", "label": "Stripe supported and settlement currencies", "url": "https://docs.stripe.com/currencies", "reviewedOn": "2026-07-27" },
+    { "id": "eba", "label": "European Banking Authority payment services and SCA", "url": "https://www.eba.europa.eu/regulation-and-policy/payment-services-and-electronic-money", "reviewedOn": "2026-07-27" },
+    { "id": "eu-oss", "label": "European Commission VAT One Stop Shop", "url": "https://vat-one-stop-shop.ec.europa.eu/index_en", "reviewedOn": "2026-07-27" }
+  ]
+}

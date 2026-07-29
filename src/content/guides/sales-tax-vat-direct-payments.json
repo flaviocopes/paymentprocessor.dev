@@ -1,0 +1,34 @@
+{
+  "slug": "sales-tax-vat-direct-payments",
+  "title": "Sales tax and VAT when you sell directly",
+  "description": "Understand the operational chain from determining where a sale is taxable through registration, calculation, evidence, filing, remittance, and audit support.",
+  "dek": "Tax calculation is one task. Seller liability, registration, evidence, returns, payment, corrections, and record retention are the wider system.",
+  "category": "operations",
+  "readingTime": "12 minute read",
+  "audience": ["Founders", "Finance", "Operations"],
+  "takeaways": [
+    "A payment processor or tax calculator does not automatically become the seller or assume your filing obligations.",
+    "B2C and B2B treatment, product classification, buyer location, thresholds, exemptions, and evidence can change the result.",
+    "An MoR transfers only the tax responsibilities and transactions covered by its contract and eligibility rules."
+  ],
+  "sections": [
+    { "heading": "Start with the legal seller", "body": ["The legal or deemed seller is the first responsibility question. With ordinary direct payments, your business sells to the customer even if a processor collects the money. A tax product may calculate an amount without becoming liable for registration, returns, or remittance.", "An MoR generally resells eligible products and assumes documented indirect-tax obligations for covered transactions. Verify the exact entity, territories, product eligibility, invoice treatment, and excluded flows in the agreement."] },
+    { "heading": "Determine where and what you sold", "body": ["Indirect-tax treatment can depend on seller establishment, buyer location, B2C or B2B status, product classification, delivery method, transaction value, and local thresholds. Digital services, SaaS, physical goods, consulting, and marketplaces can follow different rules.", "Collect only the buyer evidence you need, preserve how the decision was made, and document product tax codes. A checkout that asks too little can create weak evidence; one that asks too much can harm conversion and privacy."] },
+    { "heading": "Registration comes before collection", "body": ["A business may need to register before collecting tax in a jurisdiction. Threshold monitoring should use the definition required by that jurisdiction, not one global revenue number. Some systems aggregate transaction count, local sales, related entities, or prior periods differently.", "The EU One Stop Shop can simplify declarations for covered cross-border B2C supplies through one Member State, but it does not erase classification, evidence, rate, record-keeping, and eligibility work."] },
+    { "heading": "Calculation is only the checkout step", "body": ["The checkout needs the correct taxable amount, jurisdiction, rate, exemption, rounding, and invoice treatment. Discounts, credits, refunds, bundles, reverse charge, and tax-inclusive prices can change the calculation.", "Keep the tax decision linked to the order and later adjustments. A refund may require a tax correction, and a subscription change can create new invoice lines or jurisdictions."] },
+    { "heading": "Returns, remittance, and evidence complete the loop", "body": ["Filing means aggregating transactions into the required return, reconciling them to books and provider reports, handling corrections, and paying the authority on time. Record-retention and audit requirements continue after remittance.", "Treat this guide as an operating map, not tax advice. Confirm obligations with qualified advisers and the relevant authorities for the countries, states, products, and customers you actually have."] }
+  ],
+  "decisionChecklist": [
+    "Confirm which entity is the seller on every checkout flow.",
+    "Classify each product and separate B2C from validated B2B treatment.",
+    "Track registration thresholds using jurisdiction-specific rules.",
+    "Reconcile calculation, invoices, refunds, returns, remittance, and books.",
+    "Document which responsibilities a provider contract actually assumes."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "eu-oss", "label": "European Commission VAT One Stop Shop", "url": "https://vat-one-stop-shop.ec.europa.eu/index_en", "reviewedOn": "2026-07-27" },
+    { "id": "eu-oss-detail", "label": "European Commission One Stop Shop detail", "url": "https://vat-one-stop-shop.ec.europa.eu/one-stop-shop_en", "reviewedOn": "2026-07-27" },
+    { "id": "paddle-terms", "label": "Paddle Merchant of Record terms", "url": "https://www.paddle.com/legal/terms", "reviewedOn": "2026-07-27" }
+  ]
+}

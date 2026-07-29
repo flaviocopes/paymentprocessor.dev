@@ -1,0 +1,46 @@
+{
+  "slug": "polar",
+  "name": "Polar",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "growth",
+  "summary": "A developer-focused Merchant of Record for software, digital products, subscriptions, usage billing, and built-in benefits.",
+  "pricing": {
+    "kind": "public",
+    "headline": "Starter is 5% + $0.50; paid monthly plans lower the variable rate.",
+    "percentage": 5,
+    "fixed": 0.5,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Starter plan. International-card, dispute, payout, and some currency-conversion costs can apply.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Polar supports individual and business payouts in its published country list through Stripe Connect Express.",
+  "buyerCoverage": "Payments are accepted globally except from documented sanctioned countries, subject to payment-method availability.",
+  "products": "Eligible software, SaaS, digital products, subscriptions, usage-based products, and developer-oriented benefits.",
+  "features": {
+    "checkout": "Hosted and embedded checkout with API-created sessions.",
+    "subscriptions": "Recurring, usage-based, seat-based, trial, and multi-currency pricing features.",
+    "invoicing": "Automatic order invoices and EU B2B reverse-charge handling; advanced quoting should be verified for the use case.",
+    "paymentMethods": "Cards, wallets, and local methods documented by Polar and its payment partners.",
+    "payouts": "Stripe Connect Express payouts with documented payout and cross-border costs."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, registration, filing, and remittance", "owner": "provider", "note": "Polar describes itself as reseller and tax-liable seller for covered transactions." },
+    { "area": "Fraud and disputes", "owner": "provider", "note": "Polar manages network exposure and charges a documented dispute fee." },
+    { "area": "Product support and entitlements", "owner": "merchant", "note": "The seller owns the product relationship; Polar can automate benefit grants." },
+    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "Net payouts still require business accounting and income-tax reporting." }
+  ],
+  "strengths": ["Developer-first APIs and open-source product", "Transparent tiered pricing", "Built-in usage, seat, and entitlement features"],
+  "limitations": ["Younger operating history than long-established providers", "Coverage and registrations evolve with thresholds", "Additional international, payout, and dispute costs matter"],
+  "bestFor": ["Developer tools", "Open-source businesses", "SaaS needing usage or benefit-based billing"],
+  "avoidIf": ["You require a long enterprise operating history", "Your seller country or product is outside Polar policy"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Polar pricing", "url": "https://polar.sh/resources/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "mor", "label": "Polar Merchant of Record documentation", "url": "https://polar.sh/docs/merchant-of-record/introduction", "reviewedOn": "2026-07-27" },
+    { "id": "coverage", "label": "Polar supported countries", "url": "https://polar.sh/docs/merchant-of-record/supported-countries", "reviewedOn": "2026-07-27" }
+  ]
+}

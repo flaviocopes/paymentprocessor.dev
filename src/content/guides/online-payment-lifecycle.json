@@ -1,0 +1,34 @@
+{
+  "slug": "online-payment-lifecycle",
+  "title": "How an online payment actually moves",
+  "description": "Follow a payment from checkout through authorization, capture, settlement, payout, refund, and possible dispute.",
+  "dek": "A checkout success message is the beginning of the money movement, not the end. Each later state affects fulfillment, accounting, support, and cash flow.",
+  "category": "foundations",
+  "readingTime": "9 minute read",
+  "audience": ["Founders", "Developers", "Operators"],
+  "takeaways": [
+    "Authorization confirms that a payment can proceed; it is not the same as money arriving in your bank.",
+    "Capture, settlement, provider balance availability, and bank payout are separate events.",
+    "Your system should fulfill from a deliberate payment state and reconcile later changes such as refunds and disputes."
+  ],
+  "sections": [
+    { "heading": "The actors behind one checkout", "body": ["A card payment can involve the buyer, merchant, checkout, gateway or payment service provider, acquirer, card network, issuer, and settlement bank. Wallets and local payment methods can change the route, but the useful mental model is the same: the interface, authorization decision, movement of funds, and merchant payout are different layers.", "A Merchant of Record changes the commercial relationship because the provider is the seller to the buyer. It does not make the underlying payment states disappear; it changes who operates and accounts for them."] },
+    { "heading": "Authorization is a decision, not a payout", "body": ["During authorization, the payment request reaches the institution that can approve or decline it. An approval can place a hold on available funds. The merchant has not necessarily captured the payment, and the provider has not necessarily settled or paid it out.", "Separate authorization and capture is useful when fulfillment happens later, but authorizations expire. The permitted window depends on method, network, provider, and transaction type, so delayed capture must be designed around the actual rule rather than a universal seven-day assumption."] },
+    { "heading": "Capture starts collection", "body": ["Capture tells the payment system to collect an authorized amount. Many online checkouts authorize and capture in one flow. Other businesses capture when goods ship, a booking is confirmed, or a service milestone is met.", "Partial capture, multiple capture, overcapture, and cancellation support vary. If the authorization expires, a new payment attempt may be required. Your order state should distinguish authorized, captured, failed, canceled, and awaiting asynchronous confirmation."] },
+    { "heading": "Settlement and payout are different", "body": ["Settlement moves funds through the payment system into the provider or merchant balance. Payout moves available funds from that balance to the business bank account. Processing time, settlement delay, payout schedule, weekends, currencies, reserves, refunds, and negative balances can all change when cash reaches the bank.", "Reconciliation should connect the order, provider payment, fees, balance transaction, payout, refund, and dispute. A single gross-sales number cannot explain why the bank deposit is smaller or arrives later."] },
+    { "heading": "The payment can change after success", "body": ["A captured payment may later be refunded, reversed, disputed, or charged back. Asynchronous methods can also remain pending before confirming or failing. Webhook handlers should be idempotent and able to process events that arrive late or more than once.", "Design customer access and fulfillment around recoverable states. Keep an audit trail of provider IDs, internal IDs, timestamps, currency, gross amount, fees, taxes, refunds, and final status so support and finance can reconstruct what happened."] }
+  ],
+  "decisionChecklist": [
+    "Document the exact payment state that triggers fulfillment or account access.",
+    "List authorization-expiry and capture behavior for every method you enable.",
+    "Map provider balance availability separately from bank payout timing.",
+    "Store enough identifiers to reconcile an order through refunds and disputes.",
+    "Test duplicate, delayed, and out-of-order webhook delivery."
+  ],
+  "lastReviewed": "2026-07-27",
+  "sources": [
+    { "id": "braintree-lifecycle", "label": "Braintree transaction lifecycle", "url": "https://developer.paypal.com/braintree/articles/get-started/transaction-lifecycle", "reviewedOn": "2026-07-27" },
+    { "id": "stripe-capture", "label": "Stripe authorization and capture", "url": "https://docs.stripe.com/payments/place-a-hold-on-a-payment-method", "reviewedOn": "2026-07-27" },
+    { "id": "paypal-capture", "label": "PayPal authorization and capture", "url": "https://developer.paypal.com/v5/checkout/auth-capture", "reviewedOn": "2026-07-27" }
+  ]
+}

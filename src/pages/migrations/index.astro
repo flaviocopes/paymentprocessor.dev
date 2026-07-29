@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const routes = (await getCollection("migrationLinks")).sort((a, b) => a.id.localeCompare(b.id));
+const platforms = [...new Set(routes.flatMap((route) => [route.data.source, route.data.destination]))].sort();
+const modelFor = (name: string) => name === "Stripe Billing" ? "You remain the merchant" : "Merchant of Record";
+---
+
+<BaseLayout title="Payment provider migrations — Payment Stack Guide" description="Understand a payment-provider migration, then open the canonical execution playbook on migratingto.dev.">
+  <PageHeader
+    eyebrow="Selection here · execution there"
+    title="Payment migrations"
+    description="Understand what changes, then continue to the canonical cutover, rollback, and verification playbook on migratingto.dev."
+    meta={`${routes.length} verified routes · 6-platform matrix`}
+  />
+
+  <section class="section migration-boundary">
+    <div class="shell flow-section">
+      <div>
+        <span class="eyebrow">One topic · two jobs</span>
+        <h2>Choose here. Execute there.</h2>
+      </div>
+      <ol class="flow-list light-flow">
+        <li><span>01</span><div><strong>Compare the destination</strong><p>Use this site to understand legal seller, pricing model, responsibilities, and fit.</p></div></li>
+        <li><span>02</span><div><strong>Scope what must move</strong><p>Products, prices, customers, subscriptions, tax evidence, entitlements, webhooks, and reporting rarely map one-for-one.</p></div></li>
+        <li><span>03</span><div><strong>Run the canonical playbook</strong><p>Open migratingto.dev for the exact cutover, rollback, verification, and cleanup procedure.</p></div></li>
+      </ol>
+    </div>
+    <div class="shell starter-tool-callout"><div><span class="eyebrow">Before the execution plan</span><h2>Test whether the switch pays back.</h2></div><a class="button" href="/tools/migration-decision/">Build a stay-or-switch report →</a></div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="shell" x-data="{ source: 'all', destination: 'all' }">
+      <div class="section-heading-inline migration-heading">
+        <div>
+          <span class="eyebrow">Route finder</span>
+          <h2>Pick both ends.</h2>
+        </div>
+        <p>Every card is an original transition summary. The linked playbook remains canonical.</p>
+      </div>
+
+      <div class="migration-filters" aria-label="Filter migration routes">
+        <label>
+          <span>Moving from</span>
+          <select x-model="source">
+            <option value="all">Any platform</option>
+            {platforms.map((platform) => <option value={platform}>{platform}</option>)}
+          </select>
+        </label>
+        <span class="migration-arrow" aria-hidden="true">→</span>
+        <label>
+          <span>Moving to</span>
+          <select x-model="destination">
+            <option value="all">Any platform</option>
+            {platforms.map((platform) => <option value={platform}>{platform}</option>)}
+          </select>
+        </label>
+      </div>
+
+      <div class="migration-grid">
+        {routes.map((route, index) => (
+          <article
+            class="migration-card"
+            x-show={`(source === 'all' || source === ${JSON.stringify(route.data.source)}) && (destination === 'all' || destination === ${JSON.stringify(route.data.destination)})`}
+          >
+            <div class="migration-card-index">{String(index + 1).padStart(2, "0")}</div>
+            <div class="migration-route">
+              <span>{route.data.source}</span>
+              <span aria-hidden="true">→</span>
+              <strong>{route.data.destination}</strong>
+            </div>
+            <div class="migration-model-shift">
+              <span>{modelFor(route.data.source)}</span>
+              <span aria-hidden="true">→</span>
+              <span>{modelFor(route.data.destination)}</span>
+            </div>
+            <p>{route.data.summary}</p>
+            <a href={route.data.path} rel="noreferrer">Open canonical playbook <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-blue">
+    <div class="shell migration-warning">
+      <span class="eyebrow eyebrow-inverse">Responsibility shift</span>
+      <h2>One route changes more than the software.</h2>
+      <p>Stripe Billing is a billing layer used while your business remains the merchant. Moving to it from an MoR means your business must deliberately replace indirect-tax filing and remittance, transaction support, dispute operations, and other seller obligations. Moving the other way transfers only the responsibilities covered by the destination's contract and eligible transaction model.</p>
+      <a class="button button-light" href="/guides/subscriptions-during-payment-migration/">Read the subscription migration guide</a>
+    </div>
+  </section>
+</BaseLayout>

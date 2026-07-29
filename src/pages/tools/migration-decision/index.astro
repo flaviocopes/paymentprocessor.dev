@@ -1,0 +1,292 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+import rules from "../../../data/calculator-rules.json";
+
+const providers = (await getCollection("providers"))
+  .map((entry) => ({
+    slug: entry.data.slug,
+    name: entry.data.name,
+    model: entry.data.model,
+    pricingKind: entry.data.pricing.kind
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+const migrationLinks = (await getCollection("migrationLinks")).map((entry) => entry.data);
+---
+
+<BaseLayout
+  title="Stay or switch payment provider report — Payment Stack Guide"
+  description="Normalize a payment-provider quote, estimate migration cost and payout cash flow, and share a transparent stay-or-switch report."
+>
+  <PageHeader
+    eyebrow="Migration decision workspace"
+    title="Should you stay or switch?"
+    description="Put the quote, migration work, revenue at risk, payout delay, and reserve terms into one decision report. Every judgment remains visible and editable."
+    meta="Local-first · shareable URL · no document upload"
+  />
+
+  <main
+    class="decision-report-shell"
+    x-data="paymentDecisionReport()"
+    x-init="init()"
+    x-cloak
+  >
+    <section class="decision-report-intro section">
+      <div class="shell decision-report-flow">
+        <div>
+          <span class="eyebrow">One report · four questions</span>
+          <h2>Turn a sales quote into a migration decision.</h2>
+        </div>
+        <ol>
+          <li><span>01</span><strong>Normalize the quote</strong><small>Same revenue, same transaction mix.</small></li>
+          <li><span>02</span><strong>Price the move</strong><small>Labor, overlap, re-authentication.</small></li>
+          <li><span>03</span><strong>Stress the cash flow</strong><small>Payout lag and rolling reserves.</small></li>
+          <li><span>04</span><strong>Save the case</strong><small>Local copy, URL, or printable report.</small></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="decision-report-workspace-section section section-tint">
+      <div class="shell decision-report-toolbar">
+        <div>
+          <span class="eyebrow">Scenario controls</span>
+          <p>Nothing is uploaded. A shared link contains only the values entered below.</p>
+        </div>
+        <div class="decision-report-actions">
+          <button type="button" @click="save()">Save locally</button>
+          <button type="button" @click="loadSaved()">Load saved</button>
+          <button type="button" class="primary" @click="share()">Copy report link</button>
+          <button type="button" @click="print()">Print / PDF</button>
+        </div>
+        <p class="decision-report-status" aria-live="polite"><span x-text="shareStatus"></span><span x-show="shareStatus && storageStatus"> · </span><span x-text="storageStatus"></span></p>
+      </div>
+
+      <div class="shell decision-report-workspace">
+        <form class="decision-report-controls" @submit.prevent>
+          <fieldset>
+            <legend><span>01</span> Current business</legend>
+            <label>
+              <span>Current provider</span>
+              <select x-model="inputs.currentSlug">
+                {providers.map((provider) => <option value={provider.slug}>{provider.name}</option>)}
+              </select>
+            </label>
+            <div class="decision-input-pair">
+              <label><span>Monthly charged revenue <small>USD</small></span><input type="number" min="0" step="100" x-model.number="inputs.monthlyRevenue" /></label>
+              <label><span>Transactions <small>monthly</small></span><input type="number" min="0" step="1" x-model.number="inputs.monthlyTransactions" /></label>
+            </div>
+            <div class="decision-input-pair">
+              <label><span>Current provider fees <small>monthly</small></span><input type="number" min="0" step="10" x-model.number="inputs.currentMonthlyFees" /></label>
+              <label><span>Current operating cost <small>tax, billing, support</small></span><input type="number" min="0" step="10" x-model.number="inputs.currentOperatingCost" /></label>
+            </div>
+            <div class="decision-input-triple">
+              <label><span>Subscriptions</span><div class="suffix-input"><input type="number" min="0" max="100" step="1" x-model.number="inputs.subscriptionShare" /><i>%</i></div></label>
+              <label><span>International</span><div class="suffix-input"><input type="number" min="0" max="100" step="1" x-model.number="inputs.internationalShare" /><i>%</i></div></label>
+              <label><span>FX converted</span><div class="suffix-input"><input type="number" min="0" max="100" step="1" x-model.number="inputs.fxShare" /><i>%</i></div></label>
+            </div>
+            <label><span>Monthly disputes</span><input type="number" min="0" step="1" x-model.number="inputs.monthlyDisputes" /></label>
+          </fieldset>
+
+          <fieldset>
+            <legend><span>02</span> Target quote</legend>
+            <label>
+              <span>Target provider</span>
+              <select x-model="inputs.targetSlug">
+                {providers.map((provider) => <option value={provider.slug}>{provider.name}</option>)}
+              </select>
+            </label>
+            <div class="quote-model-line">
+              <span class="model-badge" :class="targetProvider?.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="targetModelLabel"></span>
+              <button type="button" @click="usePublicBaseline()">Use public baseline</button>
+            </div>
+            <p class="control-help">Enter the complete commercial schedule supplied by the provider. Use zero only when the quote explicitly says there is no fee.</p>
+            <div class="decision-input-pair">
+              <label><span>Base percentage</span><div class="suffix-input"><input type="number" min="0" step="0.01" x-model.number="quote.percentage" /><i>%</i></div></label>
+              <label><span>Per transaction</span><div class="prefix-input"><i>$</i><input type="number" min="0" step="0.01" x-model.number="quote.fixed" /></div></label>
+            </div>
+            <div class="decision-input-pair">
+              <label><span>Monthly platform fee</span><div class="prefix-input"><i>$</i><input type="number" min="0" step="1" x-model.number="quote.monthly" /></div></label>
+              <label><span>Dispute fee</span><div class="prefix-input"><i>$</i><input type="number" min="0" step="1" x-model.number="quote.disputeFee" /></div></label>
+            </div>
+            <label><span>Minimum monthly processing commitment <small>shortfall only is added</small></span><div class="prefix-input"><i>$</i><input type="number" min="0" step="100" x-model.number="quote.monthlyMinimum" /></div></label>
+            <div class="decision-input-triple">
+              <label><span>International uplift</span><div class="suffix-input"><input type="number" min="0" step="0.01" x-model.number="quote.internationalPercentage" /><i>%</i></div></label>
+              <label><span>FX uplift</span><div class="suffix-input"><input type="number" min="0" step="0.01" x-model.number="quote.fxPercentage" /><i>%</i></div></label>
+              <label><span>Subscription uplift</span><div class="suffix-input"><input type="number" min="0" step="0.01" x-model.number="quote.subscriptionPercentage" /><i>%</i></div></label>
+            </div>
+            <label><span>Your target-stack operations <small>monthly tax, billing, support, tools</small></span><input type="number" min="0" step="10" x-model.number="quote.operatingCost" /></label>
+          </fieldset>
+
+          <fieldset>
+            <legend><span>03</span> Migration assumptions</legend>
+            <div class="decision-input-pair">
+              <label><span>Developer workdays</span><input type="number" min="0" step="0.5" x-model.number="migration.developerDays" /></label>
+              <label><span>Operations workdays</span><input type="number" min="0" step="0.5" x-model.number="migration.operationsDays" /></label>
+            </div>
+            <div class="decision-input-pair">
+              <label><span>Loaded hourly cost</span><div class="prefix-input"><i>$</i><input type="number" min="0" step="10" x-model.number="migration.hourlyCost" /></div></label>
+              <label><span>Vendor migration fee</span><div class="prefix-input"><i>$</i><input type="number" min="0" step="100" x-model.number="migration.vendorMigrationFee" /></div></label>
+            </div>
+            <label><span>Parallel-running window <small>months</small></span><input type="number" min="0" max="12" step="0.5" x-model.number="migration.overlapMonths" /></label>
+            <label>
+              <span>Payment-method transfer</span>
+              <select x-model="migration.tokenTransfer">
+                <option value="unknown">Not confirmed</option>
+                <option value="confirmed">Confirmed provider-to-provider transfer</option>
+                <option value="recheckout">Customers must re-enter payment details</option>
+              </select>
+            </label>
+            <label>
+              <span>Subscription-state import</span>
+              <select x-model="migration.subscriptionImport">
+                <option value="assisted">Provider-assisted import</option>
+                <option value="manual">Manual mapping</option>
+                <option value="unknown">Not confirmed</option>
+                <option value="unavailable">Unavailable / rebuild required</option>
+              </select>
+            </label>
+            <label><span>Subscribers expected to re-authenticate</span><div class="suffix-input"><input type="number" min="0" max="100" step="1" x-model.number="migration.reauthenticationShare" /><i>%</i></div></label>
+          </fieldset>
+
+          <fieldset>
+            <legend><span>04</span> Payout and reserve</legend>
+            <p class="control-help">Use contract terms rather than marketing language. These inputs model liquidity, not provider solvency or account-freeze risk.</p>
+            <label><span>Typical payout delay</span><div class="suffix-input"><input type="number" min="0" max="180" step="1" x-model.number="quote.payoutDelayDays" /><i>days</i></div></label>
+            <div class="decision-input-pair">
+              <label><span>Rolling reserve</span><div class="suffix-input"><input type="number" min="0" max="100" step="0.1" x-model.number="quote.reservePercentage" /><i>%</i></div></label>
+              <label><span>Reserve hold</span><div class="suffix-input"><input type="number" min="0" max="365" step="1" x-model.number="quote.reserveHoldDays" /><i>days</i></div></label>
+            </div>
+          </fieldset>
+
+          <button class="decision-reset" type="button" @click="reset()">Restore example assumptions</button>
+        </form>
+
+        <div class="decision-report-output" aria-live="polite">
+          <section class="decision-signal" :data-tone="decision.tone">
+            <div>
+              <span class="eyebrow eyebrow-inverse">Decision signal</span>
+              <h2 x-text="decision.label"></h2>
+              <p x-text="decision.note"></p>
+            </div>
+            <dl>
+              <div><dt>First-year result</dt><dd :class="firstYearBenefit >= 0 ? 'positive' : 'negative'" x-text="money(firstYearBenefit)"></dd></div>
+              <div><dt>Payback</dt><dd x-text="months(paybackMonths)"></dd></div>
+              <div><dt>Migration risk</dt><dd x-text="risk.label"></dd></div>
+            </dl>
+          </section>
+
+          <section class="decision-report-panel cost-case">
+            <div class="decision-panel-heading">
+              <div><span class="eyebrow">Run-rate comparison</span><h2>Monthly cost case</h2></div>
+              <strong :class="monthlySavings >= 0 ? 'positive' : 'negative'"><span x-text="money(Math.abs(monthlySavings))"></span><small x-text="monthlySavings >= 0 ? 'modeled savings' : 'modeled premium'"></small></strong>
+            </div>
+            <div class="decision-cost-bars">
+              <div><div><span x-text="currentProvider?.name"></span><b x-text="money(currentMonthlyTotal)"></b></div><i><em :style="`width: ${currentBarWidth}`"></em></i></div>
+              <div class="target"><div><span x-text="targetProvider?.name"></span><b x-text="money(targetQuote.total)"></b></div><i><em :style="`width: ${targetBarWidth}`"></em></i></div>
+            </div>
+            <dl class="decision-metric-grid">
+              <div><dt>Target vendor fees</dt><dd x-text="money(targetQuote.vendorFees)"></dd></div>
+              <div><dt>Target effective rate</dt><dd x-text="percent(targetQuote.effectiveRate)"></dd></div>
+              <div><dt>Annual run-rate difference</dt><dd x-text="money(annualRunRateSavings)"></dd></div>
+              <div><dt>One-time migration</dt><dd x-text="money(migrationCost)"></dd></div>
+            </dl>
+          </section>
+
+          <section class="decision-report-panel quote-normalized">
+            <div class="decision-panel-heading">
+              <div><span class="eyebrow">Normalized quote</span><h2>Every entered fee, one scenario.</h2></div>
+              <span class="model-badge" :class="targetProvider?.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="targetModelLabel"></span>
+            </div>
+            <div class="quote-normalized-table">
+              <template x-for="row in quoteRows" :key="row[0]">
+                <div><span x-text="row[0]"></span><b x-text="preciseMoney(row[1])"></b></div>
+              </template>
+              <div class="total"><span>Modeled monthly total</span><b x-text="preciseMoney(targetQuote.total)"></b></div>
+            </div>
+            <p class="decision-boundary">This normalizes the values you entered. It cannot discover omitted fees, tier thresholds, card-network assessments, taxes, refund treatment, minimum commitments, or contract clauses that are absent from the quote.</p>
+          </section>
+
+          <section class="decision-report-panel migration-case">
+            <div class="decision-panel-heading">
+              <div><span class="eyebrow">Migration economics</span><h2>Price the transition, not just the API work.</h2></div>
+              <strong x-text="risk.label"></strong>
+            </div>
+            <dl class="decision-metric-grid">
+              <div><dt>Internal labor</dt><dd x-text="money(laborCost)"></dd></div>
+              <div><dt>Overlap + vendor fee</dt><dd x-text="money(migrationCost - laborCost)"></dd></div>
+              <div><dt>First-renewal revenue exposed</dt><dd x-text="money(recurringRevenueAtRisk)"></dd></div>
+              <div><dt>Modeled risk points</dt><dd><span x-text="risk.score"></span> <small>/ judgment signal</small></dd></div>
+            </dl>
+            <ul class="migration-risk-signals">
+              <template x-for="signal in risk.signals" :key="signal"><li x-text="signal"></li></template>
+            </ul>
+            <p class="decision-boundary">Revenue exposed is not predicted churn. It is the first monthly renewal volume attached to the entered re-authentication share.</p>
+          </section>
+
+          <section class="decision-report-panel cash-flow-case">
+            <div class="decision-panel-heading">
+              <div><span class="eyebrow">Payout stress test</span><h2>Fees are not the only cash unavailable.</h2></div>
+              <strong><span x-text="money(cashFlow.workingCapital)"></span><small>modeled working capital tied up</small></strong>
+            </div>
+            <div class="cash-flow-waterfall">
+              <div><span>Charged revenue</span><i style="width:100%"></i><b x-text="money(inputs.monthlyRevenue)"></b></div>
+              <div><span>After vendor fees</span><i :style="`width:${inputs.monthlyRevenue > 0 ? Math.max(2, cashFlow.netAfterFees / inputs.monthlyRevenue * 100) : 0}%`"></i><b x-text="money(cashFlow.netAfterFees)"></b></div>
+              <div><span>Illustrative first payout</span><i :style="`width:${inputs.monthlyRevenue > 0 ? Math.max(2, cashFlow.firstPayout / inputs.monthlyRevenue * 100) : 0}%`"></i><b x-text="money(cashFlow.firstPayout)"></b></div>
+            </div>
+            <dl class="decision-metric-grid">
+              <div><dt>Payout-delay float</dt><dd x-text="money(cashFlow.payoutFloat)"></dd></div>
+              <div><dt>Steady rolling reserve</dt><dd x-text="money(cashFlow.steadyReserve)"></dd></div>
+              <div><dt>First-month reserve withheld</dt><dd x-text="money(cashFlow.firstMonthReserve)"></dd></div>
+              <div><dt>First-payout conversion</dt><dd x-text="percent(cashFlow.cashConversion)"></dd></div>
+            </dl>
+            <p class="decision-boundary">The float and rolling-reserve estimates assume revenue arrives evenly across a 30-day month. Actual payout batches, reserve releases, currencies, refunds, disputes, weekends, and risk actions can differ.</p>
+          </section>
+
+          <section class="decision-report-panel migration-checklist">
+            <div class="decision-panel-heading">
+              <div><span class="eyebrow">Provider validation list</span><h2>What must be true before switching.</h2></div>
+              <span><span x-text="checklist.length"></span> checks</span>
+            </div>
+            <ol>
+              <template x-for="(item, index) in checklist" :key="item.label">
+                <li><span x-text="String(index + 1).padStart(2, '0')"></span><p x-text="item.label"></p><b :data-status="item.status" x-text="item.status"></b></li>
+              </template>
+            </ol>
+            <div class="canonical-migration-route" x-show="canonicalRoute">
+              <span>Route-specific execution</span>
+              <p x-text="canonicalRoute?.summary"></p>
+              <a :href="canonicalRoute?.path" rel="noreferrer">Open the canonical migration playbook ↗</a>
+            </div>
+            <div class="canonical-migration-route" x-show="!canonicalRoute">
+              <span>No canonical route published yet</span>
+              <p>Use this checklist to scope the decision, then request written import, transfer, cutover, rollback, and post-exit procedures from both providers.</p>
+              <a href="/migrations/">Browse documented migration routes →</a>
+            </div>
+          </section>
+
+          <section class="decision-report-disclaimer">
+            <span class="eyebrow">How to read this report</span>
+            <p>The decision signal is arithmetic plus disclosed heuristics—not legal, tax, accounting, underwriting, or migration advice. Provider approval, contract terms, transfer support, reserves, and payout timing must be confirmed directly. Saving is device-local; sharing stores the entered values in the URL.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline type="application/json" id="decision-providers" set:html={JSON.stringify(providers)}></script>
+  <script is:inline type="application/json" id="decision-rules" set:html={JSON.stringify(rules)}></script>
+  <script is:inline type="application/json" id="decision-migrations" set:html={JSON.stringify(migrationLinks)}></script>
+  <script>
+    import { createDecisionReportState } from "../../../lib/decision-report.mjs";
+
+    const readData = (id: string) => {
+      const element = document.querySelector(`#${id}`);
+      return element ? JSON.parse(element.textContent || "[]") : [];
+    };
+    const providers = readData("decision-providers");
+    const publicRules = readData("decision-rules");
+    const migrationLinks = readData("decision-migrations");
+    (window as any).paymentDecisionReport = () => createDecisionReportState(providers, publicRules, migrationLinks);
+  </script>
+</BaseLayout>

@@ -1,0 +1,83 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+
+const terms = [
+  ["3D Secure (3DS)", "A cardholder-authentication protocol used in online card payments. It can present a challenge or run without buyer interaction, and is commonly used to support strong customer authentication."],
+  ["Acquirer", "The financial institution or acquiring provider that connects a merchant's card transactions to card networks and receives settlement on the merchant side."],
+  ["Authorization", "The issuer-side decision to approve or decline a payment request. Approval can reserve funds, but it is not the same as capture, settlement, or payout."],
+  ["Authorization window", "The period in which an approved authorization can be captured before it expires. It varies by payment method, provider, network, and transaction type."],
+  ["Balance transaction", "A provider ledger entry that changes a merchant or seller balance, such as a payment, fee, refund, dispute, reserve movement, currency conversion, or payout."],
+  ["B2B", "Business-to-business: a sale where the customer is acting as a business. Tax, invoicing, payment terms, and buyer verification can differ from consumer sales."],
+  ["B2C", "Business-to-consumer: a sale to an individual acting as a consumer. Consumer protection, tax location, cancellation, and receipt requirements can differ from B2B."],
+  ["Billing anchor", "The timestamp or calendar point that determines when a subscription period renews and an invoice is created or collected."],
+  ["Billing layer", "Software that manages products, prices, subscriptions, invoices, usage, credits, retries, and customer changes. It may depend on a separate payment processor."],
+  ["Blended pricing", "A public or contracted payment rate that combines multiple underlying network, interchange, acquiring, and provider costs into one percentage and fixed fee."],
+  ["Capture", "The instruction to collect an authorized payment. Authorization and capture can happen together or as two separate steps."],
+  ["Card network", "A payment network such as Visa or Mastercard that defines rules and carries transaction messages between acquiring and issuing participants."],
+  ["Card on file", "A saved payment credential used for later payments. The merchant or provider normally stores a token rather than raw card data."],
+  ["Chargeback", "A reversal processed through a card dispute system after a cardholder challenges a transaction. It can include a separate fee and evidence deadline."],
+  ["Checkout", "The customer-facing flow that collects order, customer, tax, and payment information and initiates payment. It can be hosted, embedded, or custom."],
+  ["Cross-border fee", "An additional fee that may apply when the merchant, provider, buyer, card, or acquiring arrangement crosses defined country or regional boundaries."],
+  ["Currency conversion", "The exchange of one currency into another. It can occur between presentment, provider balance, settlement, or payout currencies and may include an FX fee."],
+  ["Descriptor", "The merchant or provider text shown on a buyer's card or bank statement. A recognizable descriptor can reduce unrecognized-payment disputes."],
+  ["Direct payments", "A setup in which a processor, wallet, gateway, or payment platform helps accept payment while the business normally remains the seller to the customer."],
+  ["Dispute", "A buyer challenge raised through a card issuer, wallet, bank, or payment method. Dispute procedures, evidence, deadlines, and outcomes vary."],
+  ["Dunning", "The sequence used to recover failed recurring payments through retries, payment-method updates, reminders, grace periods, and account-state changes."],
+  ["Effective rate", "Total modeled payment and related costs divided by the relevant revenue or payment volume. The calculation is useful only when its included costs are explicit."],
+  ["Entitlement", "The product access or benefit a customer should receive. It is related to subscription and payment state but should be modeled as its own decision."],
+  ["Foreign exchange (FX)", "The market and provider process for converting currencies. In payments, FX cost can affect the buyer, merchant, provider balance, or payout."],
+  ["Gateway", "Technology that securely sends payment details and transaction messages between checkout and processing or acquiring services. A gateway is not automatically the legal seller."],
+  ["Gross payment volume", "The total value of processed payments before subtracting refunds, disputes, provider fees, taxes, reserves, or other adjustments."],
+  ["IC++ pricing", "A pricing structure that exposes interchange, card-scheme fees, and provider markup as separate components instead of one blended rate."],
+  ["Idempotency", "A design property that lets the same request or event be processed more than once without creating duplicate charges or duplicate state changes."],
+  ["Indirect tax", "Transaction taxes such as VAT, GST, or sales tax. The party responsible for registration, collection, filing, and remittance depends on law and the sale structure."],
+  ["Interchange", "A component of card acceptance cost generally transferred between acquiring and issuing participants under network rules. It varies by card and transaction."],
+  ["Invoice", "A commercial record describing seller, buyer, items, price, tax, amount due, currency, and payment terms. A payment receipt and an invoice are not always the same document."],
+  ["Issuer", "The bank or institution that issued the buyer's card or payment account and participates in authorization and dispute decisions."],
+  ["Legal seller", "The entity contracting with the buyer for the product or service. It appears in sale terms and carries the obligations attached to that sale."],
+  ["Local payment method", "A payment method strongly associated with a particular market, banking system, or buyer behavior. Currency, confirmation, refund, and recurring support can be limited."],
+  ["Mandate", "A buyer authorization that permits eligible future debits, commonly used by bank-debit and recurring payment methods."],
+  ["Merchant", "The business accepting payment for its own sale under a direct payment relationship. The term can also have provider- or network-specific contractual meanings."],
+  ["Merchant of Record (MoR)", "A provider that becomes the seller or reseller to the buyer for eligible covered transactions and assumes the documented transaction responsibilities."],
+  ["Negative balance", "A provider balance below zero after refunds, disputes, fees, reserves, or other adjustments exceed available incoming funds."],
+  ["One Stop Shop (OSS)", "An optional EU VAT mechanism that lets eligible sellers declare and pay VAT for covered cross-border consumer supplies through one Member State registration."],
+  ["Orchestration", "A layer that can route transactions across processors, acquirers, or methods based on geography, cost, availability, risk, or approval performance."],
+  ["Payment credential", "Sensitive or tokenized information that allows a payment method to be charged. Transferability depends on method, provider, security process, and destination."],
+  ["Payment Service Provider (PSP)", "A broad category of providers that help merchants accept and process payments, often combining gateway, method, acquiring, risk, and reporting services."],
+  ["Payout", "A transfer of available funds from a provider balance to the seller or merchant's bank account. Payout timing follows settlement, availability, and provider scheduling."],
+  ["PCI DSS", "The Payment Card Industry Data Security Standard. It defines security requirements for entities that store, process, transmit, or can affect cardholder data."],
+  ["Presentment currency", "The currency in which a price is shown and a payment is charged to the buyer."],
+  ["Proration", "A charge or credit that allocates a subscription price change across part of a billing period."],
+  ["Reconciliation", "The process of connecting orders, payments, taxes, fees, refunds, disputes, provider balances, payouts, and bank deposits into an explainable ledger."],
+  ["Refund", "A seller- or provider-initiated return of funds. The original processing fee may be returned, retained, or supplemented by another fee depending on terms."],
+  ["Reserve", "Funds held or designated to cover future refunds, disputes, negative balances, or other payment exposure. A reserve may be fixed, rolling, or risk-adjusted."],
+  ["Reverse charge", "A tax mechanism under which the buyer accounts for tax instead of the seller in eligible transactions. Evidence and invoice requirements still apply."],
+  ["Reversal", "A transaction that undoes or releases a prior payment movement, such as releasing an authorization or reversing a settled amount."],
+  ["Rolling reserve", "A reserve that withholds a percentage of transactions and releases each portion after a defined period."],
+  ["Scheme fee", "A fee associated with card-network services and rules. In transparent pricing it can be shown separately from interchange and provider markup."],
+  ["Seller coverage", "The countries, legal entities, industries, products, and risk profiles a provider can onboard. It is different from the countries where buyers can pay."],
+  ["Settlement", "The process by which captured payment funds and transaction obligations move through the payment system into the relevant provider or merchant balance."],
+  ["Settlement currency", "The currency in which the provider records or settles funds for the merchant balance. It may differ from presentment and payout currency."],
+  ["Strong Customer Authentication (SCA)", "A European payment-security requirement that can require authentication using independent factors, subject to scope, exemptions, and payment flow."],
+  ["Tokenization", "Replacing sensitive payment data with a token that can be used in an approved system without exposing the underlying credential to ordinary merchant systems."],
+  ["Vault", "A controlled system that stores payment credentials or tokens for future use. Portability from one vault to another requires a supported secure process."],
+  ["Wallet", "A buyer-facing payment account or device service that supplies a stored or tokenized payment method, such as PayPal, Apple Pay, or Google Pay."],
+  ["Webhook", "A server-to-server event notification from a provider. Webhooks should be authenticated, processed idempotently, and designed for retries and out-of-order delivery."]
+];
+---
+
+<BaseLayout title="Payments glossary — Payment Stack Guide" description="Plain-language definitions of payment processing, Merchant of Record, billing, tax, disputes, settlement, security, and migration terms.">
+  <PageHeader eyebrow="Plain language, precise boundaries" title="Payments glossary" description="The same word can describe a legal role, a product layer, or a payment state. These definitions keep the distinctions visible." meta={`${terms.length} terms · reviewed 2026-07-27`} />
+  <section class="section">
+    <div class="shell" x-data="{ query: '' }">
+      <label class="glossary-search"><span>Search terms</span><input type="search" placeholder="Try reserve, settlement, MoR…" x-model="query" /></label>
+      <dl class="glossary-grid">
+        {terms.map(([term, definition], index) => <div x-show={`${JSON.stringify(term.toLowerCase())}.includes(query.toLowerCase()) || ${JSON.stringify(definition.toLowerCase())}.includes(query.toLowerCase())`}>
+          <dt><span>{String(index + 1).padStart(2, "0")}</span>{term}</dt><dd>{definition}</dd>
+        </div>)}
+      </dl>
+    </div>
+  </section>
+  <section class="section section-tint"><div class="shell reading-block"><span class="eyebrow">Scope</span><h2>Definitions are a map, not a contract.</h2><p>Provider agreements, card-network rules, tax law, and local regulation can give a term a narrower meaning. Confirm the definition used in the exact agreement and jurisdiction you are evaluating.</p><p>Reference foundations include the PCI Security Standards Council, European Banking Authority, European Commission VAT One Stop Shop, provider transaction-lifecycle documentation, and current provider terms.</p></div></section>
+</BaseLayout>

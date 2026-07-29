@@ -1,0 +1,259 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProviderCard from "../components/ProviderCard.astro";
+import rules from "../data/calculator-rules.json";
+const providers = (await getCollection("providers")).map((entry) => entry.data);
+const guides = (await getCollection("guides")).map((entry) => entry.data);
+const stories = await getCollection("fieldStories");
+const featured = ["paddle", "stripe-payments", "polar", "paypal-checkout"].map((slug) => providers.find((provider) => provider.slug === slug)!);
+const featuredGuides = ["online-payment-lifecycle", "payment-fee-anatomy", "sales-tax-vat-direct-payments", "payouts-reserves-cash-flow", "checkout-payment-methods", "payment-provider-portability-exit-plan"].map((slug) => guides.find((guide) => guide.slug === slug)!);
+const morCount = providers.filter((provider) => provider.model === "merchant-of-record").length;
+const directCount = providers.filter((provider) => provider.model === "direct-payments").length;
+const unmodeledStatus = (kind: string) => {
+  if (kind === "negotiated") return { signal: "Tailored pricing", headline: "Quote", detail: "required" };
+  if (kind === "method-based") return { signal: "Method + interchange++", headline: "Variable", detail: "interchange" };
+  if (kind === "contradictory") return { signal: "Conflicting public sources", headline: "Review", detail: "required" };
+  return { signal: "Choose country + method", headline: "Public", detail: "regional rates" };
+};
+const unmodeledProviders = providers
+  .filter((provider) => provider.pricing.percentage === null || provider.pricing.fixed === null)
+  .map((provider) => ({
+    slug: provider.slug,
+    name: provider.name,
+    model: provider.model,
+    modelLabel: provider.model === "merchant-of-record" ? "Merchant of Record" : "You remain the merchant",
+    pricingHeadline: provider.pricing.headline,
+    ...unmodeledStatus(provider.pricing.kind)
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout>
+  <section class="hero hero-blue">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow eyebrow-inverse">Independent payments research</span>
+        <h1>Choose your<br />payment processor</h1>
+        <p class="hero-lede">Start with the decision most comparison sites skip: will another company be the legal seller, or will you remain the merchant?</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="/start/">Find your path <span aria-hidden="true">→</span></a>
+          <a class="text-link text-link-inverse" href="/methodology/">How we verify claims</a>
+        </div>
+      </div>
+      <div class="hero-board" aria-label="Two payment responsibility paths">
+        <div class="board-label">YOUR FIRST DECISION</div>
+        <div class="board-node board-node-source">Your product</div>
+        <div class="board-connector" aria-hidden="true"></div>
+        <a class="board-card" href="/merchant-of-record/">
+          <span>01</span>
+          <strong>Merchant of Record</strong>
+          <small>The provider is the legal seller</small>
+        </a>
+        <a class="board-card" href="/payment-processors/">
+          <span>02</span>
+          <strong>Direct payments</strong>
+          <small>You remain the legal seller</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip">
+    <div class="shell proof-grid">
+      <div><strong>{providers.length}</strong><span>provider profiles</span></div>
+      <div><strong>{guides.length}</strong><span>practical guides</span></div>
+      <div><strong>{stories.length}</strong><span>field stories</span></div>
+      <div><strong>30</strong><span>migration routes</span></div>
+    </div>
+  </section>
+
+  <section class="section intro-section">
+    <div class="shell split-heading">
+      <span class="section-number">01</span>
+      <div>
+        <span class="eyebrow">The useful distinction</span>
+        <h2>Fees are only half the decision.</h2>
+      </div>
+      <p>A lower transaction rate can leave tax registration, filing, disputes, billing support, invoices, and compliance with you. We make that responsibility visible before comparing features.</p>
+    </div>
+  </section>
+
+  <section class="section section-tint home-fee-section" x-data="homepageFeeChart()" x-cloak>
+    <div class="shell">
+      <div class="section-heading-inline home-fee-heading">
+        <div><span class="eyebrow">Interactive fee landscape</span><h2>What would each provider collect?</h2></div>
+        <p>Set an annual turnover and transaction shape. The chart applies each reviewed public formula and separates every modeled fee component.</p>
+      </div>
+
+      <div class="home-fee-workspace">
+        <form class="home-fee-controls" @submit.prevent>
+          <div class="home-fee-control-heading"><span>Scenario</span><button type="button" @click="reset()">Reset</button></div>
+          <label class="home-fee-control-primary">
+            <span>Annual charged turnover <small>USD</small></span>
+            <div><b>$</b><input type="number" min="0" step="10000" x-model.number="inputs.annualRevenue" /></div>
+          </label>
+          <label class="home-fee-control-primary">
+            <span>Average order value <small>USD</small></span>
+            <div><b>$</b><input type="number" min="1" step="1" x-model.number="inputs.averageOrderValue" /></div>
+          </label>
+          <div class="home-fee-slider-grid">
+            <label>
+              <span>Subscriptions <b><span x-text="inputs.subscriptionShare"></span>%</b></span>
+              <input type="range" min="0" max="100" step="5" x-model.number="inputs.subscriptionShare" />
+            </label>
+            <label>
+              <span>International cards <b><span x-text="inputs.internationalShare"></span>%</b></span>
+              <input type="range" min="0" max="100" step="5" x-model.number="inputs.internationalShare" />
+            </label>
+            <label>
+              <span>Currency converted <b><span x-text="inputs.fxShare"></span>%</b></span>
+              <input type="range" min="0" max="100" step="5" x-model.number="inputs.fxShare" />
+            </label>
+          </div>
+          <label class="home-fee-control-primary">
+            <span>Disputes per year</span>
+            <div><input type="number" min="0" step="1" x-model.number="inputs.disputes" /></div>
+          </label>
+          <div class="home-fee-scenario-summary">
+            <span>Modeled activity</span>
+            <strong><span x-text="Math.round(annualInputs.transactions).toLocaleString('en-US')"></span> annual transactions</strong>
+            <small>Turnover ÷ average order value</small>
+          </div>
+        </form>
+
+        <div class="home-fee-chart-panel">
+          <div class="home-fee-toolbar">
+            <div><span class="eyebrow">Estimated vendor fees / year</span><small>Lowest modeled total first · click a row for the full breakdown</small></div>
+            <div class="segmented-control" aria-label="Filter annual fee results">
+              <button type="button" :class="{ active: view === 'all' }" @click="setView('all')">All</button>
+              <button type="button" :class="{ active: view === 'merchant-of-record' }" @click="setView('merchant-of-record')">MoR</button>
+              <button type="button" :class="{ active: view === 'direct-payments' }" @click="setView('direct-payments')">Direct</button>
+            </div>
+          </div>
+
+          <div class="home-fee-legend" aria-label="Chart legend">
+            <span><i class="fee-color-percentage"></i>Percentage</span>
+            <span><i class="fee-color-fixed"></i>Per transaction</span>
+            <span><i class="fee-color-international"></i>International</span>
+            <span><i class="fee-color-fx"></i>FX</span>
+            <span><i class="fee-color-subscription"></i>Subscriptions</span>
+            <span><i class="fee-color-other"></i>Disputes / plan</span>
+          </div>
+
+          <div class="home-fee-chart" aria-live="polite">
+            <template x-for="result in results" :key="result.slug">
+              <button type="button" class="home-fee-row" :class="{ active: selectedResult.slug === result.slug }" @click="select(result.slug)">
+                <span class="home-fee-vendor"><strong x-text="result.name"></strong><small x-text="result.model === 'merchant-of-record' ? 'MoR' : 'Direct'"></small></span>
+                <span class="home-fee-bar-track">
+                  <span class="home-fee-bar" :style="`width: ${barWidth(result)}`">
+                    <i class="fee-color-percentage" :style="`width: ${segmentWidth(result.breakdown.basePercentage, result.total)}`"></i>
+                    <i class="fee-color-fixed" :style="`width: ${segmentWidth(result.breakdown.fixed, result.total)}`"></i>
+                    <i class="fee-color-international" :style="`width: ${segmentWidth(result.breakdown.international, result.total)}`"></i>
+                    <i class="fee-color-fx" :style="`width: ${segmentWidth(result.breakdown.fx, result.total)}`"></i>
+                    <i class="fee-color-subscription" :style="`width: ${segmentWidth(result.breakdown.subscriptions, result.total)}`"></i>
+                    <i class="fee-color-other" :style="`width: ${segmentWidth(result.breakdown.dispute + result.breakdown.providerPlan, result.total)}`"></i>
+                  </span>
+                </span>
+                <span class="home-fee-total"><strong x-text="compactMoney(result.total)"></strong><small x-text="percent(result.effectiveRate)"></small></span>
+              </button>
+            </template>
+            <template x-for="provider in visibleUnmodeledProviders" :key="provider.slug">
+              <a class="home-fee-row home-fee-row-unmodeled" :href="`/providers/${provider.slug}/`" :title="provider.pricingHeadline">
+                <span class="home-fee-vendor"><strong x-text="provider.name"></strong><small x-text="provider.model === 'merchant-of-record' ? 'MoR' : 'Direct'"></small></span>
+                <span class="home-fee-unmodeled-line"><i></i><span x-text="provider.signal"></span></span>
+                <span class="home-fee-total"><strong x-text="provider.headline"></strong><small x-text="provider.detail"></small></span>
+              </a>
+            </template>
+          </div>
+
+          <div class="home-fee-detail" aria-live="polite">
+            <div class="home-fee-detail-title">
+              <div><span class="model-badge" :class="selectedResult.model === 'merchant-of-record' ? 'model-mor' : 'model-direct'" x-text="selectedResult.modelLabel"></span><h3 x-text="selectedResult.name"></h3></div>
+              <div><strong x-text="money(selectedResult.total)"></strong><small>estimated annually · <span x-text="percent(selectedResult.effectiveRate)"></span></small></div>
+            </div>
+            <dl class="home-fee-breakdown">
+              <div><dt>Percentage fee</dt><dd x-text="money(selectedResult.breakdown.basePercentage)"></dd></div>
+              <div><dt>Per transaction</dt><dd x-text="money(selectedResult.breakdown.fixed)"></dd></div>
+              <div><dt>International</dt><dd x-text="money(selectedResult.breakdown.international)"></dd></div>
+              <div><dt>FX</dt><dd x-text="money(selectedResult.breakdown.fx)"></dd></div>
+              <div><dt>Subscriptions</dt><dd x-text="money(selectedResult.breakdown.subscriptions)"></dd></div>
+              <div><dt>Disputes + plan</dt><dd x-text="money(selectedResult.breakdown.dispute + selectedResult.breakdown.providerPlan)"></dd></div>
+            </dl>
+            <div class="home-fee-detail-foot"><p><strong x-text="selectedResult.confidence"></strong> · <span x-text="selectedResult.note"></span></p><a :href="`/providers/${selectedResult.slug}/`">Read the evidence →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-fee-boundary">
+        <div><p><strong>Comparable fees, different jobs.</strong> MoR fees cover a broader documented responsibility set. Direct-payment rows exclude your tax, billing, support, accounting, and compliance operations.</p><small>Uses the documented public and usually US pricing assumptions shown in each profile. Excludes taxes collected, payouts, reserves, negotiated rates, and fees without a reliable universal formula.</small></div>
+        <a class="button" href="/tools/effective-cost/">Open the full cost model →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="shell path-grid">
+      <a class="path-card path-card-blue" href="/merchant-of-record/">
+        <span class="path-number">PATH 01</span>
+        <h2>Merchant of Record</h2>
+        <p>The provider becomes the legal seller and takes on the documented transaction, indirect-tax, fraud, and billing-support responsibilities.</p>
+        <strong>{morCount} provider profiles <span aria-hidden="true">→</span></strong>
+      </a>
+      <a class="path-card" href="/payment-processors/">
+        <span class="path-number">PATH 02</span>
+        <h2>Direct payments</h2>
+        <p>You remain the legal seller while a processor, wallet, gateway, acquirer, or payment platform helps move the money.</p>
+        <strong>{directCount} provider profiles <span aria-hidden="true">→</span></strong>
+      </a>
+    </div>
+  </section>
+
+  <section class="section section-blue">
+    <div class="shell tool-launch-heading"><div><span class="eyebrow eyebrow-inverse">Decision tools</span><h2>From “it depends” to a defensible decision.</h2></div><p>Start with eligibility, narrow by business shape, compare public costs, then test a real quote against the cost and risk of moving.</p></div>
+    <div class="shell tool-launch-grid">
+      <a href="/tools/provider-matcher/"><span>01 / MATCH</span><h3>Provider matcher</h3><p>Answer five questions and get a transparent five-provider research shortlist.</p><strong>Build your shortlist →</strong></a>
+      <a href="/tools/country-checker/"><span>02 / ELIGIBILITY</span><h3>Country checker</h3><p>Separate seller onboarding from buyer coverage and find the first hard constraint.</p><strong>Check your country →</strong></a>
+      <a href="/tools/effective-cost/"><span>03 / COST</span><h3>Side-by-side costs</h3><p>Select two to four providers and compare the same revenue and transaction scenario.</p><strong>Compare costs →</strong></a>
+      <a href="/tools/migration-decision/"><span>04 / SWITCH</span><h3>Stay-or-switch report</h3><p>Normalize a quote, price the migration, stress payout cash flow, and share the complete case.</p><strong>Build the decision →</strong></a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell section-heading-inline">
+      <div><span class="eyebrow">Start with the shape</span><h2>Four useful reference points.</h2></div>
+      <a class="card-link" href="/start/">Find your path <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="shell provider-grid compact-grid">
+      {featured.map((provider) => <ProviderCard provider={provider} compact />)}
+    </div>
+  </section>
+
+  <section class="section section-blue">
+    <div class="shell flow-section">
+      <div><span class="eyebrow eyebrow-inverse">Decision flow</span><h2>From responsibility<br />to provider.</h2></div>
+      <ol class="flow-list">
+        <li><span>01</span><div><strong>Choose the legal seller</strong><p>Decide who should contract with the buyer and carry the sale-level obligations.</p></div></li>
+        <li><span>02</span><div><strong>Filter by eligibility</strong><p>Seller country, product type, buyer markets, and payment methods remove impossible choices.</p></div></li>
+        <li><span>03</span><div><strong>Model the real fee</strong><p>Add transaction count, international cards, FX, subscriptions, refunds, disputes, and payouts.</p></div></li>
+        <li><span>04</span><div><strong>Plan the exit before entry</strong><p>Understand exports, payment credentials, subscriptions, history, events, and entitlements.</p></div></li>
+      </ol>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="shell section-heading-inline"><div><span class="eyebrow">Deep reference</span><h2>Learn the system behind the checkout.</h2></div><a class="card-link" href="/learn/">All {guides.length} guides →</a></div>
+    <div class="shell library-grid home-library-grid">{featuredGuides.map((guide) => <a class="library-card" href={`/guides/${guide.slug}/`}><span>{guide.category} · {guide.readingTime}</span><h3>{guide.title}</h3><p>{guide.description}</p><strong>Read guide →</strong></a>)}</div>
+  </section>
+
+  <script is:inline type="application/json" id="homepage-calculator-rules" set:html={JSON.stringify(rules)}></script>
+  <script is:inline type="application/json" id="homepage-unmodeled-providers" set:html={JSON.stringify(unmodeledProviders)}></script>
+  <script>
+    import { createHomepageFeeState } from "../lib/cost-calculator.mjs";
+
+    const ruleElement = document.querySelector("#homepage-calculator-rules");
+    const unmodeledElement = document.querySelector("#homepage-unmodeled-providers");
+    const calculatorRules = ruleElement ? JSON.parse(ruleElement.textContent || "[]") : [];
+    const providersWithoutFormula = unmodeledElement ? JSON.parse(unmodeledElement.textContent || "[]") : [];
+    (window as any).homepageFeeChart = () => createHomepageFeeState(calculatorRules, providersWithoutFormula);
+  </script>
+</BaseLayout>

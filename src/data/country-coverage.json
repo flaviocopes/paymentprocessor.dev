@@ -1,0 +1,311 @@
+{
+  "reviewedOn": "2026-07-28",
+  "countries": [
+    {
+      "code": "US",
+      "name": "United States"
+    },
+    {
+      "code": "CA",
+      "name": "Canada"
+    },
+    {
+      "code": "GB",
+      "name": "United Kingdom"
+    },
+    {
+      "code": "IE",
+      "name": "Ireland"
+    },
+    {
+      "code": "DE",
+      "name": "Germany"
+    },
+    {
+      "code": "NL",
+      "name": "Netherlands"
+    },
+    {
+      "code": "FR",
+      "name": "France"
+    },
+    {
+      "code": "AU",
+      "name": "Australia"
+    },
+    {
+      "code": "IN",
+      "name": "India"
+    },
+    {
+      "code": "SG",
+      "name": "Singapore"
+    },
+    {
+      "code": "BR",
+      "name": "Brazil"
+    },
+    {
+      "code": "JP",
+      "name": "Japan"
+    }
+  ],
+  "providers": [
+    {
+      "slug": "creem",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "limited": [],
+      "unavailable": [],
+      "note": "Creem explicitly lists these countries among its 86 supported merchant payout countries; product and identity review still applies.",
+      "source": "https://docs.creem.io/merchant-of-record/supported-countries"
+    },
+    {
+      "slug": "dodo-payments",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "limited": [],
+      "unavailable": [],
+      "note": "Dodo's Merchant Acceptance Policy lists these locations for merchant KYC and payouts; business-model review still applies.",
+      "source": "https://docs.dodopayments.com/miscellaneous/merchant-acceptance"
+    },
+    {
+      "slug": "fastspring",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "FastSpring describes broad global selling, but seller eligibility is confirmed through underwriting rather than a current public country table.",
+      "source": "https://fastspring.com/docs/getting-started-with-fastspring/"
+    },
+    {
+      "slug": "gumroad",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "Creator payout method and onboarding availability vary by country and account; verify the current payout route before committing.",
+      "source": "https://gumroad.com/help/article/13-getting-paid"
+    },
+    {
+      "slug": "lemon-squeezy",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "Lemon Squeezy publishes a supported-country process, but seller onboarding remains subject to Stripe, payout, and product review.",
+      "source": "https://docs.lemonsqueezy.com/help/getting-started/supported-countries"
+    },
+    {
+      "slug": "paddle",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "Paddle documents 200+ buyer markets; seller onboarding is a separate eligibility and product-review question.",
+      "source": "https://developer.paddle.com/concepts/sell/supported-countries-locales/"
+    },
+    {
+      "slug": "polar",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "Polar documents worldwide selling and Stripe-connected payouts, but does not expose one definitive seller-country table on its overview page.",
+      "source": "https://polar.sh/docs/merchant-of-record/introduction"
+    },
+    {
+      "slug": "stripe-managed-payments",
+      "documented": [
+        "US"
+      ],
+      "limited": [
+        "US"
+      ],
+      "unavailable": [],
+      "note": "Managed Payments remains an eligibility-controlled product; support can differ from ordinary Stripe Payments availability.",
+      "source": "https://docs.stripe.com/payments/managed-payments"
+    },
+    {
+      "slug": "adyen",
+      "documented": [],
+      "limited": [],
+      "unavailable": [],
+      "note": "Adyen entity, acquiring, and product availability are scoped through enterprise sales and underwriting.",
+      "source": "https://www.adyen.com/contact"
+    },
+    {
+      "slug": "airwallex",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "limited": [],
+      "unavailable": [
+        "IN"
+      ],
+      "note": "Airwallex's eligible-business-country list includes the documented markets; India is not on the current onboarding list.",
+      "source": "https://help.airwallex.com/hc/en-gb/articles/4408591334937-What-country-does-my-business-have-to-be-registered-in-for-opening-an-Airwallex-account"
+    },
+    {
+      "slug": "braintree",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "SG"
+      ],
+      "limited": [],
+      "unavailable": [
+        "IN",
+        "BR",
+        "JP"
+      ],
+      "note": "Braintree Direct requires a business office and bank account in the United States, Canada, Australia, Europe, Singapore, Hong Kong, Malaysia, or New Zealand.",
+      "source": "https://developer.paypal.com/docs/bt-direct-overview/"
+    },
+    {
+      "slug": "gocardless",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU"
+      ],
+      "limited": [],
+      "unavailable": [
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "note": "GoCardless's product description lists eligible merchant jurisdictions and makes clear that individual services can still vary by country.",
+      "source": "https://gocardless.com/legal/gocardless-product-description-document"
+    },
+    {
+      "slug": "mollie",
+      "documented": [
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR"
+      ],
+      "limited": [],
+      "unavailable": [
+        "US",
+        "CA",
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "note": "Mollie accepts businesses based in the EEA, Switzerland, or the United Kingdom and requires an IBAN or UK bank account.",
+      "source": "https://help.mollie.com/hc/en-us/articles/115002116105-Can-I-use-Mollie-s-services-in-my-country"
+    },
+    {
+      "slug": "paypal-checkout",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "limited": [],
+      "unavailable": [],
+      "note": "PayPal supports business account payment APIs in these markets, but features, withdrawal, currency, and merchant terms remain country-specific.",
+      "source": "https://developer.paypal.com/reference/country-codes/"
+    },
+    {
+      "slug": "square",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "FR",
+        "AU",
+        "JP"
+      ],
+      "limited": [],
+      "unavailable": [
+        "DE",
+        "NL",
+        "IN",
+        "SG",
+        "BR"
+      ],
+      "note": "Square card processing requires the seller to be located in a supported account country.",
+      "source": "https://squareup.com/help/us/en/article/5085-accepted-cards"
+    },
+    {
+      "slug": "stripe-payments",
+      "documented": [
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "DE",
+        "NL",
+        "FR",
+        "AU",
+        "IN",
+        "SG",
+        "BR",
+        "JP"
+      ],
+      "limited": [
+        "IN"
+      ],
+      "unavailable": [],
+      "note": "Stripe lists these business countries; India is currently marked Preview and may have additional constraints.",
+      "source": "https://stripe.com/global"
+    }
+  ]
+}

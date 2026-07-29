@@ -1,0 +1,236 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const companies = (await getCollection("companyIntelligence"))
+  .map((entry) => entry.data)
+  .sort((a, b) => a.name.localeCompare(b.name));
+const providerNames = new Map((await getCollection("providers")).map((entry) => [entry.data.slug, entry.data.name]));
+const category = (entityType: string) => entityType === "public" ? "public" : entityType === "subsidiary" ? "subsidiary" : entityType === "private-equity-backed" ? "pe-backed" : "private";
+const currentYear = 2026;
+const oldestFounded = Math.min(...companies.map((company) => company.founded));
+const newestFounded = Math.max(...companies.map((company) => company.founded));
+const explorerData = companies.map((company, id) => ({
+  id,
+  name: company.name,
+  kind: category(company.entityType),
+  entityLabel: company.entityType.replaceAll("-", " "),
+  founded: company.founded,
+  age: currentYear - company.founded,
+  ownership: company.ownershipLabel,
+  parentCompany: company.parentCompany,
+  disclosure: company.financials.scope,
+  financialHeadline: company.financials.headline,
+  providerSlug: company.providerSlugs[0]
+}));
+const landscapeGroups = [
+  { value: "public", label: "Public" },
+  { value: "private", label: "Private" },
+  { value: "pe-backed", label: "PE-backed" },
+  { value: "subsidiary", label: "Subsidiary" }
+];
+const chartPosition = (founded: number) => ((founded - oldestFounded) / (newestFounded - oldestFounded)) * 100;
+---
+
+<BaseLayout
+  title="Payment company ownership, funding, and financials — Payment Stack Guide"
+  description="Compare the companies behind payment providers: ownership, founders, current leadership, funding, team disclosures, acquisitions, and latest available financial data."
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Payment company intelligence",
+    numberOfItems: companies.length,
+    itemListElement: companies.map((company, index) => ({ "@type": "ListItem", position: index + 1, name: company.name }))
+  }}
+>
+  <section class="company-hero">
+    <div class="shell company-hero-grid">
+      <div class="company-hero-copy">
+        <span class="eyebrow eyebrow-inverse">Company intelligence</span>
+        <h1>Know the company behind the checkout</h1>
+        <p>Ownership, leadership, capital, and disclosure quality can affect product continuity, support, pricing power, and your migration risk.</p>
+        <span class="review-chip">{companies.length} company records · reviewed 27 July 2026</span>
+      </div>
+      <div class="company-hero-illustration" aria-label="Illustration showing the relationship between an owner, a company, and its payment product">
+        <span class="company-hero-caption">Trace the commercial stack</span>
+        <div class="company-hero-node hero-node-owner"><small>Owner</small><strong>Parent company</strong></div>
+        <div class="company-hero-line hero-line-one" aria-hidden="true"></div>
+        <div class="company-hero-node hero-node-company"><small>Company</small><strong>Operating entity</strong></div>
+        <div class="company-hero-line hero-line-two" aria-hidden="true"></div>
+        <div class="company-hero-node hero-node-product"><small>Product</small><strong>Payment provider</strong></div>
+        <img class="company-hero-doodle" src="/illustrations/doodle-search.svg" width="160" height="154" alt="" />
+        <span class="company-hero-pulse pulse-one" aria-hidden="true"></span>
+        <span class="company-hero-pulse pulse-two" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section company-landscape-section" x-data="companyExplorer()">
+    <div class="shell">
+      <div class="section-heading-inline company-interactive-heading">
+        <div><span class="eyebrow">Interactive landscape</span><h2>See the ownership map.</h2></div>
+        <p>Filter the chart, then select a company to inspect its ownership and disclosure context.</p>
+      </div>
+      <div class="company-explorer">
+        <div class="company-landscape-panel">
+          <div class="company-landscape-toolbar">
+            <span>Show</span>
+            <div class="company-filter company-filter-compact" role="group" aria-label="Filter the company landscape by ownership">
+              {[{ value: "all", label: "All" }, ...landscapeGroups].map(({ value, label }) => <button type="button" :class={`{ active: ownership === '${value}' }`} @click={`ownership = '${value}'`}>{label}</button>)}
+            </div>
+          </div>
+          <div class="company-landscape" aria-label={`Company founding years from ${oldestFounded} to ${newestFounded}`}>
+            <div class="company-chart-axis" aria-hidden="true"><span>{oldestFounded}</span><span>2005</span><span>2014</span><span>{newestFounded}</span></div>
+            {landscapeGroups.map((group) => {
+              const members = explorerData.filter((company) => company.kind === group.value);
+              return <div class="company-chart-lane">
+                <span class="company-chart-label">{group.label}</span>
+                <div class="company-chart-track">
+                  {members.map((company, laneIndex) => <button
+                    type="button"
+                    class="company-chart-node"
+                    style={`--company-x: ${chartPosition(company.founded)}%; --company-y: ${(laneIndex % 2) * 30}px`}
+                    x-show={`ownership === 'all' || ownership === '${company.kind}'`}
+                    :class={`{ active: selected.id === ${company.id} }`}
+                    @click={`selected = companies[${company.id}]`}
+                    aria-label={`Inspect ${company.name}, founded ${company.founded}`}
+                  ><i aria-hidden="true"></i><span>{company.name}</span></button>)}
+                </div>
+              </div>;
+            })}
+          </div>
+        </div>
+
+        <aside class="company-selected-card" aria-live="polite">
+          <span class="eyebrow">Selected company</span>
+          <div class="company-selected-index"><span x-text="String(selected.id + 1).padStart(2, '0')">01</span><b x-text="selected.entityLabel">{explorerData[0].entityLabel}</b></div>
+          <h3 x-text="selected.name">{explorerData[0].name}</h3>
+          <p x-text="selected.ownership">{explorerData[0].ownership}</p>
+          <dl>
+            <div><dt>Founded</dt><dd x-text="selected.founded">{explorerData[0].founded}</dd></div>
+            <div><dt>Operating history</dt><dd><span x-text="selected.age">{explorerData[0].age}</span> years</dd></div>
+            <div><dt>Financial scope</dt><dd x-text="selected.disclosure.replaceAll('-', ' ')">{explorerData[0].disclosure.replaceAll("-", " ")}</dd></div>
+          </dl>
+          <strong x-text="selected.financialHeadline">{explorerData[0].financialHeadline}</strong>
+          <a href={`/providers/${explorerData[0].providerSlug}/`} :href="`/providers/${selected.providerSlug}/`">Open provider profile →</a>
+        </aside>
+      </div>
+
+      <div class="company-lens">
+        <div class="company-lens-intro">
+          <img src="/illustrations/doodle-money-plant.svg" width="110" height="157" alt="" />
+          <div><span class="eyebrow">Diligence lens</span><h2>Narrow the field. Don’t rank it.</h2><p>Choose a few company-level signals that matter to your review. This produces a research shortlist—not a recommendation or a measure of product quality.</p></div>
+        </div>
+        <div class="company-lens-workspace">
+          <form class="company-lens-controls" @submit.prevent>
+            <label class="company-range-control">
+              <span>Minimum operating history</span>
+              <strong><span x-show="minimumAge == 0">Any history</span><span x-show="minimumAge > 0" x-cloak><span x-text="minimumAge"></span>+ years</span></strong>
+              <input type="range" min="0" max="25" step="5" x-model.number="minimumAge" aria-label="Minimum operating history in years" />
+              <small><span>Any</span><span>25+ years</span></small>
+            </label>
+            <label>
+              <span>Financial visibility</span>
+              <select x-model="disclosure">
+                <option value="any">Any disclosure level</option>
+                <option value="direct">Company or product figures</option>
+                <option value="available">Any public financial context</option>
+              </select>
+            </label>
+            <label>
+              <span>Ownership structure</span>
+              <select x-model="structure">
+                <option value="any">Any structure</option>
+                <option value="standalone">No disclosed parent</option>
+                <option value="parented">Parent or owner disclosed</option>
+              </select>
+            </label>
+            <button type="button" class="company-lens-reset" @click="minimumAge = 0; disclosure = 'any'; structure = 'any'">Reset lens</button>
+          </form>
+          <div class="company-lens-results" aria-live="polite">
+            <div class="company-lens-count"><strong x-text="matches.length">{companies.length}</strong><span>of {companies.length} companies remain</span></div>
+            <div class="company-lens-list">
+              <template x-for="company in matches" :key="company.id">
+                <a :href="`/providers/${company.providerSlug}/`"><span x-text="company.name"></span><small><span x-text="company.age"></span> yrs · <span x-text="company.disclosure.replaceAll('-', ' ')"></span></small></a>
+              </template>
+              <p x-show="matches.length === 0" x-cloak>No companies match all three signals. Relax one filter and keep the tradeoff visible.</p>
+            </div>
+            <small class="company-lens-note">A company can match these signals and still be the wrong product, contract, or service model for you.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section company-method-section">
+    <div class="shell company-method-grid">
+      <span class="eyebrow">Read this first</span>
+      <div>
+        <h2>A product is not always a company.</h2>
+        <p>Stripe Payments and Stripe Managed Payments share one company. Braintree is a PayPal product, and Square is a reporting segment inside Block. Parent-company revenue can show financial capacity, but it does not reveal the economics or investment level of a specific product.</p>
+        <div class="company-scope-key">
+          <div><strong>Company</strong><span>The provider publishes company-level results.</span></div>
+          <div><strong>Parent company</strong><span>Only the owner's consolidated results are public.</span></div>
+          <div><strong>Product / segment</strong><span>A product or reporting segment has limited figures.</span></div>
+          <div><strong>Not disclosed</strong><span>No reliable current financial statement was found.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tint" x-data="{ filter: 'all' }">
+    <div class="shell">
+      <div class="section-heading-inline"><div><span class="eyebrow">Company directory</span><h2>Ownership changes the risk profile.</h2></div></div>
+      <div class="company-filter" role="group" aria-label="Filter companies by ownership">
+        {[['all','All'],['public','Public'],['private','Private'],['pe-backed','PE-backed'],['subsidiary','Subsidiaries']].map(([value, label]) => <button type="button" :class={`{ active: filter === '${value}' }`} @click={`filter = '${value}'`}>{label}</button>)}
+      </div>
+      <div class="company-directory-grid">
+        {companies.map((company, index) => <article class="company-card" data-category={category(company.entityType)} x-show={`filter === 'all' || filter === '${category(company.entityType)}'`}>
+          <div class="company-card-top"><span>{String(index + 1).padStart(2, "0")}</span><b>{company.entityType.replaceAll("-", " ")}</b></div>
+          <h2>{company.name}</h2>
+          <p class="company-ownership">{company.ownershipLabel}{company.ticker ? ` · ${company.ticker}` : ""}</p>
+          <dl class="company-card-facts">
+            <div><dt>Founded</dt><dd>{company.founded}</dd></div>
+            <div><dt>Leadership</dt><dd>{company.leaders[0].name}</dd><small>{company.leaders[0].title}</small></div>
+            <div><dt>Team</dt><dd>{company.team.value}</dd></div>
+            <div><dt>Capital</dt><dd>{company.funding.headline}</dd></div>
+          </dl>
+          <div class="company-card-financial">
+            <span>{company.financials.scope.replaceAll("-", " ")} · {company.financials.period}</span>
+            <strong>{company.financials.headline}</strong>
+            <p>{company.financials.note}</p>
+          </div>
+          <div class="company-card-links">
+            {company.providerSlugs.map((slug) => <a href={`/providers/${slug}/`}>{providerNames.get(slug)} profile →</a>)}
+          </div>
+          <small class="company-card-review">Reviewed {company.lastReviewed} · next review {company.nextReview}</small>
+        </article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-blue"><div class="shell company-caveat"><span class="eyebrow eyebrow-inverse">Decision rule</span><h2>Financial strength is context, not a product recommendation.</h2><p>A large parent can fund resilience and compliance, but can also change priorities or retire products. A focused private company can move faster, but disclose less. Ask how ownership affects the contract, data portability, reserves, support, and exit plan that apply to your account.</p><a class="button button-light" href="/guides/payment-provider-portability-exit-plan/">Plan provider portability →</a></div></section>
+
+  <script is:inline define:vars={{ explorerData }}>
+    window.companyExplorer = () => ({
+      companies: explorerData,
+      selected: explorerData[0],
+      ownership: "all",
+      minimumAge: 0,
+      disclosure: "any",
+      structure: "any",
+      get matches() {
+        return this.companies.filter((company) => {
+          const ageMatches = company.age >= Number(this.minimumAge);
+          const disclosureMatches = this.disclosure === "any"
+            || (this.disclosure === "direct" && ["company", "product"].includes(company.disclosure))
+            || (this.disclosure === "available" && company.disclosure !== "not-disclosed");
+          const structureMatches = this.structure === "any"
+            || (this.structure === "standalone" && !company.parentCompany)
+            || (this.structure === "parented" && Boolean(company.parentCompany));
+          return ageMatches && disclosureMatches && structureMatches;
+        });
+      }
+    });
+  </script>
+</BaseLayout>

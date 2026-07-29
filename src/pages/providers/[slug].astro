@@ -1,0 +1,173 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ResponsibilityTable from "../../components/ResponsibilityTable.astro";
+import SourceList from "../../components/SourceList.astro";
+import ProviderCard from "../../components/ProviderCard.astro";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("providers");
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<"providers"> };
+const provider = entry.data;
+const allProviders = (await getCollection("providers")).map((item) => item.data);
+const company = (await getCollection("companyIntelligence"))
+  .map((item) => item.data)
+  .find((item) => item.providerSlugs.includes(provider.slug));
+const related = allProviders.filter((item) => item.model === provider.model && item.slug !== provider.slug).slice(0, 3);
+const relatedStories = (await getCollection("fieldStories")).filter((story) => story.data.providerSlugs.includes(provider.slug)).slice(0, 4);
+const modelLabel = provider.model === "merchant-of-record" ? "Merchant of Record" : "Direct payments · you are merchant";
+const sellerLabel = provider.legalSeller === "provider" ? `${provider.name} is the legal seller` : "Your business is the legal seller";
+const questions = provider.model === "merchant-of-record" ? [
+  "Which provider entity is the seller, and what name appears on receipts and statements?",
+  "Are every product type, seller country, buyer country, and sales channel we use eligible?",
+  "Which indirect taxes, filings, invoices, refunds, and transaction-support tasks are contractually covered?",
+  "Which product-support and customer-communication tasks remain ours?",
+  "What reserve, payout-delay, review, termination, and account-restriction clauses apply?",
+  "Can active payment credentials and subscriptions be transferred to another provider?",
+  "Which reports reconcile gross sales, tax, fees, refunds, disputes, and net payout?",
+  "What changes when we use invoicing, bank transfer, marketplaces, or transactions outside the MoR flow?"
+] : [
+  "Which legal entity acquires and settles our transactions in each seller country?",
+  "Which payment methods, currencies, capture modes, and recurring patterns are supported?",
+  "What are the exact international-card, FX, refund, dispute, payout, and add-on fees?",
+  "What tax registration, calculation, filing, remittance, and invoice work remains ours?",
+  "What PCI DSS validation and checkout-security work applies to our integration?",
+  "How are reserves, negative balances, account reviews, and payout delays handled?",
+  "Can payment credentials, mandates, customers, and active subscriptions be exported or transferred?",
+  "How do balance transactions reconcile to orders, fees, refunds, disputes, and bank payouts?"
+];
+const migrationFactors = [
+  `Export customers, products, prices, invoices, refunds, disputes, and ${provider.model === "merchant-of-record" ? "tax evidence" : "balance transactions"}.`,
+  `Confirm whether saved payment credentials and recurring mandates can move without asking every customer to pay again.`,
+  `Map subscription intervals, currencies, anchors, trials, discounts, cancellation state, and legacy prices.`,
+  `Replace provider-specific checkout, portal, webhook, invoice, and entitlement behavior.`,
+  `Run old and new reporting in parallel until gross sales, fees, taxes, refunds, and payouts reconcile.`,
+  `Retain source records needed for accounting, support, disputes, and statutory obligations after cutover.`
+];
+---
+
+<BaseLayout
+  title={`${provider.name} profile — Payment Stack Guide`}
+  description={provider.summary}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: provider.name,
+    description: provider.summary,
+    category: modelLabel,
+    url: new URL(`/providers/${provider.slug}/`, Astro.site).toString(),
+    dateModified: provider.lastReviewed
+  }}
+>
+  <article class="profile">
+    <header class="profile-hero">
+      <div class="shell profile-title-grid">
+        <div>
+          <a class="back-link" href={provider.model === "merchant-of-record" ? "/merchant-of-record/" : "/payment-processors/"}>← All {provider.model === "merchant-of-record" ? "MoR" : "direct payment"} providers</a>
+          <span class="eyebrow eyebrow-inverse">{modelLabel}</span>
+          <h1>{provider.name}</h1>
+          <p>{provider.summary}</p>
+        </div>
+        <div class="seller-card">
+          <span>LEGAL SELLER</span>
+          <strong>{sellerLabel}</strong>
+          <small>{provider.serviceModel.replaceAll("-", " ")} · {provider.stage.replaceAll("-", " ")}</small>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell profile-shell">
+      <aside class="profile-toc">
+        <span class="eyebrow">On this page</span>
+        <a href="#snapshot">Snapshot</a><a href="#company">Company</a><a href="#pricing">Pricing</a><a href="#fit">Fit</a><a href="#coverage">Coverage</a><a href="#features">Features</a><a href="#responsibility">Responsibility</a><a href="#questions">Questions</a><a href="#migration">Migration</a><a href="#sources">Sources</a>
+      </aside>
+      <div class="profile-content">
+        <section id="snapshot" class="profile-section">
+          <span class="section-index">00</span><span class="eyebrow">Decision snapshot</span>
+          <h2>What changes when you choose {provider.name}.</h2>
+          <dl class="snapshot-grid">
+            <div><dt>Legal seller</dt><dd>{sellerLabel}</dd></div>
+            <div><dt>Service model</dt><dd>{provider.serviceModel.replaceAll("-", " ")}</dd></div>
+            <div><dt>Pricing certainty</dt><dd>{provider.pricing.kind.replaceAll("-", " ")}</dd></div>
+            <div><dt>Review state</dt><dd>{provider.stage.replaceAll("-", " ")} · next review {provider.nextReview}</dd></div>
+          </dl>
+        </section>
+        {company && <section id="company" class="profile-section company-profile-section">
+          <span class="section-index">01</span><span class="eyebrow">Company intelligence</span>
+          <h2>Who owns and operates {provider.name}.</h2>
+          <p class="section-lede">Product capability and company durability are different questions. This view keeps ownership, leadership, funding, and financial disclosure separate from the provider review.</p>
+          <dl class="company-fact-grid">
+            <div><dt>Founded</dt><dd>{company.founded}</dd><small>{company.foundedNote}</small></div>
+            <div><dt>Ownership</dt><dd>{company.ownershipLabel}</dd><small>{company.parentCompany ? `Parent: ${company.parentCompany}` : "Independent company"}{company.ticker ? ` · ${company.ticker}` : ""}</small></div>
+            <div><dt>Headquarters</dt><dd>{company.headquarters}</dd></div>
+            <div><dt>Team disclosure</dt><dd>{company.team.value}</dd><small>{company.team.note}</small></div>
+          </dl>
+          <div class="company-intelligence-grid">
+            <article>
+              <span>Leadership</span>
+              {company.leaders.map((leader) => <div class="leader-row"><strong>{leader.name}</strong><b>{leader.title}</b><p>{leader.context}</p></div>)}
+              <p class="founder-line"><strong>Founders:</strong> {company.founders.join(", ")}</p>
+            </article>
+            <article>
+              <span>Funding and ownership</span>
+              <h3>{company.funding.headline}</h3>
+              <p>{company.funding.details}</p>
+              {company.funding.investors.length > 0 && <p class="investor-line"><strong>Named backers:</strong> {company.funding.investors.join(", ")}</p>}
+            </article>
+          </div>
+          <div class="financial-panel">
+            <div><span>Latest financial snapshot · {company.financials.period}</span><h3>{company.financials.headline}</h3><p>{company.financials.note}</p></div>
+            <dl>{company.financials.metrics.map((metric) => <div><dt>{metric.label}</dt><dd>{metric.value}</dd></div>)}</dl>
+          </div>
+          <div class="company-events"><span>Company timeline</span><ol>{company.events.map((event) => <li><time>{event.date}</time><strong>{event.label}</strong></li>)}</ol></div>
+          <div class="company-source-strip"><span>Company sources · reviewed {company.lastReviewed}</span>{company.sources.map((source) => <a href={source.url} rel="noreferrer">{source.label} ↗</a>)}<a href="/companies/">Compare all companies →</a></div>
+        </section>}
+        <section id="pricing" class="profile-section">
+          <span class="section-index">02</span><span class="eyebrow">Pricing</span>
+          <h2>{provider.pricing.headline}</h2>
+          <div class="evidence-note"><strong>{provider.pricing.kind.replaceAll("-", " ")}</strong><p>{provider.pricing.assumptions}</p></div>
+        </section>
+        <section id="fit" class="profile-section">
+          <span class="section-index">03</span><span class="eyebrow">Fit</span><h2>Where it fits—and where it does not.</h2>
+          <div class="pros-cons">
+            <div><h3>Strengths</h3><ul>{provider.strengths.map((item) => <li>{item}</li>)}</ul></div>
+            <div><h3>Limitations</h3><ul>{provider.limitations.map((item) => <li>{item}</li>)}</ul></div>
+          </div>
+          <div class="fit-grid"><div><strong>Best fit</strong><ul>{provider.bestFor.map((item) => <li>{item}</li>)}</ul></div><div><strong>Look elsewhere when</strong><ul>{provider.avoidIf.map((item) => <li>{item}</li>)}</ul></div></div>
+        </section>
+        <section id="coverage" class="profile-section">
+          <span class="section-index">04</span><span class="eyebrow">Eligibility and reach</span><h2>Can you use it, and who can buy?</h2>
+          <dl class="definition-grid"><div><dt>Seller coverage</dt><dd>{provider.sellerCoverage}</dd></div><div><dt>Buyer coverage</dt><dd>{provider.buyerCoverage}</dd></div><div><dt>Product scope</dt><dd>{provider.products}</dd></div></dl>
+        </section>
+        <section id="features" class="profile-section">
+          <span class="section-index">05</span><span class="eyebrow">Operating surface</span><h2>What is built in.</h2>
+          <dl class="definition-grid"><div><dt>Checkout</dt><dd>{provider.features.checkout}</dd></div><div><dt>Subscriptions</dt><dd>{provider.features.subscriptions}</dd></div><div><dt>Invoicing</dt><dd>{provider.features.invoicing}</dd></div><div><dt>Payment methods</dt><dd>{provider.features.paymentMethods}</dd></div><div><dt>Payouts</dt><dd>{provider.features.payouts}</dd></div></dl>
+        </section>
+        <section id="responsibility" class="profile-section wide-section">
+          <span class="section-index">06</span><span class="eyebrow">Responsibility map</span><h2>Who handles what.</h2>
+          <ResponsibilityTable items={provider.responsibilities} />
+        </section>
+        <section id="questions" class="profile-section">
+          <span class="section-index">07</span><span class="eyebrow">Due diligence</span><h2>Questions to answer before signing.</h2>
+          <ol class="question-list">{questions.map((question) => <li>{question}</li>)}</ol>
+        </section>
+        <section id="migration" class="profile-section">
+          <span class="section-index">08</span><span class="eyebrow">Portability</span><h2>Plan the exit while entry is easy.</h2>
+          <p class="section-lede">A dashboard export is not the same as a working migration. Verify these factors with {provider.name} and a realistic destination.</p>
+          <ul class="migration-factor-list">{migrationFactors.map((factor) => <li>{factor}</li>)}</ul>
+          <a class="card-link" href="/guides/payment-provider-portability-exit-plan/">Read the full portability guide →</a>
+        </section>
+        {relatedStories.length > 0 && <section class="profile-section"><span class="section-index">09</span><span class="eyebrow">Stories from the field</span><h2>Experiences worth investigating.</h2><p class="section-lede">Anecdotes show possible failure modes, not frequency or current policy.</p><div class="profile-story-list">{relatedStories.map((story) => <a href={story.data.url} rel="noreferrer"><span>{story.data.sourceType.replaceAll("-", " ")}</span><strong>{story.data.title}</strong><p>{story.data.summary}</p></a>)}</div></section>}
+        <section id="sources" class="profile-section source-section">
+          <span class="section-index">10</span><span class="eyebrow">Primary evidence</span><h2>Sources and freshness.</h2>
+          <p>Reviewed {provider.lastReviewed}. Scheduled for review by {provider.nextReview}. Verify the source before making a production decision.</p>
+          <SourceList sources={provider.sources} />
+        </section>
+      </div>
+    </div>
+    <section class="section section-tint"><div class="shell"><div class="section-heading-inline"><div><span class="eyebrow">Related</span><h2>Compare the same model.</h2></div></div><div class="provider-grid compact-grid">{related.map((item) => <ProviderCard provider={item} compact />)}</div></div></section>
+  </article>
+</BaseLayout>

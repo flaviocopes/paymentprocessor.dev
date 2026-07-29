@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Provider = CollectionEntry<"providers">["data"];
+interface Props { provider: Provider; compact?: boolean; }
+const { provider, compact = false } = Astro.props;
+const modelLabel = provider.model === "merchant-of-record" ? "Merchant of Record" : "You are the merchant";
+---
+
+<article class:list={["provider-card", { compact }]}>
+  <div class="provider-card-top">
+    <span class:list={["model-badge", provider.model === "merchant-of-record" ? "model-mor" : "model-direct"]}>{modelLabel}</span>
+    <span class="provider-stage">{provider.stage.replace("-", " ")}</span>
+  </div>
+  <h3><a href={`/providers/${provider.slug}/`}>{provider.name}</a></h3>
+  <p>{provider.summary}</p>
+  <div class="provider-price">
+    <span>Public pricing</span>
+    <strong>{provider.pricing.headline}</strong>
+  </div>
+  {!compact && (
+    <ul class="mini-list">
+      {provider.bestFor.slice(0, 2).map((item) => <li>{item}</li>)}
+    </ul>
+  )}
+  <a class="card-link" href={`/providers/${provider.slug}/`}>View evidence-led profile <span aria-hidden="true">→</span></a>
+</article>

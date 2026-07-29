@@ -1,0 +1,46 @@
+{
+  "slug": "stripe-managed-payments",
+  "name": "Stripe Managed Payments",
+  "model": "merchant-of-record",
+  "serviceModel": "merchant-of-record",
+  "legalSeller": "provider",
+  "stage": "public-preview",
+  "summary": "Stripe's Merchant of Record mode for eligible digital products, layered onto Stripe Payments and Checkout.",
+  "pricing": {
+    "kind": "public",
+    "headline": "3.5% per Managed Payments transaction in addition to Stripe Payments fees.",
+    "percentage": 6.4,
+    "fixed": 0.3,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Illustrative US domestic-card total: 3.5% MoR fee plus 2.9% + $0.30 Payments fee. Other methods, international cards, FX, Billing, and custom terms change the total.",
+    "sourceIds": ["pricing"]
+  },
+  "sellerCoverage": "Public-preview eligibility is limited to Stripe's documented supported business locations.",
+  "buyerCoverage": "Global buyer coverage excludes Stripe's documented restricted countries and varies by payment method.",
+  "products": "Eligible digital products, SaaS, software, digital content, and virtual goods; services, physical goods, marketplaces, and many restricted categories are excluded.",
+  "features": {
+    "checkout": "Stripe Checkout, hosted or embedded, with Link as buyer-facing Merchant of Record.",
+    "subscriptions": "Stripe Billing subscriptions with Managed Payments restrictions and public-preview changes.",
+    "invoicing": "Managed receipts and invoices; several standalone and off-cycle invoice flows are restricted.",
+    "paymentMethods": "Cards, Apple Pay, Google Pay, Link, and selected local methods documented for Managed Payments.",
+    "payouts": "Funds settle through the connected Stripe account subject to Stripe payout timing."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax compliance and remittance", "owner": "provider", "note": "Stripe assumes responsibility for Managed Payments transactions." },
+    { "area": "Fraud, disputes, and transaction support", "owner": "provider", "note": "Stripe and Link manage these transaction-level responsibilities." },
+    { "area": "Product support", "owner": "merchant", "note": "The business retains product-level customer support." },
+    { "area": "Data deletion response", "owner": "shared", "note": "Stripe can cancel subscriptions and delete related Stripe objects after a qualifying buyer request." }
+  ],
+  "strengths": ["Small integration change for eligible Stripe Checkout users", "Transaction-level choice between direct and MoR modes", "Familiar Stripe reporting and APIs"],
+  "limitations": ["Public preview", "Narrower product and seller eligibility", "MoR fee is additional to Payments and other applicable Stripe fees"],
+  "bestFor": ["Existing eligible Stripe Checkout businesses", "Digital-product companies testing specific markets", "Teams wanting mixed MoR and direct transactions"],
+  "avoidIf": ["You sell services, physical goods, or marketplace products", "You require a generally available, long-established MoR product"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-08-27",
+  "sources": [
+    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-27" },
+    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-27" }
+  ]
+}

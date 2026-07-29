@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import ProviderCard from "../../components/ProviderCard.astro";
+const providers = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => provider.model === "merchant-of-record").sort((a,b) => a.name.localeCompare(b.name));
+---
+
+<BaseLayout title="Merchant of Record providers — Payment Stack Guide" description={`Compare ${providers.length} Merchant of Record providers for software, SaaS, and digital products.`}>
+  <PageHeader eyebrow="Path 01 · Provider is seller" title="Merchant of Record providers" description="The provider becomes the documented seller for approved transactions. Compare the exact responsibility boundary, not only the headline fee." meta={`${providers.length} provider profiles · independently reviewed`} />
+  <section class="section">
+    <div class="shell provider-grid">
+      {providers.map((provider) => <ProviderCard provider={provider} />)}
+    </div>
+  </section>
+  <section class="section section-blue">
+    <div class="shell flow-section">
+      <div><span class="eyebrow eyebrow-inverse">Responsibility boundary</span><h2>What usually moves—and what does not.</h2></div>
+      <div class="boundary-list">
+        <div><span>Provider</span><strong>Legal sale, covered indirect-tax calculation and remittance, payment processing, transaction fraud and disputes</strong></div>
+        <div><span>Shared</span><strong>Billing questions, refunds, invoices, customer communication, evidence, privacy, and incident response</strong></div>
+        <div><span>Your business</span><strong>Product, delivery, product support, entitlements, bookkeeping, income tax, vendor oversight, and excluded transactions</strong></div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="shell service-models">
+      <span class="eyebrow">Tradeoffs to model</span><h2>The fee buys an operating role—not magic.</h2>
+      <div class="model-grid">
+        <div><strong>Eligibility</strong><p>MoRs approve sellers and products. Services, marketplaces, physical goods, regulated categories, and some billing flows may be excluded.</p></div>
+        <div><strong>Buyer identity</strong><p>The MoR entity can appear on receipts, invoices, card statements, terms, and support communications.</p></div>
+        <div><strong>Cash timing</strong><p>You receive net payouts under the provider schedule rather than settling each payment directly to your merchant balance.</p></div>
+        <div><strong>Dependence</strong><p>Checkout, subscriptions, tax evidence, customer records, and payment credentials can become expensive to move later.</p></div>
+      </div>
+      <a class="card-link" href="/learn/">Explore the full payments library →</a>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="shell note-grid">
+      <div><span class="eyebrow">Important</span><h2>MoR does not mean “nothing left to do.”</h2></div>
+      <div class="prose"><p>You still own the product, product support, entitlements, bookkeeping, income tax, vendor oversight, and every responsibility outside the contract. Coverage can also change by seller country, buyer location, and product type.</p><a class="card-link" href="/guides/merchant-of-record-vs-payment-processor/">Understand the boundary →</a></div>
+    </div>
+  </section>
+</BaseLayout>

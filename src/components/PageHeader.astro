@@ -1,0 +1,22 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  meta?: string;
+}
+const { eyebrow, title, description, meta } = Astro.props;
+---
+
+<header class="page-hero">
+  <div class="shell page-hero-grid">
+    <div>
+      <span class="eyebrow eyebrow-inverse">{eyebrow}</span>
+      <h1>{title}</h1>
+    </div>
+    <div class="page-hero-aside">
+      <p>{description}</p>
+      {meta && <span class="review-chip">{meta}</span>}
+    </div>
+  </div>
+</header>

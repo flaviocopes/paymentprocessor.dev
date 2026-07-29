@@ -1,0 +1,46 @@
+{
+  "slug": "lemon-squeezy",
+  "name": "Lemon Squeezy",
+  "model": "merchant-of-record",
+  "serviceModel": "creator-commerce-mor",
+  "legalSeller": "provider",
+  "stage": "established",
+  "summary": "A Merchant of Record and creator-commerce platform for digital products, software, subscriptions, downloads, and license keys.",
+  "pricing": {
+    "kind": "hybrid",
+    "headline": "5% + $0.50 per transaction, with additional fees in documented edge cases and volume pricing by request.",
+    "percentage": 5,
+    "fixed": 0.5,
+    "monthly": 0,
+    "currency": "USD",
+    "assumptions": "Base ecommerce fee only. International, subscription, PayPal, and other documented additional fees may apply.",
+    "sourceIds": ["pricing", "fees"]
+  },
+  "sellerCoverage": "Payouts are available in more than 200 countries according to Lemon Squeezy, subject to onboarding and payout-method rules.",
+  "buyerCoverage": "Global digital sales with multi-currency checkout and country-dependent payment methods.",
+  "products": "SaaS, digital downloads, subscriptions, memberships, courses, and other eligible digital products.",
+  "features": {
+    "checkout": "Hosted and overlay checkout plus a hosted storefront.",
+    "subscriptions": "Recurring billing, usage-based and seat options, trials, changes, and dunning.",
+    "invoicing": "Automatic buyer receipts and tax documents; verify complex B2B quote requirements.",
+    "paymentMethods": "Cards, PayPal, wallets, and supported local methods.",
+    "payouts": "Bank wire or PayPal payouts, generally processed twice monthly."
+  },
+  "responsibilities": [
+    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Lemon Squeezy states that it is the Merchant of Record." },
+    { "area": "Billing support and fraud", "owner": "provider", "note": "Included in its ecommerce platform, subject to policy." },
+    { "area": "Product delivery", "owner": "shared", "note": "The platform can deliver files and keys; the seller owns the product experience." },
+    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own taxes." }
+  ],
+  "strengths": ["Creator-friendly setup and storefront", "Digital delivery and license keys included", "Subscriptions and email tools in one product"],
+  "limitations": ["Base fee does not cover every edge case", "Less suitable for complex enterprise billing", "Provider ownership and product direction are a dependency"],
+  "bestFor": ["Indie SaaS", "Digital downloads", "Software licenses and creator products"],
+  "avoidIf": ["You need advanced B2B quoting", "You require full control of the merchant relationship"],
+  "lastReviewed": "2026-07-27",
+  "nextReview": "2026-10-27",
+  "sources": [
+    { "id": "pricing", "label": "Lemon Squeezy pricing", "url": "https://www.lemonsqueezy.com/pricing", "reviewedOn": "2026-07-27" },
+    { "id": "fees", "label": "Lemon Squeezy fee documentation", "url": "https://docs.lemonsqueezy.com/help/getting-started/fees", "reviewedOn": "2026-07-27" },
+    { "id": "countries", "label": "Lemon Squeezy supported countries", "url": "https://docs.lemonsqueezy.com/help/getting-started/getting-paid", "reviewedOn": "2026-07-27" }
+  ]
+}

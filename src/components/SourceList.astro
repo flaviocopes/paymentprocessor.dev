@@ -1,0 +1,15 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Source = CollectionEntry<"providers">["data"]["sources"][number];
+interface Props { sources: Source[]; }
+const { sources } = Astro.props;
+---
+
+<ol class="source-list">
+  {sources.map((source) => (
+    <li>
+      <a href={source.url}>{source.label}</a>
+      <span>Reviewed {source.reviewedOn}</span>
+    </li>
+  ))}
+</ol>
