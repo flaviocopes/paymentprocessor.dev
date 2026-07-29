@@ -180,12 +180,16 @@ for (const record of countryCoverage.providers) {
   assert(slugs.has(record.slug), `${record.slug}: country checker references an unknown provider.`);
   assert(!coverageSlugs.has(record.slug), `${record.slug}: duplicate country checker record.`);
   coverageSlugs.add(record.slug);
-  assert(record.source.startsWith("https://"), `${record.slug}: country evidence must use HTTPS.`);
-  assert(record.note.length >= 30, `${record.slug}: country eligibility note is too thin.`);
-  const classifiedCodes = [...record.documented, ...record.limited, ...record.unavailable];
-  assert(new Set(classifiedCodes).size === classifiedCodes.length, `${record.slug}: a country cannot have more than one eligibility status.`);
-  for (const code of classifiedCodes) {
-    assert(countryCodes.has(code), `${record.slug}: country checker uses unknown country code ${code}.`);
+  for (const [scope, data] of [["seller", record], ["buyer", record.buyer]]) {
+    assert(Boolean(data), `${record.slug}: ${scope} country coverage is missing.`);
+    if (!data) continue;
+    assert(data.source.startsWith("https://"), `${record.slug}: ${scope} country evidence must use HTTPS.`);
+    assert(data.note.length >= 30, `${record.slug}: ${scope} country note is too thin.`);
+    const classifiedCodes = [...data.documented, ...data.limited, ...data.unavailable];
+    assert(new Set(classifiedCodes).size === classifiedCodes.length, `${record.slug}: a country cannot have more than one ${scope} status.`);
+    for (const code of classifiedCodes) {
+      assert(countryCodes.has(code), `${record.slug}: ${scope} checker uses unknown country code ${code}.`);
+    }
   }
 }
 for (const slug of slugs) assert(coverageSlugs.has(slug), `${slug}: country checker record is missing.`);

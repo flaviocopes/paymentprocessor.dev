@@ -7,37 +7,88 @@ import coverage from "../../../data/country-coverage.json";
 const providers = (await getCollection("providers")).map((entry) => ({ slug: entry.data.slug, name: entry.data.name, model: entry.data.model }));
 ---
 
-<BaseLayout title="Payment provider country eligibility checker — Payment Stack Guide" description="Check documented seller-country availability separately from buyer coverage, with evidence links and explicit uncertainty.">
-  <PageHeader eyebrow="Seller-country checker" title="Can your business apply?" description="Choose where your business is registered. See which providers document that market, which require verification, and which explicitly target other countries." meta={`${coverage.countries.length} common business countries · reviewed ${coverage.reviewedOn}`} />
+<BaseLayout title="Payment provider country checker — Payment Stack Guide" description="Check where your business can apply and where your customers can generally pay, with clear evidence and uncertainty.">
+  <PageHeader eyebrow="Country checker" title="Where can you use each provider?" description="Check two different questions: where your business can sign up, and where your customers can pay." meta={`${coverage.countries.length} countries · ${providers.length} providers · reviewed ${coverage.reviewedOn}`} />
 
   <section class="section coverage-section" x-data="countryChecker()" x-cloak>
-    <div class="shell coverage-workspace">
-      <aside class="coverage-controls">
-        <span class="eyebrow">Your business</span>
-        <label><span>Registered country</span><select x-model="country">{coverage.countries.map((country) => <option value={country.code}>{country.name}</option>)}</select></label>
-        <label><span>Responsibility model</span><select x-model="model"><option value="all">Show both models</option><option value="merchant-of-record">Merchant of Record</option><option value="direct-payments">Direct payments</option></select></label>
-        <div class="coverage-summary" aria-live="polite">
-          <strong x-text="countryName">United States</strong>
-          <dl>
-            <div><dt>Documented</dt><dd x-text="counts.documented">0</dd></div>
-            <div><dt>Limited</dt><dd x-text="counts.limited">0</dd></div>
-            <div><dt>Verify</dt><dd x-text="counts.review">0</dd></div>
-            <div><dt>Unavailable</dt><dd x-text="counts.unavailable">0</dd></div>
-          </dl>
+    <div class="shell coverage-dashboard">
+      <header class="coverage-question">
+        <div>
+          <span class="eyebrow">Choose a view</span>
+          <h2>What do you want to check?</h2>
+          <p x-text="scope === 'seller' ? 'See whether a business registered in this country can apply.' : 'See whether a customer in this country can generally pay.'">See whether a business registered in this country can apply.</p>
         </div>
-        <p class="coverage-caveat">This checks the seller’s registered country—not where buyers live. Documented availability still does not guarantee product or risk approval.</p>
-      </aside>
+        <div class="coverage-scope-switch" role="group" aria-label="Country check type">
+          <button type="button" :class="{ active: scope === 'seller' }" :aria-pressed="scope === 'seller'" @click="scope = 'seller'">
+            <span>01</span><strong>My business</strong><small>Can I sign up?</small>
+          </button>
+          <button type="button" :class="{ active: scope === 'buyer' }" :aria-pressed="scope === 'buyer'" @click="scope = 'buyer'">
+            <span>02</span><strong>My customer</strong><small>Can they pay?</small>
+          </button>
+        </div>
+      </header>
+
+      <div class="coverage-country-panel">
+        <div class="coverage-country-heading">
+          <div><span class="eyebrow" x-text="scope === 'seller' ? 'Seller country' : 'Buyer country'">Seller country</span><h3 x-text="countryPrompt">Where is your business registered?</h3></div>
+          <p>Each bar shows how many providers have a clear answer for that country.</p>
+        </div>
+
+        <div class="coverage-country-grid">
+          <template x-for="item in countrySummaries" :key="`${scope}-${model}-${item.code}`">
+            <button type="button" :class="{ active: country === item.code }" :aria-pressed="country === item.code" @click="country = item.code">
+              <span class="coverage-country-code" x-text="item.code"></span>
+              <strong x-text="item.name"></strong>
+              <small><b x-text="item.counts.documented"></b> <span x-text="scope === 'seller' ? 'can apply' : 'can pay'"></span></small>
+              <span class="coverage-mini-bar" aria-hidden="true">
+                <i class="documented" :style="`flex-basis:${item.counts.documented / item.total * 100}%`"></i>
+                <i class="limited" :style="`flex-basis:${item.counts.limited / item.total * 100}%`"></i>
+                <i class="review" :style="`flex-basis:${item.counts.review / item.total * 100}%`"></i>
+                <i class="unavailable" :style="`flex-basis:${item.counts.unavailable / item.total * 100}%`"></i>
+              </span>
+            </button>
+          </template>
+        </div>
+      </div>
+
+      <div class="coverage-model-filter" role="group" aria-label="Provider type">
+        <span>Show</span>
+        <button type="button" :class="{ active: model === 'all' }" :aria-pressed="model === 'all'" @click="model = 'all'">All providers</button>
+        <button type="button" :class="{ active: model === 'merchant-of-record' }" :aria-pressed="model === 'merchant-of-record'" @click="model = 'merchant-of-record'">Merchant of Record</button>
+        <button type="button" :class="{ active: model === 'direct-payments' }" :aria-pressed="model === 'direct-payments'" @click="model = 'direct-payments'">Direct payments</button>
+      </div>
+
+      <div class="coverage-selection" aria-live="polite">
+        <div class="coverage-selection-copy">
+          <span class="eyebrow" x-text="scope === 'seller' ? 'Business signup' : 'Customer payments'">Business signup</span>
+          <h2 x-text="resultTitle">Can your United States business apply?</h2>
+          <p x-text="resultSummary">Providers list this country for signup. Approval still depends on your business and product.</p>
+        </div>
+        <dl class="coverage-counts">
+          <div class="documented"><dt x-text="scope === 'seller' ? 'Can apply' : 'Can pay'">Can apply</dt><dd x-text="counts.documented">0</dd></div>
+          <div class="limited"><dt>Limited</dt><dd x-text="counts.limited">0</dd></div>
+          <div class="review"><dt>Ask provider</dt><dd x-text="counts.review">0</dd></div>
+          <div class="unavailable"><dt>Not available</dt><dd x-text="counts.unavailable">0</dd></div>
+        </dl>
+      </div>
 
       <div class="coverage-results" aria-live="polite">
-        <div class="coverage-results-heading"><div><span class="eyebrow">Eligibility evidence</span><h2>Country is only the first gate.</h2></div><p>Provider pages often advertise buyer reach while leaving seller onboarding less explicit. We keep those claims separate.</p></div>
-        <div class="coverage-legend"><span><i class="coverage-dot documented"></i>Documented market</span><span><i class="coverage-dot limited"></i>Limited / preview</span><span><i class="coverage-dot review"></i>Verify with provider</span><span><i class="coverage-dot unavailable"></i>Not supported</span></div>
+        <div class="coverage-results-bar">
+          <div>
+            <span><i class="coverage-dot documented"></i><span x-text="scope === 'seller' ? 'Can apply' : 'Can pay'">Can apply</span></span>
+            <span><i class="coverage-dot limited"></i>Limited</span>
+            <span><i class="coverage-dot review"></i>Ask provider</span>
+            <span><i class="coverage-dot unavailable"></i>Not available</span>
+          </div>
+          <p x-text="scope === 'seller' ? 'Country fit does not guarantee account approval.' : 'A country match does not guarantee every payment method or currency.'">Country fit does not guarantee account approval.</p>
+        </div>
         <div class="coverage-list">
-          <template x-for="provider in results" :key="provider.slug">
+          <template x-for="provider in results" :key="`${scope}-${country}-${provider.slug}`">
             <article class="coverage-row">
               <div><i class="coverage-dot" :class="provider.status"></i><span><strong x-text="provider.name"></strong><small x-text="provider.model === 'merchant-of-record' ? 'Merchant of Record' : 'Direct payments'"></small></span></div>
               <strong class="coverage-status" :class="provider.status" x-text="provider.statusLabel"></strong>
               <p x-text="provider.note"></p>
-              <div class="coverage-row-links"><a :href="`/providers/${provider.slug}/`">Profile →</a><a :href="provider.source" rel="noreferrer">Evidence ↗</a></div>
+              <div class="coverage-row-links"><a :href="`/providers/${provider.slug}/`">Profile →</a><a :href="provider.source" rel="noreferrer">Source ↗</a></div>
             </article>
           </template>
         </div>
@@ -45,7 +96,12 @@ const providers = (await getCollection("providers")).map((entry) => ({ slug: ent
     </div>
   </section>
 
-  <section class="section section-tint"><div class="shell reading-block"><span class="eyebrow">Three different maps</span><h2>Seller, buyer, and payout coverage are not interchangeable.</h2><p>A provider may sell to buyers in 200 countries while onboarding sellers from far fewer places. It may also support your company but only pay out through particular bank accounts or currencies. Confirm all three before integration.</p><a class="card-link" href="/guides/international-payments-currencies/">Understand international payment coverage →</a></div></section>
+  <section class="section section-blue">
+    <div class="shell note-grid">
+      <div><span class="eyebrow eyebrow-inverse">Keep these separate</span><h2>Three country checks. Three answers.</h2></div>
+      <div class="prose"><p><strong>Seller country:</strong> can your business open an account?</p><p><strong>Buyer country:</strong> can a customer generally pay?</p><p><strong>Payout country:</strong> can the provider send money to your bank?</p><p>Always confirm payment methods, currencies, products, and account approval before you build.</p><a class="button button-light" href="/guides/international-payments-currencies/">Read the country guide →</a></div>
+    </div>
+  </section>
 
   <script is:inline type="application/json" id="country-provider-data" set:html={JSON.stringify(providers)}></script>
   <script is:inline type="application/json" id="country-coverage-data" set:html={JSON.stringify(coverage)}></script>

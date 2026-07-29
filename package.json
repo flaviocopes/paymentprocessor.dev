@@ -10,6 +10,7 @@
     "validate": "node scripts/validate-content.mjs",
     "audit": "node scripts/audit-build.mjs",
     "editorial-review": "node scripts/editorial-review.mjs",
+    "test:country": "node scripts/test-country-checker.mjs",
     "test:decision": "node scripts/test-decision-report.mjs"
   },
   "dependencies": {

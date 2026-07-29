@@ -69,8 +69,15 @@
       ],
       "limited": [],
       "unavailable": [],
-      "note": "Creem explicitly lists these countries among its 86 supported merchant payout countries; product and identity review still applies.",
-      "source": "https://docs.creem.io/merchant-of-record/supported-countries"
+      "note": "Creem lists this country for seller payouts. Your business and identity still need approval.",
+      "source": "https://docs.creem.io/merchant-of-record/supported-countries",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Customers can generally pay in all 12 countries shown here. Available payment methods can still vary.",
+        "source": "https://docs.creem.io/merchant-of-record/what-is"
+      }
     },
     {
       "slug": "dodo-payments",
@@ -90,40 +97,75 @@
       ],
       "limited": [],
       "unavailable": [],
-      "note": "Dodo's Merchant Acceptance Policy lists these locations for merchant KYC and payouts; business-model review still applies.",
-      "source": "https://docs.dodopayments.com/miscellaneous/merchant-acceptance"
+      "note": "Dodo lists this country for seller checks and payouts. Your business still needs approval.",
+      "source": "https://docs.dodopayments.com/miscellaneous/merchant-acceptance",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Dodo lists all 12 countries for customer payments. The payment methods shown can differ by country.",
+        "source": "https://docs.dodopayments.com/miscellaneous/list-of-countries-we-accept-payments-from"
+      }
     },
     {
       "slug": "fastspring",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "FastSpring describes broad global selling, but seller eligibility is confirmed through underwriting rather than a current public country table.",
-      "source": "https://fastspring.com/docs/getting-started-with-fastspring/"
+      "note": "FastSpring supports US sellers and explains their US tax setup. Account and product review still apply.",
+      "source": "https://developer.fastspring.com/docs/tax-information-reporting",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "FastSpring accepts cards globally. Local payment methods depend on the customer's country and currency.",
+        "source": "https://developer.fastspring.com/docs/payment-methods-accepted-by-fastspring"
+      }
     },
     {
       "slug": "gumroad",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "Creator payout method and onboarding availability vary by country and account; verify the current payout route before committing.",
-      "source": "https://gumroad.com/help/article/13-getting-paid"
+      "note": "Gumroad supports US sellers and documents US bank payouts. Account and product review still apply.",
+      "source": "https://gumroad.com/help/article/13-getting-paid",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Gumroad sells to a worldwide audience and accepts major cards and PayPal. The options shown can vary.",
+        "source": "https://gumroad.com/help/article/191-a-guide-to-buying-on-gumroad"
+      }
     },
     {
       "slug": "lemon-squeezy",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "Lemon Squeezy publishes a supported-country process, but seller onboarding remains subject to Stripe, payout, and product review.",
-      "source": "https://docs.lemonsqueezy.com/help/getting-started/supported-countries"
+      "note": "Lemon Squeezy lists the US for seller payouts. Store, identity, and product review still apply.",
+      "source": "https://docs.lemonsqueezy.com/help/getting-started/supported-countries",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Customers can generally pay worldwide. Payment methods and currencies depend on their location.",
+        "source": "https://docs.lemonsqueezy.com/help/checkout/payment-methods"
+      }
     },
     {
       "slug": "paddle",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "Paddle documents 200+ buyer markets; seller onboarding is a separate eligibility and product-review question.",
-      "source": "https://developer.paddle.com/concepts/sell/supported-countries-locales/"
+      "note": "Paddle accepts eligible US software and digital-product sellers. Seller and product review still apply.",
+      "source": "https://www.paddle.com/help/start/intro-to-paddle/essentials-to-sign-upcreate-a-paddle-account",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Paddle lists all 12 countries as places where customers can buy. Some countries and products are blocked by policy.",
+        "source": "https://developer.paddle.com/concepts/sell/supported-countries-locales/"
+      }
     },
     {
       "slug": "polar",
@@ -144,8 +186,15 @@
       "unavailable": [
         "BR"
       ],
-      "note": "Polar's seller-country table includes the documented markets. Brazil is not on the current list; identity, product, and Stripe Connect review still apply.",
-      "source": "https://polar.sh/docs/merchant-of-record/supported-countries"
+      "note": "Polar publishes a seller-country list; Brazil is not on it. Identity, product, and payout checks still apply.",
+      "source": "https://polar.sh/docs/merchant-of-record/supported-countries",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Polar accepts customer payments globally except from countries under US sanctions. All 12 countries shown are covered.",
+        "source": "https://polar.sh/docs/merchant-of-record/supported-countries"
+      }
     },
     {
       "slug": "stripe-managed-payments",
@@ -166,16 +215,30 @@
         "BR",
         "JP"
       ],
-      "note": "These are the documented public-preview seller locations among the countries modeled here. Eligibility remains controlled and differs from ordinary Stripe Payments availability.",
-      "source": "https://docs.stripe.com/payments/managed-payments/how-it-works"
+      "note": "Stripe lists seven seller countries for this public preview. Other countries shown here are not currently listed.",
+      "source": "https://docs.stripe.com/payments/managed-payments/how-it-works",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Customers can generally pay across the countries shown. Payment methods still depend on country and currency.",
+        "source": "https://docs.stripe.com/payments/managed-payments/how-it-works"
+      }
     },
     {
       "slug": "adyen",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "Adyen entity, acquiring, and product availability are scoped through enterprise sales and underwriting.",
-      "source": "https://www.adyen.com/contact"
+      "note": "Adyen supports US businesses. Product access still depends on sales review and underwriting.",
+      "source": "https://docs.adyen.com/business-accounts/",
+      "buyer": {
+        "documented": [],
+        "limited": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "unavailable": [],
+        "note": "Adyen supports global payments, but the exact methods depend on your business entity and integration.",
+        "source": "https://www.adyen.com/payment-methods"
+      }
     },
     {
       "slug": "airwallex",
@@ -195,8 +258,15 @@
       ],
       "limited": [],
       "unavailable": [],
-      "note": "Airwallex's current eligible-business-country list includes these markets, including India; product availability and local entity requirements can still differ.",
-      "source": "https://help.airwallex.com/hc/en-gb/articles/4408591334937-Eligible-Countries-and-Territories"
+      "note": "Airwallex lists this as an eligible business country. Some products may still need a local entity.",
+      "source": "https://help.airwallex.com/hc/en-gb/articles/4408591334937-Eligible-Countries-and-Territories",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Airwallex accepts global card payments. Local methods depend on the customer and business country.",
+        "source": "https://www.airwallex.com/docs/payments/payment-methods/payment-methods-overview"
+      }
     },
     {
       "slug": "braintree",
@@ -217,8 +287,15 @@
         "BR",
         "JP"
       ],
-      "note": "Braintree Direct requires a business office and bank account in the United States, Canada, Australia, Europe, Singapore, Hong Kong, Malaysia, or New Zealand.",
-      "source": "https://developer.paypal.com/docs/bt-direct-overview/"
+      "note": "Braintree requires a business office and bank account in one of its supported regions.",
+      "source": "https://developer.paypal.com/docs/bt-direct-overview/",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "International customers can generally pay. Currency and payment options depend on your Braintree setup.",
+        "source": "https://developer.paypal.com/braintree/articles/get-started/currencies"
+      }
     },
     {
       "slug": "gocardless",
@@ -239,8 +316,15 @@
         "BR",
         "JP"
       ],
-      "note": "GoCardless's product description lists eligible merchant jurisdictions and makes clear that individual services can still vary by country.",
-      "source": "https://gocardless.com/legal/gocardless-product-description-document"
+      "note": "GoCardless lists this seller country, but individual products may still vary.",
+      "source": "https://gocardless.com/legal/gocardless-product-description-document",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU"],
+        "limited": [],
+        "unavailable": [],
+        "note": "GoCardless supports bank payments in 30+ countries, including the US, Canada, UK, Eurozone, and Australia. Ask about other markets.",
+        "source": "https://gocardless.com/international-payments"
+      }
     },
     {
       "slug": "mollie",
@@ -261,16 +345,30 @@
         "BR",
         "JP"
       ],
-      "note": "Mollie accepts businesses based in the EEA, Switzerland, or the United Kingdom and requires an IBAN or UK bank account.",
-      "source": "https://help.mollie.com/hc/en-us/articles/115002116105-Can-I-use-Mollie-s-services-in-my-country"
+      "note": "Mollie accepts businesses in the EEA, Switzerland, and the UK. You also need a supported bank account.",
+      "source": "https://help.mollie.com/hc/en-us/articles/115002116105-Can-I-use-Mollie-s-services-in-my-country",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Mollie accepts cards from customers worldwide. Other payment methods depend on country and currency.",
+        "source": "https://docs.mollie.com/docs/cards"
+      }
     },
     {
       "slug": "paypal-checkout",
-      "documented": [],
+      "documented": ["US"],
       "limited": [],
       "unavailable": [],
-      "note": "PayPal's country-code reference does not by itself prove business onboarding, receiving, withdrawal, or Checkout availability. Confirm the exact merchant capability for the account country; India has domestic-receiving restrictions.",
-      "source": "https://developer.paypal.com/reference/country-codes/"
+      "note": "PayPal supports US business accounts. Receiving, withdrawal, and product features can differ elsewhere.",
+      "source": "https://www.paypal.com/us/business/open-business-account",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "PayPal lists all 12 countries for buyer payments. Extra options such as Pay Later vary by country.",
+        "source": "https://developer.paypal.com/api/nvp-soap/country-codes/"
+      }
     },
     {
       "slug": "square",
@@ -291,8 +389,15 @@
         "SG",
         "BR"
       ],
-      "note": "Square card processing requires the seller to be located in a supported account country.",
-      "source": "https://squareup.com/help/us/en/article/5085-accepted-cards"
+      "note": "Square only lets sellers process payments from a supported account country.",
+      "source": "https://squareup.com/help/us/en/article/5085-accepted-cards",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Square sellers can accept supported cards from customers worldwide. Payments use the seller's currency.",
+        "source": "https://developer.squareup.com/docs/international-development"
+      }
     },
     {
       "slug": "stripe-payments",
@@ -313,8 +418,15 @@
         "IN"
       ],
       "unavailable": [],
-      "note": "Stripe lists these business countries; India is currently marked Preview and may have additional constraints.",
-      "source": "https://stripe.com/global"
+      "note": "Stripe lists this business country. India is in preview and has extra limits.",
+      "source": "https://stripe.com/global",
+      "buyer": {
+        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
+        "limited": [],
+        "unavailable": [],
+        "note": "Customers can generally pay with global card networks. Local methods depend on country and currency.",
+        "source": "https://docs.stripe.com/payments/cards"
+      }
     }
   ]
 }
