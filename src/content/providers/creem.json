@@ -16,6 +16,20 @@
     "assumptions": "Public standard platform fee. The percentage applies to tax-inclusive order value. Chargebacks cost $25; bank and USDC payout fees vary by payout route.",
     "sourceIds": ["payouts", "chargebacks"]
   },
+  "currencySupport": {
+    "presentment": "Creem advertises multi-currency checkout, but its public documentation does not publish a complete supported-presentment-currency matrix.",
+    "customerCharge": "Buyers are charged in the configured product or checkout currency; verify each required currency and payment method during onboarding.",
+    "settlement": "Bank payouts are processed in the registered bank account's currency; USDC payouts on Polygon are also available.",
+    "buyerFx": "Currency conversion is described as covered by the platform fee, but no separate customer FX markup or universal exchange-rate rule is published.",
+    "merchantFx": "If bank and charge currencies differ, a partner conversion fee applies at an unpublished rate, alongside the international payout fee of $7/€7 or 1%, whichever is higher.",
+    "moneyPath": "buyer charge currency → Creem balance → registered bank currency",
+    "marketExamples": [
+      { "market": "us", "path": "USD charge → Creem balance → USD bank", "conversions": "not-disclosed", "cost": "Creem does not disclose whether this matched-currency route converts internally; conversion is described as covered by the platform fee." },
+      { "market": "eu", "path": "EUR charge → Creem balance → EUR bank", "conversions": "not-disclosed", "cost": "Creem does not disclose whether this matched-currency route converts internally; conversion is described as covered by the platform fee." },
+      { "market": "other", "path": "CHF charge (verify) → Creem balance → CHF bank", "conversions": "not-disclosed", "cost": "Creem does not publish a complete currency matrix or internal balance route. Verify CHF support and partner FX during onboarding." }
+    ],
+    "sourceIds": ["payouts", "payout-accounts", "currency-pricing"]
+  },
   "sellerCoverage": "Digital businesses can apply subject to supported-country, product, identity, and risk checks.",
   "buyerCoverage": "Creem markets global payment and tax coverage, with methods and availability dependent on buyer and seller location.",
   "products": "SaaS, AI tools, software, licenses, digital downloads, memberships, and other approved digital products.",
@@ -36,12 +50,14 @@
   "limitations": ["Shorter operating and compliance history", "Payout holds and payout fees affect cash timing", "The fee base includes tax and complex enterprise billing may need confirmation"],
   "bestFor": ["Indie SaaS", "AI builders", "Small digital-product teams"],
   "avoidIf": ["You require a mature enterprise service organization", "You cannot tolerate platform payout holds"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-07-30",
   "nextReview": "2026-09-28",
   "sources": [
     { "id": "payouts", "label": "Creem fees and payouts", "url": "https://docs.creem.io/merchant-of-record/finance/payouts", "reviewedOn": "2026-07-29" },
     { "id": "chargebacks", "label": "Creem refunds and chargebacks", "url": "https://docs.creem.io/merchant-of-record/finance/refunds-and-chargebacks", "reviewedOn": "2026-07-29" },
     { "id": "mor", "label": "Creem Merchant of Record documentation", "url": "https://docs.creem.io/merchant-of-record/what-is", "reviewedOn": "2026-07-29" },
-    { "id": "about", "label": "Creem company and team", "url": "https://www.creem.io/about", "reviewedOn": "2026-07-29" }
+    { "id": "about", "label": "Creem company and team", "url": "https://www.creem.io/about", "reviewedOn": "2026-07-29" },
+    { "id": "payout-accounts", "label": "Creem payout account currencies", "url": "https://docs.creem.io/merchant-of-record/finance/payout-accounts", "reviewedOn": "2026-07-30" },
+    { "id": "currency-pricing", "label": "Creem pricing and multi-currency claim", "url": "https://www.creem.io/pricing", "reviewedOn": "2026-07-30" }
   ]
 }

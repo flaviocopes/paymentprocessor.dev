@@ -298,35 +298,6 @@
       }
     },
     {
-      "slug": "gocardless",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU"
-      ],
-      "limited": [],
-      "unavailable": [
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
-      "note": "GoCardless lists this seller country, but individual products may still vary.",
-      "source": "https://gocardless.com/legal/gocardless-product-description-document",
-      "buyer": {
-        "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU"],
-        "limited": [],
-        "unavailable": [],
-        "note": "GoCardless supports bank payments in 30+ countries, including the US, Canada, UK, Eurozone, and Australia. Ask about other markets.",
-        "source": "https://gocardless.com/international-payments"
-      }
-    },
-    {
       "slug": "mollie",
       "documented": [
         "GB",

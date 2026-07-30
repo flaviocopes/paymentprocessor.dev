@@ -20,7 +20,7 @@ const providers = (await getCollection("providers")).map((entry) => entry.data).
 }));
 ---
 
-<BaseLayout title="Payment provider matcher — Payment Stack Guide" description="Build a transparent payment-provider shortlist from your legal-seller preference, product, country workload, company stage, priorities, and pricing needs.">
+<BaseLayout title="Payment provider matcher — Choose a Payment Processor" description="Build a transparent payment-provider shortlist from your legal-seller preference, product, country workload, company stage, priorities, and pricing needs.">
   <PageHeader eyebrow="Interactive shortlist" title="Find providers that fit your shape" description="Answer six practical questions. The matcher explains why each provider surfaced and what you still need to verify." meta={`${providers.length} provider profiles · no sponsored rankings`} />
 
   <section class="section matcher-section" x-data="providerMatcher()" x-cloak>

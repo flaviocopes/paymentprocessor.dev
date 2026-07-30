@@ -7,7 +7,7 @@ import coverage from "../../../data/country-coverage.json";
 const providers = (await getCollection("providers")).map((entry) => ({ slug: entry.data.slug, name: entry.data.name, model: entry.data.model }));
 ---
 
-<BaseLayout title="Payment provider country checker — Payment Stack Guide" description="Check where your business can apply and where your customers can generally pay, with clear evidence and uncertainty.">
+<BaseLayout title="Payment provider country checker — Choose a Payment Processor" description="Check where your business can apply and where your customers can generally pay, with clear evidence and uncertainty.">
   <PageHeader eyebrow="Country checker" title="Where can you use each provider?" description="Check two different questions: where your business can sign up, and where your customers can pay." meta={`${coverage.countries.length} countries · ${providers.length} providers · reviewed ${coverage.reviewedOn}`} />
 
   <section class="section coverage-section" x-data="countryChecker()" x-cloak>

@@ -9,7 +9,7 @@ interface Props {
 }
 
 const {
-  title = "Payment Stack Guide — Choose how you get paid",
+  title = "Choose a Payment Processor — Choose how you get paid",
   description = "Independent, evidence-led comparisons of Merchant of Record platforms and direct payment providers.",
   eyebrow,
   structuredData
@@ -18,7 +18,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const schema = structuredData ?? {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Payment Stack Guide",
+  name: "Choose a Payment Processor",
   url: Astro.site?.toString(),
   description
 };
@@ -38,7 +38,7 @@ const socialImage = new URL("/og-image.png", Astro.site);
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Payment Stack Guide" />
+    <meta property="og:site_name" content="Choose a Payment Processor" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -46,12 +46,12 @@ const socialImage = new URL("/og-image.png", Astro.site);
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Payment Stack Guide — choose your payment processor" />
+    <meta property="og:image:alt" content="Choose a Payment Processor" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
-    <meta name="twitter:image:alt" content="Payment Stack Guide — choose your payment processor" />
+    <meta name="twitter:image:alt" content="Choose a Payment Processor" />
     <script is:inline type="application/ld+json" set:html={serializedSchema}></script>
     <!-- Privacy-friendly analytics by Plausible -->
     <script is:inline async src="https://b.flaviocopes.com/js/pa-X3CCMl32wuiqI1nGmoYZm.js"></script>
@@ -70,9 +70,9 @@ const socialImage = new URL("/og-image.png", Astro.site);
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="wordmark" href="/" aria-label="Payment Stack Guide home">
+        <a class="wordmark" href="/" aria-label="Choose a Payment Processor home">
           <span class="wordmark-mark" aria-hidden="true">/pay</span>
-          <span>Payment Stack Guide</span>
+          <span>Choose a Payment Processor</span>
         </a>
         <nav aria-label="Primary navigation">
           <a href="/merchant-of-record/">Merchant of Record</a>
@@ -93,7 +93,7 @@ const socialImage = new URL("/og-image.png", Astro.site);
         <div>
           <a class="wordmark footer-wordmark" href="/">
             <span class="wordmark-mark" aria-hidden="true">/pay</span>
-            <span>Payment Stack Guide</span>
+            <span>Choose a Payment Processor</span>
           </a>
           <p>Know who sells. Know who handles what.</p>
         </div>
@@ -122,7 +122,7 @@ const socialImage = new URL("/og-image.png", Astro.site);
         </div>
       </div>
       <div class="shell footer-bottom">
-        <span>© {new Date().getFullYear()} Payment Stack Guide</span>
+        <span>© {new Date().getFullYear()} Choose a Payment Processor</span>
         <span>Information, not legal, tax, or accounting advice.</span>
       </div>
     </footer>

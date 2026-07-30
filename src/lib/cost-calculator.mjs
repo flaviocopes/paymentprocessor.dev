@@ -99,7 +99,7 @@ export function createCalculatorState(rules) {
       morOperatingCost: 0
     },
     view: "all",
-    selectedSlugs: ["stripe-payments", "paddle", "creem", "gocardless"].filter((slug) => rules.some((rule) => rule.slug === slug)),
+    selectedSlugs: ["stripe-payments", "paddle", "creem"].filter((slug) => rules.some((rule) => rule.slug === slug)),
     get allResults() {
       return calculateAll(rules, this.inputs);
     },

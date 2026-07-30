@@ -4,13 +4,75 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import ProviderCard from "../../components/ProviderCard.astro";
 const providers = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => provider.model === "merchant-of-record").sort((a,b) => a.name.localeCompare(b.name));
+const marketScenarios = [
+  { key: "us", label: "US market", setup: "USD sale → USD bank" },
+  { key: "eu", label: "EU market", setup: "EUR sale → EUR bank" },
+  { key: "other", label: "Outside US/EU", setup: "CHF sale → CHF bank" }
+] as const;
 ---
 
-<BaseLayout title="Merchant of Record providers — Payment Stack Guide" description={`Compare ${providers.length} Merchant of Record providers for software, SaaS, and digital products.`}>
+<BaseLayout title="Merchant of Record providers — Choose a Payment Processor" description={`Compare ${providers.length} Merchant of Record providers for software, SaaS, and digital products.`}>
   <PageHeader eyebrow="Path 01 · Provider is seller" title="Merchant of Record providers" description="The provider becomes the documented seller for approved transactions. Compare the exact responsibility boundary, not only the headline fee." meta={`${providers.length} provider profiles · independently reviewed`} />
   <section class="section">
     <div class="shell provider-grid">
       {providers.map((provider) => <ProviderCard provider={provider} />)}
+    </div>
+  </section>
+  <section id="currency-comparison" class="section section-tint currency-comparison-section">
+    <div class="shell">
+      <div class="section-heading-inline currency-comparison-heading">
+        <div><span class="eyebrow">Multi-currency reality</span><h2>“Local currency” can mean three different things.</h2></div>
+        <p>A localized number is not necessarily the currency charged to the buyer, held in your balance, or paid to your bank. Follow the full money path and check who pays each conversion.</p>
+      </div>
+      <div class="currency-reading-key" aria-label="How to read a money path">
+        <span><b>1 · Checkout</b>Currency the buyer actually pays</span>
+        <span><b>2 · Balance</b>Currency the provider records for you</span>
+        <span><b>3 · Payout</b>Currency that reaches your bank</span>
+        <p><strong>Count each arrow where the currency changes.</strong> Two changes mean two conversions, although the provider may not publish a separate fee for both.</p>
+      </div>
+      <div class="regional-example-heading">
+        <div><span class="eyebrow">Three market examples</span><h3>US, EU, and everywhere else.</h3></div>
+        <p>Currency—not geography alone—determines the route. These representative USD, EUR, and CHF examples assume the buyer and seller bank use the same currency, isolating provider FX from buyer-card FX.</p>
+      </div>
+      <div class="table-wrap regional-example-wrap">
+        <table class="data-table regional-example-table">
+          <thead><tr><th>Provider</th>{marketScenarios.map((market) => <th><span>{market.label}</span><small>{market.setup}</small></th>)}</tr></thead>
+          <tbody>
+            {providers.map((provider) => provider.currencySupport && <tr>
+              <th scope="row"><a href={`/providers/${provider.slug}/`}>{provider.name}</a><small>{provider.currencySupport.moneyPath}</small></th>
+              {marketScenarios.map((market) => {
+                const example = provider.currencySupport!.marketExamples.find((item) => item.market === market.key)!;
+                const countLabel = example.conversions === "not-disclosed" ? "FX count not disclosed" : `${example.conversions} currency changes`;
+                return <td data-market={`${market.label} · ${market.setup}`}><code>{example.path}</code><b class:list={{ "conversion-count": true, "is-zero": example.conversions === "0", "is-unknown": example.conversions === "not-disclosed" }}>{countLabel}</b><small>{example.cost}</small></td>;
+              })}
+            </tr>)}
+          </tbody>
+        </table>
+      </div>
+      <p class="currency-example-disclaimer">These are routing examples, not net-payout quotes. They exclude the headline transaction fee, payout service fees, bank charges, and exchange-rate movement.</p>
+      <div class="table-wrap">
+        <table class="data-table currency-comparison-table">
+          <thead><tr><th>Provider</th><th>Buyer experience</th><th>Seller balance and payout</th><th>FX cost</th><th>Money path</th></tr></thead>
+          <tbody>
+            {providers.map((provider) => provider.currencySupport && (
+              <tr>
+                <th scope="row"><a href={`/providers/${provider.slug}/`}>{provider.name}</a></th>
+                <td><strong>{provider.currencySupport.presentment}</strong><span>{provider.currencySupport.customerCharge}</span></td>
+                <td>{provider.currencySupport.settlement}</td>
+                <td><span><b>Buyer:</b> {provider.currencySupport.buyerFx}</span><span><b>Seller:</b> {provider.currencySupport.merchantFx}</span></td>
+                <td><code>{provider.currencySupport.moneyPath}</code></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="currency-warning">
+        <strong>Watch the two-conversion routes.</strong>
+        <div>
+          <p>FastSpring explicitly documents that sales may be converted into USD for reporting and then converted again for a non-USD payout. Lemon Squeezy likewise processes transactions and payouts in USD before a selected non-USD bank payout is converted. In both cases, “shown in local currency” does not mean the full route stays in that currency.</p>
+          <p><b>Polar has a related—but not identical—path:</b> the buyer is genuinely charged in an enabled local currency, then Polar converts the sale to its USD balance and Stripe may convert it again for a non-USD payout. Polar publishes the second conversion at 0.25% in the EU or up to 1% elsewhere, but does not separately state a fee for the first conversion.</p>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section section-blue">

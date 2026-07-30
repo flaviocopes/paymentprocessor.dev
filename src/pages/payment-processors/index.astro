@@ -6,7 +6,7 @@ import ProviderCard from "../../components/ProviderCard.astro";
 const providers = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => provider.model === "direct-payments").sort((a,b) => a.name.localeCompare(b.name));
 ---
 
-<BaseLayout title="Direct payment providers — Payment Stack Guide" description="Compare processors, wallets, gateways, acquirers, and omnichannel payment platforms while your business remains the merchant.">
+<BaseLayout title="Direct payment providers — Choose a Payment Processor" description="Compare processors, wallets, gateways, acquirers, and omnichannel payment platforms while your business remains the merchant.">
   <PageHeader eyebrow="Path 02 · You are the seller" title="Direct payment providers" description="These products are not one category. Each moves money differently, but your business normally remains responsible for the sale, tax, disputes, billing, and support." meta={`${providers.length} representative profiles · not a popularity ranking`} />
   <section class="section">
     <div class="shell provider-grid">

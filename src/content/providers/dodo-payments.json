@@ -16,6 +16,20 @@
     "assumptions": "Public marketing rate. Dodo's contractual pricing document still describes a different base rate, so sellers must confirm their signed terms. Refund, payout, PayPal, BNPL, and FX fees can also apply.",
     "sourceIds": ["pricing", "terms"]
   },
+  "currencySupport": {
+    "presentment": "USD, EUR, GBP, and INR are native; Adaptive Currency localizes checkout and accepts 80+ additional currencies.",
+    "customerCharge": "The buyer is charged in the selected local billing currency. Without Adaptive Currency, checkout uses the product's native currency.",
+    "settlement": "The seller has separate USD, EUR, GBP, and INR wallets; other Adaptive Currency payments convert into a supported settlement wallet.",
+    "buyerFx": "By default the buyer pays a visible 2–4% Adaptive Currency fee: 4% below $500, 3% at $500–$1,500, and 2% above $1,500.",
+    "merchantFx": "The seller can absorb that same 2–4% instead. Non-USD payouts use standard FX, with a $5 fee below $1,000 and $25 for USD SWIFT payouts where applicable.",
+    "moneyPath": "buyer local currency → USD/EUR/GBP/INR wallet → payout currency",
+    "marketExamples": [
+      { "market": "us", "path": "USD charge → USD wallet → USD payout", "conversions": "0", "cost": "Use native USD pricing and a USD payout. Payout or transfer fees can still apply, but this example has no currency change." },
+      { "market": "eu", "path": "EUR charge → EUR wallet → EUR payout", "conversions": "0", "cost": "Use native EUR pricing and an EUR payout. Payout or transfer fees can still apply, but this example has no currency change." },
+      { "market": "other", "path": "CHF charge → supported wallet → CHF payout", "conversions": "2", "cost": "Adaptive Currency costs 2–4%, paid by the buyer by default or absorbed by the seller; standard payout FX can apply again." }
+    ],
+    "sourceIds": ["adaptive", "balances", "pricing"]
+  },
   "sellerCoverage": "Eligible digital-product businesses can apply from supported payout countries, subject to underwriting, product, and sanctions policies.",
   "buyerCoverage": "Dodo documents selling into more than 220 regions with taxes and local availability handled by market.",
   "products": "SaaS, software, AI products, digital downloads, courses, memberships, and other approved digital products.",
@@ -36,12 +50,14 @@
   "limitations": ["Younger operating history than established MoRs", "Official marketing and contractual pricing are not fully aligned", "Eligibility, PayPal availability, and payout coverage require confirmation"],
   "bestFor": ["Developer-led SaaS", "AI products and digital tools", "Sellers evaluating emerging-market support"],
   "avoidIf": ["You require a decades-long operating history", "You need physical-goods support or guaranteed country coverage"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-07-30",
   "nextReview": "2026-10-28",
   "sources": [
     { "id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-07-29" },
     { "id": "terms", "label": "Dodo Payments legal terms", "url": "https://dodopayments.com/legal/terms-of-use", "reviewedOn": "2026-07-29" },
     { "id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-07-29" },
-    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-29" }
+    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-29" },
+    { "id": "adaptive", "label": "Dodo Adaptive Currency and FX fees", "url": "https://docs.dodopayments.com/features/adaptive-currency", "reviewedOn": "2026-07-30" },
+    { "id": "balances", "label": "Dodo multi-currency balances", "url": "https://docs.dodopayments.com/features/account-summary-payout-wallet", "reviewedOn": "2026-07-30" }
   ]
 }

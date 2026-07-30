@@ -21,9 +21,9 @@ const providers = await Promise.all(files.map(async (file) => ({
   data: JSON.parse(await readFile(resolve(providerDirectory, file), "utf8"))
 })));
 
-assert(providers.length === 16, `Expected 16 provider profiles; found ${providers.length}.`);
+assert(providers.length === 15, `Expected 15 provider profiles; found ${providers.length}.`);
 assert(providers.filter(({ data }) => data.model === "merchant-of-record").length === 8, "Expected 8 Merchant of Record profiles.");
-assert(providers.filter(({ data }) => data.model === "direct-payments").length === 8, "Expected 8 direct-payment profiles.");
+assert(providers.filter(({ data }) => data.model === "direct-payments").length === 7, "Expected 7 direct-payment profiles.");
 
 const slugs = new Set();
 const names = new Set();
@@ -44,17 +44,21 @@ for (const { file, data } of providers) {
   assert(data.sources.length >= 2, `${file}: fewer than two sources.`);
   assert(data.responsibilities.length >= 4, `${file}: responsibility matrix is incomplete.`);
   assert(data.strengths.length >= 3 && data.limitations.length >= 3, `${file}: pros/cons are incomplete.`);
+  assert(data.model !== "merchant-of-record" || Boolean(data.currencySupport), `${file}: Merchant of Record currency support is missing.`);
 
   const sourceIds = new Set();
   for (const source of data.sources) {
     assert(source.url.startsWith("https://"), `${file}: source must use HTTPS.`);
-    assert(source.reviewedOn === data.lastReviewed, `${file}: ${source.id} review date is stale.`);
+    assert(source.reviewedOn <= data.lastReviewed, `${file}: ${source.id} was reviewed after the provider profile.`);
     assert(!sourceIds.has(source.id), `${file}: duplicate source id ${source.id}.`);
     assert(!/[?&](ref|aff|affiliate)=/i.test(source.url), `${file}: affiliate parameter found in source URL.`);
     sourceIds.add(source.id);
   }
   for (const sourceId of data.pricing.sourceIds) {
     assert(sourceIds.has(sourceId), `${file}: unknown pricing source ${sourceId}.`);
+  }
+  for (const sourceId of data.currencySupport?.sourceIds ?? []) {
+    assert(sourceIds.has(sourceId), `${file}: unknown currency-support source ${sourceId}.`);
   }
   if (data.pricing.kind === "contradictory" || data.pricing.kind === "negotiated") {
     assert(data.pricing.percentage === null && data.pricing.fixed === null, `${file}: uncertain pricing must not expose an exact formula.`);
@@ -115,7 +119,7 @@ for (const story of fieldStories) {
 }
 
 const companyIntelligence = JSON.parse(await readFile(companyIntelligencePath, "utf8"));
-assert(companyIntelligence.length === 15, `Expected 15 company records; found ${companyIntelligence.length}.`);
+assert(companyIntelligence.length === 14, `Expected 14 company records; found ${companyIntelligence.length}.`);
 const companyIds = new Set();
 const coveredProviderSlugs = new Map();
 for (const company of companyIntelligence) {
@@ -156,7 +160,7 @@ for (const link of migrationLinks) {
 for (const id of expectedMigrationIds) assert(migrationIds.has(id), `${id}: migration route is missing.`);
 
 const calculatorRules = JSON.parse(await readFile(calculatorPath, "utf8"));
-assert(calculatorRules.length === 13, `Expected 13 calculator formulas; found ${calculatorRules.length}.`);
+assert(calculatorRules.length === 12, `Expected 12 calculator formulas; found ${calculatorRules.length}.`);
 const calculatorSlugs = new Set();
 for (const rule of calculatorRules) {
   assert(!calculatorSlugs.has(rule.slug), `${rule.slug}: duplicate calculator formula.`);
@@ -168,7 +172,8 @@ for (const rule of calculatorRules) {
   assert(provider.pricing.percentage === rule.percentage, `${rule.slug}: calculator percentage differs from the reviewed base price.`);
   assert(provider.pricing.fixed === rule.fixed, `${rule.slug}: calculator fixed fee differs from the reviewed base price.`);
   assert(provider.sources.some((source) => source.url === rule.source), `${rule.slug}: calculator source is not in the provider evidence record.`);
-  assert(rule.reviewedOn === provider.lastReviewed, `${rule.slug}: calculator formula is stale relative to the provider profile.`);
+  assert(rule.reviewedOn <= provider.lastReviewed, `${rule.slug}: calculator formula was reviewed after the provider profile.`);
+  assert(provider.sources.some((source) => source.url === rule.source && source.reviewedOn === rule.reviewedOn), `${rule.slug}: calculator review date does not match its pricing source.`);
 }
 
 const countryCoverage = JSON.parse(await readFile(countryCoveragePath, "utf8"));

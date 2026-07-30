@@ -19,6 +19,22 @@ const pricing = z.object({
   sourceIds: z.array(z.string()).min(1)
 });
 
+const currencySupport = z.object({
+  presentment: z.string().min(20),
+  customerCharge: z.string().min(20),
+  settlement: z.string().min(20),
+  buyerFx: z.string().min(15),
+  merchantFx: z.string().min(15),
+  moneyPath: z.string().min(10),
+  marketExamples: z.array(z.object({
+    market: z.enum(["us", "eu", "other"]),
+    path: z.string().min(10),
+    conversions: z.enum(["0", "1", "2", "2+", "not-disclosed"]),
+    cost: z.string().min(20)
+  })).length(3),
+  sourceIds: z.array(z.string()).min(1)
+});
+
 const providerSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   name: z.string().min(2),
@@ -28,6 +44,7 @@ const providerSchema = z.object({
   stage: z.enum(["established", "growth", "public-preview"]),
   summary: z.string().min(60),
   pricing,
+  currencySupport: currencySupport.optional(),
   sellerCoverage: z.string().min(30),
   buyerCoverage: z.string().min(30),
   products: z.string().min(30),
@@ -64,9 +81,25 @@ const providerSchema = z.object({
       context.addIssue({ code: "custom", path: ["pricing", "sourceIds"], message: `Unknown pricing source ${sourceId}.` });
     }
   }
+  if (provider.model === "merchant-of-record" && !provider.currencySupport) {
+    context.addIssue({ code: "custom", path: ["currencySupport"], message: "Merchant of Record profiles require currencySupport." });
+  }
+  for (const sourceId of provider.currencySupport?.sourceIds ?? []) {
+    if (!sourceIds.has(sourceId)) {
+      context.addIssue({ code: "custom", path: ["currencySupport", "sourceIds"], message: `Unknown currency-support source ${sourceId}.` });
+    }
+  }
+  if (provider.currencySupport) {
+    const exampleMarkets = new Set(provider.currencySupport.marketExamples.map((example) => example.market));
+    for (const market of ["us", "eu", "other"] as const) {
+      if (!exampleMarkets.has(market)) {
+        context.addIssue({ code: "custom", path: ["currencySupport", "marketExamples"], message: `Missing ${market} currency market example.` });
+      }
+    }
+  }
   for (const source of provider.sources) {
-    if (source.reviewedOn !== provider.lastReviewed) {
-      context.addIssue({ code: "custom", path: ["sources"], message: `${source.id} is not aligned with lastReviewed.` });
+    if (source.reviewedOn > provider.lastReviewed) {
+      context.addIssue({ code: "custom", path: ["sources"], message: `${source.id} was reviewed after the provider profile.` });
     }
   }
 });

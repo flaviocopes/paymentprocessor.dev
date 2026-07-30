@@ -191,6 +191,50 @@ h2 { margin: 15px 0 0; font-size: clamp(40px,5vw,66px); letter-spacing: -.06em; 
 .definition-grid > div { min-height: 190px; padding: 28px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
 .definition-grid dt { color: var(--blue); font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .07em; text-transform: uppercase; }
 .definition-grid dd { margin: 24px 0 0; color: var(--muted); }
+.currency-comparison-heading > p { max-width: 480px; margin: 0; color: var(--muted); font-size: 13px; }
+.currency-reading-key { display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 18px; border: 1px solid var(--line); background: white; }
+.currency-reading-key > span { min-height: 90px; padding: 20px; border-right: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.currency-reading-key > span b { display: block; margin-bottom: 10px; color: var(--blue); font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+.currency-reading-key > p { grid-column: 1 / -1; margin: 0; padding: 16px 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+.currency-reading-key > p strong { color: var(--ink); }
+.regional-example-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin: 34px 0 16px; }
+.regional-example-heading h3 { margin: 8px 0 0; font-size: 24px; }
+.regional-example-heading > p { max-width: 520px; margin: 0; color: var(--muted); font-size: 12px; }
+.regional-example-wrap { margin-bottom: 10px; }
+.regional-example-table { min-width: 1260px; table-layout: fixed; }
+.regional-example-table th:first-child { width: 180px; }
+.regional-example-table thead th span, .regional-example-table thead th small, .regional-example-table tbody th a, .regional-example-table small { display: block; }
+.regional-example-table thead th small { margin-top: 6px; color: var(--muted); font-size: 9px; letter-spacing: 0; text-transform: none; }
+.regional-example-table tbody th a { color: var(--blue); font-size: 14px; }
+.regional-example-table small { margin-top: 7px; color: var(--muted); font-size: 11px; font-weight: 500; }
+.regional-example-table td code { display: block; color: var(--ink); font: 750 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.conversion-count { display: inline-block; margin-top: 11px; padding: 5px 7px; background: #fff0dc; color: var(--amber); font: 750 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+.conversion-count.is-zero { background: #e9f7ef; color: #247247; }
+.conversion-count.is-unknown { background: #eeeefa; color: var(--blue); }
+.currency-example-disclaimer { margin: 0 0 24px; color: var(--muted); font-size: 11px; }
+.profile-market-example-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 18px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.profile-market-example-grid article { min-width: 0; padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
+.profile-market-example-grid article > span { color: var(--blue); font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+.profile-market-example-grid h3 { margin: 10px 0 16px; font-size: 16px; }
+.profile-market-example-grid code { display: block; color: var(--ink); font: 750 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.profile-market-example-grid p { margin: 14px 0 0; color: var(--muted); font-size: 11px; }
+.currency-comparison-table { min-width: 1180px; }
+.currency-comparison-table th:first-child { width: 150px; }
+.currency-comparison-table td { color: var(--muted); }
+.currency-comparison-table td strong, .currency-comparison-table td span { display: block; }
+.currency-comparison-table td strong { margin-bottom: 8px; color: var(--ink); font-size: 12px; }
+.currency-comparison-table td span + span { margin-top: 9px; }
+.currency-comparison-table td b { color: var(--ink); }
+.currency-comparison-table td code { color: var(--blue); font: 700 11px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; white-space: normal; }
+.currency-comparison-table a { color: var(--blue); }
+.currency-warning { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 36px; margin-top: 18px; padding: 24px; border-left: 3px solid var(--amber); background: white; }
+.currency-warning strong { color: var(--amber); }
+.currency-warning p { margin: 0; color: var(--muted); font-size: 12px; }
+.currency-warning p + p { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.currency-warning p b { color: var(--ink); }
+.currency-path { margin-bottom: 18px; padding: 24px; border: 1px solid var(--blue); background: var(--blue); color: white; }
+.currency-path code { font: 750 14px/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; }
+.currency-definition-grid > div:last-child { grid-column: 1 / -1; }
 .table-wrap { max-width: 100%; overflow-x: auto; border: 1px solid var(--line); background: white; }
 .data-table { width: 100%; border-collapse: collapse; min-width: 760px; }
 .data-table th, .data-table td { padding: 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 13px; }
@@ -786,6 +830,21 @@ h2 { margin: 15px 0 0; font-size: clamp(40px,5vw,66px); letter-spacing: -.06em; 
   .versus-title > span:last-child { text-align: left; }
   .versus-title b { width: 42px; height: 42px; }
   .source-list li { flex-direction: column; gap: 5px; }
+  .currency-comparison-heading { align-items: flex-start; flex-direction: column; gap: 20px; }
+  .currency-reading-key, .profile-market-example-grid { grid-template-columns: 1fr; }
+  .regional-example-heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .regional-example-wrap { overflow: visible; border: 0; background: transparent; }
+  .regional-example-table { display: block; min-width: 0; }
+  .regional-example-table thead { display: none; }
+  .regional-example-table tbody { display: grid; gap: 12px; }
+  .regional-example-table tbody tr { display: block; border: 1px solid var(--line); background: white; }
+  .regional-example-table tbody th, .regional-example-table tbody td { display: block; width: auto; border: 0; border-bottom: 1px solid var(--line); }
+  .regional-example-table tbody td:last-child { border-bottom: 0; }
+  .regional-example-table tbody td::before { content: attr(data-market); display: block; margin-bottom: 12px; color: var(--blue); font: 700 9px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; }
+  .currency-reading-key > span { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .currency-reading-key > p { grid-column: auto; border-top: 0; }
+  .currency-warning { grid-template-columns: 1fr; gap: 12px; }
+  .currency-definition-grid > div:last-child { grid-column: 1; }
   .section-index { display: none; }
   .calculator-shell { padding-block: 66px 84px; }
   .calculator-intro, .calculator-notes { grid-template-columns: 1fr; gap: 18px; }

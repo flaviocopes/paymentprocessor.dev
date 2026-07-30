@@ -16,6 +16,20 @@
     "assumptions": "Illustrative US domestic-card total: 3.5% MoR fee plus 2.9% + $0.30 Payments fee. Stripe Billing adds 0.7% on pay-as-you-go subscriptions; disputes, other methods, international cards, and FX can add costs.",
     "sourceIds": ["pricing"]
   },
+  "currencySupport": {
+    "presentment": "Adaptive Pricing is enabled by default and offers localized prices in more than 150 countries; manually defined currency prices can override it.",
+    "customerCharge": "The buyer is charged in the local presentment currency selected at checkout, or can choose the original integration currency.",
+    "settlement": "Stripe converts Adaptive Pricing sales back to the integration or supported settlement currency of the seller's Stripe account.",
+    "buyerFx": "Adaptive Pricing adds 2–4% to Stripe's exchange rate by default; the buyer pays this. Paying in the original currency can instead trigger the buyer's bank FX fee.",
+    "merchantFx": "Stripe says the seller pays 0% for Adaptive Pricing and no separate currency-conversion fee when it is enabled; normal processing and cross-border fees still apply.",
+    "moneyPath": "buyer local currency → integration/settlement currency → bank payout",
+    "marketExamples": [
+      { "market": "us", "path": "USD charge → USD settlement → USD bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in USD, there is no FX in this example." },
+      { "market": "eu", "path": "EUR charge → EUR settlement → EUR bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in EUR, there is no FX in this example." },
+      { "market": "other", "path": "CHF charge → CHF settlement → CHF bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in CHF, there is no FX in this example; Adaptive Pricing markup applies when Stripe localizes from another integration currency." }
+    ],
+    "sourceIds": ["how", "adaptive", "managed-pricing"]
+  },
   "sellerCoverage": "Public-preview eligibility is limited to Stripe's documented supported business locations.",
   "buyerCoverage": "Global buyer coverage excludes Stripe's documented restricted countries and varies by payment method.",
   "products": "Eligible digital products, SaaS, software, digital content, and virtual goods; services, physical goods, marketplaces, and many restricted categories are excluded.",
@@ -36,11 +50,13 @@
   "limitations": ["Public preview", "Narrower product and seller eligibility", "MoR fee is additional to Payments and other applicable Stripe fees"],
   "bestFor": ["Existing eligible Stripe Checkout businesses", "Digital-product companies testing specific markets", "Teams wanting mixed MoR and direct transactions"],
   "avoidIf": ["You sell services, physical goods, or marketplace products", "You require a generally available, long-established MoR product"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-07-30",
   "nextReview": "2026-08-27",
   "sources": [
     { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-29" },
     { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-29" }
+    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-29" },
+    { "id": "adaptive", "label": "Stripe Adaptive Pricing currencies and customer FX", "url": "https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing", "reviewedOn": "2026-07-30" },
+    { "id": "managed-pricing", "label": "Stripe Managed Payments pricing", "url": "https://support.stripe.com/questions/managed-payments-pricing", "reviewedOn": "2026-07-30" }
   ]
 }

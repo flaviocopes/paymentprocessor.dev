@@ -978,7 +978,7 @@
       },
       {
         "date": "2026-05",
-        "label": "Published selected 2025 financial results and announced an agreement to acquire GoCardless."
+        "label": "Published selected 2025 financial results."
       }
     ],
     "lastReviewed": "2026-07-29",
@@ -1406,116 +1406,6 @@
         "id": "airwallex-series-b",
         "label": "Airwallex Series B announcement",
         "url": "https://www.airwallex.com/global/newsroom/series-b-closing-80m",
-        "reviewedOn": "2026-07-29"
-      }
-    ]
-  },
-  {
-    "id": "gocardless",
-    "name": "GoCardless",
-    "providerSlugs": [
-      "gocardless"
-    ],
-    "entityType": "private",
-    "ownershipLabel": "Privately held; acquisition by Mollie announced and pending regulatory approval",
-    "parentCompany": null,
-    "ticker": null,
-    "founded": 2011,
-    "foundedNote": "Hiroki Takeuchi, Tom Blomfield, and Matt Robinson founded GoCardless in London in 2011.",
-    "headquarters": "London, United Kingdom",
-    "leaders": [
-      {
-        "name": "Hiroki Takeuchi",
-        "title": "Cofounder and Chief Executive Officer",
-        "context": "Founder and current CEO at the July 2026 review."
-      }
-    ],
-    "founders": [
-      "Hiroki Takeuchi",
-      "Tom Blomfield",
-      "Matt Robinson"
-    ],
-    "team": {
-      "value": "Not currently disclosed",
-      "asOf": null,
-      "note": "GoCardless publishes locations and leadership but not a current verified global headcount."
-    },
-    "funding": {
-      "status": "venture-backed",
-      "headline": "$312M Series G announced at a $2.1B valuation",
-      "details": "Permira's growth fund led the 2022 round, with BlackRock Private Equity Partners; prior backers include Accel, Balderton, Passion Capital, GV, Adams Street, and Salesforce Ventures.",
-      "investors": [
-        "Permira",
-        "BlackRock Private Equity Partners",
-        "Accel",
-        "Balderton Capital",
-        "GV",
-        "Salesforce Ventures"
-      ]
-    },
-    "financials": {
-      "scope": "company",
-      "period": "Latest company operating disclosure",
-      "headline": "Private-company revenue amount is not fully disclosed",
-      "metrics": [
-        {
-        "label": "Annual payments",
-        "value": "$130B+"
-        },
-        {
-          "label": "Series G",
-          "value": "$312M"
-        },
-        {
-          "label": "Valuation at round",
-          "value": "$2.1B"
-        }
-      ],
-      "note": "Customer, payment-volume, and fundraising figures do not disclose current profitability, cash flow, or product-level reserves."
-    },
-    "events": [
-      {
-        "date": "2011",
-        "label": "GoCardless was founded in London for accessible Direct Debit collection."
-      },
-      {
-        "date": "2022-02",
-        "label": "Raised a $312M Series G at a reported $2.1B valuation."
-      },
-      {
-        "date": "2022-07",
-        "label": "Acquired Nordigen to add open-banking account data."
-      },
-      {
-        "date": "2026-05",
-        "label": "Mollie announced an agreement to acquire GoCardless, subject to regulatory approval."
-      }
-    ],
-    "lastReviewed": "2026-07-29",
-    "nextReview": "2026-09-28",
-    "sources": [
-      {
-        "id": "gocardless-about",
-        "label": "GoCardless company and network",
-        "url": "https://gocardless.com/about",
-        "reviewedOn": "2026-07-29"
-      },
-      {
-        "id": "gocardless-funding",
-        "label": "GoCardless $312M Series G announcement",
-        "url": "https://gocardless.com/blog/gocardless-raises-312m-series-g",
-        "reviewedOn": "2026-07-29"
-      },
-      {
-        "id": "gocardless-press",
-        "label": "GoCardless press and operating figures",
-        "url": "https://gocardless.com/en-us/about/press/",
-        "reviewedOn": "2026-07-29"
-      },
-      {
-        "id": "mollie-gocardless",
-        "label": "Mollie financial results and pending GoCardless acquisition",
-        "url": "https://www.mollie.com/news/2025-net-revenue-growth",
         "reviewedOn": "2026-07-29"
       }
     ]

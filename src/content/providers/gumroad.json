@@ -16,6 +16,20 @@
     "assumptions": "Illustrative standard card sale through a Gumroad profile or direct link. PayPal, connected Stripe accounts, affiliates, Discover's 30% rate, taxes, and refund treatment differ.",
     "sourceIds": ["pricing", "fees"]
   },
+  "currencySupport": {
+    "presentment": "Sellers choose a display currency; eligible one-time card purchases can be localized into the buyer's currency, while other transactions remain USD.",
+    "customerCharge": "Eligible one-time card buyers are charged the local amount shown. Unsupported local-currency sales, memberships, PayPal, and some connected-account flows can be charged in USD.",
+    "settlement": "Bank payouts are made in the single local currency assigned to the seller's country; PayPal payouts and unsupported bank countries use USD.",
+    "buyerFx": "Gumroad uses a mid-market conversion for supported local charges; a buyer's card issuer may still add an international-purchase fee.",
+    "merchantFx": "Bank-payout conversion uses the rate at the time of sale, with no separately published Gumroad FX percentage; PayPal or Stripe Connect can apply their own conversion rules.",
+    "moneyPath": "local or USD charge → USD reporting → seller-country payout currency",
+    "marketExamples": [
+      { "market": "us", "path": "USD charge → USD reporting → USD payout", "conversions": "0", "cost": "A US seller receiving USD follows a matched-currency route; card, platform, and payout fees are separate." },
+      { "market": "eu", "path": "EUR charge → USD reporting → EUR payout", "conversions": "2", "cost": "The local charge is reported in USD and converted back for payout. Gumroad does not publish a separate universal FX percentage." },
+      { "market": "other", "path": "CHF charge → USD reporting → CHF payout", "conversions": "2", "cost": "The local charge is reported in USD and converted back for payout. Gumroad does not publish a separate universal FX percentage." }
+    ],
+    "sourceIds": ["currencies", "payouts"]
+  },
   "sellerCoverage": "Payout method and seller availability vary by country.",
   "buyerCoverage": "Gumroad sells internationally and applies tax based on its obligations as Merchant of Record.",
   "products": "Digital downloads, ebooks, courses, tutorials, memberships, and eligible SaaS; physical and prohibited categories are excluded.",
@@ -36,10 +50,12 @@
   "limitations": ["High effective fee for standard direct card sales", "Less flexible for complex SaaS billing", "Marketplace discovery sales use a substantially higher fee"],
   "bestFor": ["Solo digital creators", "Ebooks, courses, and downloads", "Simple memberships"],
   "avoidIf": ["You need advanced subscription lifecycle APIs", "Precise low-cost processing is the primary constraint"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-07-30",
   "nextReview": "2026-08-27",
   "sources": [
     { "id": "pricing", "label": "Gumroad pricing", "url": "https://gumroad.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "fees", "label": "Gumroad fees help article", "url": "https://gumroad.com/help/article/66-gumroads-fees", "reviewedOn": "2026-07-29" }
+    { "id": "fees", "label": "Gumroad fees help article", "url": "https://gumroad.com/help/article/66-gumroads-fees", "reviewedOn": "2026-07-29" },
+    { "id": "currencies", "label": "Gumroad currency behavior", "url": "https://gumroad.com/help/article/46-what-currency-does-gumroad-use", "reviewedOn": "2026-07-30" },
+    { "id": "payouts", "label": "Gumroad payout currencies", "url": "https://gumroad.com/help/article/13-getting-paid.html", "reviewedOn": "2026-07-30" }
   ]
 }

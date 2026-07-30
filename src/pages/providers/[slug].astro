@@ -20,6 +20,11 @@ const related = allProviders.filter((item) => item.model === provider.model && i
 const relatedStories = (await getCollection("fieldStories")).filter((story) => story.data.providerSlugs.includes(provider.slug)).slice(0, 4);
 const modelLabel = provider.model === "merchant-of-record" ? "Merchant of Record" : "Direct payments · you are merchant";
 const sellerLabel = provider.legalSeller === "provider" ? `${provider.name} is the legal seller` : "Your business is the legal seller";
+const currencyMarketLabels = {
+  us: { label: "US market", setup: "USD sale → USD bank" },
+  eu: { label: "EU market", setup: "EUR sale → EUR bank" },
+  other: { label: "Outside US/EU", setup: "CHF sale → CHF bank" }
+};
 const questions = provider.model === "merchant-of-record" ? [
   "Which provider entity is the seller, and what name appears on receipts and statements?",
   "Are every product type, seller country, buyer country, and sales channel we use eligible?",
@@ -50,7 +55,7 @@ const migrationFactors = [
 ---
 
 <BaseLayout
-  title={`${provider.name} profile — Payment Stack Guide`}
+  title={`${provider.name} profile — Choose a Payment Processor`}
   description={provider.summary}
   structuredData={{
     "@context": "https://schema.org",
@@ -82,7 +87,7 @@ const migrationFactors = [
     <div class="shell profile-shell">
       <aside class="profile-toc">
         <span class="eyebrow">On this page</span>
-        <a href="#snapshot">Snapshot</a><a href="#company">Company</a><a href="#pricing">Pricing</a><a href="#fit">Fit</a><a href="#coverage">Coverage</a><a href="#features">Features</a><a href="#responsibility">Responsibility</a><a href="#questions">Questions</a><a href="#migration">Migration</a><a href="#sources">Sources</a>
+        <a href="#snapshot">Snapshot</a><a href="#company">Company</a><a href="#pricing">Pricing</a>{provider.currencySupport && <a href="#currencies">Currencies</a>}<a href="#fit">Fit</a><a href="#coverage">Coverage</a><a href="#features">Features</a><a href="#responsibility">Responsibility</a><a href="#questions">Questions</a><a href="#migration">Migration</a><a href="#sources">Sources</a>
       </aside>
       <div class="profile-content">
         <section id="snapshot" class="profile-section">
@@ -130,6 +135,25 @@ const migrationFactors = [
           <h2>{provider.pricing.headline}</h2>
           <div class="evidence-note"><strong>{provider.pricing.kind.replaceAll("-", " ")}</strong><p>{provider.pricing.assumptions}</p></div>
         </section>
+        {provider.currencySupport && <section id="currencies" class="profile-section">
+          <span class="section-index">FX</span><span class="eyebrow">Multi-currency and conversion</span>
+          <h2>Trace the currency all the way to your bank.</h2>
+          <div class="currency-path" aria-label={`${provider.name} money path`}><code>{provider.currencySupport.moneyPath}</code></div>
+          <div class="profile-market-example-grid">
+            {provider.currencySupport.marketExamples.map((example) => {
+              const market = currencyMarketLabels[example.market];
+              const countLabel = example.conversions === "not-disclosed" ? "FX count not disclosed" : `${example.conversions} currency changes`;
+              return <article><span>{market.label}</span><h3>{market.setup}</h3><code>{example.path}</code><b class:list={{ "conversion-count": true, "is-zero": example.conversions === "0", "is-unknown": example.conversions === "not-disclosed" }}>{countLabel}</b><p>{example.cost}</p></article>;
+            })}
+          </div>
+          <dl class="definition-grid currency-definition-grid">
+            <div><dt>What buyers see</dt><dd>{provider.currencySupport.presentment}</dd></div>
+            <div><dt>What buyers are charged</dt><dd>{provider.currencySupport.customerCharge}</dd></div>
+            <div><dt>Balance and payout</dt><dd>{provider.currencySupport.settlement}</dd></div>
+            <div><dt>Buyer FX cost</dt><dd>{provider.currencySupport.buyerFx}</dd></div>
+            <div><dt>Seller FX cost</dt><dd>{provider.currencySupport.merchantFx}</dd></div>
+          </dl>
+        </section>}
         <section id="fit" class="profile-section">
           <span class="section-index">03</span><span class="eyebrow">Fit</span><h2>Where it fits—and where it does not.</h2>
           <div class="pros-cons">
@@ -163,7 +187,7 @@ const migrationFactors = [
         {relatedStories.length > 0 && <section class="profile-section"><span class="section-index">09</span><span class="eyebrow">Stories from the field</span><h2>Experiences worth investigating.</h2><p class="section-lede">Anecdotes show possible failure modes, not frequency or current policy.</p><div class="profile-story-list">{relatedStories.map((story) => <a href={story.data.url} rel="noreferrer"><span>{story.data.sourceType.replaceAll("-", " ")}</span><strong>{story.data.title}</strong><p>{story.data.summary}</p></a>)}</div></section>}
         <section id="sources" class="profile-section source-section">
           <span class="section-index">10</span><span class="eyebrow">Primary evidence</span><h2>Sources and freshness.</h2>
-          <p>Independently triple-checked against primary sources on {provider.lastReviewed}. Scheduled for review by {provider.nextReview}. Verify the linked source before making a production decision.</p>
+          <p>Profile updated from primary sources on {provider.lastReviewed}. Each source carries its own review date. Scheduled for review by {provider.nextReview}. Verify the linked source before making a production decision.</p>
           <SourceList sources={provider.sources} />
         </section>
       </div>

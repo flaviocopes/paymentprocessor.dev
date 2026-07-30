@@ -13,8 +13,8 @@ if (checker.results.length !== providers.length) throw new Error("Seller view do
 if (checker.countrySummaries.length !== coverage.countries.length) throw new Error("Country summary does not include every country.");
 
 checker.country = "US";
-if (checker.counts.documented !== 15 || checker.counts.review !== 0 || checker.counts.unavailable !== 1) {
-  throw new Error("US seller results must show 15 supported providers, no unknowns, and Mollie as the only unavailable provider.");
+if (checker.counts.documented !== 14 || checker.counts.review !== 0 || checker.counts.unavailable !== 1) {
+  throw new Error("US seller results must show 14 supported providers, no unknowns, and Mollie as the only unavailable provider.");
 }
 const mollie = checker.results.find((provider) => provider.slug === "mollie");
 if (mollie?.status !== "unavailable") throw new Error("Mollie must remain unavailable to US-based sellers.");

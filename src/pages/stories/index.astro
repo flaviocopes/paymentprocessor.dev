@@ -7,7 +7,7 @@ const stories = (await getCollection("fieldStories")).sort((a, b) => a.data.titl
 const sourceTypes = [...new Set(stories.map((story) => story.data.sourceType))].sort();
 ---
 
-<BaseLayout title="Payment stories from the field — Payment Stack Guide" description="Curated founder accounts, community discussions, engineering posts, and migration stories about payment operations.">
+<BaseLayout title="Payment stories from the field — Choose a Payment Processor" description="Curated founder accounts, community discussions, engineering posts, and migration stories about payment operations.">
   <PageHeader eyebrow="Anecdotes, clearly labelled" title="Stories from the field" description="Founder accounts and engineering stories reveal failure modes that pricing pages do not. They generate questions—not universal conclusions." meta={`${stories.length} curated accounts · reviewed 2026-07-27`} />
 
   <section class="section">

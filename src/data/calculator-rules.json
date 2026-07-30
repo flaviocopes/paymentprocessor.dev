@@ -212,25 +212,5 @@
     "note": "Models US card pricing, subscription billing, and the published 0.5% major-currency FX markup. Other currencies can use 1%; local methods, fraud services, disputes, and other regions are excluded.",
     "source": "https://www.airwallex.com/en-us/pricing",
     "reviewedOn": "2026-07-29"
-  },
-  {
-    "slug": "gocardless",
-    "name": "GoCardless",
-    "model": "direct-payments",
-    "modelLabel": "You remain the merchant",
-    "percentage": 0.5,
-    "fixed": 0.05,
-    "monthly": 0,
-    "internationalPercentage": 1,
-    "fxPercentage": 0,
-    "subscriptionPercentage": 0,
-    "disputeFee": 5,
-    "disputeThreshold": 15,
-    "unmodeledFees": ["$5 payment-failure fee", "$0.50 refund fee", "Optional add-ons"],
-    "capPerTransaction": 5,
-    "confidence": "Public US Standard rate",
-    "note": "Models US Standard ACH, including the $5 domestic cap, 1% international uplift, and the $5 chargeback fee only above 15 chargebacks per month. Failures, refunds, add-ons, and other plans are excluded.",
-    "source": "https://gocardless.com/en-us/pricing",
-    "reviewedOn": "2026-07-29"
   }
 ]

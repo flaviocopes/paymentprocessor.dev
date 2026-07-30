@@ -5,7 +5,7 @@ import PageHeader from "../../components/PageHeader.astro";
 const comparisons = (await getCollection("comparisons")).map((entry) => entry.data).sort((a,b) => a.title.localeCompare(b.title));
 ---
 
-<BaseLayout title="Payment provider comparisons — Payment Stack Guide" description="Scenario-specific comparisons of Merchants of Record and direct payment providers.">
+<BaseLayout title="Payment provider comparisons — Choose a Payment Processor" description="Scenario-specific comparisons of Merchants of Record and direct payment providers.">
   <PageHeader eyebrow="Material differences only" title="Provider comparisons" description="No pages made by swapping provider names. Each comparison starts with the legal seller, then explains the differences that change a real decision." meta={`${comparisons.length} launch comparisons · reviewed 2026-07-27`} />
   <section class="section"><div class="shell comparison-list">
     {comparisons.map((comparison, index) => (
