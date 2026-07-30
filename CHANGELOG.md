@@ -20,3 +20,9 @@ Material changes to paymentprocessor.dev are recorded here using calendar dates.
 ### Removed
 
 - Removed GoCardless from the provider catalog, comparison tools, country coverage, calculator rules, and company explorer.
+
+## 2026-07-29
+
+### Launched
+
+- Launched paymentprocessor.dev with evidence-backed Merchant of Record and direct-payment provider profiles, legal-seller decision paths, provider comparisons, company intelligence, country coverage, cost and migration tools, a payments learning library, and canonical migration guidance.
