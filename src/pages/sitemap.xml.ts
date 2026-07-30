@@ -8,6 +8,7 @@ const staticRoutes = [
   "/payment-processors/",
   "/compare/",
   "/companies/",
+  "/changelog/",
   "/migrations/",
   "/tools/provider-matcher/",
   "/tools/country-checker/",

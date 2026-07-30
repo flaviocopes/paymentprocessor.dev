@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import * as changelog from "../../../CHANGELOG.md";
+---
+
+<BaseLayout
+  title="Changelog — Choose a Payment Processor"
+  description="Recent additions, corrections, and material changes to Choose a Payment Processor."
+>
+  <section class="section changelog-page">
+    <div class="shell changelog-shell">
+      <span class="eyebrow">Product updates</span>
+      <article class="changelog-content">
+        <changelog.Content />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

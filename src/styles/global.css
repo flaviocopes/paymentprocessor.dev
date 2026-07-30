@@ -139,6 +139,16 @@ h2 { margin: 15px 0 0; font-size: clamp(40px,5vw,66px); letter-spacing: -.06em; 
 .note-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 100px; align-items: end; }
 .note-grid h2 { font-size: clamp(42px,5vw,64px); }
 .prose p { color: var(--muted); font-size: 17px; }
+.changelog-page { min-height: 70vh; }
+.changelog-shell { max-width: 920px; }
+.changelog-content h1 { max-width: 760px; margin: 18px 0 0; font-size: clamp(58px, 9vw, 108px); line-height: .92; letter-spacing: -.07em; }
+.changelog-content > p:first-of-type { max-width: 650px; margin: 30px 0 0; color: var(--muted); font-size: 18px; }
+.changelog-content h2 { margin: 72px 0 0; padding-top: 28px; border-top: 2px solid var(--ink); font-size: 38px; }
+.changelog-content h3 { margin: 34px 0 0; color: var(--blue); font: 750 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; }
+.changelog-content ul { margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.changelog-content li { position: relative; padding: 18px 18px 18px 34px; border-bottom: 1px solid var(--line); color: var(--muted); }
+.changelog-content li::before { content: "→"; position: absolute; left: 4px; color: var(--blue); font-weight: 800; }
+.changelog-content strong { color: var(--ink); }
 .service-models > h2 { max-width: 740px; margin-bottom: 48px; }
 .model-grid, .methodology-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
 .model-grid > div, .methodology-grid > article { min-height: 220px; padding: 32px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
