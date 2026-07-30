@@ -3,7 +3,12 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import ProviderCard from "../../components/ProviderCard.astro";
-const providers = (await getCollection("providers")).map((entry) => entry.data).filter((provider) => provider.model === "merchant-of-record").sort((a,b) => a.name.localeCompare(b.name));
+const popularityOrder = ["paddle", "lemon-squeezy", "gumroad", "polar", "fastspring", "stripe-managed-payments", "dodo-payments", "creem"];
+const popularityRank = new Map(popularityOrder.map((slug, index) => [slug, index]));
+const providers = (await getCollection("providers"))
+  .map((entry) => entry.data)
+  .filter((provider) => provider.model === "merchant-of-record")
+  .sort((a, b) => (popularityRank.get(a.slug) ?? Number.MAX_SAFE_INTEGER) - (popularityRank.get(b.slug) ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name));
 const marketScenarios = [
   { key: "us", label: "US market", setup: "USD sale → USD bank" },
   { key: "eu", label: "EU market", setup: "EUR sale → EUR bank" },
