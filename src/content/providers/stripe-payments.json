@@ -32,15 +32,17 @@
     { "area": "Fraud and disputes", "owner": "shared", "note": "Stripe supplies tools and workflows; the merchant bears transaction and dispute responsibility." },
     { "area": "Transaction and product support", "owner": "merchant", "note": "The business supports its buyers unless it uses a separate service." }
   ],
-  "strengths": ["Broad APIs and documentation", "Many payment methods and integration surfaces", "Modular billing, tax, and reporting products"],
+  "strengths": ["Broad APIs and documentation", "Link and dynamic payment methods can reduce checkout friction for eligible buyers, with measurable but audience-dependent conversion upside", "Modular billing, tax, and reporting products"],
   "limitations": ["The merchant retains tax and compliance responsibility", "Add-on and cross-border fees can materially change the headline rate", "Billing and advanced revenue tools are separate products"],
   "bestFor": ["Developer-led SaaS", "Businesses wanting checkout control", "Companies prepared to own tax and payment operations"],
   "avoidIf": ["You want another company to be the legal seller", "Your business country is not supported"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-07-31",
   "nextReview": "2026-10-27",
   "sources": [
     { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
     { "id": "countries", "label": "Stripe global availability", "url": "https://stripe.com/global", "reviewedOn": "2026-07-29" },
-    { "id": "methods", "label": "Stripe payment-method pricing", "url": "https://stripe.com/pricing/local-payment-methods", "reviewedOn": "2026-07-29" }
+    { "id": "methods", "label": "Stripe payment-method pricing", "url": "https://stripe.com/pricing/local-payment-methods", "reviewedOn": "2026-07-29" },
+    { "id": "link", "label": "Stripe Link documentation", "url": "https://docs.stripe.com/payments/link", "reviewedOn": "2026-07-31" },
+    { "id": "link-study", "label": "Stripe checkout conversion study", "url": "https://stripe.com/newsroom/news/payments-revenue-uplift", "reviewedOn": "2026-07-31" }
   ]
 }
