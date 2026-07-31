@@ -123,6 +123,15 @@ const comparisonSchema = z.object({
       note: z.string()
     })
   })).min(5).optional(),
+  implementation: z.object({
+    summary: z.string().min(40),
+    rows: z.array(z.object({
+      area: z.string(),
+      measure: z.string(),
+      first: z.object({ label: z.string(), detail: z.string() }),
+      second: z.object({ label: z.string(), detail: z.string() })
+    })).min(5)
+  }).optional(),
   scenarios: z.array(z.object({ when: z.string(), choose: z.string(), reason: z.string() })).min(3),
   lastReviewed: z.string().date(),
   sources: z.array(z.string()).min(2)

@@ -18,6 +18,7 @@ const availabilityLabels = {
   "add-on": "Add-on",
   "not-supported": "Not supported"
 };
+const scenarioTint = Boolean(comparison.implementation) === Boolean(comparison.features);
 ---
 
 <BaseLayout
@@ -45,7 +46,18 @@ const availabilityLabels = {
       <div class="verdict-box"><span class="eyebrow">Short answer</span><p>{comparison.recommendation}</p></div>
       <div class="table-wrap comparison-table-wrap"><table class="data-table comparison-table"><thead><tr><th>Decision area</th><th>{first.name}</th><th>{second.name}</th><th>Why it matters</th></tr></thead><tbody>{comparison.differences.map((row) => <tr><th scope="row">{row.area}</th><td>{row.first}</td><td>{row.second}</td><td>{row.whyItMatters}</td></tr>)}</tbody></table></div>
     </div></section>
-    {comparison.features && <section class="section section-tint"><div class="shell">
+    {comparison.implementation && <section class="section section-tint"><div class="shell">
+      <span class="eyebrow">Implementation, DX & buyer UX</span>
+      <h2 class="feature-comparison-heading">Simple to launch is not the same as simple to operate.</h2>
+      <p class="feature-comparison-intro">{comparison.implementation.summary}</p>
+      <div class="measurement-note"><strong>How this is measured</strong><p>Each row compares the lowest-complexity path documented by the provider and the extra surfaces needed for a production SaaS flow. Labels describe architecture, not a universal score or timed benchmark.</p><a href="/methodology/#implementation-experience">Read the rubric →</a></div>
+      <div class="table-wrap experience-table-wrap"><table class="data-table experience-table"><thead><tr><th>Dimension</th><th>{first.name}</th><th>{second.name}</th></tr></thead><tbody>{comparison.implementation.rows.map((row) => <tr>
+        <th scope="row"><span>{row.measure}</span>{row.area}</th>
+        <td><strong class="experience-label">{row.first.label}</strong><p>{row.first.detail}</p></td>
+        <td><strong class="experience-label">{row.second.label}</strong><p>{row.second.detail}</p></td>
+      </tr>)}</tbody></table></div>
+    </div></section>}
+    {comparison.features && <section class={`section ${comparison.implementation ? "" : "section-tint"}`}><div class="shell">
       <span class="eyebrow">Features & payment methods</span>
       <h2 class="feature-comparison-heading">What can customers use at checkout?</h2>
       <p class="feature-comparison-intro">Availability can depend on the seller's country, buyer location, currency, device, checkout integration, and whether the payment is one-time or recurring.</p>
@@ -55,7 +67,7 @@ const availabilityLabels = {
         <td><strong class={`availability availability-${row.second.availability}`}>{availabilityLabels[row.second.availability]}</strong><p>{row.second.note}</p></td>
       </tr>)}</tbody></table></div>
     </div></section>}
-    <section class={`section ${comparison.features ? "" : "section-tint"}`}><div class="shell"><span class="eyebrow">Choose by scenario</span><h2 class="scenario-heading">The right answer changes with the business.</h2><div class="scenario-grid">{comparison.scenarios.map((scenario) => <article><span>WHEN</span><h3>{scenario.when}</h3><strong>Choose {chooseName(scenario.choose)}</strong><p>{scenario.reason}</p></article>)}</div></div></section>
+    <section class:list={{ section: true, "section-tint": scenarioTint }}><div class="shell"><span class="eyebrow">Choose by scenario</span><h2 class="scenario-heading">The right answer changes with the business.</h2><div class="scenario-grid">{comparison.scenarios.map((scenario) => <article><span>WHEN</span><h3>{scenario.when}</h3><strong>Choose {chooseName(scenario.choose)}</strong><p>{scenario.reason}</p></article>)}</div></div></section>
     <section class="section"><div class="shell source-section"><span class="eyebrow">Primary sources</span><h2>Check the current terms.</h2><ol class="source-list">{comparison.sources.map((source) => <li><a href={source}>{new URL(source).hostname.replace("www.", "")}</a><span>Reviewed {comparison.lastReviewed}</span></li>)}</ol></div></section>
   </article>
 </BaseLayout>
