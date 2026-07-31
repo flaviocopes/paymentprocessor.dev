@@ -2,6 +2,22 @@
 
 Material changes to paymentprocessor.dev are recorded here using calendar dates.
 
+## 2026-07-31
+
+### Added
+
+- Added a dedicated features and buyer-payment-method table to the Paddle versus Stripe Payments comparison, covering cards, Apple Pay, Google Pay, PayPal, regional and bank methods, subscriptions, invoicing, indirect-tax remittance, and hosted or embedded checkout.
+- Added explicit **supported**, **limited**, **add-on**, and **not supported** states with eligibility and integration caveats so payment-method availability is not presented as universal.
+- Added an implementation, developer-experience, and buyer-experience comparison to all four provider matchups. The fixed rubric separates the fastest first-payment path from a production SaaS integration and examines checkout code, server and webhook work, subscription lifecycle, fulfillment, tax operations, testing tools, buyer self-service, and customization.
+- Added the implementation-load rubric to the research methodology, including the principle that a no-code first payment does not imply no-code fulfillment, billing, reconciliation, or compliance.
+- Added Stripe Link's cross-merchant saved checkout to the Paddle versus Stripe feature table and added checkout-conversion evidence to the implementation comparison.
+
+### Changed
+
+- Added Stripe Link and dynamic payment methods as a conditional Stripe Payments strength. The profile and comparison now distinguish possible conversion upside from a guaranteed sales lift.
+- Added supporting Stripe results and the MemberPress case study alongside an independent test that found low Link adoption and no significant conversion lift, with a recommendation to A/B test average revenue per checkout session for the actual audience.
+- Expanded and refreshed the primary sources for payment methods, provider quickstarts, checkout integrations, subscription webhooks, customer portals, automated entitlements, Stripe Link, and checkout-conversion testing.
+
 ## 2026-07-30
 
 ### Added
