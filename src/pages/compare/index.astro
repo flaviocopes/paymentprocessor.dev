@@ -6,7 +6,11 @@ const comparisons = (await getCollection("comparisons")).map((entry) => entry.da
 ---
 
 <BaseLayout title="Payment provider comparisons — Choose a Payment Processor" description="Scenario-specific comparisons of Merchants of Record and direct payment providers.">
-  <PageHeader eyebrow="Material differences only" title="Provider comparisons" description="No pages made by swapping provider names. Each comparison starts with the legal seller, then explains the differences that change a real decision." meta={`${comparisons.length} launch comparisons · reviewed 2026-07-27`} />
+  <PageHeader eyebrow="Material differences only" title="Provider comparisons" description="No pages made by swapping provider names. Each comparison starts with the legal seller, then explains the differences that change a real decision." meta={`${comparisons.length} direct comparisons · all-provider MoR matrix`} />
+  <section class="section section-tint matrix-launch-section"><div class="shell matrix-launch">
+    <div><span class="eyebrow">All-provider matrix</span><h2>Compare every Merchant of Record at once.</h2><p>Scan pricing, product fit, checkout, payment methods, billing, invoicing, payouts, coverage, and evidence freshness across all eight providers.</p></div>
+    <a class="card-link" href="/compare/merchant-of-record/">Open the full comparison →</a>
+  </div></section>
   <section class="section"><div class="shell comparison-list">
     {comparisons.map((comparison, index) => (
       <article class="comparison-card">

@@ -1,0 +1,96 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageHeader from "../../../components/PageHeader.astro";
+
+const popularityOrder = ["paddle", "lemon-squeezy", "gumroad", "polar", "fastspring", "stripe-managed-payments", "dodo-payments", "creem"];
+const popularityRank = new Map(popularityOrder.map((slug, index) => [slug, index]));
+const providers = (await getCollection("providers"))
+  .map((entry) => entry.data)
+  .filter((provider) => provider.model === "merchant-of-record")
+  .sort((a, b) => (popularityRank.get(a.slug) ?? Number.MAX_SAFE_INTEGER) - (popularityRank.get(b.slug) ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name));
+const latestReview = providers.map((provider) => provider.lastReviewed).sort().at(-1)!;
+---
+
+<BaseLayout
+  title="Compare all Merchant of Record providers — Choose a Payment Processor"
+  description={`Compare pricing, product fit, checkout, payment methods, subscriptions, invoicing, payouts, and coverage across ${providers.length} Merchant of Record providers.`}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Merchant of Record provider comparison",
+    numberOfItems: providers.length,
+    itemListElement: providers.map((provider, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: provider.name,
+      url: new URL(`/providers/${provider.slug}/`, Astro.site).toString()
+    }))
+  }}
+>
+  <PageHeader
+    eyebrow="All Merchant of Record providers"
+    title="One table. Every provider."
+    description="Compare the operating surface before opening eight tabs. Every row comes from the same sourced provider records used across the site."
+    meta={`${providers.length} providers · latest review ${latestReview}`}
+  />
+
+  <section class="section mor-matrix-section">
+    <div class="shell">
+      <a class="matrix-back-link" href="/compare/">← Provider comparisons</a>
+      <div class="matrix-reading-note">
+        <strong>Read across, then verify down.</strong>
+        <p>Headline pricing is not total cost, and a listed feature is not universal availability. Product eligibility, seller country, buyer country, currency, payment type, and negotiated terms can change the answer.</p>
+        <span>Scroll horizontally →</span>
+      </div>
+      <div class="table-wrap mor-matrix-wrap" tabindex="0" aria-label="Scrollable comparison of all Merchant of Record providers">
+        <table class="data-table mor-matrix-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Headline pricing</th>
+              <th>Best fit</th>
+              <th>Eligible products</th>
+              <th>Checkout</th>
+              <th>Buyer payment methods</th>
+              <th>Subscriptions</th>
+              <th>Invoicing</th>
+              <th>Payouts</th>
+              <th>Seller and buyer coverage</th>
+              <th>Evidence freshness</th>
+            </tr>
+          </thead>
+          <tbody>
+            {providers.map((provider) => (
+              <tr>
+                <th scope="row">
+                  <a href={`/providers/${provider.slug}/`}>{provider.name}</a>
+                  <span class={`matrix-stage matrix-stage-${provider.stage}`}>{provider.stage.replaceAll("-", " ")}</span>
+                  <small>{provider.serviceModel.replaceAll("-", " ")}</small>
+                </th>
+                <td><strong>{provider.pricing.headline}</strong><small>{provider.pricing.assumptions}</small></td>
+                <td><ul>{provider.bestFor.map((item) => <li>{item}</li>)}</ul></td>
+                <td>{provider.products}</td>
+                <td>{provider.features.checkout}</td>
+                <td>{provider.features.paymentMethods}</td>
+                <td>{provider.features.subscriptions}</td>
+                <td>{provider.features.invoicing}</td>
+                <td>{provider.features.payouts}</td>
+                <td><span><b>Seller:</b> {provider.sellerCoverage}</span><span><b>Buyer:</b> {provider.buyerCoverage}</span></td>
+                <td><strong>Reviewed {provider.lastReviewed}</strong><span>Next review {provider.nextReview}</span><a href={`/providers/${provider.slug}/#sources`}>View sources →</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="matrix-disclaimer">This matrix summarizes current public documentation. It is not a quote, contract, legal opinion, or guarantee of approval. Open the provider profile to inspect assumptions and primary sources before deciding.</p>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="shell note-grid">
+      <div><span class="eyebrow">Need a narrower answer?</span><h2>Compare the tradeoff, not the longest feature list.</h2></div>
+      <div class="prose"><p>Start with legal-seller responsibility, eligibility, total cost, and the work your team would otherwise own. A feature only matters when it supports your actual product, markets, currencies, and billing model.</p><a class="card-link" href="/tools/provider-matcher/">Use the provider matcher →</a></div>
+    </div>
+  </section>
+</BaseLayout>
