@@ -263,17 +263,14 @@ h2 { margin: 15px 0 0; font-size: clamp(40px,5vw,66px); letter-spacing: -.06em; 
 .comparison-card h2 { margin: 0; font-size: clamp(30px,4vw,48px); }
 .comparison-card p { max-width: 680px; margin: 12px 0 0; color: var(--muted); }
 .comparison-card .card-link { margin-top: 0; }
-.matrix-launch-section { padding-block: 70px; }
-.matrix-launch { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 70px; }
-.matrix-launch h2 { max-width: 850px; margin: 14px 0 18px; }
-.matrix-launch p { max-width: 720px; margin: 0; color: var(--muted); }
-.matrix-launch .card-link { margin: 0 0 8px; white-space: nowrap; }
 .provider-matrix-link { display: flex; align-items: center; justify-content: space-between; gap: 36px; margin-top: 32px; padding: 24px; border: 1px solid var(--blue); background: white; }
 .provider-matrix-link > div { display: grid; gap: 10px; }
 .provider-matrix-link strong { font-size: 18px; }
 .provider-matrix-link .card-link { margin: 0; white-space: nowrap; }
 .mor-matrix-section { padding-top: 66px; }
-.matrix-back-link { display: inline-block; margin-bottom: 28px; color: var(--blue); font-size: 12px; font-weight: 750; }
+.matrix-page-heading > p, .comparison-list-heading > p { max-width: 520px; margin: 0; color: var(--muted); }
+.comparison-list-heading { align-items: end; }
+.comparison-list-heading h2 { max-width: 780px; }
 .matrix-reading-note { display: grid; grid-template-columns: 190px minmax(0, 1fr) auto; gap: 26px; align-items: start; padding: 22px; border: 1px solid var(--line); border-bottom: 0; background: white; }
 .matrix-reading-note strong { color: var(--blue); font: 750 10px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .05em; text-transform: uppercase; }
 .matrix-reading-note p { margin: 0; color: var(--muted); font-size: 12px; }
@@ -847,8 +844,7 @@ h2 { margin: 15px 0 0; font-size: clamp(40px,5vw,66px); letter-spacing: -.06em; 
   .profile-toc, .guide-toc { position: static; display: none; }
   .scenario-grid { grid-template-columns: 1fr; }
   .measurement-note { grid-template-columns: 1fr; gap: 10px; }
-  .matrix-launch { grid-template-columns: 1fr; gap: 28px; }
-  .matrix-launch .card-link { margin: 0; }
+  .matrix-page-heading, .comparison-list-heading { align-items: flex-start; flex-direction: column; gap: 22px; }
   .matrix-reading-note { grid-template-columns: 1fr; gap: 10px; }
   .calculator-workspace { grid-template-columns: 300px minmax(0, 1fr); }
   .calculator-intro, .calculator-notes { grid-template-columns: 120px minmax(0, 1fr); }

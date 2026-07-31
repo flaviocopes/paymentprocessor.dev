@@ -11,7 +11,7 @@ Material changes to paymentprocessor.dev are recorded here using calendar dates.
 - Added an implementation, developer-experience, and buyer-experience comparison to all four provider matchups. The fixed rubric separates the fastest first-payment path from a production SaaS integration and examines checkout code, server and webhook work, subscription lifecycle, fulfillment, tax operations, testing tools, buyer self-service, and customization.
 - Added the implementation-load rubric to the research methodology, including the principle that a no-code first payment does not imply no-code fulfillment, billing, reconciliation, or compliance.
 - Added Stripe Link's cross-merchant saved checkout to the Paddle versus Stripe feature table and added checkout-conversion evidence to the implementation comparison.
-- Added a dedicated all-provider Merchant of Record matrix covering pricing, best fit, eligible products, checkout, buyer payment methods, subscriptions, invoicing, payouts, seller and buyer coverage, and evidence freshness across all eight providers.
+- Added an all-provider Merchant of Record matrix directly to the comparison hub, covering pricing, best fit, eligible products, checkout, buyer payment methods, subscriptions, invoicing, payouts, seller and buyer coverage, and evidence freshness across all eight providers.
 
 ### Changed
 

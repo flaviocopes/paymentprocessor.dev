@@ -2,22 +2,107 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHeader from "../../components/PageHeader.astro";
+
 const comparisons = (await getCollection("comparisons")).map((entry) => entry.data).sort((a,b) => a.title.localeCompare(b.title));
+const popularityOrder = ["paddle", "lemon-squeezy", "gumroad", "polar", "fastspring", "stripe-managed-payments", "dodo-payments", "creem"];
+const popularityRank = new Map(popularityOrder.map((slug, index) => [slug, index]));
+const providers = (await getCollection("providers"))
+  .map((entry) => entry.data)
+  .filter((provider) => provider.model === "merchant-of-record")
+  .sort((a, b) => (popularityRank.get(a.slug) ?? Number.MAX_SAFE_INTEGER) - (popularityRank.get(b.slug) ?? Number.MAX_SAFE_INTEGER) || a.name.localeCompare(b.name));
+const latestReview = providers.map((provider) => provider.lastReviewed).sort().at(-1)!;
 ---
 
-<BaseLayout title="Payment provider comparisons — Choose a Payment Processor" description="Scenario-specific comparisons of Merchants of Record and direct payment providers.">
-  <PageHeader eyebrow="Material differences only" title="Provider comparisons" description="No pages made by swapping provider names. Each comparison starts with the legal seller, then explains the differences that change a real decision." meta={`${comparisons.length} direct comparisons · all-provider MoR matrix`} />
-  <section class="section section-tint matrix-launch-section"><div class="shell matrix-launch">
-    <div><span class="eyebrow">All-provider matrix</span><h2>Compare every Merchant of Record at once.</h2><p>Scan pricing, product fit, checkout, payment methods, billing, invoicing, payouts, coverage, and evidence freshness across all eight providers.</p></div>
-    <a class="card-link" href="/compare/merchant-of-record/">Open the full comparison →</a>
-  </div></section>
-  <section class="section"><div class="shell comparison-list">
-    {comparisons.map((comparison, index) => (
-      <article class="comparison-card">
-        <span>{String(index + 1).padStart(2, "0")}</span>
-        <div><h2><a href={`/compare/${comparison.slug}/`}>{comparison.title}</a></h2><p>{comparison.summary}</p></div>
-        <a class="card-link" href={`/compare/${comparison.slug}/`}>Compare <span aria-hidden="true">→</span></a>
-      </article>
-    ))}
-  </div></section>
+<BaseLayout
+  title="Payment provider comparisons — Choose a Payment Processor"
+  description={`Compare pricing, product fit, checkout, payment methods, subscriptions, invoicing, payouts, and coverage across ${providers.length} Merchant of Record providers, then explore scenario-specific matchups.`}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Merchant of Record provider comparison",
+    numberOfItems: providers.length,
+    itemListElement: providers.map((provider, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: provider.name,
+      url: new URL(`/providers/${provider.slug}/`, Astro.site).toString()
+    }))
+  }}
+>
+  <PageHeader
+    eyebrow="All Merchant of Record providers"
+    title="Provider comparisons"
+    description="Start with the complete Merchant of Record matrix, then open a focused matchup for the decisions where provider names alone do not tell the story."
+    meta={`${providers.length}-provider matrix · ${comparisons.length} direct comparisons`}
+  />
+
+  <section id="merchant-of-record-matrix" class="section mor-matrix-section">
+    <div class="shell">
+      <div class="section-heading-inline matrix-page-heading">
+        <div><span class="eyebrow">One table · every MoR</span><h2>Compare the operating surface.</h2></div>
+        <p>Pricing, product fit, checkout, payment methods, billing, payouts, coverage, and evidence freshness from the same sourced records used across the site. Latest review {latestReview}.</p>
+      </div>
+      <div class="matrix-reading-note">
+        <strong>Read across, then verify down.</strong>
+        <p>Headline pricing is not total cost, and a listed feature is not universal availability. Product eligibility, seller country, buyer country, currency, payment type, and negotiated terms can change the answer.</p>
+        <span>Scroll horizontally →</span>
+      </div>
+      <div class="table-wrap mor-matrix-wrap" tabindex="0" aria-label="Scrollable comparison of all Merchant of Record providers">
+        <table class="data-table mor-matrix-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Headline pricing</th>
+              <th>Best fit</th>
+              <th>Eligible products</th>
+              <th>Checkout</th>
+              <th>Buyer payment methods</th>
+              <th>Subscriptions</th>
+              <th>Invoicing</th>
+              <th>Payouts</th>
+              <th>Seller and buyer coverage</th>
+              <th>Evidence freshness</th>
+            </tr>
+          </thead>
+          <tbody>
+            {providers.map((provider) => (
+              <tr>
+                <th scope="row">
+                  <a href={`/providers/${provider.slug}/`}>{provider.name}</a>
+                  <span class={`matrix-stage matrix-stage-${provider.stage}`}>{provider.stage.replaceAll("-", " ")}</span>
+                  <small>{provider.serviceModel.replaceAll("-", " ")}</small>
+                </th>
+                <td><strong>{provider.pricing.headline}</strong><small>{provider.pricing.assumptions}</small></td>
+                <td><ul>{provider.bestFor.map((item) => <li>{item}</li>)}</ul></td>
+                <td>{provider.products}</td>
+                <td>{provider.features.checkout}</td>
+                <td>{provider.features.paymentMethods}</td>
+                <td>{provider.features.subscriptions}</td>
+                <td>{provider.features.invoicing}</td>
+                <td>{provider.features.payouts}</td>
+                <td><span><b>Seller:</b> {provider.sellerCoverage}</span><span><b>Buyer:</b> {provider.buyerCoverage}</span></td>
+                <td><strong>Reviewed {provider.lastReviewed}</strong><span>Next review {provider.nextReview}</span><a href={`/providers/${provider.slug}/#sources`}>View sources →</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="matrix-disclaimer">This matrix summarizes current public documentation. It is not a quote, contract, legal opinion, or guarantee of approval. Open the provider profile to inspect assumptions and primary sources before deciding.</p>
+    </div>
+  </section>
+
+  <section class="section section-tint">
+    <div class="shell">
+      <div class="section-heading-inline comparison-list-heading"><div><span class="eyebrow">Focused matchups</span><h2>When the matrix is not enough.</h2></div><p>Each direct comparison starts with the legal seller and explains the differences that change a real decision.</p></div>
+      <div class="comparison-list">
+        {comparisons.map((comparison, index) => (
+          <article class="comparison-card">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <div><h2><a href={`/compare/${comparison.slug}/`}>{comparison.title}</a></h2><p>{comparison.summary}</p></div>
+            <a class="card-link" href={`/compare/${comparison.slug}/`}>Compare <span aria-hidden="true">→</span></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
 </BaseLayout>
