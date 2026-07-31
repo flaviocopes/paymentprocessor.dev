@@ -11,11 +11,22 @@
     { "area": "Checkout control", "first": "Paddle-hosted or overlay checkout within its MoR requirements.", "second": "Hosted Checkout, Elements, Payment Links, mobile SDKs, and lower-level APIs.", "whyItMatters": "Stripe offers more composability; Paddle offers a more complete operating boundary." },
     { "area": "Product eligibility", "first": "Focused on approved software and digital products.", "second": "Broader eligible online business coverage.", "whyItMatters": "Some businesses simply cannot use a digital-product MoR." }
   ],
+  "features": [
+    { "category": "Payment method", "feature": "Credit and debit cards", "first": { "availability": "supported", "note": "Major global card networks, including Visa, Mastercard, Amex, JCB, and UnionPay." }, "second": { "availability": "supported", "note": "Major global card networks; exact brand support depends on the Stripe account country." } },
+    { "category": "Digital wallet", "feature": "Apple Pay", "first": { "availability": "supported", "note": "One-time and subscription payments on compatible Apple devices and browsers." }, "second": { "availability": "supported", "note": "Available through supported Stripe checkout surfaces on compatible Apple devices." } },
+    { "category": "Digital wallet", "feature": "Google Pay", "first": { "availability": "supported", "note": "One-time and subscription payments on compatible devices and browsers." }, "second": { "availability": "supported", "note": "Available through supported Stripe checkout surfaces on compatible devices." } },
+    { "category": "Digital wallet", "feature": "PayPal", "first": { "availability": "supported", "note": "Built into Paddle Checkout for eligible currencies and transactions." }, "second": { "availability": "limited", "note": "Available to eligible Stripe businesses in supported European countries and the UK; restrictions apply." } },
+    { "category": "Local payment method", "feature": "Bank and regional methods", "first": { "availability": "supported", "note": "Includes methods such as iDEAL, Bancontact, BLIK, Pix, UPI, and bank transfer where eligible." }, "second": { "availability": "supported", "note": "Broad catalog of bank debits, bank redirects, transfers, vouchers, and regional methods." } },
+    { "category": "Billing", "feature": "Subscriptions", "first": { "availability": "supported", "note": "Recurring billing, trials, upgrades, proration, dunning, and a customer portal are bundled." }, "second": { "availability": "add-on", "note": "Recurring billing is provided through Stripe Billing, which has separate usage-based pricing." } },
+    { "category": "Billing", "feature": "B2B invoicing", "first": { "availability": "supported", "note": "Paddle can issue invoices and accept bank transfers for eligible B2B sales." }, "second": { "availability": "add-on", "note": "Stripe Invoicing is a separate product with its own pricing and feature tiers." } },
+    { "category": "Operations", "feature": "Sales tax and VAT remittance", "first": { "availability": "supported", "note": "Paddle registers, collects, files, and remits covered indirect taxes as Merchant of Record." }, "second": { "availability": "not-supported", "note": "Stripe Payments does not become the seller. Stripe Tax can assist, but the merchant retains responsibility." } },
+    { "category": "Checkout", "feature": "Hosted and embedded checkout", "first": { "availability": "supported", "note": "Hosted, overlay, and inline Paddle Checkout options within Paddle's MoR requirements." }, "second": { "availability": "supported", "note": "Hosted Checkout, embedded components, Payment Links, mobile SDKs, and lower-level APIs." } }
+  ],
   "scenarios": [
     { "when": "You are launching global B2C SaaS without a tax operations team.", "choose": "paddle", "reason": "The MoR responsibility transfer is the core value, not just payment processing." },
     { "when": "You sell mainly domestic B2B, need custom payment flows, and already run finance operations.", "choose": "stripe-payments", "reason": "Direct merchant control and modular tools may be the better fit." },
     { "when": "You need physical goods, services, or a marketplace model.", "choose": "stripe-payments", "reason": "Paddle's approved-product scope is narrower; verify Stripe eligibility and any Connect requirements." }
   ],
-  "lastReviewed": "2026-07-27",
-  "sources": ["https://www.paddle.com/pricing", "https://www.paddle.com/legal/terms", "https://stripe.com/pricing", "https://stripe.com/global"]
+  "lastReviewed": "2026-07-31",
+  "sources": ["https://www.paddle.com/pricing", "https://www.paddle.com/legal/terms", "https://developer.paddle.com/concepts/payment-methods/", "https://stripe.com/pricing", "https://stripe.com/global", "https://docs.stripe.com/payments/payment-methods/payment-method-support"]
 }

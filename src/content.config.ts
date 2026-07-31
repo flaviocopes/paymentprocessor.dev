@@ -111,6 +111,18 @@ const comparisonSchema = z.object({
   summary: z.string(),
   recommendation: z.string(),
   differences: z.array(z.object({ area: z.string(), first: z.string(), second: z.string(), whyItMatters: z.string() })).min(4),
+  features: z.array(z.object({
+    category: z.string(),
+    feature: z.string(),
+    first: z.object({
+      availability: z.enum(["supported", "limited", "add-on", "not-supported"]),
+      note: z.string()
+    }),
+    second: z.object({
+      availability: z.enum(["supported", "limited", "add-on", "not-supported"]),
+      note: z.string()
+    })
+  })).min(5).optional(),
   scenarios: z.array(z.object({ when: z.string(), choose: z.string(), reason: z.string() })).min(3),
   lastReviewed: z.string().date(),
   sources: z.array(z.string()).min(2)
