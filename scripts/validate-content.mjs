@@ -11,6 +11,7 @@ const calculatorPath = resolve(root, "src/data/calculator-rules.json");
 const fieldStoriesPath = resolve(root, "src/content/field-stories.json");
 const companyIntelligencePath = resolve(root, "src/content/company-intelligence.json");
 const countryCoveragePath = resolve(root, "src/data/country-coverage.json");
+const securityIncidentPath = resolve(root, "src/data/security-incidents.json");
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 const reviewDate = process.env.EDITORIAL_REVIEW_DATE ?? new Date().toISOString().slice(0, 10);
@@ -199,10 +200,42 @@ for (const record of countryCoverage.providers) {
 }
 for (const slug of slugs) assert(coverageSlugs.has(slug), `${slug}: country checker record is missing.`);
 
+const securityIncidentTracker = JSON.parse(await readFile(securityIncidentPath, "utf8"));
+assert(/^\d{4}-\d{2}-\d{2}$/.test(securityIncidentTracker.windowStart), "Security incident scan has an invalid start date.");
+assert(/^\d{4}-\d{2}-\d{2}$/.test(securityIncidentTracker.windowEnd), "Security incident scan has an invalid end date.");
+assert(securityIncidentTracker.windowStart < securityIncidentTracker.windowEnd, "Security incident scan window is invalid.");
+assert(securityIncidentTracker.lastReviewed === securityIncidentTracker.windowEnd, "Security incident review date must match the scan end date.");
+assert(securityIncidentTracker.nextReview > securityIncidentTracker.lastReviewed, "Security incident next review must follow the current review.");
+assert(securityIncidentTracker.nextReview >= reviewDate, "Security incident tracker review is overdue.");
+assert(securityIncidentTracker.incidents.length >= 8, "Security incident tracker must preserve the initial six-month scan.");
+const incidentIds = new Set();
+const incidentTypes = new Set(["incident", "vulnerability", "disruption"]);
+let previousIncidentDate = "9999-12-31";
+for (const incident of securityIncidentTracker.incidents) {
+  assert(!incidentIds.has(incident.id), `${incident.id}: duplicate security incident record.`);
+  incidentIds.add(incident.id);
+  assert(incidentTypes.has(incident.recordType), `${incident.id}: unknown security record type.`);
+  assert(incident.date >= securityIncidentTracker.windowStart && incident.date <= securityIncidentTracker.windowEnd, `${incident.id}: date falls outside the scan window.`);
+  assert(incident.date <= previousIncidentDate, `${incident.id}: security incidents must stay in reverse chronological order.`);
+  previousIncidentDate = incident.date;
+  assert(incident.providerSlug === null || slugs.has(incident.providerSlug), `${incident.id}: unknown catalog provider link.`);
+  assert(incident.summary.length >= 80, `${incident.id}: summary is too thin.`);
+  assert(incident.impact.length >= 40 && incident.boundary.length >= 40, `${incident.id}: impact or boundary is too thin.`);
+  assert(incident.action.length >= 40, `${incident.id}: action note is too thin.`);
+  assert(incident.sources.length >= 1, `${incident.id}: security record needs at least one source.`);
+  const incidentSourceUrls = new Set();
+  for (const source of incident.sources) {
+    assert(source.url.startsWith("https://"), `${incident.id}: source must use HTTPS.`);
+    assert(!incidentSourceUrls.has(source.url), `${incident.id}: duplicate source URL.`);
+    incidentSourceUrls.add(source.url);
+    assert(source.reviewedOn === securityIncidentTracker.lastReviewed, `${incident.id}: source review date is stale.`);
+  }
+}
+
 if (errors.length) {
   console.error(errors.map((error) => `- ${error}`).join("\n"));
   process.exit(1);
 }
 
 const sourceCount = providers.reduce((count, { data }) => count + data.sources.length, 0);
-console.log(`Validated ${providers.length} providers, ${companyIntelligence.length} company records, ${comparisons.length} comparisons, ${guides.length} guides, ${fieldStories.length} field stories, ${calculatorRules.length} formulas, ${migrationLinks.length} migration routes, ${countryCoverage.countries.length} country scenarios, and ${candidates.length} research candidates across ${sourceCount} dated provider sources.`);
+console.log(`Validated ${providers.length} providers, ${companyIntelligence.length} company records, ${comparisons.length} comparisons, ${guides.length} guides, ${fieldStories.length} field stories, ${calculatorRules.length} formulas, ${migrationLinks.length} migration routes, ${countryCoverage.countries.length} country scenarios, ${securityIncidentTracker.incidents.length} security records, and ${candidates.length} research candidates across ${sourceCount} dated provider sources.`);

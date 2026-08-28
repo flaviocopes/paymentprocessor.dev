@@ -2,6 +2,14 @@
 
 Material changes to paymentprocessor.dev are recorded here using calendar dates.
 
+## 2026-08-28
+
+### Added
+
+- Added a security incident tracker with eight sourced records from the past six months, covering confirmed incidents, exploited flaws, disclosed vulnerabilities, and security-related disruptions.
+- Added clear impact, scope, status, merchant-action, and evidence fields to every record, with separate labels for catalog providers, integrations, and adjacent payment infrastructure.
+- Added incident-tracker validation, navigation, sitemap coverage, and an inclusion policy that excludes unsupported claims and distinguishes a vulnerable integration from a provider-platform breach.
+
 ## 2026-07-31
 
 ### Added

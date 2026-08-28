@@ -1,0 +1,244 @@
+{
+  "windowStart": "2026-03-01",
+  "windowEnd": "2026-08-28",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-09-28",
+  "incidents": [
+    {
+      "id": "dodo-payments-metabase-2026-08",
+      "date": "2026-08-16",
+      "dateBasis": "Incident date",
+      "provider": "Dodo Payments",
+      "providerSlug": "dodo-payments",
+      "catalogRelationship": "Catalog provider",
+      "recordType": "incident",
+      "typeLabel": "Confirmed incident",
+      "scope": "Internal analytics system",
+      "title": "Attackers reached an internal Metabase deployment",
+      "summary": "Dodo Payments said attackers exploited CVE-2026-72898 against a self-hosted Metabase system used for internal reporting. The company contained the access and said its investigation remained in progress.",
+      "impact": "Dodo said it would contact every affected merchant directly. Its public update did not quantify the merchants or reporting data involved.",
+      "boundary": "Dodo reported no disruption, funds movement, payment or cardholder data exposure, or exposure of passwords, API keys, webhook secrets, card numbers, or stored payment tokens.",
+      "status": "Contained; investigation ongoing",
+      "action": "Watch for direct notice from Dodo and treat unexpected requests for credentials or one-time codes as phishing.",
+      "sources": [
+        {
+          "label": "Dodo Payments incident report",
+          "url": "https://dodopayments.com/blogs/security-incident-internal-analytics-system",
+          "sourceType": "Provider disclosure",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "NVD record for CVE-2026-72898",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72898",
+          "sourceType": "Government vulnerability record",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "btcpay-lnd-credential-theft-2026-08",
+      "date": "2026-08-07",
+      "dateBasis": "Disclosure date",
+      "provider": "BTCPay Server",
+      "providerSlug": null,
+      "catalogRelationship": "Adjacent payment infrastructure",
+      "recordType": "incident",
+      "typeLabel": "Exploited vulnerability",
+      "scope": "Self-hosted payment server",
+      "title": "A critical flaw exposed LND administrator credentials",
+      "summary": "BTCPay Server confirmed that attackers exploited a vulnerability affecting deployments connected to LND. Attackers could obtain LND admin macaroon files, take control of nodes, and move funds.",
+      "impact": "BTCPay confirmed that users were affected and funds were stolen. The project did not publish a total loss in the cited updates.",
+      "boundary": "The project said other Lightning implementations and deployments without Lightning were not exposed to this LND credential risk. BTCPay on-chain wallets were not affected.",
+      "status": "Patched in BTCPay Server 2.4.2",
+      "action": "LND operators should update, confirm LND 0.21.1, review node activity, and rotate credentials for access paths they manage separately.",
+      "sources": [
+        {
+          "label": "BTCPay Server security advisory",
+          "url": "https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/",
+          "sourceType": "Project disclosure",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "BTCPay Server response update",
+          "url": "https://blog.btcpayserver.org/btcpay-server-security-incident-response-and-next-steps/",
+          "sourceType": "Project disclosure",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "triple-a-operational-wallets-2026-07",
+      "date": "2026-07-25",
+      "dateBasis": "Incident date",
+      "provider": "Triple-A",
+      "providerSlug": null,
+      "catalogRelationship": "Adjacent payment infrastructure",
+      "recordType": "incident",
+      "typeLabel": "Confirmed incident",
+      "scope": "Operational wallets and production environment",
+      "title": "Social engineering led to unauthorized wallet withdrawals",
+      "summary": "Triple-A said a targeted social-engineering attack compromised an engineering team member's credentials. The attacker escalated privileges, deployed malware, accessed production databases, abused API credentials, and withdrew company-owned digital assets.",
+      "impact": "Triple-A absorbed the loss from its own treasury assets. It did not publish the amount in the cited postmortem.",
+      "boundary": "Triple-A said client funds, transactions, settlements, other regulated entities, and regional operations were not affected. Services were restored about three hours after detection.",
+      "status": "Contained; asset tracing and investigation ongoing",
+      "action": "No merchant remediation was published. Merchants can review continuity plans for crypto-payment rails and monitor Triple-A's investigation updates.",
+      "sources": [
+        {
+          "label": "Triple-A security incident postmortem",
+          "url": "https://www.triple-a.io/blog/blog-incident-post-mortem",
+          "sourceType": "Provider disclosure",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "nayax-subsidiary-cloud-account-2026-07",
+      "date": "2026-07-08",
+      "dateBasis": "Initial disclosure date",
+      "provider": "Nayax",
+      "providerSlug": null,
+      "catalogRelationship": "Adjacent payment infrastructure",
+      "recordType": "incident",
+      "typeLabel": "Confirmed data exfiltration",
+      "scope": "Subsidiary cloud account",
+      "title": "Attackers exfiltrated document and transaction backups",
+      "summary": "Nayax reported unauthorized access to a subsidiary cloud account. Its follow-up said the exfiltrated material included scanned-document backups, business information, and mainly payment-transaction record backups.",
+      "impact": "The exact scope and contents remained under investigation in the July 14 update. Nayax rejected the attacker's extortion demand.",
+      "boundary": "Nayax said production and core payment systems were not affected. It said the records did not include cardholder names, CVV values, or identity information, and safeguarded customer funds were untouched.",
+      "status": "Unauthorized access removed; investigation ongoing",
+      "action": "Monitor Nayax notices for any scope change and follow direct instructions if the company identifies affected records tied to your business.",
+      "sources": [
+        {
+          "label": "Nayax information-security update",
+          "url": "https://ir.nayax.com/news/news-details/2026/Nayax-information-security-incident-update/default.aspx",
+          "sourceType": "Provider disclosure",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "Nayax Form 6-K incident update",
+          "url": "https://www.sec.gov/Archives/edgar/data/1901279/000117891326003480/zk2635683.htm",
+          "sourceType": "Regulatory filing",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "gumroad-purchase-access-control-2026-07",
+      "date": "2026-07-08",
+      "dateBasis": "CVE publication date",
+      "provider": "Gumroad",
+      "providerSlug": "gumroad",
+      "catalogRelationship": "Catalog provider",
+      "recordType": "vulnerability",
+      "typeLabel": "Disclosed vulnerability",
+      "scope": "Hosted application access control",
+      "title": "A seller could change access to another seller's purchases",
+      "summary": "CVE-2026-59805 describes missing ownership checks in Gumroad's PurchasesController. An authenticated seller could revoke or restore buyer access to products owned by another seller.",
+      "impact": "The flaw affected purchase-access integrity. The NVD record did not document known exploitation or data exposure.",
+      "boundary": "The cited record does not describe access to card data, account credentials, payouts, or the contents of purchased files.",
+      "status": "Fixed in release v2026.07.06.2",
+      "action": "Gumroad hosts the service, so sellers do not patch it themselves. Keep fulfillment records if purchase access changes unexpectedly.",
+      "sources": [
+        {
+          "label": "NVD record for CVE-2026-59805",
+          "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59805",
+          "sourceType": "Government vulnerability record",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "Gumroad patched release",
+          "url": "https://github.com/antiwork/gumroad/releases/tag/v2026.07.06.2",
+          "sourceType": "Project release",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "mollie-sylius-plugin-2026-07",
+      "date": "2026-07-07",
+      "dateBasis": "Advisory publication date",
+      "provider": "Mollie / Sylius",
+      "providerSlug": "mollie",
+      "catalogRelationship": "Catalog-provider integration",
+      "recordType": "vulnerability",
+      "typeLabel": "Integration vulnerabilities",
+      "scope": "Sylius MolliePlugin",
+      "title": "Webhook and order checks allowed payment forgery and data exposure",
+      "summary": "Two Sylius MolliePlugin advisories described missing authorization checks. One could mark a target order paid using a different valid Mollie payment. The other could expose order tokens, customer names, and email addresses through sequential order IDs.",
+      "impact": "The advisories describe possible unpaid fulfillment, customer-data exposure, and unauthenticated denial of service. They do not document confirmed exploitation.",
+      "boundary": "These flaws were in the Sylius integration, not Mollie's payment platform. Stores that do not run the affected plugin are outside this record's scope.",
+      "status": "Patched releases available",
+      "action": "Sylius merchants using MolliePlugin should follow both GitHub advisories and update to a patched release. Abandoned predecessor packages do not receive fixes.",
+      "sources": [
+        {
+          "label": "Payment-status forgery advisory",
+          "url": "https://github.com/Sylius/MolliePlugin/security/advisories/GHSA-rc52-c4hv-w89p",
+          "sourceType": "Project security advisory",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "Customer-data exposure advisory",
+          "url": "https://github.com/Sylius/MolliePlugin/security/advisories/GHSA-x83g-979r-f5fh",
+          "sourceType": "Project security advisory",
+          "reviewedOn": "2026-08-28"
+        },
+        {
+          "label": "Sylius security update",
+          "url": "https://sylius.com/blog/security/mollie-plugin-security-update-2026/",
+          "sourceType": "Project disclosure",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "magalupay-cyber-event-2026-06",
+      "date": "2026-06-06",
+      "dateBasis": "Incident start date",
+      "provider": "MagaluPay",
+      "providerSlug": null,
+      "catalogRelationship": "Adjacent payment infrastructure",
+      "recordType": "incident",
+      "typeLabel": "Confirmed cyber event",
+      "scope": "Accounts and Pix transfers",
+      "title": "A cyber event disrupted access to customer funds",
+      "summary": "MagaluPay confirmed to Finsiders Brasil that a cyber event caused service instability. Customers reported being unable to access accounts, make Pix transfers, or reach support for several days.",
+      "impact": "The company did not disclose the attack method, its financial cost, or a complete restoration timeline in the cited report.",
+      "boundary": "MagaluPay told the publication that customers had no personal-data exposure or financial loss. The public report did not provide independent technical findings.",
+      "status": "Company response published; technical detail limited",
+      "action": "Affected customers should reconcile missed or delayed transfers and retain provider notices if the disruption caused a payment deadline to be missed.",
+      "sources": [
+        {
+          "label": "Finsiders Brasil report with MagaluPay statement",
+          "url": "https://finsidersbrasil.com.br/noticias-sobre-fintechs/ataque-ao-magalupay-bloqueia-pix-e-prende-dinheiro-de-clientes/",
+          "sourceType": "Direct company statement reported by press",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    },
+    {
+      "id": "gmo-payment-gateway-abnormal-requests-2026-05",
+      "date": "2026-05-27",
+      "dateBasis": "First disruption date",
+      "provider": "GMO Payment Gateway",
+      "providerSlug": null,
+      "catalogRelationship": "Adjacent payment infrastructure",
+      "recordType": "disruption",
+      "typeLabel": "Security-related disruption",
+      "scope": "Payment-service availability",
+      "title": "Abnormal traffic and DDoS controls delayed payment services",
+      "summary": "GMO Payment Gateway said abnormal requests from specific merchant systems exceeded connection limits and activated DDoS detection. Multiple payment services were difficult to use across incidents from May 27 through May 30.",
+      "impact": "The incidents caused processing delays across the PG Multi-Payment Service and other payment services. GMO did not publish a transaction count in the cited notice.",
+      "boundary": "GMO said it found no unauthorized system intrusion or information leakage.",
+      "status": "Resolved after capacity, traffic-control, and DDoS-detection changes",
+      "action": "Merchants should reconcile affected transactions before retrying them and preserve idempotency when recovering from payment timeouts.",
+      "sources": [
+        {
+          "label": "GMO Payment Gateway disruption notice",
+          "url": "https://www.gmo-pg.com/en/news/news/status/2026/0601.html",
+          "sourceType": "Provider disclosure",
+          "reviewedOn": "2026-08-28"
+        }
+      ]
+    }
+  ]
+}

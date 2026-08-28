@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import incidentTracker from "../../data/security-incidents.json";
+
+const incidents = incidentTracker.incidents;
+const catalogLinkedCount = incidents.filter((incident) => incident.providerSlug !== null).length;
+const typeCounts = {
+  incident: incidents.filter((incident) => incident.recordType === "incident").length,
+  vulnerability: incidents.filter((incident) => incident.recordType === "vulnerability").length,
+  disruption: incidents.filter((incident) => incident.recordType === "disruption").length
+};
+const formatDate = (date: string) => new Intl.DateTimeFormat("en", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC"
+}).format(new Date(`${date}T00:00:00Z`));
+const formatLongDate = (date: string) => new Intl.DateTimeFormat("en", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+  timeZone: "UTC"
+}).format(new Date(`${date}T00:00:00Z`));
+---
+
+<BaseLayout
+  title="Security incidents in payment processors — Choose a Payment Processor"
+  description="A sourced record of confirmed security incidents, exploited flaws, disclosed vulnerabilities, and security-related disruptions in payment infrastructure."
+  eyebrow="Security incident tracker"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Payment infrastructure security incident tracker",
+    description: "Publicly documented security incidents and vulnerabilities affecting payment providers and payment infrastructure.",
+    dateModified: incidentTracker.lastReviewed,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: incidents.length,
+      itemListElement: incidents.map((incident, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${incident.provider}: ${incident.title}`,
+        url: new URL(`/security-incidents/#${incident.id}`, Astro.site).toString()
+      }))
+    }
+  }}
+>
+  <section class="incident-hero">
+    <div class="shell incident-hero-grid">
+      <div>
+        <span class="eyebrow eyebrow-inverse">Security incident tracker</span>
+        <h1>See what failed.<br />See what was affected.</h1>
+        <p>Security claims need dates, boundaries, and sources. This tracker separates confirmed incidents from disclosed vulnerabilities and routine outages.</p>
+      </div>
+      <dl class="incident-hero-stats">
+        <div><dt>Records</dt><dd>{incidents.length}</dd><small>verified in this scan</small></div>
+        <div><dt>Catalog-linked</dt><dd>{catalogLinkedCount}</dd><small>provider or integration</small></div>
+        <div><dt>Window</dt><dd>6 mo</dd><small>{formatDate(incidentTracker.windowStart)}–{formatDate(incidentTracker.windowEnd)}</small></div>
+        <div><dt>Reviewed</dt><dd>28 Aug</dd><small>next review {formatDate(incidentTracker.nextReview)}</small></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="incident-scope-strip">
+    <div class="shell incident-scope-grid">
+      <span>Coverage boundary</span>
+      <p>This is a public-disclosure record, not a claim that every incident is known. No entry does not prove that a provider had no security problem.</p>
+      <a href="#method">How records qualify →</a>
+    </div>
+  </section>
+
+  <section class="section incident-ledger-section" x-data="{ filter: 'all' }">
+    <div class="shell">
+      <div class="incident-ledger-heading">
+        <div>
+          <span class="eyebrow">March–August 2026 scan</span>
+          <h2>Publicly documented records.</h2>
+        </div>
+        <p>The date shown is the incident date when known. Otherwise, it is the first reliable disclosure or advisory date.</p>
+      </div>
+
+      <div class="incident-filters" role="group" aria-label="Filter security records by type">
+        <button type="button" :class="{ active: filter === 'all' }" :aria-pressed="filter === 'all'" @click="filter = 'all'">All <span>{incidents.length}</span></button>
+        <button type="button" :class="{ active: filter === 'incident' }" :aria-pressed="filter === 'incident'" @click="filter = 'incident'">Incidents <span>{typeCounts.incident}</span></button>
+        <button type="button" :class="{ active: filter === 'vulnerability' }" :aria-pressed="filter === 'vulnerability'" @click="filter = 'vulnerability'">Vulnerabilities <span>{typeCounts.vulnerability}</span></button>
+        <button type="button" :class="{ active: filter === 'disruption' }" :aria-pressed="filter === 'disruption'" @click="filter = 'disruption'">Disruptions <span>{typeCounts.disruption}</span></button>
+      </div>
+
+      <div class="incident-ledger" aria-live="polite">
+        {incidents.map((incident, index) => (
+          <article
+            class="incident-record"
+            id={incident.id}
+            x-show={`filter === 'all' || filter === '${incident.recordType}'`}
+          >
+            <div class="incident-record-index">
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <time datetime={incident.date}>{formatDate(incident.date)}</time>
+              <small>{incident.dateBasis}</small>
+            </div>
+            <div class="incident-record-main">
+              <div class="incident-record-labels">
+                <span data-type={incident.recordType}>{incident.typeLabel}</span>
+                <span>{incident.scope}</span>
+                <span>{incident.catalogRelationship}</span>
+              </div>
+              <div class="incident-record-title">
+                <div>
+                  <strong>{incident.provider}</strong>
+                  <h2>{incident.title}</h2>
+                </div>
+                {incident.providerSlug && <a href={`/providers/${incident.providerSlug}/`}>Provider profile →</a>}
+              </div>
+              <p class="incident-record-summary">{incident.summary}</p>
+              <dl class="incident-impact-grid">
+                <div><dt>Observed impact</dt><dd>{incident.impact}</dd></div>
+                <div><dt>Reported boundary</dt><dd>{incident.boundary}</dd></div>
+                <div><dt>Current status</dt><dd>{incident.status}</dd></div>
+              </dl>
+              <div class="incident-action-note">
+                <span>What to do</span>
+                <p>{incident.action}</p>
+              </div>
+              <div class="incident-sources">
+                <span>Sources reviewed {formatLongDate(incidentTracker.lastReviewed)}</span>
+                <div>
+                  {incident.sources.map((source) => (
+                    <a href={source.url} target="_blank" rel="noreferrer">
+                      {source.label}<small>{source.sourceType}</small>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-blue incident-method-section" id="method">
+    <div class="shell incident-method-grid">
+      <div>
+        <span class="eyebrow eyebrow-inverse">Inclusion method</span>
+        <h2>Facts first.<br />Unknowns stay visible.</h2>
+      </div>
+      <div class="incident-method-rules">
+        <article><span>01</span><div><h3>Require a reliable public record.</h3><p>Provider disclosures, regulatory filings, government vulnerability records, and project security advisories come first. A direct company statement reported by the press can qualify when no primary notice exists.</p></div></article>
+        <article><span>02</span><div><h3>Separate incidents from possibilities.</h3><p>A vulnerability is not labeled exploited unless the source confirms exploitation. A provider integration is not presented as a breach of the provider platform.</p></div></article>
+        <article><span>03</span><div><h3>Record both impact and boundary.</h3><p>What was not affected matters. We preserve the source's limits instead of turning a narrow event into a platform-wide claim.</p></div></article>
+        <article><span>04</span><div><h3>Exclude unsupported claims.</h3><p>Threat-actor posts, rumors, merchant account disputes, ordinary fraud, and unexplained status-page outages do not qualify without corroborating evidence.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section incident-review-note">
+    <div class="shell note-grid">
+      <div><span class="eyebrow">Review cadence</span><h2>This ledger is meant to change.</h2></div>
+      <p>The next scheduled review is {formatLongDate(incidentTracker.nextReview)}. Earlier updates are added when a provider changes an incident's scope, impact, remediation, or investigation status.</p>
+    </div>
+  </section>
+</BaseLayout>
