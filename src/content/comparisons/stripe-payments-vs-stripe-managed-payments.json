@@ -3,32 +3,72 @@
   "title": "Stripe Payments vs Stripe Managed Payments",
   "providers": ["stripe-payments", "stripe-managed-payments"],
   "summary": "Two modes in the Stripe ecosystem with different legal sellers, responsibilities, eligibility, checkout rules, and total fees.",
-  "recommendation": "Use ordinary Stripe Payments when you want to remain the merchant and own the operating stack. Consider Managed Payments for eligible digital transactions where transferring indirect-tax, fraud, dispute, and transaction-support responsibility justifies the added fee and preview constraints.",
+  "recommendation": "Use ordinary Stripe Payments when you want to remain the merchant and own the operating stack. Consider Managed Payments for eligible digital transactions where transferring indirect-tax, fraud, dispute, and transaction-support responsibility justifies the added fee and product-eligibility limits.",
   "differences": [
-    { "area": "Legal seller", "first": "Your business is the merchant.", "second": "Link is presented as Merchant of Record for the managed transaction.", "whyItMatters": "This is a responsibility change, not a Stripe settings shortcut." },
-    { "area": "Pricing", "first": "Payment-method pricing, such as 2.9% + $0.30 for US domestic cards.", "second": "Adds 3.5% per successful Managed Payments transaction to Payments fees.", "whyItMatters": "Compare the combined amount, not 3.5% against 2.9%." },
-    { "area": "Availability", "first": "Generally available in Stripe-supported business locations.", "second": "Public preview with a narrower supported-business country list.", "whyItMatters": "Preview status and eligibility must be procurement gates." },
-    { "area": "Product scope", "first": "Broad eligible online goods and services.", "second": "Eligible digital products; services, physical goods, platforms, and multiple categories are prohibited.", "whyItMatters": "Many ordinary Stripe businesses are not eligible for Managed Payments." },
-    { "area": "Buyer experience", "first": "Your merchant identity and configured Stripe checkout experience.", "second": "Sold through Link, standardized transaction emails, and Link order support.", "whyItMatters": "Brand, support, receipts, statements, and customer expectations change." }
+    {"area": "Legal seller", "first": "Your business is the merchant.", "second": "Link is presented as Merchant of Record for the managed transaction.", "whyItMatters": "This is a responsibility change, not a Stripe settings shortcut."},
+    {"area": "Pricing", "first": "Payment-method pricing, such as 2.9% + $0.30 for US domestic cards.", "second": "Adds 3.5% per successful Managed Payments transaction to Payments fees.", "whyItMatters": "Compare the combined amount, not 3.5% against 2.9%."},
+    {"area": "Availability", "first": "Generally available in Stripe-supported business locations.", "second": "Generally available in Stripe's documented Managed Payments business locations (39 seller countries as of the 2026-04-22 GA changelog, including Australia).", "whyItMatters": "Seller country and product eligibility must still be procurement gates."},
+    {"area": "Product scope", "first": "Broad eligible online goods and services.", "second": "Eligible digital products; services, physical goods, platforms, and multiple categories are prohibited.", "whyItMatters": "Many ordinary Stripe businesses are not eligible for Managed Payments."},
+    {"area": "Buyer experience", "first": "Your merchant identity and configured Stripe checkout experience.", "second": "Sold through Link, standardized transaction emails, and Link order support.", "whyItMatters": "Brand, support, receipts, statements, and customer expectations change."}
   ],
   "implementation": {
     "summary": "Managed Payments reduces tax, fraud, dispute, and transaction-support operations, but it is not the lowest-code Stripe path. Ordinary Payments can start with a no-code link; Managed Payments requires a Checkout Session and deliberately removes several advanced integration choices.",
     "rows": [
-      { "area": "Fastest first payment", "measure": "Lowest documented path", "first": { "label": "No code", "detail": "Ordinary Stripe Payments supports dashboard-created Payment Links for one-time and recurring sales." }, "second": { "label": "Low code", "detail": "Managed Payments requires a hosted or embedded Stripe Checkout Session; Payment Links are not supported." } },
-      { "area": "Production checkout", "measure": "Code and decisions", "first": { "label": "Broad choice", "detail": "Payment Links, Checkout, Elements, mobile SDKs, and PaymentIntents cover low-code through advanced flows." }, "second": { "label": "Narrow choice", "detail": "Checkout is the supported surface; Connect, Payment Links, embeddable web components, and advanced flows are excluded." } },
-      { "area": "Migration from Stripe", "measure": "Integration change", "first": { "label": "Existing mode", "detail": "No Managed Payments-specific flags, eligibility checks, or Link seller presentation are required." }, "second": { "label": "Checkout update", "detail": "An eligible Checkout integration is updated to enable Managed Payments and supply supported product tax codes." } },
-      { "area": "Subscription lifecycle", "measure": "Billing setup", "first": { "label": "Stripe Billing", "detail": "The full compatible Billing surface is available, with merchant-owned webhook and access logic." }, "second": { "label": "Billing with limits", "detail": "Subscriptions use Stripe Billing through Managed Payments Checkout, with restrictions on invoice items and off-cycle invoices." } },
-      { "area": "Tax and transaction support", "measure": "Operational load", "first": { "label": "Merchant managed", "detail": "The merchant owns tax registrations and filings, disputes, fraud decisions, and transaction support." }, "second": { "label": "Link managed", "detail": "Link handles covered indirect taxes, fraud, disputes, transaction support, and standardized transaction emails." } },
-      { "area": "Testing and tooling", "measure": "Developer feedback loop", "first": { "label": "Stripe toolkit", "detail": "Sandboxes, CLI, SDKs, Workbench, test clocks, and integration-specific documentation." }, "second": { "label": "Same core toolkit", "detail": "Uses Stripe's Checkout and Billing tooling, plus Managed Payments eligibility and behavior constraints." } },
-      { "area": "Buyer experience", "measure": "Identity and support", "first": { "label": "Merchant branded", "detail": "The merchant identity anchors checkout, receipts, statements, support, and configured payment methods." }, "second": { "label": "Standardized by Link", "detail": "Checkout says sold through Link; Link owns payment terms, transaction emails, and transaction-level support." } },
-      { "area": "Customization tradeoff", "measure": "Flexibility versus scope", "first": { "label": "Maximum flexibility", "detail": "More integration paths and product types are available, with more responsibility retained by the merchant." }, "second": { "label": "Fewer decisions", "detail": "A narrower eligible product and integration surface reduces choices but can simplify covered operations after launch." } }
+      {
+        "area": "Fastest first payment",
+        "measure": "Lowest documented path",
+        "first": {"label": "No code", "detail": "Ordinary Stripe Payments supports dashboard-created Payment Links for one-time and recurring sales."},
+        "second": {"label": "Low code", "detail": "Managed Payments supports hosted or embedded Checkout Sessions and Payment Links for eligible digital products."}
+      },
+      {
+        "area": "Production checkout",
+        "measure": "Code and decisions",
+        "first": {"label": "Broad choice", "detail": "Payment Links, Checkout, Elements, mobile SDKs, and PaymentIntents cover low-code through advanced flows."},
+        "second": {"label": "Narrower choice", "detail": "Checkout and Payment Links are supported surfaces; Connect platforms and several advanced flows remain excluded."}
+      },
+      {
+        "area": "Migration from Stripe",
+        "measure": "Integration change",
+        "first": {"label": "Existing mode", "detail": "No Managed Payments-specific flags, eligibility checks, or Link seller presentation are required."},
+        "second": {"label": "Checkout update", "detail": "An eligible Checkout integration is updated to enable Managed Payments and supply supported product tax codes."}
+      },
+      {
+        "area": "Subscription lifecycle",
+        "measure": "Billing setup",
+        "first": {"label": "Stripe Billing", "detail": "The full compatible Billing surface is available, with merchant-owned webhook and access logic."},
+        "second": {"label": "Billing with limits", "detail": "Subscriptions use Stripe Billing through Managed Payments Checkout, with restrictions on invoice items and off-cycle invoices."}
+      },
+      {
+        "area": "Tax and transaction support",
+        "measure": "Operational load",
+        "first": {"label": "Merchant managed", "detail": "The merchant owns tax registrations and filings, disputes, fraud decisions, and transaction support."},
+        "second": {"label": "Link managed", "detail": "Link handles covered indirect taxes, fraud, disputes, transaction support, and standardized transaction emails."}
+      },
+      {
+        "area": "Testing and tooling",
+        "measure": "Developer feedback loop",
+        "first": {"label": "Stripe toolkit", "detail": "Sandboxes, CLI, SDKs, Workbench, test clocks, and integration-specific documentation."},
+        "second": {"label": "Same core toolkit", "detail": "Uses Stripe's Checkout and Billing tooling, plus Managed Payments eligibility and behavior constraints."}
+      },
+      {
+        "area": "Buyer experience",
+        "measure": "Identity and support",
+        "first": {"label": "Merchant branded", "detail": "The merchant identity anchors checkout, receipts, statements, support, and configured payment methods."},
+        "second": {"label": "Standardized by Link", "detail": "Checkout says sold through Link; Link owns payment terms, transaction emails, and transaction-level support."}
+      },
+      {
+        "area": "Customization tradeoff",
+        "measure": "Flexibility versus scope",
+        "first": {"label": "Maximum flexibility", "detail": "More integration paths and product types are available, with more responsibility retained by the merchant."},
+        "second": {"label": "Fewer decisions", "detail": "A narrower eligible product and integration surface reduces choices but can simplify covered operations after launch."}
+      }
     ]
   },
   "scenarios": [
-    { "when": "You already use Checkout for eligible digital products and want MoR only in selected markets.", "choose": "stripe-managed-payments", "reason": "Transaction-level enablement is its distinctive advantage." },
-    { "when": "You need Elements, platforms, physical goods, services, or maximum billing flexibility.", "choose": "stripe-payments", "reason": "Managed Payments eligibility and integration limits are material." },
-    { "when": "You are not comfortable depending on preview behavior.", "choose": "stripe-payments", "reason": "Managed Payments remains explicitly documented as public preview." }
+    {"when": "You already use Checkout for eligible digital products and want MoR only in selected markets.", "choose": "stripe-managed-payments", "reason": "Transaction-level enablement is its distinctive advantage."},
+    {"when": "You need Elements, platforms, physical goods, services, or maximum billing flexibility.", "choose": "stripe-payments", "reason": "Managed Payments eligibility and integration limits are material."},
+    {"when": "Your seller country or product category is outside Managed Payments eligibility.", "choose": "stripe-payments", "reason": "Managed Payments remains limited to documented business locations and eligible digital products."}
   ],
-  "lastReviewed": "2026-07-31",
-  "sources": ["https://stripe.com/pricing", "https://docs.stripe.com/payments/online-payments", "https://docs.stripe.com/billing/subscriptions/webhooks", "https://docs.stripe.com/payments/managed-payments", "https://docs.stripe.com/payments/managed-payments/how-it-works", "https://docs.stripe.com/payments/managed-payments/set-up"]
+  "lastReviewed": "2026-08-28",
+  "sources": ["https://stripe.com/pricing", "https://docs.stripe.com/payments/online-payments", "https://docs.stripe.com/billing/subscriptions/webhooks", "https://docs.stripe.com/payments/managed-payments", "https://docs.stripe.com/payments/managed-payments/how-it-works", "https://docs.stripe.com/payments/managed-payments/set-up", "https://docs.stripe.com/payments/managed-payments/changelog", "https://docs.stripe.com/payments/managed-payments/eligibility", "https://support.stripe.com/questions/managed-payments-pricing"]
 }

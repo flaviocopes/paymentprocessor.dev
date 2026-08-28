@@ -1,72 +1,23 @@
 {
-  "reviewedOn": "2026-07-29",
+  "reviewedOn": "2026-08-28",
   "countries": [
-    {
-      "code": "US",
-      "name": "United States"
-    },
-    {
-      "code": "CA",
-      "name": "Canada"
-    },
-    {
-      "code": "GB",
-      "name": "United Kingdom"
-    },
-    {
-      "code": "IE",
-      "name": "Ireland"
-    },
-    {
-      "code": "DE",
-      "name": "Germany"
-    },
-    {
-      "code": "NL",
-      "name": "Netherlands"
-    },
-    {
-      "code": "FR",
-      "name": "France"
-    },
-    {
-      "code": "AU",
-      "name": "Australia"
-    },
-    {
-      "code": "IN",
-      "name": "India"
-    },
-    {
-      "code": "SG",
-      "name": "Singapore"
-    },
-    {
-      "code": "BR",
-      "name": "Brazil"
-    },
-    {
-      "code": "JP",
-      "name": "Japan"
-    }
+    {"code": "US", "name": "United States"},
+    {"code": "CA", "name": "Canada"},
+    {"code": "GB", "name": "United Kingdom"},
+    {"code": "IE", "name": "Ireland"},
+    {"code": "DE", "name": "Germany"},
+    {"code": "NL", "name": "Netherlands"},
+    {"code": "FR", "name": "France"},
+    {"code": "AU", "name": "Australia"},
+    {"code": "IN", "name": "India"},
+    {"code": "SG", "name": "Singapore"},
+    {"code": "BR", "name": "Brazil"},
+    {"code": "JP", "name": "Japan"}
   ],
   "providers": [
     {
       "slug": "creem",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
       "limited": [],
       "unavailable": [],
       "note": "Creem lists this country for seller payouts. Your business and identity still need approval.",
@@ -81,20 +32,7 @@
     },
     {
       "slug": "dodo-payments",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
       "limited": [],
       "unavailable": [],
       "note": "Dodo lists this country for seller checks and payouts. Your business still needs approval.",
@@ -169,23 +107,9 @@
     },
     {
       "slug": "polar",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "IN",
-        "SG",
-        "JP"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "JP"],
       "limited": [],
-      "unavailable": [
-        "BR"
-      ],
+      "unavailable": ["BR"],
       "note": "Polar publishes a seller-country list; Brazil is not on it. Identity, product, and payout checks still apply.",
       "source": "https://polar.sh/docs/merchant-of-record/supported-countries",
       "buyer": {
@@ -198,31 +122,17 @@
     },
     {
       "slug": "stripe-managed-payments",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "SG", "JP"],
       "limited": [],
-      "unavailable": [
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
-      "note": "Stripe lists seven seller countries for this public preview. Other countries shown here are not currently listed.",
-      "source": "https://docs.stripe.com/payments/managed-payments/how-it-works",
+      "unavailable": ["IN", "BR"],
+      "note": "Managed Payments is generally available. Stripe documents supported seller business locations; among the countries in this matrix, Australia, Japan, and Singapore are listed, while India and Brazil are not.",
+      "source": "https://docs.stripe.com/payments/managed-payments/eligibility",
       "buyer": {
         "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
         "limited": [],
         "unavailable": [],
         "note": "Customers can generally pay across the countries shown. Payment methods still depend on country and currency.",
-        "source": "https://docs.stripe.com/payments/managed-payments/how-it-works"
+        "source": "https://docs.stripe.com/payments/managed-payments/eligibility"
       }
     },
     {
@@ -242,20 +152,7 @@
     },
     {
       "slug": "airwallex",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
       "limited": [],
       "unavailable": [],
       "note": "Airwallex lists this as an eligible business country. Some products may still need a local entity.",
@@ -270,23 +167,9 @@
     },
     {
       "slug": "braintree",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "SG"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "SG"],
       "limited": [],
-      "unavailable": [
-        "IN",
-        "BR",
-        "JP"
-      ],
+      "unavailable": ["IN", "BR", "JP"],
       "note": "Braintree requires a business office and bank account in one of its supported regions.",
       "source": "https://developer.paypal.com/docs/bt-direct-overview/",
       "buyer": {
@@ -299,23 +182,9 @@
     },
     {
       "slug": "mollie",
-      "documented": [
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR"
-      ],
+      "documented": ["GB", "IE", "DE", "NL", "FR"],
       "limited": [],
-      "unavailable": [
-        "US",
-        "CA",
-        "AU",
-        "IN",
-        "SG",
-        "BR",
-        "JP"
-      ],
+      "unavailable": ["US", "CA", "AU", "IN", "SG", "BR", "JP"],
       "note": "Mollie accepts businesses in the EEA, Switzerland, and the UK. You also need a supported bank account.",
       "source": "https://help.mollie.com/hc/en-us/articles/115002116105-Can-I-use-Mollie-s-services-in-my-country",
       "buyer": {
@@ -343,23 +212,9 @@
     },
     {
       "slug": "square",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "FR",
-        "AU",
-        "JP"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "FR", "AU", "JP"],
       "limited": [],
-      "unavailable": [
-        "DE",
-        "NL",
-        "IN",
-        "SG",
-        "BR"
-      ],
+      "unavailable": ["DE", "NL", "IN", "SG", "BR"],
       "note": "Square only lets sellers process payments from a supported account country.",
       "source": "https://squareup.com/help/us/en/article/5085-accepted-cards",
       "buyer": {
@@ -372,22 +227,8 @@
     },
     {
       "slug": "stripe-payments",
-      "documented": [
-        "US",
-        "CA",
-        "GB",
-        "IE",
-        "DE",
-        "NL",
-        "FR",
-        "AU",
-        "SG",
-        "BR",
-        "JP"
-      ],
-      "limited": [
-        "IN"
-      ],
+      "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "SG", "BR", "JP"],
+      "limited": ["IN"],
       "unavailable": [],
       "note": "Stripe lists this business country. India is in preview and has extra limits.",
       "source": "https://stripe.com/global",

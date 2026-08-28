@@ -21,25 +21,25 @@
   "products": "Eligible enterprise commerce, platforms, marketplaces, online and in-person businesses.",
   "features": {
     "checkout": "Web, mobile, hosted components, API, and point-of-sale integrations.",
-    "subscriptions": "Tokenization and recurring-payment support rather than an opinionated SaaS billing catalog.",
+    "subscriptions": "Tokenization and recurring-payment support rather than an opinionated SaaS billing catalog. Billing and loyalty capabilities expanded via the closed Talon.One and Orb acquisitions (2026-07-01); no public rate change.",
     "invoicing": "Payment infrastructure can support invoice collection; billing and quoting may require another layer.",
     "paymentMethods": "A broad global directory of cards, wallets, bank methods, BNPL, and local methods.",
     "payouts": "Settlement schedules and currencies are defined in merchant terms."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains merchant and seller." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Payment acquiring does not transfer product-sale tax responsibility." },
-    { "area": "Fraud and disputes", "owner": "shared", "note": "Adyen provides risk and dispute tools while the merchant owns policies and exposure." },
-    { "area": "Billing and product support", "owner": "merchant", "note": "The merchant builds or integrates these operating layers." }
+    {"area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains merchant and seller."},
+    {"area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Payment acquiring does not transfer product-sale tax responsibility."},
+    {"area": "Fraud and disputes", "owner": "shared", "note": "Adyen provides risk and dispute tools while the merchant owns policies and exposure."},
+    {"area": "Billing and product support", "owner": "merchant", "note": "The merchant builds or integrates these operating layers."}
   ],
   "strengths": ["Unified online and in-person acquiring", "Strong international and local-payment coverage", "Enterprise control and reporting"],
   "limitations": ["Sales-led rather than indie self-serve", "No simple universal public rate", "Often requires separate SaaS billing and tax operations"],
   "bestFor": ["Large international businesses", "Omnichannel commerce", "Platforms needing acquiring control"],
   "avoidIf": ["You are an early creator seeking instant setup", "You want bundled MoR responsibility"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-11-26",
   "sources": [
-    { "id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-07-29" }
+    {"id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-08-28"},
+    {"id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-08-28"}
   ]
 }

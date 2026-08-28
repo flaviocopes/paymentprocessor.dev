@@ -13,20 +13,20 @@
     "fixed": 0.4,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Public marketing rate. Dodo's contractual pricing document still describes a different base rate, so sellers must confirm their signed terms. Refund, payout, PayPal, BNPL, and FX fees can also apply.",
+    "assumptions": "Public marketing rate of 4% + $0.40. Dodo's contractual MSA (last updated 2026-02-26) still describes 5% + $0.50 and 3.5% for bank transfers, so sellers must confirm signed terms. Docs say PayPal is paused for new transactions, while the marketing pricing table still lists +3% for PayPal. ACH and SEPA are 1.5% capped at $15/€15. Abandoned-cart recovery is 5% of recovered amount. Refund, payout, BNPL, and FX fees can also apply.",
     "sourceIds": ["pricing", "terms"]
   },
   "currencySupport": {
-    "presentment": "USD, EUR, GBP, and INR are native; Adaptive Currency localizes checkout and accepts 80+ additional currencies.",
+    "presentment": "USD, EUR, and GBP are native payout currencies; INR remains a transaction currency for UPI, RuPay, and Indian-card subscriptions. Adaptive Currency localizes checkout and accepts 80+ additional currencies.",
     "customerCharge": "The buyer is charged in the selected local billing currency. Without Adaptive Currency, checkout uses the product's native currency.",
-    "settlement": "The seller has separate USD, EUR, GBP, and INR wallets; other Adaptive Currency payments convert into a supported settlement wallet.",
+    "settlement": "Official FAQ: native payout wallets are USD, GBP, and EUR. INR is no longer a native payout wallet. Other Adaptive Currency payments convert into a supported settlement wallet.",
     "buyerFx": "By default the buyer pays a visible 2–4% Adaptive Currency fee: 4% below $500, 3% at $500–$1,500, and 2% above $1,500.",
     "merchantFx": "The seller can absorb that same 2–4% instead. Non-USD payouts use standard FX, with a $5 fee below $1,000 and $25 for USD SWIFT payouts where applicable.",
-    "moneyPath": "buyer local currency → USD/EUR/GBP/INR wallet → payout currency",
+    "moneyPath": "buyer local currency → USD/EUR/GBP wallet → payout currency",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD wallet → USD payout", "conversions": "0", "cost": "Use native USD pricing and a USD payout. Payout or transfer fees can still apply, but this example has no currency change." },
-      { "market": "eu", "path": "EUR charge → EUR wallet → EUR payout", "conversions": "0", "cost": "Use native EUR pricing and an EUR payout. Payout or transfer fees can still apply, but this example has no currency change." },
-      { "market": "other", "path": "CHF charge → supported wallet → CHF payout", "conversions": "2", "cost": "Adaptive Currency costs 2–4%, paid by the buyer by default or absorbed by the seller; standard payout FX can apply again." }
+      {"market": "us", "path": "USD charge → USD wallet → USD payout", "conversions": "0", "cost": "Use native USD pricing and a USD payout. Payout or transfer fees can still apply, but this example has no currency change."},
+      {"market": "eu", "path": "EUR charge → EUR wallet → EUR payout", "conversions": "0", "cost": "Use native EUR pricing and an EUR payout. Payout or transfer fees can still apply, but this example has no currency change."},
+      {"market": "other", "path": "CHF charge → supported USD/EUR/GBP wallet → CHF payout", "conversions": "2", "cost": "Adaptive Currency costs 2–4%, paid by the buyer by default or absorbed by the seller; standard payout FX can apply again."}
     ],
     "sourceIds": ["adaptive", "balances", "pricing"]
   },
@@ -41,23 +41,24 @@
     "payouts": "Net proceeds are paid to approved seller payout accounts after taxes, fees, refunds, and risk adjustments."
   },
   "responsibilities": [
-    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Dodo acts as legal seller for supported transactions and handles applicable sales taxes." },
-    { "area": "Fraud, refunds, and chargebacks", "owner": "shared", "note": "Dodo operates the payment and dispute layer while sellers must cooperate and follow product policies." },
-    { "area": "Product delivery and customer success", "owner": "merchant", "note": "The seller remains responsible for delivering and supporting the underlying product." },
-    { "area": "Bookkeeping and business income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own company-level taxes." }
+    {"area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Dodo acts as legal seller for supported transactions and handles applicable sales taxes."},
+    {"area": "Fraud, refunds, and chargebacks", "owner": "shared", "note": "Dodo operates the payment and dispute layer while sellers must cooperate and follow product policies."},
+    {"area": "Product delivery and customer success", "owner": "merchant", "note": "The seller remains responsible for delivering and supporting the underlying product."},
+    {"area": "Bookkeeping and business income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own company-level taxes."}
   ],
   "strengths": ["Public entry pricing below many 5% MoR offers", "Developer-focused APIs and billing tools", "Explicit emerging-market seller focus"],
   "limitations": ["Younger operating history than established MoRs", "Official marketing and contractual pricing are not fully aligned", "Eligibility, PayPal availability, and payout coverage require confirmation"],
   "bestFor": ["Developer-led SaaS", "AI products and digital tools", "Sellers evaluating emerging-market support"],
   "avoidIf": ["You require a decades-long operating history", "You need physical-goods support or guaranteed country coverage"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-10-28",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-11-26",
   "sources": [
-    { "id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "terms", "label": "Dodo Payments legal terms", "url": "https://dodopayments.com/legal/terms-of-use", "reviewedOn": "2026-07-29" },
-    { "id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-07-29" },
-    { "id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-07-29" },
-    { "id": "adaptive", "label": "Dodo Adaptive Currency and FX fees", "url": "https://docs.dodopayments.com/features/adaptive-currency", "reviewedOn": "2026-07-30" },
-    { "id": "balances", "label": "Dodo multi-currency balances", "url": "https://docs.dodopayments.com/features/account-summary-payout-wallet", "reviewedOn": "2026-07-30" }
+    {"id": "pricing", "label": "Dodo Payments pricing", "url": "https://dodopayments.com/pricing", "reviewedOn": "2026-08-28"},
+    {"id": "terms", "label": "Dodo Payments legal terms", "url": "https://dodopayments.com/legal/terms-of-use", "reviewedOn": "2026-08-28"},
+    {"id": "mor", "label": "Dodo Merchant of Record documentation", "url": "https://docs.dodopayments.com/features/mor-introduction", "reviewedOn": "2026-08-28"},
+    {"id": "docs", "label": "Dodo Payments documentation", "url": "https://docs.dodopayments.com/introduction", "reviewedOn": "2026-08-28"},
+    {"id": "adaptive", "label": "Dodo Adaptive Currency and FX fees", "url": "https://docs.dodopayments.com/features/adaptive-currency", "reviewedOn": "2026-08-28"},
+    {"id": "balances", "label": "Dodo multi-currency balances", "url": "https://docs.dodopayments.com/features/account-summary-payout-wallet", "reviewedOn": "2026-08-28"},
+    {"id": "faq", "label": "Dodo Payments FAQ (currencies and PayPal)", "url": "https://docs.dodopayments.com/miscellaneous/faq", "reviewedOn": "2026-08-28"}
   ]
 }

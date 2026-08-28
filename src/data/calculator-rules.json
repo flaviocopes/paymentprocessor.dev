@@ -15,7 +15,7 @@
     "confidence": "Public base rate",
     "note": "Uses Paddle's public pay-as-you-go rate. Chargeback and pre-chargeback fees can be up to $20 in this USD scenario; optional Checkout Recovery is 10% of recovered checkout value. Those conditional costs, custom terms, invoicing, payouts, and low-price-product terms are not modeled.",
     "source": "https://www.paddle.com/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "polar",
@@ -30,10 +30,10 @@
     "subscriptionPercentage": 0,
     "disputeFee": 15,
     "confidence": "Public Starter rate",
-    "unmodeledFees": ["Payout and cross-border conversion fees"],
-    "note": "Uses the current Polar Starter rate for organizations created on or after May 27, 2026. Legacy Early Member pricing is grandfathered. Payout and cross-border conversion costs are not transaction FX fees and are excluded.",
+    "unmodeledFees": ["Optional Pro, Growth, and Scale plan rates", "Payout and cross-border conversion fees"],
+    "note": "Uses the current Polar Starter rate for organizations created on or after May 27, 2026. Optional paid plans (Pro, Growth, Scale) lower the variable rate and are not modeled. Legacy Early Member pricing is grandfathered. Payout and cross-border conversion costs are not transaction FX fees and are excluded.",
     "source": "https://polar.sh/resources/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "stripe-managed-payments",
@@ -48,10 +48,10 @@
     "subscriptionPercentage": 0.7,
     "disputeFee": null,
     "unmodeledFees": ["Additional dispute-response fee where applicable"],
-    "confidence": "Public-preview estimate",
+    "confidence": "Public GA estimate",
     "note": "Combines the 3.5% Managed Payments fee with US Stripe Payments card pricing and Stripe Billing's 0.7% pay-as-you-go subscription fee. Dispute-response and other conditional add-ons are excluded.",
     "source": "https://stripe.com/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "lemon-squeezy",
@@ -69,7 +69,7 @@
     "confidence": "Public rate with add-ons",
     "note": "Includes documented international-card, subscription, and standard dispute fees. PayPal and payout fees are excluded; the platform percentage is charged on the tax-inclusive order total, which this pre-tax revenue input cannot reproduce.",
     "source": "https://docs.lemonsqueezy.com/help/getting-started/fees",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "gumroad",
@@ -83,11 +83,11 @@
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
     "disputeFee": null,
-    "unmodeledFees": ["Refund treatment", "Marketplace, PayPal, affiliate, and connected-account differences"],
+    "unmodeledFees": ["High-volume direct-sale discount above $20,000/month", "Refund treatment", "Marketplace, PayPal payout, affiliate, and connected-account differences"],
     "confidence": "Public standard-card formula",
-    "note": "Combines Gumroad's 10% + $0.50 direct-sale fee with the help center's additional 2.9% + $0.30 card-processing fee. Discover, PayPal, connected accounts, affiliates, taxes, disputes, and refund treatment are excluded.",
+    "note": "Combines Gumroad's 10% + $0.50 direct-sale fee with the help center's additional 2.9% + $0.30 card-processing fee. Once paid sales in a calendar month reach $20,000, new direct sales that month are 5% + $0.50 instead of 10% + $0.50 (automatic; resets on the 1st); Discover stays 30%. Refunds return Gumroad's fee while processing is retained. PayPal payouts add 2%. Those differences are excluded from the model.",
     "source": "https://gumroad.com/help/article/66-gumroads-fees",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "stripe-payments",
@@ -105,7 +105,7 @@
     "unmodeledFees": ["Additional manual dispute-response fee", "Stripe Billing, Tax, Invoicing, and Radar"],
     "note": "Models US online cards and the fee when a dispute is received. Countering a dispute manually can add another $15; Billing, Tax, Invoicing, Radar, and payment-method-specific prices are excluded.",
     "source": "https://stripe.com/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "paypal-checkout",
@@ -123,7 +123,7 @@
     "confidence": "Public US Checkout rate",
     "note": "Models US PayPal Checkout and the 1.5% US cross-border commercial-transaction uplift. Currency-conversion, variable dispute or chargeback, and alternate-method fees are excluded.",
     "source": "https://www.paypal.com/us/business/paypal-business-fees",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "braintree",
@@ -140,7 +140,7 @@
     "confidence": "Public US card rate",
     "note": "Models Braintree's US standard rate. Regional, method-specific, and negotiated terms are excluded.",
     "source": "https://www.paypal.com/us/enterprise/paypal-braintree-fees",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "square",
@@ -154,10 +154,11 @@
     "fxPercentage": 0,
     "subscriptionPercentage": 0,
     "disputeFee": 0,
-    "confidence": "Public US online rate",
-    "note": "Models US online card payments and Square's surcharge for internationally issued cards. Country, channel, and subscription differences remain excluded.",
+    "confidence": "Public US online API rate",
+    "note": "Models US online API / Web Payments SDK / Checkout API card pricing (2.9% + $0.30) and Square's surcharge for internationally issued cards. Free-plan hosted online or invoices are 3.3% + $0.30 per seller help and are not modeled. Country, channel, and subscription differences remain excluded.",
     "source": "https://developer.squareup.com/docs/payments-pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28",
+    "unmodeledFees": ["Free-plan hosted online or invoices at 3.3% + $0.30", "Country, channel, and subscription differences"]
   },
   {
     "slug": "dodo-payments",
@@ -171,11 +172,11 @@
     "fxPercentage": null,
     "subscriptionPercentage": 0.5,
     "disputeFee": 30,
-    "unmodeledFees": ["$1 refund fee", "Payout and banking fees", "PayPal and BNPL method fees"],
+    "unmodeledFees": ["$1 refund fee", "ACH/SEPA 1.5% capped at $15/€15", "Recovery fee (5% of recovered amount)", "Payout and banking fees", "PayPal and BNPL method fees"],
     "confidence": "Public marketing rate; contract confirmation required",
-    "note": "Models Dodo's public 4% + $0.40 marketing rate plus documented international, subscription, and dispute fees. An official contractual document still describes different base pricing, so confirm the signed rate. Refund, payout, PayPal, BNPL, and FX costs are excluded.",
+    "note": "Models Dodo's public 4% + $0.40 marketing rate plus documented international, subscription, and dispute fees. An official contractual document still describes different base pricing (5% + $0.50 / 3.5% bank transfers), so confirm the signed rate. Docs say PayPal is paused while marketing still lists +3%. Refund, ACH/SEPA, recovery, payout, BNPL, and FX costs are excluded.",
     "source": "https://dodopayments.com/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "creem",
@@ -193,7 +194,7 @@
     "confidence": "Public standard rate",
     "note": "Models Creem's standard platform fee and $25 chargeback fee. Bank and USDC payout fees are excluded, and the percentage is actually charged on tax-inclusive order value rather than the pre-tax revenue entered here.",
     "source": "https://docs.creem.io/merchant-of-record/finance/payouts",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   },
   {
     "slug": "airwallex",
@@ -211,6 +212,6 @@
     "confidence": "Public US card rate",
     "note": "Models US card pricing, subscription billing, and the published 0.5% major-currency FX markup. Other currencies can use 1%; local methods, fraud services, disputes, and other regions are excluded.",
     "source": "https://www.airwallex.com/en-us/pricing",
-    "reviewedOn": "2026-07-29"
+    "reviewedOn": "2026-08-28"
   }
 ]

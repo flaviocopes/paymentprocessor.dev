@@ -27,19 +27,19 @@
     "payouts": "Funds settle to the merchant's PayPal balance and can be withdrawn under account terms."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller even when PayPal appears in the payment experience." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Checkout does not generally make PayPal the seller of the merchant's product." },
-    { "area": "Fraud and chargebacks", "owner": "shared", "note": "PayPal supplies risk tools and eligible seller protection; coverage conditions apply." },
-    { "area": "Product support", "owner": "merchant", "note": "The merchant supports and fulfills the purchased product." }
+    {"area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller even when PayPal appears in the payment experience."},
+    {"area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Checkout does not generally make PayPal the seller of the merchant's product."},
+    {"area": "Fraud and chargebacks", "owner": "shared", "note": "PayPal supplies risk tools and eligible seller protection; coverage conditions apply."},
+    {"area": "Product support", "owner": "merchant", "note": "The merchant supports and fulfills the purchased product."}
   ],
   "strengths": ["Large familiar buyer wallet", "Fast standard integration", "PayPal, Venmo, Pay Later, and card options"],
   "limitations": ["Cross-border, currency-conversion, and dispute fees vary", "Account holds and protection eligibility affect risk", "Merchant receiving and withdrawal capabilities are country-specific"],
   "bestFor": ["Businesses whose buyers expect PayPal", "Creators adding a familiar wallet", "Merchants wanting a quick checkout option"],
   "avoidIf": ["You want a Merchant of Record", "You need one uniform global fee and integration surface"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-11-26",
   "sources": [
-    { "id": "fees", "label": "PayPal business fees", "url": "https://www.paypal.com/us/business/paypal-business-fees", "reviewedOn": "2026-07-29" },
-    { "id": "checkout", "label": "PayPal Checkout options", "url": "https://www.paypal.com/us/business/accept-payments/checkout", "reviewedOn": "2026-07-29" }
+    {"id": "fees", "label": "PayPal business fees", "url": "https://www.paypal.com/us/business/paypal-business-fees", "reviewedOn": "2026-08-28"},
+    {"id": "checkout", "label": "PayPal Checkout options", "url": "https://www.paypal.com/us/business/accept-payments/checkout", "reviewedOn": "2026-08-28"}
   ]
 }

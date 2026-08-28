@@ -13,7 +13,7 @@
     "fixed": 0.5,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "Current Starter plan for organizations created on or after May 27, 2026. Payout and cross-border conversion costs are separate from transaction FX; legacy Early Member rates are grandfathered.",
+    "assumptions": "Current Starter plan for organizations created on or after May 27, 2026 (5% + $0.50). Optional paid plans on Polar's pricing page: Pro $20/mo at 3.8% + 40¢, Growth $100/mo at 3.6% + 35¢, and Scale $400/mo at 3.4% + 30¢. Payout and cross-border conversion costs are separate from transaction FX; legacy Early Member rates are grandfathered.",
     "sourceIds": ["pricing"]
   },
   "currencySupport": {
@@ -24,9 +24,9 @@
     "merchantFx": "This can be a two-conversion route: the order converts to USD, then a non-USD payout converts again. Only the payout conversion fee is explicit: 0.25% in the EU or up to 1% elsewhere, plus Stripe payout fees.",
     "moneyPath": "buyer currency → USD balance → payout currency",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD balance → USD payout", "conversions": "0", "cost": "The currencies remain USD. Standard transaction and Stripe payout fees still apply." },
-      { "market": "eu", "path": "EUR charge → USD balance → EUR payout", "conversions": "2", "cost": "No separate first-conversion fee is published; EU payout FX is 0.25%, and the seller also absorbs Polar's non-US-card fee." },
-      { "market": "other", "path": "CHF charge → USD balance → CHF payout", "conversions": "2", "cost": "No separate first-conversion fee is published; payout FX outside the EU is up to 1%, plus the non-US-card and Stripe payout fees." }
+      {"market": "us", "path": "USD charge → USD balance → USD payout", "conversions": "0", "cost": "The currencies remain USD. Standard transaction and Stripe payout fees still apply."},
+      {"market": "eu", "path": "EUR charge → USD balance → EUR payout", "conversions": "2", "cost": "No separate first-conversion fee is published; EU payout FX is 0.25%, and the seller also absorbs Polar's non-US-card fee."},
+      {"market": "other", "path": "CHF charge → USD balance → CHF payout", "conversions": "2", "cost": "No separate first-conversion fee is published; payout FX outside the EU is up to 1%, plus the non-US-card and Stripe payout fees."}
     ],
     "sourceIds": ["currencies", "balance", "pricing"]
   },
@@ -41,22 +41,22 @@
     "payouts": "Stripe Connect Express payouts with documented payout and cross-border costs."
   },
   "responsibilities": [
-    { "area": "Indirect-tax calculation, registration, filing, and remittance", "owner": "provider", "note": "Polar describes itself as reseller and tax-liable seller for covered transactions." },
-    { "area": "Fraud and disputes", "owner": "provider", "note": "Polar manages network exposure and charges a documented dispute fee." },
-    { "area": "Product support and entitlements", "owner": "merchant", "note": "The seller owns the product relationship; Polar can automate benefit grants." },
-    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "Net payouts still require business accounting and income-tax reporting." }
+    {"area": "Indirect-tax calculation, registration, filing, and remittance", "owner": "provider", "note": "Polar describes itself as reseller and tax-liable seller for covered transactions."},
+    {"area": "Fraud and disputes", "owner": "provider", "note": "Polar manages network exposure and charges a documented dispute fee."},
+    {"area": "Product support and entitlements", "owner": "merchant", "note": "The seller owns the product relationship; Polar can automate benefit grants."},
+    {"area": "Bookkeeping and income tax", "owner": "merchant", "note": "Net payouts still require business accounting and income-tax reporting."}
   ],
   "strengths": ["Developer-first APIs and open-source product", "Transparent tiered pricing", "Built-in usage, seat, and entitlement features"],
   "limitations": ["Younger operating history than long-established providers", "Brazil is not on the current supported seller-country list", "Additional international, payout, and dispute costs matter"],
   "bestFor": ["Developer tools", "Open-source businesses", "SaaS needing usage or benefit-based billing"],
   "avoidIf": ["You require a long enterprise operating history", "Your seller country or product is outside Polar policy"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-10-27",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-11-26",
   "sources": [
-    { "id": "pricing", "label": "Polar pricing", "url": "https://polar.sh/resources/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "mor", "label": "Polar Merchant of Record documentation", "url": "https://polar.sh/docs/merchant-of-record/introduction", "reviewedOn": "2026-07-29" },
-    { "id": "coverage", "label": "Polar supported countries", "url": "https://polar.sh/docs/merchant-of-record/supported-countries", "reviewedOn": "2026-07-29" },
-    { "id": "currencies", "label": "Polar multi-currency product pricing", "url": "https://polar.sh/docs/features/products", "reviewedOn": "2026-07-30" },
-    { "id": "balance", "label": "Polar balance and settlement currency", "url": "https://polar.sh/docs/features/finance/balance", "reviewedOn": "2026-07-30" }
+    {"id": "pricing", "label": "Polar pricing", "url": "https://polar.sh/resources/pricing", "reviewedOn": "2026-08-28"},
+    {"id": "mor", "label": "Polar Merchant of Record documentation", "url": "https://polar.sh/docs/merchant-of-record/introduction", "reviewedOn": "2026-08-28"},
+    {"id": "coverage", "label": "Polar supported countries", "url": "https://polar.sh/docs/merchant-of-record/supported-countries", "reviewedOn": "2026-08-28"},
+    {"id": "currencies", "label": "Polar multi-currency product pricing", "url": "https://polar.sh/docs/features/products", "reviewedOn": "2026-08-28"},
+    {"id": "balance", "label": "Polar balance and settlement currency", "url": "https://polar.sh/docs/features/finance/balance", "reviewedOn": "2026-08-28"}
   ]
 }

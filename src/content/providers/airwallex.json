@@ -27,20 +27,20 @@
     "payouts": "Like-for-like settlement into Airwallex wallets and transfers to supported bank destinations."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller when using Airwallex Payments." },
-    { "area": "Sales tax, VAT, and product compliance", "owner": "merchant", "note": "Payment and billing tools do not transfer tax registration or remittance responsibility." },
-    { "area": "Fraud, authentication, and disputes", "owner": "shared", "note": "Airwallex supplies risk and 3DS tools while the merchant owns configuration, evidence, and commercial exposure." },
-    { "area": "Billing, FX, and treasury operations", "owner": "shared", "note": "The platform supplies tools while the merchant configures pricing, currencies, and reconciliation." }
+    {"area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller when using Airwallex Payments."},
+    {"area": "Sales tax, VAT, and product compliance", "owner": "merchant", "note": "Payment and billing tools do not transfer tax registration or remittance responsibility."},
+    {"area": "Fraud, authentication, and disputes", "owner": "shared", "note": "Airwallex supplies risk and 3DS tools while the merchant owns configuration, evidence, and commercial exposure."},
+    {"area": "Billing, FX, and treasury operations", "owner": "shared", "note": "The platform supplies tools while the merchant configures pricing, currencies, and reconciliation."}
   ],
   "strengths": ["Payments and multi-currency treasury in one platform", "Public regional pricing in key markets", "Strong cross-border settlement and FX tooling"],
   "limitations": ["Rates vary significantly by country and method", "Billing adds per-transaction fees", "The merchant retains tax and compliance operations"],
   "bestFor": ["Cross-border online businesses", "SaaS with global treasury needs", "Companies settling multiple currencies"],
   "avoidIf": ["You need a Merchant of Record", "Your entity or primary market is unsupported"],
-  "lastReviewed": "2026-07-29",
+  "lastReviewed": "2026-08-28",
   "nextReview": "2026-09-28",
   "sources": [
-    { "id": "pricing", "label": "Airwallex US pricing", "url": "https://www.airwallex.com/en-us/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "payments", "label": "Airwallex online payments", "url": "https://www.airwallex.com/en-us/payments", "reviewedOn": "2026-07-29" },
-    { "id": "fees", "label": "Airwallex payment fee models", "url": "https://www.airwallex.com/docs/payments/about-airwallex-payments/fees-and-pricing-models", "reviewedOn": "2026-07-29" }
+    {"id": "pricing", "label": "Airwallex US pricing", "url": "https://www.airwallex.com/en-us/pricing", "reviewedOn": "2026-08-28"},
+    {"id": "payments", "label": "Airwallex online payments", "url": "https://www.airwallex.com/en-us/payments", "reviewedOn": "2026-08-28"},
+    {"id": "fees", "label": "Airwallex payment fee models", "url": "https://www.airwallex.com/docs/payments/about-airwallex-payments/fees-and-pricing-models", "reviewedOn": "2026-08-28"}
   ]
 }

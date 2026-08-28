@@ -4,7 +4,7 @@
   "model": "merchant-of-record",
   "serviceModel": "merchant-of-record",
   "legalSeller": "provider",
-  "stage": "public-preview",
+  "stage": "established",
   "summary": "Stripe's Merchant of Record mode for eligible digital products, layered onto Stripe Payments and Checkout.",
   "pricing": {
     "kind": "public",
@@ -24,39 +24,41 @@
     "merchantFx": "Stripe says the seller pays 0% for Adaptive Pricing and no separate currency-conversion fee when it is enabled; normal processing and cross-border fees still apply.",
     "moneyPath": "buyer local currency → integration/settlement currency → bank payout",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD settlement → USD bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in USD, there is no FX in this example." },
-      { "market": "eu", "path": "EUR charge → EUR settlement → EUR bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in EUR, there is no FX in this example." },
-      { "market": "other", "path": "CHF charge → CHF settlement → CHF bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in CHF, there is no FX in this example; Adaptive Pricing markup applies when Stripe localizes from another integration currency." }
+      {"market": "us", "path": "USD charge → USD settlement → USD bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in USD, there is no FX in this example."},
+      {"market": "eu", "path": "EUR charge → EUR settlement → EUR bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in EUR, there is no FX in this example."},
+      {"market": "other", "path": "CHF charge → CHF settlement → CHF bank", "conversions": "0", "cost": "With integration, settlement, and bank currencies aligned in CHF, there is no FX in this example; Adaptive Pricing markup applies when Stripe localizes from another integration currency."}
     ],
     "sourceIds": ["how", "adaptive", "managed-pricing"]
   },
-  "sellerCoverage": "Public-preview eligibility is limited to Stripe's documented supported business locations.",
+  "sellerCoverage": "Generally available to businesses in Stripe's documented Managed Payments business locations (39 seller countries as of the 2026-04-22 GA changelog, including Australia), subject to eligibility review.",
   "buyerCoverage": "Global buyer coverage excludes Stripe's documented restricted countries and varies by payment method.",
   "products": "Eligible digital products, SaaS, software, digital content, and virtual goods; services, physical goods, marketplaces, and many restricted categories are excluded.",
   "features": {
     "checkout": "Stripe Checkout, hosted or embedded, with Link as buyer-facing Merchant of Record.",
-    "subscriptions": "Stripe Billing subscriptions with Managed Payments restrictions and public-preview changes.",
+    "subscriptions": "Stripe Billing subscriptions with Managed Payments eligibility and product-tax-code restrictions.",
     "invoicing": "Managed receipts and invoices; several standalone and off-cycle invoice flows are restricted.",
     "paymentMethods": "Cards, Apple Pay, Google Pay, Link, and selected local methods documented for Managed Payments.",
     "payouts": "Funds settle through the connected Stripe account subject to Stripe payout timing."
   },
   "responsibilities": [
-    { "area": "Indirect-tax compliance and remittance", "owner": "provider", "note": "Stripe assumes the documented responsibilities for eligible Managed Payments transactions and supported markets, not every tax obligation everywhere." },
-    { "area": "Fraud, disputes, and transaction support", "owner": "provider", "note": "Stripe and Link manage these transaction-level responsibilities." },
-    { "area": "Product support", "owner": "merchant", "note": "The business retains product-level customer support." },
-    { "area": "Data deletion response", "owner": "shared", "note": "Stripe can cancel subscriptions and delete related Stripe objects after a qualifying buyer request." }
+    {"area": "Indirect-tax compliance and remittance", "owner": "provider", "note": "Stripe assumes the documented responsibilities for eligible Managed Payments transactions and supported markets, not every tax obligation everywhere."},
+    {"area": "Fraud, disputes, and transaction support", "owner": "provider", "note": "Stripe and Link manage these transaction-level responsibilities."},
+    {"area": "Product support", "owner": "merchant", "note": "The business retains product-level customer support."},
+    {"area": "Data deletion response", "owner": "shared", "note": "Stripe can cancel subscriptions and delete related Stripe objects after a qualifying buyer request."}
   ],
   "strengths": ["Small integration change for eligible Stripe Checkout users", "Transaction-level choice between direct and MoR modes", "Familiar Stripe reporting and APIs"],
-  "limitations": ["Public preview", "Narrower product and seller eligibility", "MoR fee is additional to Payments and other applicable Stripe fees"],
+  "limitations": ["Eligible digital products only; services, physical goods, and marketplace sales are excluded", "Narrower seller business-location list than ordinary Stripe Payments", "MoR fee is additional to Payments and other applicable Stripe fees"],
   "bestFor": ["Existing eligible Stripe Checkout businesses", "Digital-product companies testing specific markets", "Teams wanting mixed MoR and direct transactions"],
-  "avoidIf": ["You sell services, physical goods, or marketplace products", "You require a generally available, long-established MoR product"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-08-27",
+  "avoidIf": ["You sell services, physical goods, or marketplace products", "Your seller country is outside Stripe's documented Managed Payments business locations"],
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-09-25",
   "sources": [
-    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-29" },
-    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-29" },
-    { "id": "adaptive", "label": "Stripe Adaptive Pricing currencies and customer FX", "url": "https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing", "reviewedOn": "2026-07-30" },
-    { "id": "managed-pricing", "label": "Stripe Managed Payments pricing", "url": "https://support.stripe.com/questions/managed-payments-pricing", "reviewedOn": "2026-07-30" }
+    {"id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-08-28"},
+    {"id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-08-28"},
+    {"id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-08-28"},
+    {"id": "adaptive", "label": "Stripe Adaptive Pricing currencies and customer FX", "url": "https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing", "reviewedOn": "2026-08-28"},
+    {"id": "managed-pricing", "label": "Stripe Managed Payments pricing", "url": "https://support.stripe.com/questions/managed-payments-pricing", "reviewedOn": "2026-08-28"},
+    {"id": "changelog", "label": "Stripe Managed Payments changelog", "url": "https://docs.stripe.com/payments/managed-payments/changelog", "reviewedOn": "2026-08-28"},
+    {"id": "eligibility-page", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments/eligibility", "reviewedOn": "2026-08-28"}
   ]
 }

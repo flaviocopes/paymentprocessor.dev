@@ -2,6 +2,18 @@
 
 Material changes to paymentprocessor.dev are recorded here using calendar dates.
 
+## 2026-08-28
+
+### Changed
+
+- Updated Gumroad fee evidence for the automatic high-volume direct-sale discount once paid sales reach $20,000 in a calendar month, plus refund and PayPal-payout fee notes, while keeping the modeled 12.9% + $0.80 standard-card formula.
+- Moved Stripe Managed Payments from public preview to established after the 2026-04-22 general-availability changelog, including seller-coverage, comparison, migration-link, calculator-confidence, and country-coverage wording; product-eligibility limits remain.
+- Corrected Dodo Payments settlement evidence so INR is a transaction currency rather than a native payout wallet, and recorded the PayPal paused-vs-marketing-table contradiction alongside ACH/SEPA and recovery unmodeled fees.
+- Replaced Paddle's unpublished payment-to-balance FX wording with the published mid-market margins from clause 7.1 of the Master Services Agreement.
+- Split Square's US online fee headline between API/Web Payments/Checkout at 2.9% + $0.30 and Free-plan hosted online or invoices at 3.3% + $0.30.
+- Documented Braintree Drop-in SDK deprecation (2026-09-01) and unsupported date (2027-09-01), pointing sellers to current Android, iOS, and JavaScript SDKs.
+- Refreshed overdue company intelligence for PayPal, Braintree, Adyen, and Block with 2026 interim results, and caught up Mollie EEA expansion, FastSpring–Paysafe MoR partnership, and Lemon Squeezy legal-entity naming.
+
 ## 2026-07-31
 
 ### Added

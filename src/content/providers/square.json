@@ -8,13 +8,13 @@
   "summary": "An omnichannel payments and commerce platform spanning online checkout, invoices, subscriptions, APIs, point of sale, and hardware.",
   "pricing": {
     "kind": "country-channel-based",
-    "headline": "US online payments are 2.9% + $0.30; country, channel, subscription, and international rates vary.",
+    "headline": "US online API, Web Payments SDK, and Checkout API pricing is 2.9% + $0.30; Free-plan hosted online or invoices are 3.3% + $0.30.",
     "percentage": 2.9,
     "fixed": 0.3,
     "monthly": 0,
     "currency": "USD",
-    "assumptions": "US online card. Internationally issued cards add 1.5% in the US and other documented markets. Square processing is available only in selected seller countries.",
-    "sourceIds": ["pricing"]
+    "assumptions": "Modeled US online API / Web Payments SDK / Checkout API card rate of 2.9% + $0.30. Seller help: Free-plan online or invoices are 3.3% + $0.30; Plus/Premium hosted online is 2.9% + $0.30. Internationally issued cards add 1.5% in the US and other documented markets. Square processing is available only in selected seller countries.",
+    "sourceIds": ["pricing", "seller-fees"]
   },
   "sellerCoverage": "Payment processing is supported in selected countries including the US, Canada, Australia, Japan, the UK, Ireland, France, and Spain.",
   "buyerCoverage": "Buyers can use supported cards and methods, but Square processes in the seller's supported market and currency rules.",
@@ -27,19 +27,20 @@
     "payouts": "Standard and eligible instant transfers to the seller's bank account."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The Square seller remains the merchant." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Square tools do not generally make Square the legal seller." },
-    { "area": "Fraud and disputes", "owner": "shared", "note": "Square provides controls and dispute workflows; the seller owns product and transaction risk." },
-    { "area": "Product and customer support", "owner": "merchant", "note": "The seller supports fulfillment and buyers." }
+    {"area": "Legal seller and customer contract", "owner": "merchant", "note": "The Square seller remains the merchant."},
+    {"area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Square tools do not generally make Square the legal seller."},
+    {"area": "Fraud and disputes", "owner": "shared", "note": "Square provides controls and dispute workflows; the seller owns product and transaction risk."},
+    {"area": "Product and customer support", "owner": "merchant", "note": "The seller supports fulfillment and buyers."}
   ],
   "strengths": ["Online and in-person payments together", "Straightforward regional public pricing", "Invoices, links, subscriptions, and POS in one ecosystem"],
   "limitations": ["Far fewer seller countries than global-first processors", "International-card costs vary", "Less specialized for complex SaaS billing"],
   "bestFor": ["Omnichannel small businesses", "Creators selling online and in person", "Businesses already using Square POS"],
   "avoidIf": ["Your seller country is unsupported", "You need sophisticated global SaaS billing or an MoR"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "lastReviewed": "2026-08-28",
+  "nextReview": "2026-11-26",
   "sources": [
-    { "id": "pricing", "label": "Square payments pricing", "url": "https://developer.squareup.com/docs/payments-pricing", "reviewedOn": "2026-07-29" },
-    { "id": "countries", "label": "Square international development", "url": "https://developer.squareup.com/docs/international-development", "reviewedOn": "2026-07-29" }
+    {"id": "pricing", "label": "Square payments pricing", "url": "https://developer.squareup.com/docs/payments-pricing", "reviewedOn": "2026-08-28"},
+    {"id": "countries", "label": "Square international development", "url": "https://developer.squareup.com/docs/international-development", "reviewedOn": "2026-08-28"},
+    {"id": "seller-fees", "label": "Square seller help: processing fees", "url": "https://squareup.com/help/us/en/article/5068-what-are-square-s-fees", "reviewedOn": "2026-08-28"}
   ]
 }
