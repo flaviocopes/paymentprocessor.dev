@@ -14,7 +14,11 @@
     "monthly": 0,
     "currency": "USD",
     "assumptions": "Base ecommerce fee applies to the tax-inclusive order total. International cards, subscriptions, PayPal, payouts, and the usual $15 dispute fee can add costs.",
-    "sourceIds": ["pricing", "fees", "chargebacks"]
+    "sourceIds": [
+      "pricing",
+      "fees",
+      "chargebacks"
+    ]
   },
   "currencySupport": {
     "presentment": "Products can be displayed in 130 store currencies, but this is localization rather than native processing in each currency.",
@@ -22,13 +26,32 @@
     "settlement": "The seller's proceeds and payouts are USD; a non-USD bank payout is converted into the selected bank currency at payout time.",
     "buyerFx": "Lemon Squeezy says it adds no checkout conversion fee, but the buyer's bank may charge FX because the actual card charge is USD.",
     "merchantFx": "Non-US bank payouts cost 1%; a payout processor also converts USD to the selected bank currency. PayPal can add its own conversion or withdrawal fee.",
-    "moneyPath": "local display → USD customer charge → USD payout → bank currency",
+    "moneyPath": "local display \u2192 USD customer charge \u2192 USD payout \u2192 bank currency",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD payout → USD bank", "conversions": "0", "cost": "The displayed, charged, payout, and bank currencies can all remain USD. Standard transaction fees still apply." },
-      { "market": "eu", "path": "EUR display → USD charge → USD payout → EUR bank", "conversions": "2", "cost": "The buyer's bank may convert the USD card charge; the seller then pays the 1% non-US payout fee plus payout-processor FX to EUR." },
-      { "market": "other", "path": "CHF display → USD charge → USD payout → CHF bank", "conversions": "2", "cost": "The buyer's bank may convert the USD card charge; the seller then pays the 1% non-US payout fee plus payout-processor FX to CHF." }
+      {
+        "market": "us",
+        "path": "USD charge \u2192 USD payout \u2192 USD bank",
+        "conversions": "0",
+        "cost": "The displayed, charged, payout, and bank currencies can all remain USD. Standard transaction fees still apply."
+      },
+      {
+        "market": "eu",
+        "path": "EUR display \u2192 USD charge \u2192 USD payout \u2192 EUR bank",
+        "conversions": "2",
+        "cost": "The buyer's bank may convert the USD card charge; the seller then pays the 1% non-US payout fee plus payout-processor FX to EUR."
+      },
+      {
+        "market": "other",
+        "path": "CHF display \u2192 USD charge \u2192 USD payout \u2192 CHF bank",
+        "conversions": "2",
+        "cost": "The buyer's bank may convert the USD card charge; the seller then pays the 1% non-US payout fee plus payout-processor FX to CHF."
+      }
     ],
-    "sourceIds": ["currencies", "fees", "countries"]
+    "sourceIds": [
+      "currencies",
+      "fees",
+      "countries"
+    ]
   },
   "sellerCoverage": "Payouts are available in more than 200 countries according to Lemon Squeezy, subject to onboarding and payout-method rules.",
   "buyerCoverage": "Global digital sales with multi-currency checkout and country-dependent payment methods.",
@@ -41,22 +64,84 @@
     "payouts": "Bank wire or PayPal payouts, generally processed twice monthly."
   },
   "responsibilities": [
-    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "Lemon Squeezy states that it is the Merchant of Record." },
-    { "area": "Billing support and fraud", "owner": "provider", "note": "Included in its ecommerce platform, subject to policy." },
-    { "area": "Product delivery", "owner": "shared", "note": "The platform can deliver files and keys; the seller owns the product experience." },
-    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for net payouts and its own taxes." }
+    {
+      "area": "Indirect-tax calculation, filing, and remittance",
+      "owner": "provider",
+      "note": "Lemon Squeezy states that it is the Merchant of Record."
+    },
+    {
+      "area": "Billing support and fraud",
+      "owner": "provider",
+      "note": "Included in its ecommerce platform, subject to policy."
+    },
+    {
+      "area": "Product delivery",
+      "owner": "shared",
+      "note": "The platform can deliver files and keys; the seller owns the product experience."
+    },
+    {
+      "area": "Bookkeeping and income tax",
+      "owner": "merchant",
+      "note": "The seller must account for net payouts and its own taxes."
+    }
   ],
-  "strengths": ["Creator-friendly setup and storefront", "Digital delivery and license keys included", "Subscriptions and email tools in one product"],
-  "limitations": ["Base fee is charged on the tax-inclusive total and does not cover every add-on", "Less suitable for complex enterprise billing", "Provider ownership and product direction are a dependency"],
-  "bestFor": ["Indie SaaS", "Digital downloads", "Software licenses and creator products"],
-  "avoidIf": ["You need advanced B2B quoting", "You require full control of the merchant relationship"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "Creator-friendly setup and storefront",
+    "Digital delivery and license keys included",
+    "Subscriptions and email tools in one product"
+  ],
+  "limitations": [
+    "Base fee is charged on the tax-inclusive total and does not cover every add-on",
+    "Less suitable for complex enterprise billing",
+    "Legal entity is now Sold through Link, LLC f/k/a Lemon Squeezy LLC; Stripe positions Managed Payments as the related MoR milestone with an early-access waitlist, without announcing a Lemon Squeezy shutdown or product rename"
+  ],
+  "bestFor": [
+    "Indie SaaS",
+    "Digital downloads",
+    "Software licenses and creator products"
+  ],
+  "avoidIf": [
+    "You need advanced B2B quoting",
+    "You require full control of the merchant relationship"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-29",
   "sources": [
-    { "id": "pricing", "label": "Lemon Squeezy pricing", "url": "https://www.lemonsqueezy.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "fees", "label": "Lemon Squeezy fee documentation", "url": "https://docs.lemonsqueezy.com/help/getting-started/fees", "reviewedOn": "2026-07-29" },
-    { "id": "chargebacks", "label": "Lemon Squeezy refunds and chargebacks", "url": "https://docs.lemonsqueezy.com/help/payments/refunds-chargebacks", "reviewedOn": "2026-07-29" },
-    { "id": "countries", "label": "Lemon Squeezy supported countries", "url": "https://docs.lemonsqueezy.com/help/getting-started/getting-paid", "reviewedOn": "2026-07-29" },
-    { "id": "currencies", "label": "Lemon Squeezy currencies and USD processing", "url": "https://docs.lemonsqueezy.com/help/payments/currencies", "reviewedOn": "2026-07-30" }
+    {
+      "id": "pricing",
+      "label": "Lemon Squeezy pricing",
+      "url": "https://www.lemonsqueezy.com/pricing",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "fees",
+      "label": "Lemon Squeezy fee documentation",
+      "url": "https://docs.lemonsqueezy.com/help/getting-started/fees",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "chargebacks",
+      "label": "Lemon Squeezy refunds and chargebacks",
+      "url": "https://docs.lemonsqueezy.com/help/payments/refunds-chargebacks",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "countries",
+      "label": "Lemon Squeezy supported countries",
+      "url": "https://docs.lemonsqueezy.com/help/getting-started/getting-paid",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "currencies",
+      "label": "Lemon Squeezy currencies and USD processing",
+      "url": "https://docs.lemonsqueezy.com/help/payments/currencies",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "direction-2026",
+      "label": "Lemon Squeezy 2026 Update: Stripe Managed Payments",
+      "url": "https://www.lemonsqueezy.com/blog/2026-update",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

@@ -14,7 +14,9 @@
     "monthly": null,
     "currency": "USD",
     "assumptions": "No universal public transaction formula is documented. Use a merchant quote.",
-    "sourceIds": ["pricing"]
+    "sourceIds": [
+      "pricing"
+    ]
   },
   "currencySupport": {
     "presentment": "Checkout supports 37 transaction currencies and lets the seller set currency-specific prices instead of automatic conversion.",
@@ -22,13 +24,31 @@
     "settlement": "The store chooses one of six base currencies; payout funding supports USD, EUR, GBP, AUD, and CAD.",
     "buyerFx": "Automatic localized prices embed a 3.5% exchange-rate markup for major currencies and 5.5% for the others; fixed local prices avoid that automatic rate.",
     "merchantFx": "A payout currency different from the store currency costs 2.5%. FastSpring warns sales reported in USD may be converted a second time for a non-USD payout.",
-    "moneyPath": "buyer currency → store/base currency → USD reporting → payout currency",
+    "moneyPath": "buyer currency \u2192 store/base currency \u2192 USD reporting \u2192 payout currency",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD reporting → USD payout", "conversions": "0", "cost": "With USD pricing and payout aligned, this example has no currency change. Other transaction and payout fees may remain." },
-      { "market": "eu", "path": "EUR charge → USD reporting → EUR payout", "conversions": "2", "cost": "Automatic localization can embed a 3.5% markup; converting reported USD funds back to an EUR payout can add 2.5%." },
-      { "market": "other", "path": "CHF charge → USD reporting → supported payout → CHF bank", "conversions": "2+", "cost": "Automatic localization can embed 3.5–5.5%, payout mismatch can cost 2.5%, and the bank may convert again when CHF is not the payout currency." }
+      {
+        "market": "us",
+        "path": "USD charge \u2192 USD reporting \u2192 USD payout",
+        "conversions": "0",
+        "cost": "With USD pricing and payout aligned, this example has no currency change. Other transaction and payout fees may remain."
+      },
+      {
+        "market": "eu",
+        "path": "EUR charge \u2192 USD reporting \u2192 EUR payout",
+        "conversions": "2",
+        "cost": "Automatic localization can embed a 3.5% markup; converting reported USD funds back to an EUR payout can add 2.5%."
+      },
+      {
+        "market": "other",
+        "path": "CHF charge \u2192 USD reporting \u2192 supported payout \u2192 CHF bank",
+        "conversions": "2+",
+        "cost": "Automatic localization can embed 3.5\u20135.5%, payout mismatch can cost 2.5%, and the bank may convert again when CHF is not the payout currency."
+      }
     ],
-    "sourceIds": ["currencies", "payouts"]
+    "sourceIds": [
+      "currencies",
+      "payouts"
+    ]
   },
   "sellerCoverage": "FastSpring describes its MoR service as available to eligible software and digital-goods sellers worldwide, subject to underwriting.",
   "buyerCoverage": "Global ecommerce coverage with localized currencies, payment methods, and country controls.",
@@ -41,22 +61,78 @@
     "payouts": "Revenue-share fees are withheld before seller distributions."
   },
   "responsibilities": [
-    { "area": "Indirect-tax calculation, filing, and remittance", "owner": "provider", "note": "FastSpring purchases from the seller and resells to the buyer as MoR." },
-    { "area": "Fraud, payments, and subscriptions", "owner": "provider", "note": "Included in FastSpring's bundled platform." },
-    { "area": "Product terms and delivery", "owner": "merchant", "note": "The seller remains responsible for product rights, EULA, and fulfillment." },
-    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller accounts for distributions and its business obligations." }
+    {
+      "area": "Indirect-tax calculation, filing, and remittance",
+      "owner": "provider",
+      "note": "FastSpring purchases from the seller and resells to the buyer as MoR."
+    },
+    {
+      "area": "Fraud, payments, and subscriptions",
+      "owner": "provider",
+      "note": "Included in FastSpring's bundled platform."
+    },
+    {
+      "area": "Product terms and delivery",
+      "owner": "merchant",
+      "note": "The seller remains responsible for product rights, EULA, and fulfillment."
+    },
+    {
+      "area": "Bookkeeping and income tax",
+      "owner": "merchant",
+      "note": "The seller accounts for distributions and its business obligations."
+    }
   ],
-  "strengths": ["Long-standing software commerce focus", "Sales-assisted implementation", "Bundled global payment and subscription operations"],
-  "limitations": ["No universal public rate", "Requires underwriting and often sales contact", "Can be heavier than creator-first products"],
-  "bestFor": ["Established software vendors", "Games and downloadable software", "Teams valuing implementation support"],
-  "avoidIf": ["You need instant self-serve onboarding", "You require a public price before speaking to sales"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "Long-standing software commerce focus",
+    "Sales-assisted implementation",
+    "Bundled global payment and subscription operations"
+  ],
+  "limitations": [
+    "No universal public rate",
+    "Requires underwriting and often sales contact",
+    "Can be heavier than creator-first products"
+  ],
+  "bestFor": [
+    "Established software vendors",
+    "Games and downloadable software",
+    "Teams valuing implementation support"
+  ],
+  "avoidIf": [
+    "You need instant self-serve onboarding",
+    "You require a public price before speaking to sales"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-29",
   "sources": [
-    { "id": "pricing", "label": "FastSpring pricing", "url": "https://fastspring.com/pricing/", "reviewedOn": "2026-07-29" },
-    { "id": "mor", "label": "FastSpring terms and MoR relationship", "url": "https://developer.fastspring.com/docs/about-terms-conditions-and-eulas", "reviewedOn": "2026-07-29" },
-    { "id": "products", "label": "FastSpring product management and prohibited sales", "url": "https://developer.fastspring.com/docs/manage-your-products", "reviewedOn": "2026-07-29" },
-    { "id": "currencies", "label": "FastSpring currencies and conversions", "url": "https://developer.fastspring.com/docs/currencies-and-conversions", "reviewedOn": "2026-07-30" },
-    { "id": "payouts", "label": "FastSpring payout currencies and FX fees", "url": "https://developer.fastspring.com/docs/receive-payouts", "reviewedOn": "2026-07-30" }
+    {
+      "id": "pricing",
+      "label": "FastSpring pricing",
+      "url": "https://fastspring.com/pricing/",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "mor",
+      "label": "FastSpring terms and MoR relationship",
+      "url": "https://developer.fastspring.com/docs/about-terms-conditions-and-eulas",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "products",
+      "label": "FastSpring product management and prohibited sales",
+      "url": "https://developer.fastspring.com/docs/manage-your-products",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "currencies",
+      "label": "FastSpring currencies and conversions",
+      "url": "https://developer.fastspring.com/docs/currencies-and-conversions",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "payouts",
+      "label": "FastSpring payout currencies and FX fees",
+      "url": "https://developer.fastspring.com/docs/receive-payouts",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

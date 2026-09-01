@@ -48,7 +48,7 @@
     },
     "financials": {
       "scope": "company",
-      "period": "2025–2026 company disclosures",
+      "period": "2025\u20132026 company disclosures",
       "headline": "Private-company operating metrics, not audited public accounts",
       "metrics": [
         {
@@ -118,13 +118,13 @@
     "headquarters": "Remote-first team across Europe",
     "leaders": [
       {
-        "name": "Birk Jernström",
+        "name": "Birk Jernstr\u00f6m",
         "title": "Founder",
         "context": "Founder and principal public company voice at the July 2026 review."
       }
     ],
     "founders": [
-      "Birk Jernström"
+      "Birk Jernstr\u00f6m"
     ],
     "team": {
       "value": "Small remote team",
@@ -646,27 +646,31 @@
     },
     "financials": {
       "scope": "company",
-      "period": "Fiscal year 2025",
-      "headline": "$33.2B net revenue and $1.79T total payment volume",
+      "period": "Second quarter 2026",
+      "headline": "$8.7B net revenues and $486.4B total payment volume",
       "metrics": [
         {
-          "label": "Net revenue",
-          "value": "$33.2B"
+          "label": "Net revenues",
+          "value": "$8.7B"
         },
         {
           "label": "Total payment volume",
-          "value": "$1.79T"
+          "value": "$486.4B"
         },
         {
           "label": "GAAP operating income",
-          "value": "$6.1B"
+          "value": "$1.43B"
+        },
+        {
+          "label": "GAAP EPS",
+          "value": "$1.25"
         },
         {
           "label": "Active accounts",
           "value": "439M"
         }
       ],
-      "note": "These are PayPal Holdings consolidated results. They are not revenue, profit, or volume figures for PayPal Checkout alone."
+      "note": "These are PayPal Holdings consolidated 2Q 2026 results ($8,682M net revenues; $486,448M TPV; $1,427M GAAP operating income). They are not revenue, profit, or volume figures for PayPal Checkout alone. CEO commentary cited momentum in Venmo and Braintree."
     },
     "events": [
       {
@@ -680,28 +684,32 @@
       {
         "date": "2026-03",
         "label": "Enrique Lores became president and CEO."
+      },
+      {
+        "date": "2026-07-28",
+        "label": "PayPal reported second-quarter 2026 results."
       }
     ],
-    "lastReviewed": "2026-07-29",
-    "nextReview": "2026-08-27",
+    "lastReviewed": "2026-09-01",
+    "nextReview": "2026-10-27",
     "sources": [
       {
         "id": "paypal-ceo",
         "label": "PayPal Enrique Lores CEO appointment",
         "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
-        "reviewedOn": "2026-07-29"
+        "reviewedOn": "2026-09-01"
       },
       {
-        "id": "paypal-2025",
-        "label": "PayPal 2025 earnings release filed with the SEC",
-        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
-        "reviewedOn": "2026-07-29"
+        "id": "paypal-2q-2026-newsroom",
+        "label": "PayPal reports second-quarter 2026 results",
+        "url": "https://newsroom.paypal-corp.com/2026-07-28-PayPal-Reports-Second-Quarter-2026-Results",
+        "reviewedOn": "2026-09-01"
       },
       {
-        "id": "paypal-10k",
-        "label": "PayPal 2025 Form 10-K",
-        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000024/pypl-20251231.htm",
-        "reviewedOn": "2026-07-29"
+        "id": "paypal-2q-2026-sec",
+        "label": "PayPal 2Q 2026 earnings release filed with the SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000080/pypl2q-26earningsrelease.htm",
+        "reviewedOn": "2026-09-01"
       }
     ]
   },
@@ -741,23 +749,23 @@
     },
     "financials": {
       "scope": "parent-company",
-      "period": "PayPal fiscal year 2025",
+      "period": "PayPal second quarter 2026",
       "headline": "Braintree financials are included in PayPal's consolidated reporting",
       "metrics": [
         {
-          "label": "PayPal net revenue",
-          "value": "$33.2B"
+          "label": "PayPal net revenues",
+          "value": "$8.7B"
         },
         {
           "label": "PayPal total payment volume",
-          "value": "$1.79T"
+          "value": "$486.4B"
         },
         {
           "label": "Braintree revenue",
           "value": "Not separately disclosed"
         }
       ],
-      "note": "PayPal's consolidated totals cover its full portfolio. They cannot be used as Braintree product-level performance."
+      "note": "PayPal's consolidated 2Q 2026 totals cover its full portfolio, and CEO commentary cited Braintree momentum. They cannot be used as Braintree product-level performance."
     },
     "events": [
       {
@@ -773,26 +781,26 @@
         "label": "eBay completed the Braintree acquisition for PayPal for approximately $800M."
       }
     ],
-    "lastReviewed": "2026-07-29",
-    "nextReview": "2026-08-27",
+    "lastReviewed": "2026-09-01",
+    "nextReview": "2026-10-27",
     "sources": [
       {
         "id": "braintree-acquisition",
         "label": "eBay Braintree acquisition completion",
         "url": "https://investors.ebayinc.com/investor-news/press-release-details/2013/EBay-Inc-Completes-Acquisition-of-Global-Payments-Innovator-Braintree/default.aspx",
-        "reviewedOn": "2026-07-29"
+        "reviewedOn": "2026-09-01"
       },
       {
         "id": "paypal-ceo",
         "label": "PayPal 2026 CEO appointment",
         "url": "https://investor.pypl.com/news-and-events/news-details/2026/PayPal-Appoints-Enrique-Lores-as-Chief-Executive-Officer-and-David-W--Dorman-as-Independent-Board-Chair/default.aspx",
-        "reviewedOn": "2026-07-29"
+        "reviewedOn": "2026-09-01"
       },
       {
-        "id": "paypal-2025",
-        "label": "PayPal 2025 earnings release filed with the SEC",
-        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000021/pypl4q-25earningsrelease.htm",
-        "reviewedOn": "2026-07-29"
+        "id": "paypal-2q-2026-sec",
+        "label": "PayPal 2Q 2026 earnings release filed with the SEC",
+        "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391726000080/pypl2q-26earningsrelease.htm",
+        "reviewedOn": "2026-09-01"
       }
     ]
   },
@@ -813,12 +821,12 @@
       {
         "name": "Pieter van der Does",
         "title": "Cofounder and Co-Chief Executive Officer",
-        "context": "Current co-CEO at the July 2026 review."
+        "context": "Current co-CEO at the September 2026 review."
       },
       {
         "name": "Ingo Uytdehaage",
         "title": "Co-Chief Executive Officer",
-        "context": "Current co-CEO at the July 2026 review."
+        "context": "Current co-CEO at the September 2026 review."
       }
     ],
     "founders": [
@@ -838,27 +846,31 @@
     },
     "financials": {
       "scope": "company",
-      "period": "Fiscal year 2025",
-      "headline": "€2.36B net revenue and €1.25B EBITDA",
+      "period": "First half 2026",
+      "headline": "\u20ac1.30B net revenue and \u20ac641.5M EBITDA",
       "metrics": [
         {
           "label": "Net revenue",
-          "value": "€2.36B"
+          "value": "\u20ac1,302.9M"
+        },
+        {
+          "label": "Net revenue growth",
+          "value": "19% YoY (21% constant currency)"
         },
         {
           "label": "Processed volume",
-          "value": "€1.39T"
+          "value": "\u20ac803.8B"
         },
         {
           "label": "EBITDA",
-          "value": "€1.25B"
+          "value": "\u20ac641.5M"
         },
         {
           "label": "EBITDA margin",
-          "value": "53%"
+          "value": "49% (50% excluding one-time transaction costs)"
         }
       ],
-      "note": "Adyen labels net revenue, EBITDA, and free-cash-flow conversion as non-IFRS measures and explains them in its financial statements."
+      "note": "Adyen H1 2026 figures from the August 13, 2026 release. Net revenue growth of 21\u201323% for FY 2026 is guidance only and is not treated as a realized metric here. Net revenue and EBITDA are non-IFRS measures as explained in Adyen's statements."
     },
     "events": [
       {
@@ -872,28 +884,40 @@
       {
         "date": "2026-03",
         "label": "Adyen published its 2025 annual report."
-      }
-    ],
-    "lastReviewed": "2026-07-29",
-    "nextReview": "2026-08-27",
-    "sources": [
-      {
-        "id": "adyen-2025",
-        "label": "Adyen H2 and full-year 2025 results",
-        "url": "https://www.adyen.com/press-and-media/adyen-publishes-h2-2025-financial-results-3pgu2",
-        "reviewedOn": "2026-07-29"
       },
       {
-        "id": "adyen-report",
-        "label": "Adyen 2025 annual report announcement",
-        "url": "https://www.adyen.com/press-and-media/adyen-publishes-2025-annual-report",
-        "reviewedOn": "2026-07-29"
+        "date": "2026-07-01",
+        "label": "Adyen closed the Talon.One and Orb acquisitions and appointed Gayathri Rajan as Chief Product Officer."
+      },
+      {
+        "date": "2026-08-13",
+        "label": "Adyen published H1 2026 financial results."
+      },
+      {
+        "date": "2026-09-01",
+        "label": "Hwa Tsao became interim CFO after Ethan Tandowsky left on August 31, 2026."
+      }
+    ],
+    "lastReviewed": "2026-09-01",
+    "nextReview": "2026-09-30",
+    "sources": [
+      {
+        "id": "adyen-h1-2026",
+        "label": "Adyen H1 2026 financial results",
+        "url": "https://www.adyen.com/press-and-media/adyen-publishes-h1-2026-financial-results-3wjne",
+        "reviewedOn": "2026-09-01"
+      },
+      {
+        "id": "adyen-acquisitions-leadership",
+        "label": "Adyen closes Talon.One and Orb; leadership updates",
+        "url": "https://www.adyen.com/press-and-media/adyen-closes-talonone-and-orb-acquisitions-announces-leadership-updates",
+        "reviewedOn": "2026-09-01"
       },
       {
         "id": "adyen-listing",
         "label": "Adyen listing and company history announcement",
         "url": "https://www.adyen.com/press-and-media/adyen-announces-intention-to-launch-an-offering-and-listing-of-its-shares-on-euronext-amsterdam/",
-        "reviewedOn": "2026-07-29"
+        "reviewedOn": "2026-09-01"
       }
     ]
   },
@@ -912,7 +936,7 @@
     "headquarters": "Amsterdam, Netherlands",
     "leaders": [
       {
-        "name": "Koen Köppen",
+        "name": "Koen K\u00f6ppen",
         "title": "Chief Executive Officer",
         "context": "Current CEO at the July 2026 review."
       },
@@ -946,11 +970,11 @@
     "financials": {
       "scope": "company",
       "period": "Fiscal year 2025",
-      "headline": "€147M net revenue before interest, up 29%",
+      "headline": "\u20ac147M net revenue before interest, up 29%",
       "metrics": [
         {
           "label": "Net revenue before interest",
-          "value": "€147M"
+          "value": "\u20ac147M"
         },
         {
           "label": "Year-over-year growth",
@@ -1021,7 +1045,7 @@
       {
         "name": "Jack Dorsey",
         "title": "Block Head, Chair, and Cofounder",
-        "context": "Leads Block at the July 2026 review."
+        "context": "Leads Block at the September 2026 review."
       },
       {
         "name": "Amrita Ahuja",
@@ -1046,27 +1070,31 @@
     },
     "financials": {
       "scope": "product",
-      "period": "Fiscal year 2025",
-      "headline": "Square segment generated $3.94B gross profit",
+      "period": "Second quarter 2026",
+      "headline": "Square segment generated $1.16B gross profit",
       "metrics": [
         {
           "label": "Square segment revenue",
-          "value": "$8.45B"
+          "value": "$2.504B"
         },
         {
           "label": "Square segment gross profit",
-          "value": "$3.94B"
+          "value": "$1.16B"
         },
         {
-          "label": "Square gross-profit growth",
-          "value": "9%"
+          "label": "Square GPV",
+          "value": "$72.848B"
+        },
+        {
+          "label": "Square GPV growth",
+          "value": "13%"
         },
         {
           "label": "Block total gross profit",
-          "value": "$10.36B"
+          "value": "$3.17B"
         }
       ],
-      "note": "Block reports a Square segment, making these figures more relevant than parent totals, but the segment contains more than online payment processing."
+      "note": "Block Q2 2026 figures from the August 5, 2026 results materials ($ in millions: Square revenue $2,504; Square gross profit $1,160; Square GPV $72,848; Block gross profit $3,166). The Square segment contains more than online payment processing. Separately, Block's Q2 2026 Form 10-Q accrued an estimated $526 million loss related to the ongoing DOJ inquiry; reasonably possible losses could exceed the accrual and be material. A July 2026 multi-state AG Cash App resolution for an immaterial amount is a separate item."
     },
     "events": [
       {
@@ -1084,28 +1112,38 @@
       {
         "date": "2025-01",
         "label": "Block changed its NYSE ticker from SQ to XYZ."
+      },
+      {
+        "date": "2026-08-05",
+        "label": "Block announced second-quarter 2026 results."
       }
     ],
-    "lastReviewed": "2026-07-29",
-    "nextReview": "2026-08-27",
+    "lastReviewed": "2026-09-01",
+    "nextReview": "2026-11-03",
     "sources": [
       {
-        "id": "block-10k",
-        "label": "Block 2025 Form 10-K",
-        "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828026012254/xyz-20251231.htm",
-        "reviewedOn": "2026-07-29"
+        "id": "block-q2-2026-ir",
+        "label": "Block announces second-quarter 2026 results",
+        "url": "https://investors.block.xyz/investor-news/news-details/2026/Block-Announces-Second-Quarter-2026-Results/default.aspx",
+        "reviewedOn": "2026-09-01"
+      },
+      {
+        "id": "block-q2-2026-letter",
+        "label": "Block Q2 2026 shareholder letter",
+        "url": "https://s29.q4cdn.com/628966176/files/doc_financials/2026/q2/Q2-2026-Shareholder-Letter.pdf",
+        "reviewedOn": "2026-09-01"
+      },
+      {
+        "id": "block-q2-2026-10q",
+        "label": "Block Form 10-Q for quarter ended June 30, 2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828026053368/xyz-20260630.htm",
+        "reviewedOn": "2026-09-01"
       },
       {
         "id": "block-leadership",
         "label": "Block executive leadership",
         "url": "https://investors.block.xyz/governance/leadership/default.aspx",
-        "reviewedOn": "2026-07-29"
-      },
-      {
-        "id": "block-name",
-        "label": "Square corporate name change to Block",
-        "url": "https://block.xyz/inside/press-release-block",
-        "reviewedOn": "2026-07-29"
+        "reviewedOn": "2026-09-01"
       }
     ]
   },
@@ -1362,16 +1400,16 @@
           "label": "Funding",
           "value": "$1.8B"
         },
-      {
-        "label": "Valuation",
-        "value": "$11B"
-      },
-      {
-        "label": "Annualized revenue",
-        "value": "$1B+ company-reported"
-      }
-    ],
-    "note": "The annualized-revenue, volume, funding, and valuation figures are company-reported and unaudited; they do not disclose current profit, cash burn, or product-level economics."
+        {
+          "label": "Valuation",
+          "value": "$11B"
+        },
+        {
+          "label": "Annualized revenue",
+          "value": "$1B+ company-reported"
+        }
+      ],
+      "note": "The annualized-revenue, volume, funding, and valuation figures are company-reported and unaudited; they do not disclose current profit, cash burn, or product-level economics."
     },
     "events": [
       {

@@ -14,32 +14,76 @@
     "monthly": 0,
     "currency": "USD",
     "assumptions": "US standard domestic card or third-party wallet. Approval is required and regional rates differ.",
-    "sourceIds": ["pricing"]
+    "sourceIds": [
+      "pricing"
+    ]
   },
   "sellerCoverage": "Availability and onboarding are market-specific and subject to PayPal application and approval.",
   "buyerCoverage": "Global card and PayPal acceptance depends on merchant location, currency, and enabled methods.",
   "products": "Broad eligible ecommerce and subscription businesses subject to PayPal policies and underwriting.",
   "features": {
-    "checkout": "Drop-in UI, hosted fields, GraphQL and SDK integrations.",
+    "checkout": "Hosted Fields, GraphQL, and Braintree Android/iOS/JS SDKs. The Drop-in SDK is deprecated effective 2026-09-01 (no new features); payment processing remains supported until 2027-09-01 and becomes unsupported starting 2027-09-01.",
     "subscriptions": "Vaulting and recurring billing capabilities.",
     "invoicing": "Not primarily positioned as an invoicing suite; pair with merchant billing workflows as needed.",
     "paymentMethods": "Cards, PayPal, Venmo where eligible, Apple Pay, Google Pay, and regional methods.",
     "payouts": "Merchant settlement under the applicable Braintree and PayPal account terms."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "Braintree provides payment services; the business sells the product." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "The merchant retains tax responsibility." },
-    { "area": "Fraud and chargebacks", "owner": "shared", "note": "Optional protection tools and dispute workflows exist, with eligibility and fees." },
-    { "area": "Customer and product support", "owner": "merchant", "note": "The merchant supports fulfillment, billing questions, and products." }
+    {
+      "area": "Legal seller and customer contract",
+      "owner": "merchant",
+      "note": "Braintree provides payment services; the business sells the product."
+    },
+    {
+      "area": "Indirect-tax registration, filing, and remittance",
+      "owner": "merchant",
+      "note": "The merchant retains tax responsibility."
+    },
+    {
+      "area": "Fraud and chargebacks",
+      "owner": "shared",
+      "note": "Optional protection tools and dispute workflows exist, with eligibility and fees."
+    },
+    {
+      "area": "Customer and product support",
+      "owner": "merchant",
+      "note": "The merchant supports fulfillment, billing questions, and products."
+    }
   ],
-  "strengths": ["PayPal and card acceptance in one developer platform", "Vaulting and recurring payments", "Enterprise integration options"],
-  "limitations": ["Application and approval required", "Regional availability and pricing differ", "The merchant still owns tax and support operations"],
-  "bestFor": ["Businesses needing PayPal plus cards", "Established recurring-payment products", "Teams wanting lower-level payment control"],
-  "avoidIf": ["You want instant universal self-service", "You want the provider to become legal seller"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "PayPal and card acceptance in one developer platform",
+    "Vaulting and recurring payments",
+    "Enterprise integration options"
+  ],
+  "limitations": [
+    "Application and approval required",
+    "Regional availability and pricing differ",
+    "Drop-in SDK deprecated from 2026-09-01 with support ending 2027-09-01; migrate to native Braintree SDKs",
+    "The merchant still owns tax and support operations"
+  ],
+  "bestFor": [
+    "Businesses needing PayPal plus cards",
+    "Established recurring-payment products",
+    "Teams wanting lower-level payment control"
+  ],
+  "avoidIf": [
+    "You want instant universal self-service",
+    "You want the provider to become legal seller"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-30",
   "sources": [
-    { "id": "pricing", "label": "PayPal Braintree fees", "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees", "reviewedOn": "2026-07-29" },
-    { "id": "docs", "label": "Braintree developer documentation", "url": "https://developer.paypal.com/braintree/docs/start/overview", "reviewedOn": "2026-07-29" }
+    {
+      "id": "pricing",
+      "label": "PayPal Braintree fees",
+      "url": "https://www.paypal.com/us/enterprise/paypal-braintree-fees",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "docs",
+      "label": "Braintree developer documentation",
+      "url": "https://developer.paypal.com/braintree/docs/start/overview",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

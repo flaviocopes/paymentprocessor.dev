@@ -14,7 +14,9 @@
     "monthly": null,
     "currency": "USD",
     "assumptions": "No single universal checkout rate. Obtain country, method, volume, and acquiring terms.",
-    "sourceIds": ["pricing"]
+    "sourceIds": [
+      "pricing"
+    ]
   },
   "sellerCoverage": "Adyen onboards eligible businesses in supported regions through a sales and underwriting process.",
   "buyerCoverage": "Global acquiring and payment-method coverage varies by merchant entity, market, and integration.",
@@ -27,19 +29,60 @@
     "payouts": "Settlement schedules and currencies are defined in merchant terms."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains merchant and seller." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Payment acquiring does not transfer product-sale tax responsibility." },
-    { "area": "Fraud and disputes", "owner": "shared", "note": "Adyen provides risk and dispute tools while the merchant owns policies and exposure." },
-    { "area": "Billing and product support", "owner": "merchant", "note": "The merchant builds or integrates these operating layers." }
+    {
+      "area": "Legal seller and customer contract",
+      "owner": "merchant",
+      "note": "The business remains merchant and seller."
+    },
+    {
+      "area": "Indirect-tax registration, filing, and remittance",
+      "owner": "merchant",
+      "note": "Payment acquiring does not transfer product-sale tax responsibility."
+    },
+    {
+      "area": "Fraud and disputes",
+      "owner": "shared",
+      "note": "Adyen provides risk and dispute tools while the merchant owns policies and exposure."
+    },
+    {
+      "area": "Billing and product support",
+      "owner": "merchant",
+      "note": "The merchant builds or integrates these operating layers."
+    }
   ],
-  "strengths": ["Unified online and in-person acquiring", "Strong international and local-payment coverage", "Enterprise control and reporting"],
-  "limitations": ["Sales-led rather than indie self-serve", "No simple universal public rate", "Often requires separate SaaS billing and tax operations"],
-  "bestFor": ["Large international businesses", "Omnichannel commerce", "Platforms needing acquiring control"],
-  "avoidIf": ["You are an early creator seeking instant setup", "You want bundled MoR responsibility"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "Unified online and in-person acquiring",
+    "Strong international and local-payment coverage",
+    "Enterprise control and reporting"
+  ],
+  "limitations": [
+    "Sales-led rather than indie self-serve",
+    "No simple universal public rate",
+    "Often requires separate SaaS billing and tax operations"
+  ],
+  "bestFor": [
+    "Large international businesses",
+    "Omnichannel commerce",
+    "Platforms needing acquiring control"
+  ],
+  "avoidIf": [
+    "You are an early creator seeking instant setup",
+    "You want bundled MoR responsibility"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-30",
   "sources": [
-    { "id": "pricing", "label": "Adyen pricing", "url": "https://www.adyen.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "methods", "label": "Adyen payment methods", "url": "https://www.adyen.com/payment-methods", "reviewedOn": "2026-07-29" }
+    {
+      "id": "pricing",
+      "label": "Adyen pricing",
+      "url": "https://www.adyen.com/pricing",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "methods",
+      "label": "Adyen payment methods",
+      "url": "https://www.adyen.com/payment-methods",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

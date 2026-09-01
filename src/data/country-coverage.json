@@ -205,18 +205,18 @@
         "IE",
         "DE",
         "NL",
-        "FR"
+        "FR",
+        "AU"
       ],
       "limited": [],
       "unavailable": [
-        "AU",
         "IN",
         "SG",
         "BR",
         "JP"
       ],
-      "note": "Stripe lists seven seller countries for this public preview. Other countries shown here are not currently listed.",
-      "source": "https://docs.stripe.com/payments/managed-payments/how-it-works",
+      "note": "Managed Payments is generally available to businesses in Stripe's documented supported locations (39 countries in the April 22, 2026 GA changelog, including Australia). Other sample countries shown here are not currently listed among the documented locations used for this checker.",
+      "source": "https://docs.stripe.com/payments/managed-payments/eligibility",
       "buyer": {
         "documented": ["US", "CA", "GB", "IE", "DE", "NL", "FR", "AU", "IN", "SG", "BR", "JP"],
         "limited": [],

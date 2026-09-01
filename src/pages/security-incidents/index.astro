@@ -56,7 +56,7 @@ const formatLongDate = (date: string) => new Intl.DateTimeFormat("en", {
         <div><dt>Records</dt><dd>{incidents.length}</dd><small>verified in this scan</small></div>
         <div><dt>Catalog-linked</dt><dd>{catalogLinkedCount}</dd><small>provider or integration</small></div>
         <div><dt>Window</dt><dd>6 mo</dd><small>{formatDate(incidentTracker.windowStart)}–{formatDate(incidentTracker.windowEnd)}</small></div>
-        <div><dt>Reviewed</dt><dd>28 Aug</dd><small>next review {formatDate(incidentTracker.nextReview)}</small></div>
+        <div><dt>Reviewed</dt><dd>{formatDate(incidentTracker.lastReviewed)}</dd><small>next review {formatDate(incidentTracker.nextReview)}</small></div>
       </dl>
     </div>
   </section>
@@ -73,7 +73,7 @@ const formatLongDate = (date: string) => new Intl.DateTimeFormat("en", {
     <div class="shell">
       <div class="incident-ledger-heading">
         <div>
-          <span class="eyebrow">March–August 2026 scan</span>
+          <span class="eyebrow">March–September 2026 scan</span>
           <h2>Publicly documented records.</h2>
         </div>
         <p>The date shown is the incident date when known. Otherwise, it is the first reliable disclosure or advisory date.</p>

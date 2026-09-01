@@ -2,6 +2,19 @@
 
 Material changes to paymentprocessor.dev are recorded here using calendar dates.
 
+## 2026-09-01
+
+### Changed
+
+- Marked Stripe Managed Payments as generally available (growth stage). Removed public-preview language from the profile, calculator confidence, Payments comparison, migration summaries, and country-coverage note. Seller eligibility remains limited to documented business locations (~39 countries, including Australia) and digital-product categories. First-party tax-country copy still disagrees (“75+” / “more than 75” vs “more than 80”); both figures are labeled where mentioned.
+- Documented Gumroad’s automatic high-volume direct-sale break (5% + $0.50 after $20,000 paid sales in a calendar month) in pricing assumptions and calculator unmodeled fees; kept the modeled 12.9% + $0.80 standard-card formula.
+- Noted Lemon Squeezy’s Sold through Link, LLC (f/k/a Lemon Squeezy LLC) legal naming and the blog’s Managed Payments early-access / migration direction, without calling Lemon Squeezy deprecated.
+- Recorded Braintree Drop-in SDK deprecation effective 2026-09-01, with processing support through 2027-09-01.
+- Clarified Square Free non-API online pricing (3.3% + 30¢) versus the modeled API / Plus / Premium 2.9% + $0.30 rate.
+- Refreshed overdue company intelligence for Adyen (H1 2026; Talon.One and Orb closings; interim CFO), Block / Square (Q2 2026 Square metrics; DOJ accrual note), PayPal (2Q 2026), and Braintree parent metrics.
+- Rechecked the security incident tracker through 2026-09-01: no new catalog-provider platform cyber incidents after 2026-08-28. Skipped the July 2026 Cash App AG settlement as out of inclusion scope (consumer-protection / fraud-controls settlement, not a cyber incident). Dodo Metabase status unchanged after recheck.
+- Bumped lastReviewed / source review dates and calculator reviewedOn across the published provider catalog after the 2026-09-01 pricing recheck; modeled percentages and fixed fees are unchanged.
+
 ## 2026-08-28
 
 ### Added

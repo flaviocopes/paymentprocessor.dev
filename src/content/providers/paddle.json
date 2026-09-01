@@ -14,7 +14,10 @@
     "monthly": 0,
     "currency": "USD",
     "assumptions": "Public pay-as-you-go checkout rate. Terms permit chargeback or pre-chargeback fees up to $20 in USD and optional Checkout Recovery costs 10% of recovered value. Other products can use custom terms.",
-    "sourceIds": ["pricing", "terms"]
+    "sourceIds": [
+      "pricing",
+      "terms"
+    ]
   },
   "currencySupport": {
     "presentment": "Prices and charges in 33 supported payment currencies, with fixed currency prices and country overrides.",
@@ -22,13 +25,32 @@
     "settlement": "One balance currency can be USD, EUR, GBP, AUD, or CAD; bank payouts support a wider 13-currency list.",
     "buyerFx": "Normally none when the card currency matches the transaction currency; the buyer's issuer can still classify a purchase as cross-border.",
     "merchantFx": "Payment-to-balance FX is itemized but its margin is not published as one universal rate. A balance-to-payout mismatch can add up to 1.5%, plus possible SWIFT or bank fees.",
-    "moneyPath": "buyer currency → balance currency → payout currency",
+    "moneyPath": "buyer currency \u2192 balance currency \u2192 payout currency",
     "marketExamples": [
-      { "market": "us", "path": "USD charge → USD balance → USD payout", "conversions": "0", "cost": "Choose USD as the Paddle balance and payout currency. Standard transaction and payout fees remain." },
-      { "market": "eu", "path": "EUR charge → EUR balance → EUR payout", "conversions": "0", "cost": "Choose EUR as the Paddle balance and payout currency. Standard transaction and payout fees remain." },
-      { "market": "other", "path": "CHF charge → EUR balance → CHF payout", "conversions": "2", "cost": "Payment-to-balance FX is itemized at no universal public rate; balance-to-CHF payout can add up to 1.5%, plus bank fees." }
+      {
+        "market": "us",
+        "path": "USD charge \u2192 USD balance \u2192 USD payout",
+        "conversions": "0",
+        "cost": "Choose USD as the Paddle balance and payout currency. Standard transaction and payout fees remain."
+      },
+      {
+        "market": "eu",
+        "path": "EUR charge \u2192 EUR balance \u2192 EUR payout",
+        "conversions": "0",
+        "cost": "Choose EUR as the Paddle balance and payout currency. Standard transaction and payout fees remain."
+      },
+      {
+        "market": "other",
+        "path": "CHF charge \u2192 EUR balance \u2192 CHF payout",
+        "conversions": "2",
+        "cost": "Payment-to-balance FX is itemized at no universal public rate; balance-to-CHF payout can add up to 1.5%, plus bank fees."
+      }
     ],
-    "sourceIds": ["currencies", "payout-currency", "payout-report"]
+    "sourceIds": [
+      "currencies",
+      "payout-currency",
+      "payout-report"
+    ]
   },
   "sellerCoverage": "Software businesses are supported in most countries, subject to Paddle's unsupported-country and risk policies.",
   "buyerCoverage": "Paddle documents sales in more than 200 countries and territories, with sanctioned and unsupported locations blocked.",
@@ -41,23 +63,84 @@
     "payouts": "Net seller payouts on Paddle's schedule after taxes, refunds, and fees."
   },
   "responsibilities": [
-    { "area": "Indirect-tax calculation, registration, filing, and remittance", "owner": "provider", "note": "Paddle is the seller to the buyer for supported transactions." },
-    { "area": "Fraud and chargebacks", "owner": "provider", "note": "Included in the MoR service, subject to seller cooperation and policies." },
-    { "area": "Transaction and billing support", "owner": "shared", "note": "Paddle supports billing issues; the seller remains responsible for the product and customer relationship." },
-    { "area": "Bookkeeping and income tax", "owner": "merchant", "note": "The seller must account for Paddle payouts and its own business taxes." }
+    {
+      "area": "Indirect-tax calculation, registration, filing, and remittance",
+      "owner": "provider",
+      "note": "Paddle is the seller to the buyer for supported transactions."
+    },
+    {
+      "area": "Fraud and chargebacks",
+      "owner": "provider",
+      "note": "Included in the MoR service, subject to seller cooperation and policies."
+    },
+    {
+      "area": "Transaction and billing support",
+      "owner": "shared",
+      "note": "Paddle supports billing issues; the seller remains responsible for the product and customer relationship."
+    },
+    {
+      "area": "Bookkeeping and income tax",
+      "owner": "merchant",
+      "note": "The seller must account for Paddle payouts and its own business taxes."
+    }
   ],
-  "strengths": ["Mature SaaS subscription tooling", "Public pay-as-you-go rate with custom enterprise terms", "Broad documented buyer coverage"],
-  "limitations": ["Restricted to approved software and digital-product models", "Conditional dispute and optional recovery fees sit outside the headline rate", "Migration and invoicing can require provider involvement"],
-  "bestFor": ["Subscription SaaS", "Established software companies", "Teams wanting tax and billing operations bundled"],
-  "avoidIf": ["You sell physical goods or unsupported services", "You need to remain the seller on every buyer record"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "Mature SaaS subscription tooling",
+    "Public pay-as-you-go rate with custom enterprise terms",
+    "Broad documented buyer coverage"
+  ],
+  "limitations": [
+    "Restricted to approved software and digital-product models",
+    "Conditional dispute and optional recovery fees sit outside the headline rate",
+    "Migration and invoicing can require provider involvement"
+  ],
+  "bestFor": [
+    "Subscription SaaS",
+    "Established software companies",
+    "Teams wanting tax and billing operations bundled"
+  ],
+  "avoidIf": [
+    "You sell physical goods or unsupported services",
+    "You need to remain the seller on every buyer record"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-29",
   "sources": [
-    { "id": "pricing", "label": "Paddle pricing", "url": "https://www.paddle.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "coverage", "label": "Paddle supported countries", "url": "https://developer.paddle.com/concepts/sell/supported-countries-locales/", "reviewedOn": "2026-07-29" },
-    { "id": "terms", "label": "Paddle Master Services Agreement", "url": "https://www.paddle.com/legal/terms", "reviewedOn": "2026-07-29" },
-    { "id": "currencies", "label": "Paddle supported currencies", "url": "https://developer.paddle.com/concepts/sell/supported-currencies/", "reviewedOn": "2026-07-30" },
-    { "id": "payout-currency", "label": "Paddle local-currency payouts", "url": "https://www.paddle.com/help/manage/get-paid/can-i-be-paid-in-my-local-currency", "reviewedOn": "2026-07-30" },
-    { "id": "payout-report", "label": "Paddle payout reconciliation fields", "url": "https://developer.paddle.com/build/reports/payout-reconciliation/", "reviewedOn": "2026-07-30" }
+    {
+      "id": "pricing",
+      "label": "Paddle pricing",
+      "url": "https://www.paddle.com/pricing",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "coverage",
+      "label": "Paddle supported countries",
+      "url": "https://developer.paddle.com/concepts/sell/supported-countries-locales/",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "terms",
+      "label": "Paddle Master Services Agreement",
+      "url": "https://www.paddle.com/legal/terms",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "currencies",
+      "label": "Paddle supported currencies",
+      "url": "https://developer.paddle.com/concepts/sell/supported-currencies/",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "payout-currency",
+      "label": "Paddle local-currency payouts",
+      "url": "https://www.paddle.com/help/manage/get-paid/can-i-be-paid-in-my-local-currency",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "payout-report",
+      "label": "Paddle payout reconciliation fields",
+      "url": "https://developer.paddle.com/build/reports/payout-reconciliation/",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

@@ -1,8 +1,8 @@
 {
   "windowStart": "2026-03-01",
-  "windowEnd": "2026-08-28",
-  "lastReviewed": "2026-08-28",
-  "nextReview": "2026-09-28",
+  "windowEnd": "2026-09-01",
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-10-01",
   "incidents": [
     {
       "id": "dodo-payments-metabase-2026-08",
@@ -25,13 +25,13 @@
           "label": "Dodo Payments incident report",
           "url": "https://dodopayments.com/blogs/security-incident-internal-analytics-system",
           "sourceType": "Provider disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "NVD record for CVE-2026-72898",
           "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-72898",
           "sourceType": "Government vulnerability record",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -56,13 +56,13 @@
           "label": "BTCPay Server security advisory",
           "url": "https://blog.btcpayserver.org/security-advisory-btcpay-server-2-4-2/",
           "sourceType": "Project disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "BTCPay Server response update",
           "url": "https://blog.btcpayserver.org/btcpay-server-security-incident-response-and-next-steps/",
           "sourceType": "Project disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -87,7 +87,7 @@
           "label": "Triple-A security incident postmortem",
           "url": "https://www.triple-a.io/blog/blog-incident-post-mortem",
           "sourceType": "Provider disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -112,13 +112,13 @@
           "label": "Nayax information-security update",
           "url": "https://ir.nayax.com/news/news-details/2026/Nayax-information-security-incident-update/default.aspx",
           "sourceType": "Provider disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "Nayax Form 6-K incident update",
           "url": "https://www.sec.gov/Archives/edgar/data/1901279/000117891326003480/zk2635683.htm",
           "sourceType": "Regulatory filing",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -143,13 +143,13 @@
           "label": "NVD record for CVE-2026-59805",
           "url": "https://nvd.nist.gov/vuln/detail/CVE-2026-59805",
           "sourceType": "Government vulnerability record",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "Gumroad patched release",
           "url": "https://github.com/antiwork/gumroad/releases/tag/v2026.07.06.2",
           "sourceType": "Project release",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -174,19 +174,19 @@
           "label": "Payment-status forgery advisory",
           "url": "https://github.com/Sylius/MolliePlugin/security/advisories/GHSA-rc52-c4hv-w89p",
           "sourceType": "Project security advisory",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "Customer-data exposure advisory",
           "url": "https://github.com/Sylius/MolliePlugin/security/advisories/GHSA-x83g-979r-f5fh",
           "sourceType": "Project security advisory",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         },
         {
           "label": "Sylius security update",
           "url": "https://sylius.com/blog/security/mollie-plugin-security-update-2026/",
           "sourceType": "Project disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -211,7 +211,7 @@
           "label": "Finsiders Brasil report with MagaluPay statement",
           "url": "https://finsidersbrasil.com.br/noticias-sobre-fintechs/ataque-ao-magalupay-bloqueia-pix-e-prende-dinheiro-de-clientes/",
           "sourceType": "Direct company statement reported by press",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     },
@@ -236,7 +236,7 @@
           "label": "GMO Payment Gateway disruption notice",
           "url": "https://www.gmo-pg.com/en/news/news/status/2026/0601.html",
           "sourceType": "Provider disclosure",
-          "reviewedOn": "2026-08-28"
+          "reviewedOn": "2026-09-01"
         }
       ]
     }

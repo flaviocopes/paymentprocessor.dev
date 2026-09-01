@@ -14,7 +14,9 @@
     "monthly": 0,
     "currency": "EUR",
     "assumptions": "Select seller country and payment method before estimating; there is no single cross-market rate.",
-    "sourceIds": ["pricing"]
+    "sourceIds": [
+      "pricing"
+    ]
   },
   "sellerCoverage": "Mollie supports businesses in the EEA, Switzerland, and the United Kingdom, with additional eligibility conditions in some countries.",
   "buyerCoverage": "International buyer payment coverage depends on the enabled method, currency, and merchant location.",
@@ -27,19 +29,60 @@
     "payouts": "Settlement timing and currency depend on method and merchant configuration."
   },
   "responsibilities": [
-    { "area": "Legal seller and customer contract", "owner": "merchant", "note": "The business remains seller and contracts with its buyer." },
-    { "area": "Indirect-tax registration, filing, and remittance", "owner": "merchant", "note": "Mollie provides payment services, not an MoR transfer of seller liability." },
-    { "area": "Fraud and disputes", "owner": "shared", "note": "Mollie supplies payment controls and dispute processes while the merchant owns exposure." },
-    { "area": "Product and billing support", "owner": "merchant", "note": "The business supports customers and billing operations." }
+    {
+      "area": "Legal seller and customer contract",
+      "owner": "merchant",
+      "note": "The business remains seller and contracts with its buyer."
+    },
+    {
+      "area": "Indirect-tax registration, filing, and remittance",
+      "owner": "merchant",
+      "note": "Mollie provides payment services, not an MoR transfer of seller liability."
+    },
+    {
+      "area": "Fraud and disputes",
+      "owner": "shared",
+      "note": "Mollie supplies payment controls and dispute processes while the merchant owns exposure."
+    },
+    {
+      "area": "Product and billing support",
+      "owner": "merchant",
+      "note": "The business supports customers and billing operations."
+    }
   ],
-  "strengths": ["Strong European local-payment coverage", "Public method-level pricing", "Accessible hosted and API integrations"],
-  "limitations": ["Seller onboarding is region-limited", "Pricing requires method and country context", "Tax filing and full SaaS billing remain merchant responsibilities"],
-  "bestFor": ["European SaaS and ecommerce", "Businesses prioritizing European bank methods", "Teams wanting a regional Stripe alternative"],
-  "avoidIf": ["Your business is outside supported seller regions", "You want an MoR"],
-  "lastReviewed": "2026-07-29",
-  "nextReview": "2026-10-27",
+  "strengths": [
+    "Strong European local-payment coverage",
+    "Public method-level pricing",
+    "Accessible hosted and API integrations"
+  ],
+  "limitations": [
+    "Seller onboarding is region-limited",
+    "Pricing requires method and country context",
+    "Tax filing and full SaaS billing remain merchant responsibilities"
+  ],
+  "bestFor": [
+    "European SaaS and ecommerce",
+    "Businesses prioritizing European bank methods",
+    "Teams wanting a regional Stripe alternative"
+  ],
+  "avoidIf": [
+    "Your business is outside supported seller regions",
+    "You want an MoR"
+  ],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-30",
   "sources": [
-    { "id": "pricing", "label": "Mollie pricing", "url": "https://www.mollie.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "countries", "label": "Mollie seller-country availability", "url": "https://help.mollie.com/hc/en-gb/articles/115002116105-Can-I-use-Mollies-services-in-my-country", "reviewedOn": "2026-07-29" }
+    {
+      "id": "pricing",
+      "label": "Mollie pricing",
+      "url": "https://www.mollie.com/pricing",
+      "reviewedOn": "2026-09-01"
+    },
+    {
+      "id": "countries",
+      "label": "Mollie seller-country availability",
+      "url": "https://help.mollie.com/hc/en-gb/articles/115002116105-Can-I-use-Mollies-services-in-my-country",
+      "reviewedOn": "2026-09-01"
+    }
   ]
 }

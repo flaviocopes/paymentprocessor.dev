@@ -4,8 +4,8 @@
   "model": "merchant-of-record",
   "serviceModel": "merchant-of-record",
   "legalSeller": "provider",
-  "stage": "public-preview",
-  "summary": "Stripe's Merchant of Record mode for eligible digital products, layered onto Stripe Payments and Checkout.",
+  "stage": "growth",
+  "summary": "Stripe's generally available Merchant of Record mode for eligible digital products, layered onto Stripe Payments and Checkout.",
   "pricing": {
     "kind": "public",
     "headline": "3.5% per Managed Payments transaction in addition to Stripe Payments fees.",
@@ -30,12 +30,12 @@
     ],
     "sourceIds": ["how", "adaptive", "managed-pricing"]
   },
-  "sellerCoverage": "Public-preview eligibility is limited to Stripe's documented supported business locations.",
-  "buyerCoverage": "Global buyer coverage excludes Stripe's documented restricted countries and varies by payment method.",
-  "products": "Eligible digital products, SaaS, software, digital content, and virtual goods; services, physical goods, marketplaces, and many restricted categories are excluded.",
+  "sellerCoverage": "Generally available to businesses in Stripe's documented supported business locations (39 countries as of the April 22, 2026 GA changelog, including Australia). Eligibility still depends on business type, geography, and an eligibility review.",
+  "buyerCoverage": "Global buyer coverage excludes Stripe's documented restricted countries and varies by payment method. Docs describe indirect-tax compliance in more than 80 countries; some Stripe pricing copy still says 75+ or more than 75 — keep both figures as a labeled first-party contradiction until Stripe aligns them.",
+  "products": "Eligible digital products, SaaS, software, digital content, virtual goods, and documented product tax codes (including AIaaS codes added June 2, 2026); services, physical goods, marketplaces, and many restricted categories are excluded.",
   "features": {
-    "checkout": "Stripe Checkout, hosted or embedded, with Link as buyer-facing Merchant of Record.",
-    "subscriptions": "Stripe Billing subscriptions with Managed Payments restrictions and public-preview changes.",
+    "checkout": "Stripe Checkout (hosted or embedded), Payment Links, and Link as buyer-facing Merchant of Record.",
+    "subscriptions": "Stripe Billing subscriptions with Managed Payments eligibility and invoice restrictions.",
     "invoicing": "Managed receipts and invoices; several standalone and off-cycle invoice flows are restricted.",
     "paymentMethods": "Cards, Apple Pay, Google Pay, Link, and selected local methods documented for Managed Payments.",
     "payouts": "Funds settle through the connected Stripe account subject to Stripe payout timing."
@@ -47,16 +47,18 @@
     { "area": "Data deletion response", "owner": "shared", "note": "Stripe can cancel subscriptions and delete related Stripe objects after a qualifying buyer request." }
   ],
   "strengths": ["Small integration change for eligible Stripe Checkout users", "Transaction-level choice between direct and MoR modes", "Familiar Stripe reporting and APIs"],
-  "limitations": ["Public preview", "Narrower product and seller eligibility", "MoR fee is additional to Payments and other applicable Stripe fees"],
+  "limitations": ["Seller eligibility limited to documented business locations and digital-product categories", "Narrower product and integration surface than ordinary Stripe Payments", "MoR fee is additional to Payments and other applicable Stripe fees"],
   "bestFor": ["Existing eligible Stripe Checkout businesses", "Digital-product companies testing specific markets", "Teams wanting mixed MoR and direct transactions"],
-  "avoidIf": ["You sell services, physical goods, or marketplace products", "You require a generally available, long-established MoR product"],
-  "lastReviewed": "2026-07-30",
-  "nextReview": "2026-08-27",
+  "avoidIf": ["You sell services, physical goods, or marketplace products", "Your business location or product category is outside documented Managed Payments eligibility"],
+  "lastReviewed": "2026-09-01",
+  "nextReview": "2026-11-30",
   "sources": [
-    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-07-29" },
-    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-07-29" },
-    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-07-29" },
-    { "id": "adaptive", "label": "Stripe Adaptive Pricing currencies and customer FX", "url": "https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing", "reviewedOn": "2026-07-30" },
-    { "id": "managed-pricing", "label": "Stripe Managed Payments pricing", "url": "https://support.stripe.com/questions/managed-payments-pricing", "reviewedOn": "2026-07-30" }
+    { "id": "how", "label": "How Stripe Managed Payments works", "url": "https://docs.stripe.com/payments/managed-payments/how-it-works", "reviewedOn": "2026-09-01" },
+    { "id": "pricing", "label": "Stripe pricing", "url": "https://stripe.com/pricing", "reviewedOn": "2026-09-01" },
+    { "id": "eligibility", "label": "Stripe Managed Payments eligibility", "url": "https://docs.stripe.com/payments/managed-payments/eligibility", "reviewedOn": "2026-09-01" },
+    { "id": "overview", "label": "Stripe Managed Payments overview", "url": "https://docs.stripe.com/payments/managed-payments", "reviewedOn": "2026-09-01" },
+    { "id": "changelog", "label": "Stripe Managed Payments changelog", "url": "https://docs.stripe.com/payments/managed-payments/changelog", "reviewedOn": "2026-09-01" },
+    { "id": "adaptive", "label": "Stripe Adaptive Pricing currencies and customer FX", "url": "https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing", "reviewedOn": "2026-09-01" },
+    { "id": "managed-pricing", "label": "Stripe Managed Payments pricing", "url": "https://support.stripe.com/questions/managed-payments-pricing", "reviewedOn": "2026-09-01" }
   ]
 }

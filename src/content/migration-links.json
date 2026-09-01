@@ -40,9 +40,9 @@
     "source": "FastSpring",
     "destination": "Stripe Managed Payments",
     "path": "https://migratingto.dev/guides/fastspring-to-stripe-managed-payments",
-    "summary": "Move between MoR systems while accounting for Managed Payments preview eligibility, product restrictions, billing objects, and transaction support.",
+    "summary": "Move between MoR systems while accounting for Managed Payments eligibility, product restrictions, billing objects, and transaction support.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "gumroad-to-fastspring",
@@ -85,9 +85,9 @@
     "source": "Gumroad",
     "destination": "Stripe Managed Payments",
     "path": "https://migratingto.dev/guides/gumroad-to-stripe-managed-payments",
-    "summary": "Rebuild Gumroad products and customers on Stripe's preview MoR mode while checking eligibility, subscription support, and buyer-facing changes.",
+    "summary": "Rebuild Gumroad products and customers on Stripe's MoR mode while checking eligibility, subscription support, and buyer-facing changes.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "paddle-to-fastspring",
@@ -130,9 +130,9 @@
     "source": "Paddle",
     "destination": "Stripe Managed Payments",
     "path": "https://migratingto.dev/guides/paddle-to-stripe-managed-payments",
-    "summary": "Change MoR provider while checking Stripe preview eligibility, supported products, subscription objects, checkout identity, and cutover constraints.",
+    "summary": "Change MoR provider while checking Stripe Managed Payments eligibility, supported products, subscription objects, checkout identity, and cutover constraints.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "polar-to-fastspring",
@@ -175,9 +175,9 @@
     "source": "Polar",
     "destination": "Stripe Managed Payments",
     "path": "https://migratingto.dev/guides/polar-to-stripe-managed-payments",
-    "summary": "Move between developer-oriented MoR systems while validating public-preview access, supported billing patterns, products, and customer-state transfer.",
+    "summary": "Move between developer-oriented MoR systems while validating Managed Payments eligibility, supported billing patterns, products, and customer-state transfer.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-billing-to-fastspring",
@@ -220,45 +220,45 @@
     "source": "Stripe Billing",
     "destination": "Stripe Managed Payments",
     "path": "https://migratingto.dev/guides/stripe-billing-to-stripe-managed-payments",
-    "summary": "Change selected Stripe transactions from direct merchant mode to preview MoR mode while preserving supported Billing objects and customer state.",
+    "summary": "Change selected Stripe transactions from direct merchant mode to Managed Payments MoR mode while preserving supported Billing objects and customer state.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-managed-payments-to-fastspring",
     "source": "Stripe Managed Payments",
     "destination": "FastSpring",
     "path": "https://migratingto.dev/guides/stripe-managed-payments-to-fastspring",
-    "summary": "Leave Stripe's preview MoR mode for established software commerce, translating checkout, subscription, customer, tax, and payout records.",
+    "summary": "Leave Stripe Managed Payments for established software commerce, translating checkout, subscription, customer, tax, and payout records.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-managed-payments-to-gumroad",
     "source": "Stripe Managed Payments",
     "destination": "Gumroad",
     "path": "https://migratingto.dev/guides/stripe-managed-payments-to-gumroad",
-    "summary": "Move from a Stripe-integrated preview MoR to creator commerce while rebuilding products, checkout, subscriptions, access, and reporting.",
+    "summary": "Move from a Stripe-integrated MoR mode to creator commerce while rebuilding products, checkout, subscriptions, access, and reporting.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-managed-payments-to-paddle",
     "source": "Stripe Managed Payments",
     "destination": "Paddle",
     "path": "https://migratingto.dev/guides/stripe-managed-payments-to-paddle",
-    "summary": "Move from Stripe's preview MoR to Paddle, with explicit plans for products, subscription state, customer identity, tax evidence, and events.",
+    "summary": "Move from Stripe Managed Payments to Paddle, with explicit plans for products, subscription state, customer identity, tax evidence, and events.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-managed-payments-to-polar",
     "source": "Stripe Managed Payments",
     "destination": "Polar",
     "path": "https://migratingto.dev/guides/stripe-managed-payments-to-polar",
-    "summary": "Change developer-focused MoR platforms while assessing preview-only constraints, customer transfer, subscriptions, benefits, and webhook parity.",
+    "summary": "Change developer-focused MoR platforms while assessing Managed Payments eligibility constraints, customer transfer, subscriptions, benefits, and webhook parity.",
     "status": "available",
-    "lastReviewed": "2026-07-27"
+    "lastReviewed": "2026-09-01"
   },
   {
     "id": "stripe-managed-payments-to-stripe-billing",
